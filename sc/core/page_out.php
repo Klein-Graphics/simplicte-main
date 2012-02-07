@@ -18,6 +18,14 @@ foreach ($buttons as $button) {
   $output = $SC->Page_loading->replace_button($output,str_replace('_','',$button),$button);
 }
 
+//Add cart and checkout
+$output = $SC->Page_loading->cart_driver->add_cart($output);
+$output = $SC->Page_loading->checkout_driver->add_checkout($output);
+
+//Add ajax loader
+
+$output = $SC->Page_loading->replace_tag($output,'ajax_loader','<span class="ajax_loader"><img src="'.sc_asset('img','ajax-loader.gif').'" title="Loading..." /></span>');
+
 //Add and insert javascript, including global function wrappers
 $SC->Page_loading->add_javascript('',' 
   function site_url(addl) {
@@ -36,6 +44,12 @@ $SC->Page_loading->add_javascript('','
     addl = addl.replace(/^\\//,"");
     
     return "'.sc_location().'"+addl;
+  }
+  
+  function sc_button(button) {
+   
+   return "'.sc_location().'assets/button/'.$SC->Config->get_setting('buttons_folder').'/"+button+".gif";
+    
   }
 ');
 

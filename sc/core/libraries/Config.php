@@ -4,7 +4,7 @@
   
   class Config extends \SC_Library {
   
-    function get_setting($name) {
+    function get_setting($name) {              
       $detail = \Model\Detail::find(array( 
         'select' => 'detail_value',
         'conditions' => array('detail = ?',$name)

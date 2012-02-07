@@ -15,6 +15,8 @@
       parent::__construct();
       $this->js = array();
       
+      $this->load_drivers();
+      
     }
   
     function replace_tag($input,$tag,$replacement=NULL,$function=NULL) {  
@@ -41,7 +43,7 @@
       
       $readable = str_replace('_',' ',ucfirst($button));
     
-      return $this->replace_tag($input,$tag,'<a href="'.sc_ajax($button).'" title="'.$readable.'"><img src="'.sc_asset('button',$button).'" alt="'.$readable.'" /></a>');
+      return $this->replace_tag($input,$tag,'<a href="'.sc_ajax($button).'" title="'.$readable.'" class="sc_'.$button.'"><img src="'.sc_asset('button',$button).'" alt="'.$readable.'" /></a>');
     }
     
     function replace_details($input) {
@@ -109,6 +111,23 @@
       return $input;
     
     } 
+    
+    function load_drivers() {
+      $cart_driver = $this->SC->Config->get_setting('cart_driver');
+      $checkout_driver = $this->SC->Config->get_setting('checkout_driver');      
+      
+      include 'core/libraries/cart_drivers/Cart_Driver.php';
+      include 'core/libraries/checkout_drivers/Checkout_Driver.php';
+      include "core/libraries/cart_drivers/$cart_driver.php";
+      include "core/libraries/checkout_drivers/$checkout_driver.php";
+      
+      $namespaced_cart_driver = '\Cart_Driver\\'.$cart_driver;
+      $namespaced_checkout_driver = '\Checkout_Driver\\'.$checkout_driver;
+      
+      $this->cart_driver = new $namespaced_cart_driver;
+      $this->checkout_driver = new $namespaced_checkout_driver;      
+            
+    }
     
     function add_javascript($src,$script='') {
       if (is_array($src)) {

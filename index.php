@@ -54,7 +54,7 @@ $thispage->body.='
                        </p></div>
                        <div id="store" class="standardtext">
                             <div id="storehead">
-                                 <img src="images/AeroviewStore.jpg" id="storeimage">
+                                 <img src="images/AeroviewStore.jpg" id="storeimage">[[ajax_loader]]
                                  <div id="cart">
                                       <div id="carthead" class="smallcaps"><div id="carttitle">Shopping Cart</div><div id="cartinfo">[[cartinfo]]</div></div>
                                       <div id="cartbuttons">[[viewcart]][[clearcart]]<span class="right">[[checkout]]</span></div>
