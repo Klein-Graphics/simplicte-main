@@ -32,6 +32,24 @@
       return $this->get_item($id,'name');
     }
     
+    //other stuff
+    function item_flag($id,$check_flag) {
+        $item = \Model\Item::find($id,array('select'=>'flags'));
+        
+        $flags = explode(',',$item->flags);
+        
+        foreach ($flags as $flag) {
+            if (strpos($flag,$check_flag)===0) {
+                $flag = explode(':',$flag);
+                break;
+            }
+            $flag = false;
+        }
+        
+        return $flag;
+        
+    }
+    
     //Item options
     
     //Main function
@@ -50,6 +68,25 @@
     function option_name($id) {
       return $this->get_option($id,'name');
     } 
+    
+    function option_flag($id,$check_flag) {
+        $item = \Model\Itemoption::find($id,array('select'=>'flags'));
+        
+        $flags = explode(',',$item->flags);
+        
+        foreach ($flags as $flag) {
+            if (strpos($flag,$check_flag)===0) {
+                $flag = explode(':',$flag);
+                break;
+            }
+            $flag = false;
+        }
+        
+        return $flag;
+        
+    }
+    
+    
   
   }
   

@@ -5,6 +5,11 @@
   class Customer extends \SC_Library {
     
     function get_customer($search,$return_col='*',$search_col='id') {
+    
+        if (is_array($return_col)) {
+            $return_col = implode(',',$return_col);
+        }
+    
       $customer = \Model\Customer::find(array(
         'conditions' => array("$search_col = ?",$search),
         'select' => $return_col
@@ -26,5 +31,9 @@
       return $customer->id;
       
     } 
+    
+    function get_cart($cust_id) {
+    
+    }
     
   }

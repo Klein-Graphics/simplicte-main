@@ -1,0 +1,49 @@
+<!--
+    This is the default simplecart template
+    It contains a basic item layout and a basic add to cart layout    
+-->
+<!--NAME Default Template -->
+<!--AUTHOR Simplecart -->
+
+<!--TAG item -->
+    <div class="sc_item_wrapper">
+      <div class="sc_item_image">
+        [[detail|image|%i]]
+      </div>
+      <div class="sc_item_description">
+        <h2>[[detail|name|%i]]</h2>
+        <p>[[detail|description|%i]]</p>
+      </div>
+      <div class="sc_item_add_cart">
+        [[add_to_cart|%i]]
+      </div>
+    </div><!--.sc_item_wrapper-->
+<!--ENDTAG-->
+
+<!--TAG add_to_cart -->
+    <div class="sc_item_price">
+        $[[detail|price|%i]]
+    </div>
+    <div class="sc_add_to_cart_button">
+        [[added_flag]]
+        [[add_button]]
+        [[qty_selection]]
+    </div>
+    <ul class="sc_item_options">        
+        [[options|%i]]
+    </ul>
+<!--ENDTAG-->
+
+<!--OPTION multiple -->
+    <li class="sc_item_option sc_multi_option">
+        <span class="sc_option_label sc_label">[[cat]]</span>
+        [[options]]
+    </li>
+<!--ENDOPTION-->
+
+<!--OPTION single -->
+    <li class="sc_item_option sc_single_option">
+        [[checkbox]]<label class="sc_option_label sc_label">[[detail|name]] (+$[[detail|price]])</label>
+    </li>
+<!--ENDOPTION-->
+                                     

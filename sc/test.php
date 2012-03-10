@@ -2,6 +2,7 @@
 
 require 'core/init.php';
 
-better_print_r($_SERVER);
+$SC->load_library('Items');
 
-//require 'core/deinit.php';
+print_r($SC->Items->option_flag(5,'allow_qty'));
+

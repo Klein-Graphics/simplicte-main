@@ -26,7 +26,11 @@
   }
   
   function better_print_r($array) {
-    echo str_replace("  ","&nbsp;",nl2br(print_r($array,true)));
+    echo str_replace("  ","&nbsp;",nl2br(htmlspecialchars(print_r($array,true))));
+  }
+  
+  function better_printr($array) {
+    better_print_r($array);
   }
   
   function db_return($obj,$return_cols) {

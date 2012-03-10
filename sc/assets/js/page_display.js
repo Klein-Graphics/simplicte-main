@@ -10,10 +10,12 @@ $(document).ready(function() {
 
   //load the cart info section
   $('.sc_cartinfo').load(sc_location('ajax/cart_info'));      
-  
-  //bind the view/clear/checkout buttons
-  page_display.cart.bind();
-  page_display.checkout.bind();
+
+  for (driver in page_display) {
+    if (typeof page_display[driver].bind == 'function') {
+        page_display[driver].bind();
+    }
+  }  
   
 
 });

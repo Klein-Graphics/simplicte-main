@@ -1,10 +1,11 @@
 <?php
 
-//Get, End, and Output ouput buffer
+//Get, End, and Output output buffer
 $output = ob_get_contents();
 ob_end_clean();
 
-
+//Add Items and Add To Cart Buttons
+$output = $SC->Page_loading->run_item_templates($output);
 
 //Replace item details, ex. Name, Description
 $output = $SC->Page_loading->replace_details($output);
@@ -18,12 +19,22 @@ foreach ($buttons as $button) {
   $output = $SC->Page_loading->replace_button($output,str_replace('_','',$button),$button);
 }
 
+
 //Add cart and checkout
 $output = $SC->Page_loading->cart_driver->add_cart($output);
 $output = $SC->Page_loading->checkout_driver->add_checkout($output);
 
-//Add ajax loader
+if ($SC->Session->has_account()) {
+    //Create the account form
+    $output = $SC->Page_loading->account_driver->add_account_info($output);    
+} else {
+    //Create the login form
+    $output = $SC->Page_loading->account_driver->add_login($output);
+}
 
+
+
+//Add Ajax loader
 $output = $SC->Page_loading->replace_tag($output,'ajax_loader','<span class="ajax_loader"><img src="'.sc_asset('img','ajax-loader.gif').'" title="Loading..." /></span>');
 
 //Add and insert javascript, including global function wrappers
@@ -54,12 +65,14 @@ $SC->Page_loading->add_javascript('','
 ');
 
 $SC->Page_loading->add_javascript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
+$SC->Page_loading->add_javascript(sc_asset('js','jquery.crypt'));
 $SC->Page_loading->add_javascript(sc_asset('js','page_display'));
 
-//Load cart and checkout drivers
+//Load display drivers
 
-$SC->Page_loading->add_javascript(sc_asset('js','cart_drivers/'.$SC->Config->get_setting('cart_driver').'.js'));
-$SC->Page_loading->add_javascript(sc_asset('js','checkout_drivers/'.$SC->Config->get_setting('checkout_driver').'.js'));
+foreach ($SC->Page_loading->loaded_drivers as $type => $driver) {
+    $SC->Page_loading->add_javascript(sc_asset('js',$type.'_drivers/'.$driver.'.js'));
+}
 
 $output = $SC->Page_loading->insert_javascript($output);
 

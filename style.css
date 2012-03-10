@@ -315,6 +315,34 @@ li.option.checkbox input {
   float: left;
 }
 
+/*New SC Stuff*/
+.sc_login_area {
+    width: 200px;
+}
+
+.sc_login_area input {
+    display: block;    
+}
+
+.sc_login_area #sc_remember_me {
+    display: inline;
+}
+
+.sc_login_area .close_link {
+    float: right;
+    cursor: pointer;
+    color: #d52;
+}
+
+.sc_login_area .close_link:hover {
+    float: right;
+    cursor: pointer;
+    color: #d52;
+    color: #F75;
+    text-decoration: underline;
+}
+
+
 /*Elements*/
 #cu3ox {
   width:650px;

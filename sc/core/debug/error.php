@@ -26,7 +26,7 @@ function throw_error($levels,$message,$file,$line,$context) {
     
     if ($CONFIG['LOG_ERRORS']) {
       $log_file = fopen($CONFIG['LOG_FILE_LOCATION'],'a');
-      fwrite($log_file,date('c')." $level:".PHP_EOL."\t$message".PHP_EOL."\tin file $file at line $line.".PHP_EOL);
+      fwrite($log_file,date('c')." $level:".PHP_EOL."\t$message".PHP_EOL."\tin file $file on line $line.".PHP_EOL);
     }
     
     return NULL;   

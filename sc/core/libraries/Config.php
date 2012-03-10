@@ -10,7 +10,7 @@
         'conditions' => array('detail = ?',$name)
       ));
       
-      if ($detail->detail_value) {
+      if (isset($detail->detail_value) && $detail->detail_value) {
         return $detail->detail_value;
       } else {
         return false;

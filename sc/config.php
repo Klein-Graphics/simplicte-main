@@ -51,3 +51,12 @@
     'All'
   );
   
+  /*
+   * Other
+   */
+   
+  $CONFIG['EMAIL_REGEX'] = "/[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)\b/i";  
+  $CONFIG['SEED'] = 'simplecart12345678910111213141516'; //Change this value to anything.
+  
+  
+  
