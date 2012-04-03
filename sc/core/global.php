@@ -34,15 +34,19 @@
   }
   
   function db_return($obj,$return_cols) {
-    if ($return_cols=='*' or strpos($return_cols,',')) {
-      return $obj;
-    } else {
-      if (is_object($obj)) {
-        return $obj->$return_cols;
-      } elseif (is_array($obj)) {
-        return $obj[$return_cols];
-      }
+    if ($obj) {    
+        if ($return_cols=='*' or strpos($return_cols,',')) {
+          return $obj;
+        } else {
+          if (is_object($obj)) {
+            return $obj->$return_cols;
+          } elseif (is_array($obj)) {
+            return $obj[$return_cols];
+          }
+        }
     }
+    
+    return FALSE;
   }
   
   function required_libraries($library) {
@@ -97,3 +101,7 @@
     
     return sc_location("ajax/$name$args");
   }
+  
+    function is_multi($array) {
+        return (count($array) != count($array, 1));
+    }

@@ -1,4 +1,5 @@
 <?php
+require 'sc/core/page_in.php';
 require_once('scripts/classPage.php');
 $thispage = new page();
 
@@ -142,8 +143,5 @@ $thispage->body.='
                   </div>
 
 ';
-require 'sc/core/page_in.php';
 $thispage->renderPage(); 
 require 'sc/core/page_out.php'; 
-?>
-

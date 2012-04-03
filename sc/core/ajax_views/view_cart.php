@@ -1,6 +1,4 @@
 <?php
-  namespace View;
-  function view_cart() {
   global $SC;
 
   $SC->load_library(array('Cart','Session'));
@@ -30,16 +28,16 @@
     <?php if ($item['options']) : ?> 
         <ul>
       <?php foreach($item['options'] as $option) : ?>
-          <li><?=$SC->Items->option_name($option['id'])?> x <?=$option['quantity']?><?=($option['price']) ? ' - $'.number_format($option['quantity']*$option['price'],2) : ''?></li>
+          <li><?=$SC->Items->option_name($option['id'])?><?=($option['quantity']>1) ? ' x '.$option['quantity'] : ''?><?=($option['price']) ? ' - $'.number_format($option['quantity']*$option['price'],2) : ''?></li>
       <?php endforeach ?>
         </ul>
     <?php endif ?>
       </td>
       <td class="sc_cart_item_quantity">
-        <input type="text" class="sc_cart_item_quantity_adjust" value="<?=$item['quantity']?>" />
+        <input type="text" class="sc_cart_item_quantity_adjust" onblur="adjust_quantity(<?=$key?>,$(this).val())" value="<?=$item['quantity']?>" />
       </td>
       <td class="sc_cart_item_price">
-        <?=$item['price']?>
+        <?=number_format($SC->Cart->line_total($key,$cart),2)?>
       </td>
       <td class="sc_cart_item_remove">
         <a href="<?=sc_ajax('remove_item',$key)?>" title="Remove Item">Remove</a>
@@ -51,5 +49,24 @@
   </tbody>
 </table>
 
-
-<?php } ?>
+<script type="text/javascript">
+    $('.sc_cart_item_remove').children('a').click(function(e) {
+        e.preventDefault();
+        
+        $.get($(this).attr('href'),function(data) {
+            if (data==1) {
+                page_display.cart.refresh();
+            }
+        });                
+        
+        page_display.checkout.hide();
+    });    
+    
+    function adjust_quantity(line,amount) {
+        $.get(sc_location('ajax/change_qty/'+line+'/'+amount),function(data) {
+            if (data==1) {
+                page_display.cart.refresh();
+            }
+        });
+    }    
+</script>

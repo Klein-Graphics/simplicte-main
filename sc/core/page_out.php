@@ -13,8 +13,11 @@ $output = $SC->Page_loading->replace_details($output);
 //Replace cart info
 $output = $SC->Page_loading->replace_tag($output,'cartinfo','<span class="sc_cartinfo"></span>');
 
+//Hack to keep the old check tag working
+$output = $SC->Page_loading->replace_tag($output,'checkout','[[viewcheckout]]');
+
 //Replace buttons
-$buttons = array('view_cart','clear_cart','checkout');
+$buttons = array('view_cart','clear_cart','view_checkout');
 foreach ($buttons as $button) {
   $output = $SC->Page_loading->replace_button($output,str_replace('_','',$button),$button);
 }
@@ -31,8 +34,6 @@ if ($SC->Session->has_account()) {
     //Create the login form
     $output = $SC->Page_loading->account_driver->add_login($output);
 }
-
-
 
 //Add Ajax loader
 $output = $SC->Page_loading->replace_tag($output,'ajax_loader','<span class="ajax_loader"><img src="'.sc_asset('img','ajax-loader.gif').'" title="Loading..." /></span>');

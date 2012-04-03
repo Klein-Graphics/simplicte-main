@@ -27,7 +27,7 @@
 
             return db_return($transaction,$return_col);
           
-        }
+        }                
 
         function create_transaction($custid,$data=FALSE) {
             if (is_array($custid) && ! $data) {
@@ -59,11 +59,11 @@
 
         function update_transaction($id,$attributes) {
           
-            $transaction = \Model\Transaction::find($id);
+            $transaction = \Model\Transaction::find($id);                        
 
             foreach ($attributes as $attribute => $value) {      
                 $transaction->$attribute = $value;   
-            }
+            }            
 
             $transaction->save();
 
@@ -112,6 +112,22 @@
             
             $this->update_transaction($transaction,$customer_details);               
             
+        }
+        
+        function get_stale_transactions($date=NULL) {
+            $date = (
+                ($date!=NULL) 
+                    ? $date 
+                    : strtotime(($this->SC->Config->get_setting('cleanupRate')*-1)." minutes")
+            );
+            
+            $orders = \Model\Transaction::all(array(
+                'conditions' => 
+                    array('lastupdate < ? AND status = "pending"',$date),
+                'select' => 'id' 
+            ));             
+
+            return $orders;                                                    
         }
 
     }

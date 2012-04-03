@@ -40,9 +40,11 @@ register_shutdown_function(function() {
 
   global $CONFIG;
   global $ERRORS;
+  global $start_time;
   
   if (isset($_SESSION) && $CONFIG['DUMP_SESSION']) {    
     require 'core/debug/print_session.php';
+    echo 'exectime: '.round((microtime(true) - $start_time)*pow(10,3),2).' msecs';
   }
   
   if ($CONFIG['SHOW_ERRORS']) : ?>
@@ -52,6 +54,6 @@ register_shutdown_function(function() {
         <?=($CONFIG['SHOW_ERROR_CONTEXT'])?'<br />'.$error['context']:''?>
       </div>
     <?php endforeach; ?>
+    <?=xdebug_get_profiler_filename();?>
   <?php endif;
-  
 });

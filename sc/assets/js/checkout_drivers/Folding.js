@@ -4,15 +4,72 @@ page_display.checkout = {
     
     page_display.cart.show();
     
-    $('#checkout').load(sc_location('ajax/checkout'),function(){
-      $(this).slideDown(callback());
+    page_display.checkout.load(sc_location('ajax/checkout'));
+  },
+  
+  load: function(link_url,data) {
+    $('#sc_checkout').load(link_url,data,function(){
+        $(this).slideDown();        
+                
+        $("#sc_checkout form.sc_account_form").submit(function(e) {        
+            e.preventDefault();
+            var previous_password = [];
+            
+            $(this).children('[type=password]').val(function(i,v) { 
+                if (!v) return '';
+                previous_password[i] = v;                    
+                return $().crypt({
+                    method: 'md5',
+                    source: v
+                });
+            });
+            
+            $.post($(this).attr('action'),$(this).serialize(),function(data){
+                switch (data.do_this) {
+                    case 'refresh':
+                        location.href +='#checkout';
+                        window.location.reload();
+                    break;
+                    
+                    case 'display_good':
+                        $('.sc_display')
+                            .removeClass('sc_bad')
+                            .addClass('sc_good')
+                            .html(data.message); 
+                            window.location.href += '#checkout'; 
+                            window.location.reload();  
+                    break;
+                    
+                    case 'display_error':
+                        $('.sc_display')
+                            .removeClass('sc_good')
+                            .addClass('sc_bad')
+                            .html(data.message);
+                    break;                        
+                    
+                    case 'load':
+                        page_display.account.load(data.location,data.data);
+                    break;
+                        
+                }
+            },'json');
+                                 
+            $(this).children('[type=password]').val(function(i,v) { 
+                return previous_password[i];                
+            });
+        });            
+        
+        $('#sc_checkout .sc_close_link').click(function(e){ 
+            e.preventDefault();
+            page_display.checkout.hide();
+        });    
     });
   },
   
   hide: function(callback) {
     callback = callback || function(){};
     
-    $('#checkout').slideUp(callback());
+    $('#sc_checkout').slideUp(callback());
   },
   
   refresh: function() {
@@ -20,7 +77,7 @@ page_display.checkout = {
   },
   
   bind: function() {
-    $('.sc_checkout').click(function(e){
+    $('.sc_view_checkout').click(function(e){
       e.preventDefault();
       page_display.checkout.show();
     });

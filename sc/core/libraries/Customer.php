@@ -30,6 +30,17 @@
       
       return $customer->id;
       
+    }
+    
+    function update_customer($id,$data) {
+        $customer = \Model\Customer::find($id);
+        
+        
+        foreach($data as $key => $value) {
+            $customer->$key = $value;
+        }
+        
+        $customer->save();
     } 
     
     function get_cart($cust_id) {

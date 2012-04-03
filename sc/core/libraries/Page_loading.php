@@ -22,6 +22,15 @@
     }
   
     function replace_tag($input,$tag,$replacement=NULL) {  
+    
+      if (is_array($tag)) {
+        foreach($tag as $name => $content) {
+            $input = $this->replace_tag($input,$name,$content);
+        }
+        
+        return $input;
+      }
+      
       //Find the tag in the page
       if (preg_match_all("/\[\[($tag(\|[^(\]\])]+)*)\]\]/i",$input,$matches)) {
         if (is_callable($replacement)) {
@@ -30,6 +39,16 @@
           
           foreach($matches[1] as $key => $match) {
             $match = explode('|',$match);
+            
+            foreach ($match as &$this_match) {
+                if (strpos($this_match,'i--') !== FALSE) { //This is simply an db id
+                  $this_match = substr($this_match,3);
+                  
+                  $item = \Model\Item::find('first',array('conditions' => array('number = ?',$this_match))); 
+                        
+                  $this_match = $item->id;      
+                }    
+            } 
             
             $replacement[$key] = $function($match);
           }
@@ -50,67 +69,30 @@
       return $this->replace_tag($input,$tag,'<a href="'.sc_ajax($button).'" title="'.$readable.'" class="sc_'.$button.'"><img src="'.sc_asset('button',$button).'" alt="'.$readable.'" /></a>');
     }
     
-    function replace_details($input) {
+    function replace_details($input) {          
       
-      //Replace "name" tags. This is for backwards compatibility of the depreciated tag [[name]]
-      $input = $this->replace_tag($input,'name',function($args) {
+      $tags = array(
+        'name' => function($args) {
+
+            $item = \Model\Item::find($args[1]);          
+            return $item->name;        
+        },
         
-        if (strpos($args[1],'i--') === FALSE) { //This is simply an db id
-          $item = \Model\Item::find($args[1]);
-          
-          return $item->name;
-        } else {
-          $args[1] = substr($args[1],3);
-          
-          $item = \Model\Item::find('first',array('conditions' => array('number = ?',$args[1])));
-          
-          return $item->name;        
+        'desc' => function($args) {
+      
+            $item = \Model\Item::find($args[1]);          
+            return $item->description;      
+        },
+        
+        'detail' => function($args) {
+      
+            $item = \Model\Item::find($args[2]);          
+            return $item->$args[1];         
         }
-        
-        //If we get here something went super wrong, throw an error;
-        trigger_error('Something went horrendously wrong. Abandon ship.',E_USER_ERROR);
-        
-      });
-      
-      //Replace "desc" tags. This is for backwards compatibility of the depreciated tag [[desc]]
-      $input = $this->replace_tag($input,'desc',function($args) {
-      
-        if (strpos($args[1],'i--') === FALSE) { //This is simply an db id
-          $item = \Model\Item::find($args[1]);
-          
-          return $item->description;
-        } else {
-          $args[1] = substr($args[1],3);
-          
-          $item = \Model\Item::find('first',array('conditions' => array('number = ?',$args[1])));
-          
-          return $item->description;        
-        }  
-        
-        //If we get here something went super wrong, throw an error;
-        trigger_error('Something went horrendously wrong. Abandon ship.',E_USER_ERROR);
-      
-      });
+      );
       
       //Replace "detail" tags.    
-      $input = $this->replace_tag($input,'detail',function($args) {
-      
-        if (strpos($args[2],'i--') === FALSE) { //This is simply an db id
-          $item = \Model\Item::find($args[2]);
-          
-          return $item->$args[1];
-        } else {
-          $args[2] = substr($args[2],3);
-          
-          $item = \Model\Item::find('first',array('conditions' => array('number = ?',$args[2])));
-          
-          return $item->$args[1];        
-        } 
-        
-        //If we get here something went super wrong, throw an error;
-        trigger_error('Something went horrendously wrong. Abandon ship.',E_USER_ERROR);
-         
-      });
+      $input = $this->replace_tag($input,$tags);
       
       return $input;
     
@@ -122,9 +104,9 @@
         $item_template = $this->SC->Config->get_setting('item_template');
         if (!$item_template) $item_template = 'default';
         
-        $template_file = sc_location("item_templates/$item_template.html");
+        $template_file = "item_templates/$item_template.html";
         
-        $raw_template = file_get_contents($template_file);
+        $raw_template = file_get_contents("item_templates/$item_template.html");
         
         if (!$raw_template) {
             trigger_error("Item template <strong>$template_file</strong> doesn't exist",E_USER_ERROR);
@@ -142,42 +124,82 @@
         preg_match_all('/<!--OPTION (.*?)\s*-->(.*?)<!--ENDOPTION-->/s',$raw_template,$option_templates);   
         foreach ($option_templates[1] as $key => $tag) {
             $this->option_templates[$tag] = $option_templates[2][$key];
-        }                  
+        }  
+        
+        preg_match_all('/<!--SPECIALTAG (.*?)\s*-->(.*?)<!--ENDSPECIALTAG-->/s',$raw_template,$special_tags);
+        foreach ($special_tags[1] as $key => $tag) {
+            $tag = explode(' ',$tag);    
+            
+            foreach ($tag as &$this_tag) {
+                if (strpos($this_tag,'i--') !== FALSE) {
+                  $this_tag = substr($this_tag,3);
+                  
+                  $item = \Model\Item::find('first',array('conditions' => array('number = ?',$this_tag))); 
+                        
+                  $this_tag = $item->id;      
+                } 
+            }
+            
+            $the_tags = preg_quote(implode('|',$tag));
+            
+            $this->special_tags[] = array(
+                'regex' => "/\[\[$the_tags\]\]/",
+                'template' => $special_tags[2][$key]
+            );
+        }                
         
         
         return TRUE;
     }
     
-    function run_item_templates($input) {                                
+    function run_item_templates($input) {      
     
-        $tags = $this->tags;
+        $this->SC->load_library('Items');
     
-        $output = $this->replace_tag($input,'item',function($args) use ($tags) { 
-            //Insert the item numbers into the raw template
-            return str_replace('%i',$args[1],$tags['item']);
+        $SC = &$this->SC;                                         
+    
+        $tags = $this->tags;        
+    
+        $output = $this->replace_tag($input,'item',function($args) use ($tags,$SC) { 
+            //Insert the item numbers into the raw template            
+            return str_replace('%i',$item,$tags['item']);
         });
-        unset($tags['item']);        
-        
-        $SC = &$this->SC;
+        unset($tags['item']);                        
         
         $add_to_cart_callback = function($args) use ($tags,$SC) { 
             //Insert the item numbers into the raw template
             $add_to_cart_code = str_replace('%i',$args[1],$tags['add_to_cart']);  
             
-            $add_to_cart_code = '<form class="sc_add_to_cart_form" method="POST" action="'.sc_ajax('add_item').'">'
+            $add_to_cart_code = '<form class="sc_add_to_cart_form sc_item_'.$args[1].'" method="POST" action="'.sc_ajax('add_item/'.$args[1]).'">'           
                 .$add_to_cart_code.
                 '</form>';
             
-            $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,'added_flag','<div class="sc_added_flag">Item Added!</div>');    
-            $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,'add_button','<input type="image" src="'.sc_asset('button','add_to_cart').'" alt="Add To Cart" />');            
-            $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,'qty_selection','<label class="sc_qty_label sc_label">qty:</label><input class="sc_qty_input" type="input" size=1 name="item_qty" value="1" />');
+            $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,array(
+                'message_area' => '<div class="sc_message_area" style="display:none;"></div>',
+                'add_button' => '<input type="image" src="'.sc_asset('button','add_to_cart').'" alt="Add To Cart" />'
+            )); 
+                       
+            $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,
+                'qty_selection',
+                (($SC->Items->item_flag($args[1],'hide_qty')) 
+                    ? '<input class="sc_qty_input" type="hidden' 
+                    : '<label class="sc_qty_label sc_label_right">qty:</label><input type="text'
+                )
+                .'" size=1 name="item_qty" value="'.
+                (($min = $SC->Items->item_flag($args[1],'min'))
+                    ? $min[1]
+                    : 1
+                )
+                .'" />'
+            );
             
             return $add_to_cart_code;
-
         };
         
-        $output = $this->replace_tag($input,'add_to_cart',$add_to_cart_callback);   
-        $output = $this->replace_tag($input,'addtocart',$add_to_cart_callback); //Hack to allow the old tag >:(
+        $output = $this->replace_tag($input,array(
+            'add_to_cart' => $add_to_cart_callback,
+            'addtocart' => $add_to_cart_callback //Hack to allow the old tag >:(
+        ));
         unset($tags['add_to_cart']);  
         
         if (count($tags)) {
@@ -194,10 +216,17 @@
             return $SC->Page_loading->generate_options_code($args[1]); 
         });
         
+        //Run through and replace any special tags
+        foreach ($this->special_tags as $special_tag) {     
+            $output = preg_replace($special_tag['regex'],$special_tag['template'],$output);
+        }        
+        
         return $output;                            
     }    
     
     function generate_options_code($item) {    
+        
+        $this->SC->load_library('Items');
     
         if (strpos($item,'i--')!==FALSE) {
             $item_num = substr($item,3);
@@ -222,16 +251,17 @@
         }         
         unset($item_options);
         
+        $i = 0;
         foreach ($sorted_options as $cat => $item_options) {
              
              if (count($sorted_options[$cat]) > 1) {
                 $sorted_options[$cat]['code'] = $this->replace_tag($this->option_templates['multiple'],'cat',$cat);
                 $this_option_code = '';
                 foreach ($item_options as $item_option) {
-                    $this_option_code .= "<option value=\"{$item_option->id}\">{$item_option->name}</option>".PHP_EOL;
+                    $this_option_code .= "<option value=\"{$item_option->id}\">{$item_option->name} (+\${$item_option->price})</option>".PHP_EOL;
                 }
                 
-                $this_option_code = '<select name="options[]">'.$this_option_code.'</select>';
+                $this_option_code = '<select name="options['.$i.']">'.$this_option_code.'</select>';
                 
                 $sorted_options[$cat]['code'] = $this->replace_tag($sorted_options[$cat]['code'],'options',$this_option_code);
                                 
@@ -244,14 +274,20 @@
                     function($args) use ($item_option) {
                         return $item_option->$args[1]; 
                     }
-                );
+                );                
                 
                 $sorted_options[$cat]['code'] = $this->replace_tag(
                     $sorted_options[$cat]['code'],
                     'checkbox',
-                    "<input type=\"checkbox\" name=\"options[]\" value={$item_option->id} \>"                    
+                    '<input type="'.(
+                        ($this->SC->Items->option_flag($item_option->id,'req')) 
+                        ? 'hidden'  
+                        : 'checkbox'
+                    )."\" name=\"options[$i]\" value={$item_option->id} />".
+                    (($this->SC->Items->option_flag($item_option->id,'allow_qty')) ? "<input type=\"text\" name=\"option_qty[$i]\" class=\"sc_option_qty\" size=1 value=1 />" : '')
                 );
              }
+             $i++;
         }
         
         $option_code = '';

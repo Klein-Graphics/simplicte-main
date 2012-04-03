@@ -39,6 +39,8 @@
         
         if (file_exists("core/ajax_views/$view.php")) {
           require_once "core/ajax_views/$view.php";    
+        } else if (file_exists("core/ajax_views/$view/index.php")) {
+          require_once "core/ajax_views/$view/index.php"; 
         } else {
           header('HTTP/1.0 404 Not Found');
           echo('<h1>404</h1>Page not found');

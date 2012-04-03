@@ -4,8 +4,8 @@ page_display.account = {
         $('#sc_account_action').slideUp();    
     },
     
-    load: function(link_url){
-        $('#sc_account_action').load(link_url,function(){                 
+    load: function(link_url,data){
+        $('#sc_account_action').load(link_url,data,function(){                 
             $('#sc_account_action').slideDown();
             $("form.sc_account_form").submit(function(e) {
                 e.preventDefault();
@@ -32,7 +32,7 @@ page_display.account = {
                                 .removeClass('sc_bad')
                                 .addClass('sc_good')
                                 .html(data.message); 
-                            setInterval(500,function(){ page_display.account.close() });   
+                                setTimeout('page_display.account.close()',500);   
                         break;
                         
                         case 'display_error':
@@ -40,7 +40,12 @@ page_display.account = {
                                 .removeClass('sc_good')
                                 .addClass('sc_bad')
                                 .html(data.message);
+                        break;                        
+                        
+                        case 'load':
+                            page_display.account.load(data.location,data.data);
                         break;
+                            
                     }
                 },'json');
                                      
@@ -49,7 +54,7 @@ page_display.account = {
                 });
             });            
             
-            $('#sc_account_action .close_link').click(function(e){ 
+            $('#sc_account_action .sc_close_link').click(function(e){ 
                 e.preventDefault();
                 page_display.account.close();
             });

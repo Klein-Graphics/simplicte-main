@@ -69,11 +69,7 @@
         
       rename_key($item,array('id','options','quantity','price'));
       
-      $item['options'] = $this->explode_options($item['options']);
-      
-      foreach ($item['options'] as $option) {
-        $item['price'] += $option['price']*$option['quantity'];
-      }
+      $item['options'] = $this->explode_options($item['options']);      
       
       return $item;
     }
@@ -123,7 +119,7 @@
         return 0;
       }
     
-      $option_array = verify_options($option_array);
+      $option_array = $this->verify_options($option_array);
       
       foreach ($option_array as &$option) {
           $option = implode('x',array($option['id'],$option['quantity'],$option['price']));
@@ -291,7 +287,25 @@
       return $subtotal;
               
     }
-  }
+    
+    function line_total($line,$cart = FALSE) {
+        if ($cart) {
+            if (!is_array($cart)) {          
+                $cart = $this->explode_cart($cart);
+            }        
+            $line = $cart[$line];
+        }
+
+        
+        $options_price = 0;
+        
+        foreach ($line['options'] as $option) {
+            $options_price += $option['price']*$option['quantity'];
+        }
+        
+        return ($line['price'] + $options_price) * $line['quantity'];
+    }
+}
   
   
   

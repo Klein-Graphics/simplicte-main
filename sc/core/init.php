@@ -2,10 +2,14 @@
 //--------------
 // Configuration
 //--------------
+$start_time = microtime(true);
 
-//Verifing sure that this script's cwd is SC's root
+//Make sure that this script's cwd is SC's root
 $sc_dir = dirname(__DIR__);
 chdir($sc_dir);
+
+//load constants
+require 'const.php';
 
 //Load config file.
 require 'config.php';
@@ -46,7 +50,6 @@ if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROO
         unlink($cur_dir.$marker_name);
         return $cur_dir.$marker_name;
         
-      } else {
       }
     }
     
@@ -61,12 +64,16 @@ if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROO
   
   $site_url = str_replace($_SERVER['DOCUMENT_ROOT'],'',$site_url);
   
+  $CONFIG['URL'] = $site_url;
+  
   $config_file = file_get_contents('config.php');
   $config_file = preg_replace('/\$CONFIG\[(\'|")URL(\'|")\][^('.PHP_EOL.')]*'.PHP_EOL.'/',"\$CONFIG['URL'] = '$site_url';".PHP_EOL,$config_file);
   $r_config_file = fopen('config.php','w');
   fwrite($r_config_file,$config_file);
    
 }
+
+
 
 
 //---------------
@@ -103,6 +110,11 @@ $SC = new SC;
 //Load config class
 
 $SC->load_library('Config');
+
+/*
+ * Set time zone
+ */
+date_default_timezone_set($SC->Config->get_setting('timezone'));
 
 
 

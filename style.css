@@ -160,7 +160,7 @@ a:hover {
 .checkoutBut {
   margin-left: 20px;
 }
-#display_cart {
+#sc_display_cart {
   overflow: hidden;
   border: 2px solid #555;
   border-top: 0px;
@@ -169,15 +169,19 @@ a:hover {
   background: #000;
 }
 
-#display_cart table {
+#sc_display_cart table {
  width: 100%;
 }
 
-#display_cart table thead td,tr {
+#sc_display_cart thead td,
+#sc_display_cart thead tr 
+{
   border-top: 3px solid #777;
 }
 
-#display_cart table td,tr {
+#sc_display_cart td,
+#sc_display_cart tr 
+{
   border-left: 3px solid #777;
   background: #555;
 }
@@ -267,7 +271,7 @@ li.option.checkbox input {
 
 }
 /*Checkout*/
-#checkout {
+#sc_checkout {
   overflow: hidden;
   border: 2px solid #555;
   border-top: 0px;
@@ -316,28 +320,26 @@ li.option.checkbox input {
 }
 
 /*New SC Stuff*/
-.sc_login_area {
+.sc_login_area,
+.sc_create_account_area
+{
     width: 200px;
 }
 
-.sc_login_area input {
-    display: block;    
-}
-
-.sc_login_area #sc_remember_me {
+.sc_login_area #sc_remember_me, 
+.sc_create_account_area #sc_remember_me
+{
     display: inline;
 }
 
-.sc_login_area .close_link {
+.sc_close_link 
+{
     float: right;
     cursor: pointer;
     color: #d52;
 }
 
-.sc_login_area .close_link:hover {
-    float: right;
-    cursor: pointer;
-    color: #d52;
+.sc_close_link:hover {
     color: #F75;
     text-decoration: underline;
 }

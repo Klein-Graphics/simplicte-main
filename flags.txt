@@ -2,31 +2,26 @@ Simplecart Flags
 
 ITEMS
 
-postfix:[postfix]
-Adds a postfix to the price
+hide_qty
+Hides the quantity
 
 extscript:[external_script]
 Causes an external script to be run after purchasing an item.
 Can be used to alert external systems that an item has been bought.
 
-hide_qty
-Hides the item quanity box
-
-hide_price
-Hides the item price box
-
 min
-Sets a minumum quanity
+Sets a minumum quantity
 
 OPTIONS
-allow_qty
+
+template:[template]
+Use a different template for this option
+
+allow_qty (single only)
 Allows a quanity box for the option
 
 req
-Makes the item required
-
-req:[option_number]
-Makes [option_number] required with this option
+Makes the option required
 
 no:[option_number]-[option_number]-...:[replacement]
 Makes sure that this item isn't used with any of the [option_number]s and

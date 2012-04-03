@@ -8,10 +8,9 @@ class Folding extends \SC_Account_Driver {
         $account_info = '
         <div id="sc_account_info">
             <div id="sc_account_options">
-                <a href="'.sc_ajax('edit_account').'" title="Edit Account Infomation" class="sc_account_link">Edit Account</a> - <a href="'.sc_ajax('logout').'" title="Logout" class="sc_logout">Logout</a>
+                <a href="'.sc_ajax('get_customer_details').'" title="Edit Account Infomation" class="sc_account_link">Edit Account</a> - <a href="'.sc_ajax('logout').'" title="Logout" class="sc_logout">Logout</a>
             </div>
             <div id="sc_account_action" style="display:none">
-                <form action="'.sc_ajax('do_account_update').'"
             </div><!-- #sc_account_action -->
         </div><!-- #sc_account_info -->
         ';
