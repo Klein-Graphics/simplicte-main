@@ -8,6 +8,8 @@
     
     public function update_time() {
       $this->lastupdate = time();
+      
+      return true;
     }
   
   }

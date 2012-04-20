@@ -47,6 +47,7 @@ page_display.cart = {
         inner_callback();
       });
     },callback);
+    page_display.checkout.hide();
   },
   
   refresh: function(middle_callback,end_callback) {

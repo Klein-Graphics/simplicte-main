@@ -17,7 +17,7 @@
     function initialize_query_string() {
     
       $query = $_SERVER['QUERY_STRING'];      
-      $query = preg_replace('/^\//','',$query);
+      $query = preg_replace('/^\//','',$query);            
       
       $query = explode('/',$query);
       

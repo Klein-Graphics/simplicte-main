@@ -35,17 +35,20 @@
       if ($view) {
         
         //normalize view name
-        $view = strtolower($view);
+        $view = strtolower($view);                      
         
-        if (file_exists("core/ajax_views/$view.php")) {
-          require_once "core/ajax_views/$view.php";    
-        } else if (file_exists("core/ajax_views/$view/index.php")) {
-          require_once "core/ajax_views/$view/index.php"; 
+        if (file_exists("core/ajax_views/$view.php")) { //Most basic situtation
+          require_once "core/ajax_views/$view.php";            
+        } else if (file_exists("core/ajax_views/$view/index.php")) { //Folder
+          require_once "core/ajax_views/$view/index.php";
+        } else if (file_exists("core/ajax_views/{$view}_c.php")) { //Sperated view and controller
+          require_once "core/ajax_views/{$view}_c.php";
+          require_once "core/ajax_views/{$view}_v.php";
         } else {
           header('HTTP/1.0 404 Not Found');
           echo('<h1>404</h1>Page not found');
           return false;
-        }   
+        }                
         
         if (function_exists("\View\\$view")) {
           call_user_func_array("\View\\$view",$data);

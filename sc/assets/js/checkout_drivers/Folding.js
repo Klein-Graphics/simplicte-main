@@ -8,7 +8,11 @@ page_display.checkout = {
   },
   
   load: function(link_url,data) {
-    $('#sc_checkout').load(link_url,data,function(){
+    $('#sc_checkout').load(link_url,data,function(r,ts,xhr){
+        if (xhr.status == 204) {
+            return false;
+        }    
+        
         $(this).slideDown();        
                 
         $("#sc_checkout form.sc_account_form").submit(function(e) {        
@@ -45,7 +49,7 @@ page_display.checkout = {
                             .removeClass('sc_good')
                             .addClass('sc_bad')
                             .html(data.message);
-                    break;                        
+                    break;               
                     
                     case 'load':
                         page_display.account.load(data.location,data.data);

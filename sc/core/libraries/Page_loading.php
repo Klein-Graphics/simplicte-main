@@ -66,7 +66,11 @@
       
       $readable = str_replace('_',' ',ucfirst($button));
     
-      return $this->replace_tag($input,$tag,'<a href="'.sc_ajax($button).'" title="'.$readable.'" class="sc_'.$button.'"><img src="'.sc_asset('button',$button).'" alt="'.$readable.'" /></a>');
+      return $this->replace_tag($input,$tag,'
+                <a href="'.sc_ajax($button).'" title="'.$readable.'" class="sc_'.$button.'">
+                    <img src="'.sc_asset('button',$button).'" alt="'.$readable.'" />
+                </a>'
+            );
     }
     
     function replace_details($input) {          
@@ -170,8 +174,11 @@
             //Insert the item numbers into the raw template
             $add_to_cart_code = str_replace('%i',$args[1],$tags['add_to_cart']);  
             
-            $add_to_cart_code = '<form class="sc_add_to_cart_form sc_item_'.$args[1].'" method="POST" action="'.sc_ajax('add_item/'.$args[1]).'">'           
-                .$add_to_cart_code.
+            $add_to_cart_code = '<form 
+                class="sc_add_to_cart_form sc_item_'.$args[1].'" 
+                method="POST" 
+                action="'.sc_ajax('add_item/'.$args[1]).'">'           
+                    .$add_to_cart_code.
                 '</form>';
             
             $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,array(
@@ -284,7 +291,10 @@
                         ? 'hidden'  
                         : 'checkbox'
                     )."\" name=\"options[$i]\" value={$item_option->id} />".
-                    (($this->SC->Items->option_flag($item_option->id,'allow_qty')) ? "<input type=\"text\" name=\"option_qty[$i]\" class=\"sc_option_qty\" size=1 value=1 />" : '')
+                    (($this->SC->Items->option_flag($item_option->id,'allow_qty')) 
+                        ? "<input type=\"text\" name=\"option_qty[$i]\" class=\"sc_option_qty\" size=1 value=1 />" 
+                        : ''
+                    )
                 );
              }
              $i++;
@@ -377,6 +387,6 @@
       
       return str_ireplace('</head>',$output,$input);
        
-    }    
+    }            
     
   }

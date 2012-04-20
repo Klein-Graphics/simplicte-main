@@ -88,20 +88,24 @@
     return sc_location("assets/$type/$name");
   }
   
-  function sc_ajax($name,$args=FALSE) {
-  
-    global $CONFIG;
-    
-    if ($args !== FALSE) {
-      if (is_array($args)) {
-        $args = implode('/',$args);
-      }
-      $args = '/'.ltrim($args,'/');
+    function sc_ajax($name,$args=FALSE) {
+
+        global $CONFIG;
+
+        if ($args !== FALSE) {
+          if (is_array($args)) {
+            $args = implode('/',$args);
+          }
+          $args = '/'.ltrim($args,'/');
+        }
+
+        return sc_location("ajax/$name$args");
     }
-    
-    return sc_location("ajax/$name$args");
-  }
   
     function is_multi($array) {
         return (count($array) != count($array, 1));
     }
+    
+    function array_to_lower(array $array, $round = 0){ 
+        return unserialize(strtolower(serialize($array))); 
+    } 

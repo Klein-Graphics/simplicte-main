@@ -3,18 +3,31 @@
      * This is the initial checkout script that 
      * loads whatever the first screen the customer
      * needs to be on
-     */
+     */       
      
-     $this->load_library('Session');
+     echo '<span class="sc_close_link">[x]</span>';
+     
+     $this->load_library(array('Session','Cart'));
+     
+     if ($second = implode('/',$this->URI->get_request())) {        
+        $this->load_ajax_view('checkout/'.$second);
+        exit;
+     }
+     
+     if ($this->Cart->is_empty($this->Session->get_open_transaction())) {
+        header("HTTP/1.1 204 No Content");
+        exit;
+     }
      
      if ($this->Session->has_account()) {
         $this->load_ajax_view('checkout/verify_cart');
         exit;
      }
      
+     
      //If they're not signed in do this stuff
 ?>
-<span class="sc_close_link">[x]</span>
+
 <style type="text/css">
     #sc_checkout .sc_checkout_login .sc_close_link,
     #sc_checkout .sc_checkout_new_account .sc_close_link {

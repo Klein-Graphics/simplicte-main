@@ -68,6 +68,7 @@
             return $option->stock;
         }
         
+        
         function modify_option_stock($option,$amount) {
             $option = \Model\Itemoption::find($option);
             $option->stock = $amount;   
@@ -93,6 +94,18 @@
                 return true;
             } else {
                 return false;
+            }
+        }
+        
+        function option_in_stock($option) {
+            if ($this->option_is_stockable($option)) {
+                if ($this->get_option_stock($option)>0 ) {
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
+            } else {
+                return TRUE;
             }
         }        
         

@@ -305,6 +305,136 @@
         
         return ($line['price'] + $options_price) * $line['quantity'];
     }
+    
+    function weigh_cart($cart) {                
+        $cart = $this->explode_cart($cart);
+        
+        $total_weight = 0;
+        
+        foreach ($cart as $item) {
+            $item_weight = 0;
+            foreach ($item['options'] as $option) {
+                $item_weight += $this->SC->Items->get_option($option['id'],'weight');
+            }   
+
+            $item_weight += $this->SC->Items->get_item($item['id'],'weight');                       
+                        
+            $total_weight += $item_weight;
+        }
+        
+        return $total_weight;
+    }
+    
+    function shipping_required($cart) {
+        $cart = $this->explode_cart($cart);        
+        
+        foreach ($cart as $item) {
+            if (!$this->SC->Items->item_flag($item['id'],'digital')) {
+                return TRUE;
+            }
+        }
+        
+        return FALSE;
+    }
+    
+    function calculate_tax($cart) {
+        $cart = $this->explode_cart($cart);
+        
+        $taxable = 0;
+        
+        foreach ($cart as $item) {
+            $taxable += ($this->SC->Items->item_flag($item['id'],'notax'))
+                ? 0
+                : $this->line_total($item);                                                
+        }
+            
+        return round($taxable * $this->SC->Config->get_setting('salestax'),2);
+    }
+    
+    function is_empty($cart) {
+        $cart = $this->explode_cart($cart);
+        
+        return empty($cart);
+    }
+    
+    function calculate_total($transaction,$shipping_method=FALSE,$discount_code=FALSE) {
+    
+        $cart = $this->explode_cart($transaction->items);
+    
+        $this->SC->load_library(array(
+            'Shipping',
+            'Discounts'
+        ));
+    
+        $messages = array();
+        
+        if ($discount_code) {
+            list($messages[],$cart) = $this->SC->Discounts->run_item_discount($discount_code,$cart);
+        }
+        
+        //Calculate shipping
+
+        $shipping = 0;
+
+        $shipping_required = $this->shipping_required($cart);
+
+        if (!$this->SC->Shipping->shipping_enabled && $shipping_required) {
+            die ('<span style="color:red; background:white"> Items require shipping, however the store owner 
+                  has not enabled it. The they will be notified</span>');
+            
+            /*
+             * TODO: Add notification
+             */
+        }
+        
+        if ($shipping_method && $this->SC->Shipping->shipping_enabled && $shipping_required) {
+            list($ship_service,$ship_method) = explode('-',$_POST['shipping_method']);
+            list($ship_status,$ship_foo) = $this->SC->Shipping->Drivers->$ship_service->get_rate_from_cart(
+                $this->SC->Config->get_setting('storeZipcode'),
+                $transaction->ship_postalcode,
+                $ship_method,
+                $cart
+                );
+            if ($ship_status) {
+                $shipping = $ship_foo;
+            } else {
+                $messages[] = $ship_foo;
+            }
+        }
+        
+        //Calculate tax
+        $billable_states = $this->SC->Config->get_setting('taxstates');
+        $billable_states = explode(',',$billable_states);
+
+        $tax = 0;
+        if (array_search(strtolower($transaction->ship_state),array_to_lower($billable_states))!==FALSE) {
+            $tax = $this->calculate_tax($cart);    
+        }
+        
+        //Calculate total
+
+        $subtotal = $this->subtotal($transaction->items);
+            
+        $this->SC->Transactions->update_transaction($transaction->id,array(
+            'shipping' => $shipping,
+            'taxrate' => $tax,
+            'items' => $this->implode_cart($cart)
+        ));
+
+        if (isset($_POST['discount'])) {
+            $subtotal = $this->SC->Discounts->run_total_discount($_POST['discount'],$subtotal);
+        }               
+        
+        return array(
+            'subtotal' => $subtotal,
+            'shipping' => $shipping,
+            'taxrate' => $tax,
+            'items' => $cart,
+            'total' => $subtotal + $shipping + $tax
+        );
+        
+        
+    }
 }
   
   

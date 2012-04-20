@@ -59,15 +59,15 @@
 
         function update_transaction($id,$attributes) {
           
-            $transaction = \Model\Transaction::find($id);                        
-
+            $transaction = \Model\Transaction::find($id);                                             
+            
             foreach ($attributes as $attribute => $value) {      
                 $transaction->$attribute = $value;   
-            }            
+            }      
+    
 
-            $transaction->save();
+            return $transaction->save();
 
-            return TRUE;
           
         }
         
@@ -81,7 +81,7 @@
             
         }
 
-        function associate_customer($transaction,$cust_id) {
+        function associate_customer($transaction,$cust_id) {           
             
             $fields_to_copy = array(
                 'custid',
@@ -108,9 +108,15 @@
             
             $this->SC->load_library('Customer');
             
-            $customer_details = $this->SC->Customer->get_customer($cust_id,$fields_to_copy);
+            $customer_details = $this->SC->Customer->get_customer($cust_id,$fields_to_copy);    
             
-            $this->update_transaction($transaction,$customer_details);               
+            $copy_details = array();
+            
+            foreach ($fields_to_copy as $field) {
+                $copy_details[$field] = $customer_details->$field;
+            }        
+            
+            $this->update_transaction($transaction,$copy_details);               
             
         }
         
