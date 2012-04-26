@@ -165,22 +165,24 @@
         function run_total_discount($discount,$total) {
             if (!is_array($discount)) {
                 $discount = $this->get_discount($discount);       
-            }            
+            }           
+            
+            $return = 0; 
             
             if ($discount) {
             
                 switch ($discount['type']) {
 		            case 'percentoff':
-			            $total *= $discount['percent']*0.01;
+			            $return = $total * $discount['percent']*0.01;
 		            break;
 		
 		            case 'fixedoff':
-			            $total -= $discount['amount'];
+			            $return = $discount['amount'];
 		            break;
 		        }               
 		    
 		    } 
 		    
-		    return $total;            
+		    return $return;            
         }
     }

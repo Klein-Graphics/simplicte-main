@@ -1,3 +1,4 @@
+<span class="sc_close_link">[x]</span>
 <div class="sc_verify_cart_message_area">
 <?php foreach ($messages as $message) : ?>
     <div class="sc_verify_cart_message"><?=$message?></div>

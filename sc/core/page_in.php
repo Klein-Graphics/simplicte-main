@@ -1,8 +1,17 @@
 <?php
 
-//Initialize Simplecart
-//---------------------
-require 'init.php';
+/**
+ * Simplecart2 In-Parsing File
+ *
+ * This file must be included in any page where SC's display parsing needs to 
+ * happen. It must be included *before* any output from the page. 
+ *
+ * @package Parsing
+ *
+ * @see Core/page_out.php
+ */
+
+require 'init.php'; //Initialize Simplecart
 
 $SC->load_library('Session'); //Get sessions ready
 $SC->load_library('Page_loading'); //Pageloading library

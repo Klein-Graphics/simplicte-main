@@ -65,6 +65,11 @@
     }
     
     function explode_item($item) {
+    
+      if (is_array($item)) {
+        return $item;
+      }
+    
       $item = explode('|',$item);
         
       rename_key($item,array('id','options','quantity','price'));
@@ -75,6 +80,11 @@
     }
     
     function implode_item($item) {
+    
+      if (is_string($item)) {
+        return $item;
+      }
+    
       $item['options'] = $this->implode_options($item['options']);
         
       if (!isset($item['price'])) {
@@ -92,7 +102,7 @@
     function explode_options($option_string) {
     
       if (!$option_string) {
-        return 0;
+        return array();
       }
     
       $option_array = explode(',',$option_string);
@@ -117,6 +127,10 @@
     
       if (!$option_array) {
         return 0;
+      }
+      
+      if (is_string($option_array)) {
+        return $option_array;
       }
     
       $option_array = $this->verify_options($option_array);
@@ -143,6 +157,17 @@
       }      
       
       return $option_array;
+    }
+    
+    function item_in_cart($cart,$check_item) {
+        $cart = $this->explode_cart($cart);
+        $check_item = $this->implode_item($check_item);        
+        
+        foreach ($cart as $key => $item) {
+            if ($check_item == $this->implode_item($item)) {
+                return $key;
+            }
+        }
     }
     
     function add_item($cart,$item,$options='0',$qty=1,$implode=NULL,$update=NULL) {
@@ -199,10 +224,13 @@
       }
         
       $item['options'] = $this->verify_options($item['options']);
-      
-      
-      
-      $cart[] = $item;
+            
+      if ($the_line = $this->item_in_cart($cart,$item)) {
+        $cart[$the_line]['quantity'] += $item['quantity'];
+      } else {
+            
+        $cart[] = $item;
+      }
       
       if ($implode) {
         return $this->implode_cart($cart,$update);
@@ -364,7 +392,7 @@
         $this->SC->load_library(array(
             'Shipping',
             'Discounts'
-        ));
+        ));         
     
         $messages = array();
         
@@ -387,8 +415,8 @@
              */
         }
         
-        if ($shipping_method && $this->SC->Shipping->shipping_enabled && $shipping_required) {
-            list($ship_service,$ship_method) = explode('-',$_POST['shipping_method']);
+        if ($shipping_method && $this->SC->Shipping->shipping_enabled && $shipping_required) {             
+            list($ship_service,$ship_method) = explode('-',$shipping_method);
             list($ship_status,$ship_foo) = $this->SC->Shipping->Drivers->$ship_service->get_rate_from_cart(
                 $this->SC->Config->get_setting('storeZipcode'),
                 $transaction->ship_postalcode,
@@ -413,27 +441,38 @@
         
         //Calculate total
 
-        $subtotal = $this->subtotal($transaction->items);
-            
-        $this->SC->Transactions->update_transaction($transaction->id,array(
-            'shipping' => $shipping,
-            'taxrate' => $tax,
-            'items' => $this->implode_cart($cart)
-        ));
+        $subtotal = $this->subtotal($transaction->items);            
 
+        $total_discount = 0;
         if (isset($_POST['discount'])) {
-            $subtotal = $this->SC->Discounts->run_total_discount($_POST['discount'],$subtotal);
+            $total_discount = $this->SC->Discounts->run_total_discount($_POST['discount'],$subtotal);
         }               
+        
+        $subtotal -= $total_discount;
         
         return array(
             'subtotal' => $subtotal,
             'shipping' => $shipping,
             'taxrate' => $tax,
             'items' => $cart,
-            'total' => $subtotal + $shipping + $tax
+            'discount' => $total_discount,
+            'total' => $subtotal + $shipping + $tax,
+            'messages' => $messages
         );
         
         
+    }
+
+    function calculate_soft_total($transaction) {
+        if (is_numeric($transaction)) {
+            $transaction = $this->get_transcation($transcation);
+        }
+         
+        return 
+            $this->subtotal($transaction->items) 
+            - $transaction->discount 
+            + $transaction->shipping 
+            + $transaction->taxrate;
     }
 }
   

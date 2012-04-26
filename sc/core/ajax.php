@@ -8,5 +8,5 @@
   $SC->load_library(array('URI','Session'));
   
   //Load requested view and pass data to it
-  $SC->load_ajax_view($SC->URI->get_view(),$SC->URI->get_request());
+  $SC->load_ajax($SC->URI->get_view(),$SC->URI->get_request());
   

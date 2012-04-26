@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+  <title>Simplecart2</title>
+  <parser>
+    <target>../documentation</target>
+  </parser>
+  <transformer>
+    <target>../documentation</target>
+  </transformer>
+  <files>
+    <directory>.</directory>
+    <ignore>core/activerecord/*</ignore>
+    <ignore>core/models/*</ignore>
+    <ignore>core/ajax/views/*</ignore>
+  </files>
+</phpdoc>

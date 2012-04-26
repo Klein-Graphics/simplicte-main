@@ -70,7 +70,7 @@ class Shipping extends \SC_Library {
          */
         
         $output = '<select name="shipping_method" class="sc_shipping_method_select">
-                   <option disabled="disabled" selected="selected">Select a shipping method...</option>
+                   <option disabled="disabled" selected="selected" value=0>Select a shipping method...</option>
         ';              
         
         foreach ($shipping_methods as $method_number => $shipping_method) {

@@ -101,7 +101,7 @@ ActiveRecord\Config::initialize(function($cfg) {
 
 require 'core/global.php';
 
-//Initialize main SC class
+//Initialize main SC classes
 
 require 'core/sc.php';
 

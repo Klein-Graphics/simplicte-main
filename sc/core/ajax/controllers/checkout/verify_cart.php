@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Processes the cart and displays it to the user for verification
+ *
+ * @package checkout
+ */
+
 $this->load_library(array('Cart','Stock','Session','Discounts','Shipping','Page_loading'));
 $transaction = $this->Transactions->get_transaction($this->Session->get_open_transaction());
 
@@ -30,7 +36,7 @@ foreach ($cart as $key => $item) {
     foreach ($item['options'] as $opt_key => $option) {
         if (!$this->Stock->option_in_stock($option['id'])) {
             $out_of_stock_flag = TRUE;
-            unset($cart[$key][$opt_key]);
+            unset($cart[$key]);
         }
     }
 }
@@ -53,8 +59,11 @@ $shipping_required = $this->Cart->shipping_required($cart);
 
 $order_totals = $this->Cart->calculate_total($transaction,$shipping_method,$discount_code);
 
+$messages += $order_totals['messages'];
+
 $this->Transactions->update_transaction($transaction->id,array(
     'shipping' => $order_totals['shipping'],
     'taxrate' => $order_totals['taxrate'],
+    'discount' => $order_totals['discount'],
     'items' => $this->Cart->implode_cart($order_totals['items'])
 ));

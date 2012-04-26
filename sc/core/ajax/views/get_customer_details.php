@@ -1,21 +1,27 @@
 <?php
-    $this->load_library('Session');
-    $customer = \Model\Customer::find($this->Session->get_user());
-    
-    $req = '<span class="required_field">*</span>';
-    
-    $fields = array(
-        'firstname' => 'First Name'.$req,
-        'initial' => 'Middle Initial',
-        'lastname' => 'Last Name'.$req,
-        'streetaddress' => 'Street Address'.$req,
-        'apt' => 'Apt #',
-        'city' => 'City'.$req,
-        'state' => 'State'.$req,
-        'postalcode' => 'Postal Code'.$req,
-        'phone' => 'Phone'.$req
-    );            
-    
+/**
+ * Presents the account details form
+ *
+ * @package account
+ */
+
+$this->load_library('Session');
+$customer = \Model\Customer::find($this->Session->get_user());
+
+$req = '<span class="required_field">*</span>';
+
+$fields = array(
+    'firstname' => 'First Name'.$req,
+    'initial' => 'Middle Initial',
+    'lastname' => 'Last Name'.$req,
+    'streetaddress' => 'Street Address'.$req,
+    'apt' => 'Apt #',
+    'city' => 'City'.$req,
+    'state' => 'State'.$req,
+    'postalcode' => 'Postal Code'.$req,
+    'phone' => 'Phone'.$req
+);            
+
 ?>
 Please fill out the following details:
 <form class="sc_account_form" action="<?=sc_ajax('do_get_customer_details')?>" method="POST">

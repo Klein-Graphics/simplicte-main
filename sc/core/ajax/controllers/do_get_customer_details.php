@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Validates and processes updating the customer's account details
+ *
+ * @package Account
+ */
+
 $this->load_library(array('Customer','Validation','Session'));
 
 $required_fields = array(
@@ -60,4 +67,3 @@ echo json_encode(array(
         'do_this' => ($new_customer) ? 'refresh' : 'display_good',
         'message' => 'Information updated'
     ));
-?>

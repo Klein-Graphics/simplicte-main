@@ -11,4 +11,3 @@
     </form>
     <div class="sc_display"></div>
 </div><!-- #sc_create_account_area -->
-

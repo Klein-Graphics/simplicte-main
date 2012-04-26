@@ -49,7 +49,7 @@
         
         function generate_gateway_dropdown() {
         
-            $output = '<select name="payment_gateway" class="sc_payment_gateway_select>
+            $output = '<select name="payment_gateway" class="sc_payment_gateway_select">
                         <option disabled="disabled" selected="selected">Select a payment method...</option>';
             
             foreach ($this->Drivers as $method => $driver) {
