@@ -1,0 +1,2319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a2" title="Simplecart2">
+  <file path="core/sc.php" hash="085a0651b3db5e72b5459ee6ab4d53dd" package="Core">
+    <docblock line="3">
+      <description><![CDATA[Main Simplecart2 Include File]]></description>
+      <long-description><![CDATA[<p>This file is included in the init script and contains the
+main SC class and the main SC Library class.</p>]]></long-description>
+      <tag line="3" name="author" description="Will Leonardi"/>
+      <tag line="3" name="package" description="Core"/>
+      <tag line="3" name="used-by" description="Core/init.php"/>
+    </docblock>
+    <parse_markers>
+      <error line="72" code="50014">Name of argument $call does not match with the DocBlock's name $view in load_ajax()</error>
+      <notice line="72" code="50013">Parameter $view could not be found in load_ajax()</notice>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="26" package="Core">
+      <name>SC</name>
+      <full_name>\SC</full_name>
+      <extends/>
+      <docblock line="16">
+        <description><![CDATA[The main SC class.]]></description>
+        <long-description><![CDATA[<p>The class includes loading methods for libraries and the
+ajax psuedo-views</p>]]></long-description>
+        <tag line="16" name="package" description="Core"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="31" package="Default">
+        <name>$loaded_libraries</name>
+        <default><![CDATA[array()]]></default>
+        <docblock line="28">
+          <description><![CDATA[Records the loaded libraries]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="48" package="">
+        <name>load_library</name>
+        <type>function</type>
+        <docblock line="33">
+          <description><![CDATA[Loads a Library into SC]]></description>
+          <long-description><![CDATA[<p>This function loads a library into the main SC Object. If the
+library is already loaded, it is skipped. It will also load
+additional libraries specified by the "required_libraries"
+property of the library;</p>]]></long-description>
+          <tag line="33" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="33" name="param" description="Either a string containing the library name or an array of strings containing multiple libraries to load." type="string|\string[]" variable="$libraries">
+            <type by_reference="false">string</type>
+            <type by_reference="false">\string[]</type>
+          </tag>
+        </docblock>
+        <argument line="48">
+          <name>$libraries</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="98" package="">
+        <name>load_ajax</name>
+        <type>function</type>
+        <docblock line="72">
+          <description><![CDATA[Loads an ajax call]]></description>
+          <long-description><![CDATA[<p>Each ajax call can consist of up to 2 files, a controller and
+a view. Just like any MVC the call should be split into logic
+and display.</p>
+
+<p>After a controller is loaded, an optional function will be
+called that is named after the ajax call. This function
+will be passed any arguments provided by the URI. This function
+can return any data to be passed to the view as an assoc array,
+with the key being the name of the variable to passed. The
+function should belong to the "Ajax" namespace</p>
+
+<p>Call files must be all lowercase. If the call doesn't exist a
+404 page will be generated.</p>]]></long-description>
+          <tag line="72" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="72" name="param" description="The name of the ajax call. No extention" type="string" variable="$view">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="72" name="param" description="An array of data to be sequentially passed to the ajax call's possible function call." type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="72" name="see" description="\Core/ajax.php" refers="\Core/ajax.php"/>
+        </docblock>
+        <argument line="98">
+          <name>$call</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="98">
+          <name>$data</name>
+          <default><![CDATA[array()]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <class final="false" abstract="false" namespace="default" line="151" package="Default">
+      <name>SC_Library</name>
+      <full_name>\SC_Library</full_name>
+      <extends/>
+      <docblock line="144">
+        <description><![CDATA[Simplecart's Library class]]></description>
+        <long-description><![CDATA[<p>This class simply contains adds the $SC property to each library which
+allows access to the global $SC object</p>]]></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="158" package="">
+        <name>__construct</name>
+        <type>function</type>
+        <docblock line="153">
+          <description><![CDATA[Adds the $SC property]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="153" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="core/ajax/controllers/checkout/index.php" hash="e11460416b8b0adbc3fe4223d165286a" package="Checkout">
+    <docblock line="2">
+      <description><![CDATA[Checkout Controller]]></description>
+      <long-description><![CDATA[<p>This is the initial checkout script that loads whatever the first screen the
+customer needs to be on</p>]]></long-description>
+      <tag line="2" name="package" description="Checkout"/>
+    </docblock>
+  </file>
+  <file path="core/ajax/controllers/checkout/verify_cart.php" hash="92658d1fc329758f3e142dcb44d2a85a" package="checkout">
+    <docblock line="3">
+      <description><![CDATA[Processes the cart and displays it to the user for verification]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="checkout"/>
+    </docblock>
+  </file>
+  <file path="core/ajax/controllers/checkout/load_payment.php" hash="6d0126954f332085fb6bcdbce681c014" package="checkout">
+    <docblock line="2">
+      <description><![CDATA[Loads the gateway driver's payment area]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="package" description="checkout"/>
+    </docblock>
+  </file>
+  <file path="core/ajax/controllers/clear_cart.php" hash="4da8d183217b7414eb26281eef3683a0" package="Cart">
+    <docblock line="2">
+      <description><![CDATA[Clears the customers's cart.]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="package" description="Cart"/>
+    </docblock>
+  </file>
+  <file path="core/ajax/controllers/do_create_account.php" hash="177811d80f4a7cdba745c1c09353bd85" package="Account">
+    <docblock line="2">
+      <description><![CDATA[Validates and processes account creation]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="package" description="Account"/>
+    </docblock>
+  </file>
+  <file path="core/ajax/controllers/do_get_customer_details.php" hash="b09304ed4fc81595ab0d70b4feb553a0" package="Account">
+    <docblock line="3">
+      <description><![CDATA[Validates and processes updating the customer's account details]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="Account"/>
+    </docblock>
+  </file>
+  <file path="core/ajax/controllers/add_item.php" hash="cfeaa35e5cd633b7397efeb24383a6d3" package="Cart">
+    <docblock line="3">
+      <description><![CDATA[Adds an item to the users cart]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="Cart"/>
+    </docblock>
+    <function namespace="View" line="25" package="Cart">
+      <name>add_item</name>
+      <type>function</type>
+      <docblock line="10">
+        <description><![CDATA[Ajax Call To Add Item]]></description>
+        <long-description><![CDATA[<p><em>Ajax Controller Function</em> Adds an item to the current customers cart. Echos
+the "Item Added" flag or an alternate flag that alters the customer that
+there item couldn't quite be added the way they wanted it. Item number is
+passed via the URI. All other (variable) data is posted to the function.</p>]]></long-description>
+        <tag line="10" name="package" description="Cart"/>
+        <tag line="10" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+        <tag line="10" name="param" description="The item number" type="string" variable="$item_num">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="25">
+        <name>$item_num</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+  </file>
+  <file path="core/ajax/controllers/do_login.php" hash="cefa416924bda2d721af1c0eac7c62f2" package="Account">
+    <docblock line="2">
+      <description><![CDATA[Validates and Processes the login]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="package" description="Account"/>
+    </docblock>
+  </file>
+  <file path="core/ajax/controllers/cart_info.php" hash="3b033933599a9c6dcd6de75337b3845a" package="Default">
+    <parse_markers>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax/controllers/cart_info.php</error>
+    </parse_markers>
+  </file>
+  <file path="core/ajax/controllers/logout.php" hash="9d2f5b8d97717a9efd670844467819b7" package="Default">
+    <parse_markers>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax/controllers/logout.php</error>
+    </parse_markers>
+  </file>
+  <file path="core/ajax/controllers/change_qty.php" hash="f38f7c633445384ca80c8bd72f3ad8f6" package="Default">
+    <parse_markers>
+      <error line="3" code="50009">No DocBlock was found for function change_qty()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax/controllers/change_qty.php</error>
+    </parse_markers>
+    <function namespace="View" line="3" package="Default">
+      <name>change_qty</name>
+      <type>function</type>
+      <argument line="3">
+        <name>$line</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="3">
+        <name>$quantity</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+  </file>
+  <file path="core/ajax/controllers/remove_item.php" hash="dc8130adef5c57e5b5f6397f08388dc8" package="Default">
+    <parse_markers>
+      <error line="3" code="50009">No DocBlock was found for function remove_item()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax/controllers/remove_item.php</error>
+    </parse_markers>
+    <function namespace="View" line="3" package="Default">
+      <name>remove_item</name>
+      <type>function</type>
+      <argument line="3">
+        <name>$item_num</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+  </file>
+  <file path="core/receipt.php" hash="0abbc102b755f2d9032854bbd1af0f59" package="Display">
+    <docblock line="3">
+      <description><![CDATA[Page that will generate and output the customer's receipt]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="Display"/>
+      <tag line="3" name="todo" description=""/>
+    </docblock>
+  </file>
+  <file path="core/const.php" hash="f1cc2f3686e0888cac6482540dc31e26" package="Core">
+    <docblock line="3">
+      <description><![CDATA[This file defines any constants needed for Simplecart]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="Core"/>
+    </docblock>
+    <constant namespace="default" line="12" package="Default">
+      <name>INFINITE_STOCK</name>
+      <value><![CDATA[0]]></value>
+      <docblock line="9">
+        <description><![CDATA[Stocking Constants]]></description>
+        <long-description><![CDATA[]]></long-description>
+      </docblock>
+    </constant>
+    <constant namespace="default" line="13" package="Default">
+      <name>FINITE_STOCK</name>
+      <value><![CDATA[1]]></value>
+    </constant>
+    <constant namespace="default" line="14" package="Default">
+      <name>OPTION_DEPENDANT</name>
+      <value><![CDATA[2]]></value>
+    </constant>
+  </file>
+  <file path="core/page_in.php" hash="b4c273f3af9f5809a8474af00986b5d8" package="Parsing">
+    <docblock line="3">
+      <description><![CDATA[Simplecart2 In-Parsing File]]></description>
+      <long-description><![CDATA[<p>This file must be included in any page where SC's display parsing needs to
+happen. It must be included <em>before</em> any output from the page.</p>]]></long-description>
+      <tag line="3" name="package" description="Parsing"/>
+      <tag line="3" name="see" description="\Core/page_out.php" refers="\Core/page_out.php"/>
+    </docblock>
+    <include line="14" type="Require" package="Parsing">
+      <name>init.php</name>
+      <docblock line="3">
+        <description><![CDATA[Simplecart2 In-Parsing File]]></description>
+        <long-description><![CDATA[<p>This file must be included in any page where SC's display parsing needs to
+happen. It must be included <em>before</em> any output from the page.</p>]]></long-description>
+        <tag line="3" name="package" description="Parsing"/>
+        <tag line="3" name="see" description="\Core/page_out.php" refers="\Core/page_out.php"/>
+      </docblock>
+    </include>
+  </file>
+  <file path="core/relay.php" hash="b0e216f07b36a3d10dfafc7039d6e1b8" package="Checkout">
+    <docblock line="3">
+      <description><![CDATA[Simplecart2 Relay File]]></description>
+      <long-description><![CDATA[<p>This file the final destination of the data coming from the payment gateway.
+Payment drivers should be setup to translate data from the gateway result into
+here. The file expects the following post data:</p>
+
+<p>**transaction* Transaction Number
+**hash* The security hash, containing the transaction number and the store's generated
+ security key, seperated by a space and md5'd;
+**status_code* Boolean value of whether or not the transaction was a success
+**status_text* If the transaction was unsuccessful, why it was unsuccessful</p>]]></long-description>
+      <tag line="3" name="package" description="Checkout"/>
+    </docblock>
+    <include line="19" type="Require" package="Checkout">
+      <name>init.php</name>
+      <docblock line="3">
+        <description><![CDATA[Simplecart2 Relay File]]></description>
+        <long-description><![CDATA[<p>This file the final destination of the data coming from the payment gateway.
+Payment drivers should be setup to translate data from the gateway result into
+here. The file expects the following post data:</p>
+
+<p>**transaction* Transaction Number
+**hash* The security hash, containing the transaction number and the store's generated
+ security key, seperated by a space and md5'd;
+**status_code* Boolean value of whether or not the transaction was a success
+**status_text* If the transaction was unsuccessful, why it was unsuccessful</p>]]></long-description>
+        <tag line="3" name="package" description="Checkout"/>
+      </docblock>
+    </include>
+  </file>
+  <file path="core/includes/upsRate.php" hash="4bafa233ad6bd607d3a63b09a803543b" package="Default">
+    <parse_markers>
+      <error line="3" code="50018">No DocBlock was found for property $AccessLicenseNumber</error>
+      <error line="4" code="50018">No DocBlock was found for property $UserId</error>
+      <error line="5" code="50018">No DocBlock was found for property $Password</error>
+      <error line="6" code="50018">No DocBlock was found for property $shipperNumber</error>
+      <error line="7" code="50018">No DocBlock was found for property $credentials</error>
+      <error line="16" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="35" code="50010">No DocBlock was found for method getRate()</error>
+      <error line="2" code="50000">No DocBlock was found for upsRate</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/includes/upsRate.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="2" package="Default">
+      <name>upsRate</name>
+      <full_name>\upsRate</full_name>
+      <extends/>
+      <property final="false" static="false" visibility="public" line="3" package="Default">
+        <name>$AccessLicenseNumber</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="4" package="Default">
+        <name>$UserId</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="5" package="Default">
+        <name>$Password</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="6" package="Default">
+        <name>$shipperNumber</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="7" package="Default">
+        <name>$credentials</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="16" package="">
+        <name>__construct</name>
+        <type>function</type>
+        <argument line="16">
+          <name>$access</name>
+          <default><![CDATA[""]]></default>
+          <type/>
+        </argument>
+        <argument line="16">
+          <name>$user</name>
+          <default><![CDATA[""]]></default>
+          <type/>
+        </argument>
+        <argument line="16">
+          <name>$pass</name>
+          <default><![CDATA[""]]></default>
+          <type/>
+        </argument>
+        <argument line="16">
+          <name>$shipper</name>
+          <default><![CDATA[""]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="35" package="">
+        <name>getRate</name>
+        <type>function</type>
+        <argument line="35">
+          <name>$PostalCode</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$dest_zip</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$service</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$length</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$width</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$height</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$weight</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/page_out.php" hash="5541dbb8fe86b456d13fdce4372ef35d" package="Default">
+    <parse_markers>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/page_out.php</error>
+    </parse_markers>
+  </file>
+  <file path="core/debug/error.php" hash="368986fc7ef5ca8c3c97a86d0e9d0385" package="Default">
+    <parse_markers>
+      <error line="3" code="50009">No DocBlock was found for function throw_error()</error>
+      <error line="37" code="50009">No DocBlock was found for function Closure()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/debug/error.php</error>
+    </parse_markers>
+    <function namespace="default" line="3" package="Default">
+      <name>throw_error</name>
+      <type>function</type>
+      <argument line="3">
+        <name>$levels</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="3">
+        <name>$message</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="3">
+        <name>$file</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="3">
+        <name>$line</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="3">
+        <name>$context</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="37" package="Default">
+      <name>Closure</name>
+      <type>closure</type>
+    </function>
+  </file>
+  <file path="core/debug/delete_session.php" hash="cf50feac16263fe9bc95c05bb6c84f33" package="Default">
+    <parse_markers>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/debug/delete_session.php</error>
+    </parse_markers>
+  </file>
+  <file path="core/debug/print_session.php" hash="a78c078370bca0cc9aebb0ac3529132d" package="Default">
+    <parse_markers>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/debug/print_session.php</error>
+    </parse_markers>
+  </file>
+  <file path="core/libraries/Validation.php" hash="c55469e49281e790ce61777bbec2ed79" package="Default">
+    <parse_markers>
+      <error line="7" code="50018">No DocBlock was found for property $rules</error>
+      <error line="8" code="50018">No DocBlock was found for property $messages</error>
+      <error line="10" code="50018">No DocBlock was found for property $language</error>
+      <error line="17" code="50010">No DocBlock was found for method add_rule()</error>
+      <error line="33" code="50010">No DocBlock was found for method do_validation()</error>
+      <error line="77" code="50010">No DocBlock was found for method get_messages()</error>
+      <error line="81" code="50010">No DocBlock was found for method is_required()</error>
+      <error line="93" code="50010">No DocBlock was found for method required()</error>
+      <error line="101" code="50010">No DocBlock was found for method email()</error>
+      <error line="106" code="50010">No DocBlock was found for method match()</error>
+      <error line="114" code="50010">No DocBlock was found for method min()</error>
+      <error line="5" code="50000">No DocBlock was found for Validation</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Validation.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+      <name>Validation</name>
+      <full_name>\Library\Validation</full_name>
+      <extends>\SC_Library</extends>
+      <property final="false" static="false" visibility="public" line="7" package="Default">
+        <name>$rules</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="8" package="Default">
+        <name>$messages</name>
+        <default><![CDATA[array()]]></default>
+      </property>
+      <property final="false" static="false" visibility="public" line="10" package="Default">
+        <name>$language</name>
+        <default><![CDATA[array(
+            'required' => 'Field "[display_name]" is required',
+            'email' => '"[value]" is not a valid email',
+            'match' => '"[display_name]" must match',
+            'min' => '"Field "[display_name]" must be at least [1]'
+        )]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="17" package="">
+        <name>add_rule</name>
+        <type>function</type>
+        <argument line="17">
+          <name>$elements</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="17">
+          <name>$display_name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="17">
+          <name>$rules</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="33" package="">
+        <name>do_validation</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="77" package="">
+        <name>get_messages</name>
+        <type>function</type>
+        <argument line="77">
+          <name>$delimiter</name>
+          <default><![CDATA['<br />']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="81" package="">
+        <name>is_required</name>
+        <type>function</type>
+        <argument line="81">
+          <name>$element</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="93" package="">
+        <name>required</name>
+        <type>function</type>
+        <argument line="93">
+          <name>$element_value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="101" package="">
+        <name>email</name>
+        <type>function</type>
+        <argument line="101">
+          <name>$element_value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="106" package="">
+        <name>match</name>
+        <type>function</type>
+        <argument line="106">
+          <name>$element_value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="106">
+          <name>$matching_element</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="114" package="">
+        <name>min</name>
+        <type>function</type>
+        <argument line="114">
+          <name>$element_value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="114">
+          <name>$min</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/cart_drivers/Cart_Driver.php" hash="5f6e447bd0ffdafc9a3a79e220f4b8db" package="Default">
+    <parse_markers>
+      <error line="4" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="3" code="50000">No DocBlock was found for SC_Cart_Driver</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/cart_drivers/Cart_Driver.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>SC_Cart_Driver</name>
+      <full_name>\SC_Cart_Driver</full_name>
+      <extends/>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="4" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/cart_drivers/Folding.php" hash="b6403069c4d50a992b23787552d395fb" package="Default">
+    <parse_markers>
+      <error line="6" code="50010">No DocBlock was found for method add_cart()</error>
+      <error line="4" code="50000">No DocBlock was found for Folding</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/cart_drivers/Folding.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Cart_Driver" line="4" package="Default">
+      <name>Folding</name>
+      <full_name>\Cart_Driver\Folding</full_name>
+      <extends>\SC_Cart_Driver</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Cart_Driver" line="6" package="">
+        <name>add_cart</name>
+        <type>function</type>
+        <argument line="6">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Items.php" hash="d5fd2f0d66d8f740cbad96b25cecd1ee" package="Default">
+    <parse_markers>
+      <error line="17" code="50010">No DocBlock was found for method get_item()</error>
+      <error line="27" code="50010">No DocBlock was found for method item_price()</error>
+      <error line="31" code="50010">No DocBlock was found for method item_name()</error>
+      <error line="36" code="50010">No DocBlock was found for method item_flag()</error>
+      <error line="56" code="50010">No DocBlock was found for method get_option()</error>
+      <error line="64" code="50010">No DocBlock was found for method option_price()</error>
+      <error line="68" code="50010">No DocBlock was found for method option_name()</error>
+      <error line="72" code="50010">No DocBlock was found for method option_flag()</error>
+      <error line="12" code="50000">No DocBlock was found for Items</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Items.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="12" package="Default">
+      <name>Items</name>
+      <full_name>\Library\Items</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="17" package="">
+        <name>get_item</name>
+        <type>function</type>
+        <argument line="17">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="17">
+          <name>$return_cols</name>
+          <default><![CDATA['*']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="27" package="">
+        <name>item_price</name>
+        <type>function</type>
+        <argument line="27">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="31" package="">
+        <name>item_name</name>
+        <type>function</type>
+        <argument line="31">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="36" package="">
+        <name>item_flag</name>
+        <type>function</type>
+        <argument line="36">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="36">
+          <name>$check_flag</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="56" package="">
+        <name>get_option</name>
+        <type>function</type>
+        <argument line="56">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="56">
+          <name>$return_cols</name>
+          <default><![CDATA['*']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="64" package="">
+        <name>option_price</name>
+        <type>function</type>
+        <argument line="64">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="68" package="">
+        <name>option_name</name>
+        <type>function</type>
+        <argument line="68">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="72" package="">
+        <name>option_flag</name>
+        <type>function</type>
+        <argument line="72">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="72">
+          <name>$check_flag</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Page_loading.php" hash="5661830c69e8d635340efdf0298ad5cd" package="Default">
+    <parse_markers>
+      <error line="14" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="24" code="50010">No DocBlock was found for method replace_tag()</error>
+      <error line="65" code="50010">No DocBlock was found for method replace_button()</error>
+      <error line="76" code="50010">No DocBlock was found for method replace_details()</error>
+      <error line="105" code="50010">No DocBlock was found for method initialize_item_templates()</error>
+      <error line="159" code="50010">No DocBlock was found for method run_item_templates()</error>
+      <error line="234" code="50010">No DocBlock was found for method generate_options_code()</error>
+      <error line="315" code="50010">No DocBlock was found for method load_drivers()</error>
+      <error line="319" code="50010">No DocBlock was found for method load_driver()</error>
+      <error line="365" code="50010">No DocBlock was found for method add_javascript()</error>
+      <error line="374" code="50010">No DocBlock was found for method insert_javascript()</error>
+      <error line="12" code="50000">No DocBlock was found for Page_loading</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Page_loading.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="12" package="Default">
+      <name>Page_loading</name>
+      <full_name>\Library\Page_loading</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="14" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="24" package="">
+        <name>replace_tag</name>
+        <type>function</type>
+        <argument line="24">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="24">
+          <name>$tag</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="24">
+          <name>$replacement</name>
+          <default><![CDATA[NULL]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="65" package="">
+        <name>replace_button</name>
+        <type>function</type>
+        <argument line="65">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="65">
+          <name>$tag</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="65">
+          <name>$button</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="76" package="">
+        <name>replace_details</name>
+        <type>function</type>
+        <argument line="76">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="105" package="">
+        <name>initialize_item_templates</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="159" package="">
+        <name>run_item_templates</name>
+        <type>function</type>
+        <argument line="159">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="234" package="">
+        <name>generate_options_code</name>
+        <type>function</type>
+        <argument line="234">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="315" package="">
+        <name>load_drivers</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="319" package="">
+        <name>load_driver</name>
+        <type>function</type>
+        <argument line="319">
+          <name>$type</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="365" package="">
+        <name>add_javascript</name>
+        <type>function</type>
+        <argument line="365">
+          <name>$src</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="365">
+          <name>$script</name>
+          <default><![CDATA['']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="374" package="">
+        <name>insert_javascript</name>
+        <type>function</type>
+        <argument line="374">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Config.php" hash="1130eaddcc18bc251638e777e525a7d9" package="Default">
+    <parse_markers>
+      <error line="7" code="50010">No DocBlock was found for method get_setting()</error>
+      <error line="5" code="50000">No DocBlock was found for Config</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Config.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+      <name>Config</name>
+      <full_name>\Library\Config</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="7" package="">
+        <name>get_setting</name>
+        <type>function</type>
+        <argument line="7">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Discounts.php" hash="7d20bac91547fd30adea96abe91ac773" package="Default">
+    <parse_markers>
+      <error line="6" code="50010">No DocBlock was found for method get_discount()</error>
+      <error line="52" code="50010">No DocBlock was found for method create_discount()</error>
+      <error line="56" code="50010">No DocBlock was found for method delete_discount()</error>
+      <error line="60" code="50010">No DocBlock was found for method run_item_discount()</error>
+      <error line="165" code="50010">No DocBlock was found for method run_total_discount()</error>
+      <error line="4" code="50000">No DocBlock was found for Discounts</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Discounts.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="4" package="Default">
+      <name>Discounts</name>
+      <full_name>\Library\Discounts</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="6" package="">
+        <name>get_discount</name>
+        <type>function</type>
+        <argument line="6">
+          <name>$code</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="52" package="">
+        <name>create_discount</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="56" package="">
+        <name>delete_discount</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="60" package="">
+        <name>run_item_discount</name>
+        <type>function</type>
+        <argument line="60">
+          <name>$discount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="60">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="165" package="">
+        <name>run_total_discount</name>
+        <type>function</type>
+        <argument line="165">
+          <name>$discount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="165">
+          <name>$total</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/account_drivers/Account_Driver.php" hash="79ee9bb6fde2ac6e900df557128a30a5" package="Default">
+    <parse_markers>
+      <error line="4" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="3" code="50000">No DocBlock was found for SC_Account_Driver</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/account_drivers/Account_Driver.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>SC_Account_Driver</name>
+      <full_name>\SC_Account_Driver</full_name>
+      <extends/>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="4" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/account_drivers/Folding.php" hash="c1cbe9c9a8addd7f987fdf25a5fa52ac" package="Default">
+    <parse_markers>
+      <error line="6" code="50010">No DocBlock was found for method add_account_info()</error>
+      <error line="26" code="50010">No DocBlock was found for method add_login()</error>
+      <error line="4" code="50000">No DocBlock was found for Folding</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/account_drivers/Folding.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Account_Driver" line="4" package="Default">
+      <name>Folding</name>
+      <full_name>\Account_Driver\Folding</full_name>
+      <extends>\SC_Account_Driver</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Account_Driver" line="6" package="">
+        <name>add_account_info</name>
+        <type>function</type>
+        <argument line="6">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Account_Driver" line="26" package="">
+        <name>add_login</name>
+        <type>function</type>
+        <argument line="26">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Shipping.php" hash="720b17eb12bb414d3d62823ad1ff4255" package="Default">
+    <parse_markers>
+      <error line="7" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="26" code="50010">No DocBlock was found for method load_driver()</error>
+      <error line="54" code="50010">No DocBlock was found for method get_shipping_methods()</error>
+      <error line="65" code="50010">No DocBlock was found for method generate_shipping_dropdown()</error>
+      <error line="5" code="50000">No DocBlock was found for Shipping</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Shipping.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+      <name>Shipping</name>
+      <full_name>\Library\Shipping</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="7" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="26" package="">
+        <name>load_driver</name>
+        <type>function</type>
+        <argument line="26">
+          <name>$driver</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="54" package="">
+        <name>get_shipping_methods</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="65" package="">
+        <name>generate_shipping_dropdown</name>
+        <type>function</type>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Transactions.php" hash="ebf00589eb593dcd93c66024fe2e41e2" package="Default">
+    <parse_markers>
+      <error line="14" code="50010">No DocBlock was found for method get_transaction()</error>
+      <error line="32" code="50010">No DocBlock was found for method create_transaction()</error>
+      <error line="48" code="50010">No DocBlock was found for method generate_order_number()</error>
+      <error line="60" code="50010">No DocBlock was found for method update_transaction()</error>
+      <error line="74" code="50010">No DocBlock was found for method delete_transaction()</error>
+      <error line="84" code="50010">No DocBlock was found for method associate_customer()</error>
+      <error line="123" code="50010">No DocBlock was found for method get_stale_transactions()</error>
+      <error line="12" code="50000">No DocBlock was found for Transactions</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Transactions.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="12" package="Default">
+      <name>Transactions</name>
+      <full_name>\Library\Transactions</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="14" package="">
+        <name>get_transaction</name>
+        <type>function</type>
+        <argument line="14">
+          <name>$search</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="14">
+          <name>$return_col</name>
+          <default><![CDATA['*']]></default>
+          <type/>
+        </argument>
+        <argument line="14">
+          <name>$search_col</name>
+          <default><![CDATA['id']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="32" package="">
+        <name>create_transaction</name>
+        <type>function</type>
+        <argument line="32">
+          <name>$custid</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="32">
+          <name>$data</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="48" package="">
+        <name>generate_order_number</name>
+        <type>function</type>
+        <argument line="48">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="48">
+          <name>$update</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="60" package="">
+        <name>update_transaction</name>
+        <type>function</type>
+        <argument line="60">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="60">
+          <name>$attributes</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="74" package="">
+        <name>delete_transaction</name>
+        <type>function</type>
+        <argument line="74">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="84" package="">
+        <name>associate_customer</name>
+        <type>function</type>
+        <argument line="84">
+          <name>$transaction</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="84">
+          <name>$cust_id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="123" package="">
+        <name>get_stale_transactions</name>
+        <type>function</type>
+        <argument line="123">
+          <name>$date</name>
+          <default><![CDATA[NULL]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/shipping_drivers/Shipping_Driver.php" hash="fdcb406c5a0f51ed2151314dc1bcd6b3" package="Default">
+    <parse_markers>
+      <error line="4" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="3" code="50000">No DocBlock was found for SC_Shipping_Driver</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/shipping_drivers/Shipping_Driver.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>SC_Shipping_Driver</name>
+      <full_name>\SC_Shipping_Driver</full_name>
+      <extends/>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="4" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/shipping_drivers/UPS.php" hash="204df136671b9728adb46ae6e2d5b840" package="Default">
+    <parse_markers>
+      <error line="7" code="50018">No DocBlock was found for property $name</error>
+      <error line="9" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="29" code="50010">No DocBlock was found for method get_shipping_codes()</error>
+      <error line="47" code="50010">No DocBlock was found for method get_rate()</error>
+      <error line="54" code="50010">No DocBlock was found for method get_rate_from_cart()</error>
+      <error line="63" code="50010">No DocBlock was found for method get_rate_from_transcation()</error>
+      <error line="5" code="50000">No DocBlock was found for UPS</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/shipping_drivers/UPS.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Shipping_Driver" line="5" package="Default">
+      <name>UPS</name>
+      <full_name>\Shipping_Driver\UPS</full_name>
+      <extends>\SC_Shipping_Driver</extends>
+      <property final="false" static="false" visibility="public" line="7" package="Default">
+        <name>$name</name>
+        <default><![CDATA['UPS']]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Shipping_Driver" line="9" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Shipping_Driver" line="29" package="">
+        <name>get_shipping_codes</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Shipping_Driver" line="47" package="">
+        <name>get_rate</name>
+        <type>function</type>
+        <argument line="47">
+          <name>$from</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$to</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$service</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$weight</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$length</name>
+          <default><![CDATA[0]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$width</name>
+          <default><![CDATA[0]]></default>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$height</name>
+          <default><![CDATA[0]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Shipping_Driver" line="54" package="">
+        <name>get_rate_from_cart</name>
+        <type>function</type>
+        <argument line="54">
+          <name>$from</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="54">
+          <name>$to</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="54">
+          <name>$service</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="54">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Shipping_Driver" line="63" package="">
+        <name>get_rate_from_transcation</name>
+        <type>function</type>
+        <argument line="63">
+          <name>$transaction</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="63">
+          <name>$service</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Stock.php" hash="197334635f5a06b341cac222020dcf83" package="Default">
+    <parse_markers>
+      <error line="7" code="50010">No DocBlock was found for method get_item_stock()</error>
+      <error line="12" code="50010">No DocBlock was found for method modify_item_stock()</error>
+      <error line="20" code="50010">No DocBlock was found for method add_item_stock()</error>
+      <error line="28" code="50010">No DocBlock was found for method remove_item_stock()</error>
+      <error line="32" code="50010">No DocBlock was found for method item_stock_type()</error>
+      <error line="43" code="50010">No DocBlock was found for method item_in_stock()</error>
+      <error line="66" code="50010">No DocBlock was found for method get_option_stock()</error>
+      <error line="72" code="50010">No DocBlock was found for method modify_option_stock()</error>
+      <error line="80" code="50010">No DocBlock was found for method add_option_stock()</error>
+      <error line="88" code="50010">No DocBlock was found for method remove_option_stock()</error>
+      <error line="92" code="50010">No DocBlock was found for method option_is_stockable()</error>
+      <error line="100" code="50010">No DocBlock was found for method option_in_stock()</error>
+      <error line="112" code="50010">No DocBlock was found for method pull_cart()</error>
+      <error line="129" code="50010">No DocBlock was found for method return_cart()</error>
+      <error line="5" code="50000">No DocBlock was found for Stock</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Stock.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+      <name>Stock</name>
+      <full_name>\Library\Stock</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="7" package="">
+        <name>get_item_stock</name>
+        <type>function</type>
+        <argument line="7">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="12" package="">
+        <name>modify_item_stock</name>
+        <type>function</type>
+        <argument line="12">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="12">
+          <name>$amount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="20" package="">
+        <name>add_item_stock</name>
+        <type>function</type>
+        <argument line="20">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="20">
+          <name>$amount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="28" package="">
+        <name>remove_item_stock</name>
+        <type>function</type>
+        <argument line="28">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="28">
+          <name>$amount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="32" package="">
+        <name>item_stock_type</name>
+        <type>function</type>
+        <argument line="32">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="43" package="">
+        <name>item_in_stock</name>
+        <type>function</type>
+        <argument line="43">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="66" package="">
+        <name>get_option_stock</name>
+        <type>function</type>
+        <argument line="66">
+          <name>$option</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="72" package="">
+        <name>modify_option_stock</name>
+        <type>function</type>
+        <argument line="72">
+          <name>$option</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="72">
+          <name>$amount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="80" package="">
+        <name>add_option_stock</name>
+        <type>function</type>
+        <argument line="80">
+          <name>$option</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="80">
+          <name>$amount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="88" package="">
+        <name>remove_option_stock</name>
+        <type>function</type>
+        <argument line="88">
+          <name>$option</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="88">
+          <name>$amount</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="92" package="">
+        <name>option_is_stockable</name>
+        <type>function</type>
+        <argument line="92">
+          <name>$option</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="100" package="">
+        <name>option_in_stock</name>
+        <type>function</type>
+        <argument line="100">
+          <name>$option</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="112" package="">
+        <name>pull_cart</name>
+        <type>function</type>
+        <argument line="112">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="129" package="">
+        <name>return_cart</name>
+        <type>function</type>
+        <argument line="129">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Session.php" hash="5506d8a3ff453d9373385adbcdd3ef7b" package="Default">
+    <parse_markers>
+      <error line="7" code="50018">No DocBlock was found for property $required_libraries</error>
+      <error line="9" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="18" code="50010">No DocBlock was found for method __get()</error>
+      <error line="33" code="50010">No DocBlock was found for method initialize()</error>
+      <error line="40" code="50010">No DocBlock was found for method get_user()</error>
+      <error line="59" code="50010">No DocBlock was found for method get_customer()</error>
+      <error line="77" code="50010">No DocBlock was found for method get_open_transaction()</error>
+      <error line="95" code="50010">No DocBlock was found for method has_account()</error>
+      <error line="107" code="50010">No DocBlock was found for method login_customer()</error>
+      <error line="146" code="50010">No DocBlock was found for method logout_customer()</error>
+      <error line="5" code="50000">No DocBlock was found for Session</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Session.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+      <name>Session</name>
+      <full_name>\Library\Session</full_name>
+      <extends>\SC_Library</extends>
+      <property final="false" static="true" visibility="public" line="7" package="Default">
+        <name>$required_libraries</name>
+        <default><![CDATA[array('Customer','Transactions')]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="9" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="18" package="">
+        <name>__get</name>
+        <type>function</type>
+        <argument line="18">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="33" package="">
+        <name>initialize</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="40" package="">
+        <name>get_user</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="59" package="">
+        <name>get_customer</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="77" package="">
+        <name>get_open_transaction</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="95" package="">
+        <name>has_account</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="107" package="">
+        <name>login_customer</name>
+        <type>function</type>
+        <argument line="107">
+          <name>$post_data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="146" package="">
+        <name>logout_customer</name>
+        <type>function</type>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/checkout_drivers/Checkout_Driver.php" hash="207fea7b4e7836c6aceedac5f7b92026" package="Default">
+    <parse_markers>
+      <error line="4" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="3" code="50000">No DocBlock was found for SC_Checkout_Driver</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/checkout_drivers/Checkout_Driver.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>SC_Checkout_Driver</name>
+      <full_name>\SC_Checkout_Driver</full_name>
+      <extends/>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="4" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/checkout_drivers/Folding.php" hash="c9ba2677a6f2f16e88acf77048936718" package="Default">
+    <parse_markers>
+      <error line="6" code="50010">No DocBlock was found for method add_checkout()</error>
+      <error line="4" code="50000">No DocBlock was found for Folding</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/checkout_drivers/Folding.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Checkout_Driver" line="4" package="Default">
+      <name>Folding</name>
+      <full_name>\Checkout_Driver\Folding</full_name>
+      <extends>\SC_Checkout_Driver</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Checkout_Driver" line="6" package="">
+        <name>add_checkout</name>
+        <type>function</type>
+        <argument line="6">
+          <name>$input</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/gateway_drivers/Gateway_Driver.php" hash="8fa007f454f6420e87df948d6c51a2f9" package="Default">
+    <parse_markers>
+      <error line="4" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="3" code="50000">No DocBlock was found for SC_Gateway_Driver</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/gateway_drivers/Gateway_Driver.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>SC_Gateway_Driver</name>
+      <full_name>\SC_Gateway_Driver</full_name>
+      <extends/>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="4" package="">
+        <name>__construct</name>
+        <type>function</type>
+        <argument line="4">
+          <name>$name</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/gateway_drivers/Paypal_EC.php" hash="f3c77631c0173f3a44310f23326b8c1c" package="Default">
+    <parse_markers>
+      <error line="4" code="50000">No DocBlock was found for Paypal_EC</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/gateway_drivers/Paypal_EC.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Gateway_Driver" line="4" package="Default">
+      <name>Paypal_EC</name>
+      <full_name>\Gateway_Driver\Paypal_EC</full_name>
+      <extends>\SC_Gateway_Driver</extends>
+    </class>
+  </file>
+  <file path="core/libraries/gateway_drivers/Authorizedotnet_SIM.php" hash="bbc522067144f1c618cf9e3b170627ed" package="Default">
+    <markers>
+      <todo line="115"/>
+      <todo line="116"/>
+    </markers>
+    <parse_markers>
+      <error line="6" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="24" code="50010">No DocBlock was found for method load()</error>
+      <error line="39" code="50010">No DocBlock was found for method load_test()</error>
+      <error line="50" code="50010">No DocBlock was found for method generate_fingerprint()</error>
+      <error line="62" code="50010">No DocBlock was found for method generate_elements()</error>
+      <error line="4" code="50000">No DocBlock was found for Authorizedotnet_SIM</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/gateway_drivers/Authorizedotnet_SIM.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Gateway_Driver" line="4" package="Default">
+      <name>Authorizedotnet_SIM</name>
+      <full_name>\Gateway_Driver\Authorizedotnet_SIM</full_name>
+      <extends>\SC_Gateway_Driver</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Gateway_Driver" line="6" package="">
+        <name>__construct</name>
+        <type>function</type>
+        <argument line="6">
+          <name>$name</name>
+          <default><![CDATA['Credit Card']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Gateway_Driver" line="24" package="">
+        <name>load</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Gateway_Driver" line="39" package="">
+        <name>load_test</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Gateway_Driver" line="50" package="">
+        <name>generate_fingerprint</name>
+        <type>function</type>
+        <argument line="50">
+          <name>$timestamp</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Gateway_Driver" line="62" package="">
+        <name>generate_elements</name>
+        <type>function</type>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Cart.php" hash="8f92cecae10b829316024c75d374dc49" package="Default">
+    <parse_markers>
+      <error line="14" code="50018">No DocBlock was found for property $required_libraries</error>
+      <error line="19" code="50010">No DocBlock was found for method explode_cart()</error>
+      <error line="49" code="50010">No DocBlock was found for method implode_cart()</error>
+      <error line="67" code="50010">No DocBlock was found for method explode_item()</error>
+      <error line="82" code="50010">No DocBlock was found for method implode_item()</error>
+      <error line="102" code="50010">No DocBlock was found for method explode_options()</error>
+      <error line="126" code="50010">No DocBlock was found for method implode_options()</error>
+      <error line="147" code="50010">No DocBlock was found for method verify_options()</error>
+      <error line="162" code="50010">No DocBlock was found for method item_in_cart()</error>
+      <error line="173" code="50010">No DocBlock was found for method add_item()</error>
+      <error line="243" code="50010">No DocBlock was found for method remove_item()</error>
+      <error line="284" code="50010">No DocBlock was found for method clear_cart()</error>
+      <error line="288" code="50010">No DocBlock was found for method item_count()</error>
+      <error line="295" code="50010">No DocBlock was found for method subtotal()</error>
+      <error line="319" code="50010">No DocBlock was found for method line_total()</error>
+      <error line="337" code="50010">No DocBlock was found for method weigh_cart()</error>
+      <error line="356" code="50010">No DocBlock was found for method shipping_required()</error>
+      <error line="368" code="50010">No DocBlock was found for method calculate_tax()</error>
+      <error line="382" code="50010">No DocBlock was found for method is_empty()</error>
+      <error line="388" code="50010">No DocBlock was found for method calculate_total()</error>
+      <error line="466" code="50010">No DocBlock was found for method calculate_soft_total()</error>
+      <error line="12" code="50000">No DocBlock was found for Cart</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Cart.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="12" package="Default">
+      <name>Cart</name>
+      <full_name>\Library\Cart</full_name>
+      <extends>\SC_Library</extends>
+      <property final="false" static="true" visibility="public" line="14" package="Default">
+        <name>$required_libraries</name>
+        <default><![CDATA[array(
+      'Transactions',
+      'Items'  
+    )]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="19" package="">
+        <name>explode_cart</name>
+        <type>function</type>
+        <argument line="19">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="49" package="">
+        <name>implode_cart</name>
+        <type>function</type>
+        <argument line="49">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="49">
+          <name>$update</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="67" package="">
+        <name>explode_item</name>
+        <type>function</type>
+        <argument line="67">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="82" package="">
+        <name>implode_item</name>
+        <type>function</type>
+        <argument line="82">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="102" package="">
+        <name>explode_options</name>
+        <type>function</type>
+        <argument line="102">
+          <name>$option_string</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="126" package="">
+        <name>implode_options</name>
+        <type>function</type>
+        <argument line="126">
+          <name>$option_array</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="147" package="">
+        <name>verify_options</name>
+        <type>function</type>
+        <argument line="147">
+          <name>$option_array</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="162" package="">
+        <name>item_in_cart</name>
+        <type>function</type>
+        <argument line="162">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="162">
+          <name>$check_item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="173" package="">
+        <name>add_item</name>
+        <type>function</type>
+        <argument line="173">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="173">
+          <name>$item</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="173">
+          <name>$options</name>
+          <default><![CDATA['0']]></default>
+          <type/>
+        </argument>
+        <argument line="173">
+          <name>$qty</name>
+          <default><![CDATA[1]]></default>
+          <type/>
+        </argument>
+        <argument line="173">
+          <name>$implode</name>
+          <default><![CDATA[NULL]]></default>
+          <type/>
+        </argument>
+        <argument line="173">
+          <name>$update</name>
+          <default><![CDATA[NULL]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="243" package="">
+        <name>remove_item</name>
+        <type>function</type>
+        <argument line="243">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="243">
+          <name>$line</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+        <argument line="243">
+          <name>$implode</name>
+          <default><![CDATA[NULL]]></default>
+          <type/>
+        </argument>
+        <argument line="243">
+          <name>$update</name>
+          <default><![CDATA[NULL]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="284" package="">
+        <name>clear_cart</name>
+        <type>function</type>
+        <argument line="284">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="288" package="">
+        <name>item_count</name>
+        <type>function</type>
+        <argument line="288">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="295" package="">
+        <name>subtotal</name>
+        <type>function</type>
+        <argument line="295">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="319" package="">
+        <name>line_total</name>
+        <type>function</type>
+        <argument line="319">
+          <name>$line</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="319">
+          <name>$cart</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="337" package="">
+        <name>weigh_cart</name>
+        <type>function</type>
+        <argument line="337">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="356" package="">
+        <name>shipping_required</name>
+        <type>function</type>
+        <argument line="356">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="368" package="">
+        <name>calculate_tax</name>
+        <type>function</type>
+        <argument line="368">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="382" package="">
+        <name>is_empty</name>
+        <type>function</type>
+        <argument line="382">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="388" package="">
+        <name>calculate_total</name>
+        <type>function</type>
+        <argument line="388">
+          <name>$transaction</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="388">
+          <name>$shipping_method</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+        <argument line="388">
+          <name>$discount_code</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="466" package="">
+        <name>calculate_soft_total</name>
+        <type>function</type>
+        <argument line="466">
+          <name>$transaction</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Gateways.php" hash="dc1cca33fa4f1734c37015430a2bb8aa" package="Default">
+    <parse_markers>
+      <error line="6" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="15" code="50010">No DocBlock was found for method initialize_drivers()</error>
+      <error line="29" code="50010">No DocBlock was found for method load_driver()</error>
+      <error line="50" code="50010">No DocBlock was found for method generate_gateway_dropdown()</error>
+      <error line="4" code="50000">No DocBlock was found for Gateways</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Gateways.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="4" package="Default">
+      <name>Gateways</name>
+      <full_name>\Library\Gateways</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="6" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="15" package="">
+        <name>initialize_drivers</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="29" package="">
+        <name>load_driver</name>
+        <type>function</type>
+        <argument line="29">
+          <name>$method</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="29">
+          <name>$name</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="50" package="">
+        <name>generate_gateway_dropdown</name>
+        <type>function</type>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/URI.php" hash="35f6fc9846754e888fb15850a6c3f9d9" package="Default">
+    <parse_markers>
+      <error line="7" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="17" code="50010">No DocBlock was found for method initialize_query_string()</error>
+      <error line="32" code="50010">No DocBlock was found for method get_view()</error>
+      <error line="36" code="50010">No DocBlock was found for method get_request()</error>
+      <error line="5" code="50000">No DocBlock was found for URI</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/URI.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+      <name>URI</name>
+      <full_name>\Library\URI</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="7" package="">
+        <name>__construct</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="17" package="">
+        <name>initialize_query_string</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="32" package="">
+        <name>get_view</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="36" package="">
+        <name>get_request</name>
+        <type>function</type>
+        <argument line="36">
+          <name>$part</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/libraries/Customer.php" hash="41c72be3a0f8119b681ea4515b68e612" package="Default">
+    <parse_markers>
+      <error line="7" code="50010">No DocBlock was found for method get_customer()</error>
+      <error line="22" code="50010">No DocBlock was found for method create_customer()</error>
+      <error line="35" code="50010">No DocBlock was found for method update_customer()</error>
+      <error line="46" code="50010">No DocBlock was found for method get_cart()</error>
+      <error line="5" code="50000">No DocBlock was found for Customer</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Customer.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+      <name>Customer</name>
+      <full_name>\Library\Customer</full_name>
+      <extends>\SC_Library</extends>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="7" package="">
+        <name>get_customer</name>
+        <type>function</type>
+        <argument line="7">
+          <name>$search</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="7">
+          <name>$return_col</name>
+          <default><![CDATA['*']]></default>
+          <type/>
+        </argument>
+        <argument line="7">
+          <name>$search_col</name>
+          <default><![CDATA['id']]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="22" package="">
+        <name>create_customer</name>
+        <type>function</type>
+        <argument line="22">
+          <name>$cust_id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="22">
+          <name>$data</name>
+          <default><![CDATA[FALSE]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="35" package="">
+        <name>update_customer</name>
+        <type>function</type>
+        <argument line="35">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="46" package="">
+        <name>get_cart</name>
+        <type>function</type>
+        <argument line="46">
+          <name>$cust_id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="core/init.php" hash="cbbfba606a3e9913618c6844dcdfe89a" package="Default">
+    <parse_markers>
+      <error line="31" code="50009">No DocBlock was found for function recursive_search()</error>
+      <error line="91" code="50009">No DocBlock was found for function Closure()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/init.php</error>
+    </parse_markers>
+    <include line="12" type="Require" package="Default">
+      <name>const.php</name>
+    </include>
+    <include line="15" type="Require" package="Default">
+      <name>config.php</name>
+    </include>
+    <include line="84" type="Require" package="Default">
+      <name>core/debug/error.php</name>
+    </include>
+    <include line="89" type="Require" package="Default">
+      <name>core/activerecord/ActiveRecord.php</name>
+    </include>
+    <include line="102" type="Require" package="Default">
+      <name>core/global.php</name>
+    </include>
+    <include line="106" type="Require" package="Default">
+      <name>core/sc.php</name>
+    </include>
+    <function namespace="default" line="31" package="Default">
+      <name>recursive_search</name>
+      <type>function</type>
+      <argument line="31">
+        <name>$directory</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="91" package="Default">
+      <name>Closure</name>
+      <type>closure</type>
+      <argument line="91">
+        <name>$cfg</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+  </file>
+  <file path="core/cp.php" hash="d41d8cd98f00b204e9800998ecf8427e" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file core/cp.php</error>
+    </parse_markers>
+  </file>
+  <file path="core/global.php" hash="715fbfda0ed0778877905cd3727ab6e1" package="Default">
+    <parse_markers>
+      <error line="7" code="50009">No DocBlock was found for function rename_key()</error>
+      <error line="28" code="50009">No DocBlock was found for function better_print_r()</error>
+      <error line="32" code="50009">No DocBlock was found for function better_printr()</error>
+      <error line="36" code="50009">No DocBlock was found for function db_return()</error>
+      <error line="52" code="50009">No DocBlock was found for function required_libraries()</error>
+      <error line="57" code="50009">No DocBlock was found for function site_url()</error>
+      <error line="67" code="50009">No DocBlock was found for function sc_location()</error>
+      <error line="75" code="50009">No DocBlock was found for function sc_asset()</error>
+      <error line="91" code="50009">No DocBlock was found for function sc_ajax()</error>
+      <error line="105" code="50009">No DocBlock was found for function is_multi()</error>
+      <error line="109" code="50009">No DocBlock was found for function array_to_lower()</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/global.php</error>
+    </parse_markers>
+    <function namespace="default" line="7" package="Default">
+      <name>rename_key</name>
+      <type>function</type>
+      <argument line="7">
+        <name>$array</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="7">
+        <name>$oldkey</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="7">
+        <name>$newkey</name>
+        <default><![CDATA[NULL]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="28" package="Default">
+      <name>better_print_r</name>
+      <type>function</type>
+      <argument line="28">
+        <name>$array</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="32" package="Default">
+      <name>better_printr</name>
+      <type>function</type>
+      <argument line="32">
+        <name>$array</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="36" package="Default">
+      <name>db_return</name>
+      <type>function</type>
+      <argument line="36">
+        <name>$obj</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="36">
+        <name>$return_cols</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="52" package="Default">
+      <name>required_libraries</name>
+      <type>function</type>
+      <argument line="52">
+        <name>$library</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="57" package="Default">
+      <name>site_url</name>
+      <type>function</type>
+      <argument line="57">
+        <name>$addl</name>
+        <default><![CDATA['']]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="67" package="Default">
+      <name>sc_location</name>
+      <type>function</type>
+      <argument line="67">
+        <name>$addl</name>
+        <default><![CDATA['']]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="75" package="Default">
+      <name>sc_asset</name>
+      <type>function</type>
+      <argument line="75">
+        <name>$type</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="75">
+        <name>$name</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="91" package="Default">
+      <name>sc_ajax</name>
+      <type>function</type>
+      <argument line="91">
+        <name>$name</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+      <argument line="91">
+        <name>$args</name>
+        <default><![CDATA[FALSE]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="105" package="Default">
+      <name>is_multi</name>
+      <type>function</type>
+      <argument line="105">
+        <name>$array</name>
+        <default><![CDATA[]]></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="default" line="109" package="Default">
+      <name>array_to_lower</name>
+      <type>function</type>
+      <argument line="109">
+        <name>$array</name>
+        <default><![CDATA[]]></default>
+        <type>array</type>
+      </argument>
+      <argument line="109">
+        <name>$round</name>
+        <default><![CDATA[0]]></default>
+        <type/>
+      </argument>
+    </function>
+  </file>
+  <file path="core/ajax.php" hash="9597fe7fb182e8e4358fb53ac35aa7d0" package="Default">
+    <parse_markers>
+      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax.php</error>
+    </parse_markers>
+    <include line="5" type="Require Once" package="Default">
+      <name>init.php</name>
+    </include>
+  </file>
+  <file path="test.php" hash="f36f57925e9446dd10bafe88909d49d3" package="Default">
+    <parse_markers>
+      <error line="1" code="50007">No page-level DocBlock was found in file test.php</error>
+    </parse_markers>
+  </file>
+  <file path="config.php" hash="9075ff520ebd6da949f025a44bf661be" package="Default">
+    <parse_markers>
+      <error line="1" code="50007">No page-level DocBlock was found in file config.php</error>
+    </parse_markers>
+  </file>
+  <package name="" full_name=""/>
+  <package name="Account" full_name="Account"/>
+  <package name="Cart" full_name="Cart"/>
+  <package name="Checkout" full_name="Checkout"/>
+  <package name="Core" full_name="Core"/>
+  <package name="Default" full_name="Default"/>
+  <package name="Display" full_name="Display"/>
+  <package name="Parsing" full_name="Parsing"/>
+  <package name="checkout" full_name="checkout"/>
+  <namespace name="Account_Driver" full_name="Account_Driver"/>
+  <namespace name="Cart_Driver" full_name="Cart_Driver"/>
+  <namespace name="Checkout_Driver" full_name="Checkout_Driver"/>
+  <namespace name="Gateway_Driver" full_name="Gateway_Driver"/>
+  <namespace name="Library" full_name="Library"/>
+  <namespace name="Shipping_Driver" full_name="Shipping_Driver"/>
+  <namespace name="View" full_name="View"/>
+  <namespace name="default" full_name="default"/>
+  <marker count="3">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>

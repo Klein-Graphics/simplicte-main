@@ -1,0 +1,336 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \ActiveRecord\Serialization</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Account_Driver.html"><i class="icon-th"></i> Account_Driver</a></li>
+<li><a href="../namespaces/ActiveRecord.html"><i class="icon-th"></i> ActiveRecord</a></li>
+<li><a href="../namespaces/Cart_Driver.html"><i class="icon-th"></i> Cart_Driver</a></li>
+<li><a href="../namespaces/Checkout_Driver.html"><i class="icon-th"></i> Checkout_Driver</a></li>
+<li><a href="../namespaces/Gateway_Driver.html"><i class="icon-th"></i> Gateway_Driver</a></li>
+<li><a href="../namespaces/Library.html"><i class="icon-th"></i> Library</a></li>
+<li><a href="../namespaces/Model.html"><i class="icon-th"></i> Model</a></li>
+<li><a href="../namespaces/NamespaceTest.html"><i class="icon-th"></i> NamespaceTest</a></li>
+<li><a href="../namespaces/Shipping_Driver.html"><i class="icon-th"></i> Shipping_Driver</a></li>
+<li><a href="../namespaces/View.html"><i class="icon-th"></i> View</a></li>
+<li><a href="../namespaces/default.html"><i class="icon-th"></i> default</a></li>
+<li><a href="../namespaces/foo.html"><i class="icon-th"></i> foo</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/ActiveRecord.html"><i class="icon-folder-open"></i> ActiveRecord</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">1432</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">3</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">3</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#__construct" title="__construct :: Constructs a {@link Serialization} object."><span class="description">Constructs a {@link Serialization} object.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#__toString" title="__toString :: Returns the serialized object as a string."><span class="description">Returns the serialized object as a string.</span><pre>__toString()</pre></a></li>
+<li class="method public "><a href="#to_a" title="to_a :: Returns the attributes array."><span class="description">Returns the attributes array.</span><pre>to_a()</pre></a></li>
+<li class="method public "><a href="#to_s" title="to_s :: Performs the serialization."><span class="description">Performs the serialization.</span><pre>to_s()</pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="method protected "><a href="#options_to_a" title="options_to_a :: "><span class="description">options_to_a()
+        </span><pre>options_to_a()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#check_except" title="check_except :: "><span class="description">check_except()
+        </span><pre>check_except()</pre></a></li>
+<li class="method private "><a href="#check_include" title="check_include :: "><span class="description">check_include()
+        </span><pre>check_include()</pre></a></li>
+<li class="method private "><a href="#check_methods" title="check_methods :: "><span class="description">check_methods()
+        </span><pre>check_methods()</pre></a></li>
+<li class="method private "><a href="#check_only" title="check_only :: "><span class="description">check_only()
+        </span><pre>check_only()</pre></a></li>
+<li class="method private "><a href="#check_only_method" title="check_only_method :: "><span class="description">check_only_method()
+        </span><pre>check_only_method()</pre></a></li>
+<li class="method private "><a href="#parse_options" title="parse_options :: "><span class="description">parse_options()
+        </span><pre>parse_options()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public "><a href="#%24DATETIME_FORMAT" title="$DATETIME_FORMAT :: The default format to serialize DateTime objects to."><span class="description">The default format to serialize DateTime objects to.</span><pre>$DATETIME_FORMAT</pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="property protected "><a href="#%24attributes" title="$attributes :: "><span class="description">$attributes</span><pre>$attributes</pre></a></li>
+<li class="property protected "><a href="#%24includes_with_class_name_element" title="$includes_with_class_name_element :: Set this to true if the serializer needs to create a nested array keyed
+on the name of the included classes such as for xml serialization."><span class="description">Set this to true if the serializer needs to create a nested array keyed
+on the name of the included classes such as for xml serialization.</span><pre>$includes_with_class_name_element</pre></a></li>
+<li class="property protected "><a href="#%24model" title="$model :: "><span class="description">$model</span><pre>$model</pre></a></li>
+<li class="property protected "><a href="#%24options" title="$options :: "><span class="description">$options</span><pre>$options</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CActiveRecord%5CSerialization" id="\ActiveRecord\Serialization"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/ActiveRecord.html">ActiveRecord</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/ActiveRecord.Serialization.html">Serialization</a>
+</li>
+</ul>
+<div href="../classes/ActiveRecord.Serialization.html" class="element class">
+<p class="short_description">Base class for Model serializers.</p>
+<div class="details">
+<p class="long_description"><p>All serializers support the following options:</p>
+
+<ul>
+<li><b>only:</b> a string or array of attributes to be included.</li>
+<li><b>except:</b> a string or array of attributes to be excluded.</li>
+<li><b>methods:</b> a string or array of methods to invoke. The method's name will be used as a key for the final attributes array
+along with the method's returned value</li>
+<li><b>include:</b> a string or array of associated models to include in the final serialized product.</li>
+<li><b>only_method:</b> a method that's called and only the resulting array is serialized
+<li><b>skip_instruct:</b> set to true to skip the <?xml ...?> declaration.</li>
+</ul>
+
+<p>Example usage:</p>
+
+<pre><code># include the attributes id and name
+# run $model->encoded_description() and include its return value
+# include the comments association
+# include posts association with its own options (nested)
+$model->to_json(array(
+  'only' => array('id','name', 'encoded_description'),
+  'methods' => array('encoded_description'),
+  'include' => array('comments', 'posts' => array('only' => 'id'))
+));
+
+# except the password field from being included
+$model->to_xml(array('except' => 'password')));
+</code></pre></p>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="..//packages/ActiveRecord.html">ActiveRecord</a></td>
+</tr>
+<tr>
+<th>link</th>
+<td><a href="http://www.phpactiverecord.org/guides/utilities#topic-serialization">http://www.phpactiverecord.org/guides/utilities#topic-serialization</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
+<h2>Constructs a {@link Serialization} object.</h2>
+<pre>__construct(Model $model, array $options) : <a href="../classes/ActiveRecord.Serialization.html">\ActiveRecord\Serialization</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$model</h4>
+<code><a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></code><p>The model to serialize</p></div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>&$options Options for serialization</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Serialization.html">\ActiveRecord\Serialization</a></code></div>
+</div></div>
+</div>
+<a name="__toString" id="__toString"></a><div class="element clickable method public __toString" data-toggle="collapse" data-target=".__toString .collapse">
+<h2>Returns the serialized object as a string.</h2>
+<pre>__toString() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td>\ActiveRecord\to_s</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="to_a" id="to_a"></a><div class="element clickable method public to_a" data-toggle="collapse" data-target=".to_a .collapse">
+<h2>Returns the attributes array.</h2>
+<pre>to_a() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a name="to_s" id="to_s"></a><div class="element clickable method public to_s" data-toggle="collapse" data-target=".to_s .collapse">
+<h2>Performs the serialization.</h2>
+<pre>to_s() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="options_to_a" id="options_to_a"></a><div class="element clickable method protected options_to_a" data-toggle="collapse" data-target=".options_to_a .collapse">
+<h2>options_to_a()
+        </h2>
+<pre>options_to_a($key) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="check_except" id="check_except"></a><div class="element clickable method private check_except" data-toggle="collapse" data-target=".check_except .collapse">
+<h2>check_except()
+        </h2>
+<pre>check_except() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="check_include" id="check_include"></a><div class="element clickable method private check_include" data-toggle="collapse" data-target=".check_include .collapse">
+<h2>check_include()
+        </h2>
+<pre>check_include() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="check_methods" id="check_methods"></a><div class="element clickable method private check_methods" data-toggle="collapse" data-target=".check_methods .collapse">
+<h2>check_methods()
+        </h2>
+<pre>check_methods() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="check_only" id="check_only"></a><div class="element clickable method private check_only" data-toggle="collapse" data-target=".check_only .collapse">
+<h2>check_only()
+        </h2>
+<pre>check_only() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="check_only_method" id="check_only_method"></a><div class="element clickable method private check_only_method" data-toggle="collapse" data-target=".check_only_method .collapse">
+<h2>check_only_method()
+        </h2>
+<pre>check_only_method() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="parse_options" id="parse_options"></a><div class="element clickable method private parse_options" data-toggle="collapse" data-target=".parse_options .collapse">
+<h2>parse_options()
+        </h2>
+<pre>parse_options() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24DATETIME_FORMAT" id="$DATETIME_FORMAT"> </a><div class="element clickable property public $DATETIME_FORMAT" data-toggle="collapse" data-target=".$DATETIME_FORMAT .collapse">
+<h2>The default format to serialize DateTime objects to.</h2>
+<pre>$DATETIME_FORMAT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td>\ActiveRecord\DateTime</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24attributes" id="$attributes"> </a><div class="element clickable property protected $attributes" data-toggle="collapse" data-target=".$attributes .collapse">
+<h2>$attributes</h2>
+<pre>$attributes </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24includes_with_class_name_element" id="$includes_with_class_name_element"> </a><div class="element clickable property protected $includes_with_class_name_element" data-toggle="collapse" data-target=".$includes_with_class_name_element .collapse">
+<h2>Set this to true if the serializer needs to create a nested array keyed
+on the name of the included classes such as for xml serialization.</h2>
+<pre>$includes_with_class_name_element : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"><p>Setting this to true will produce the following attributes array when
+the include option was used:</p>
+
+<pre><code>$user = array('id' => 1, 'name' => 'Tito',
+  'permissions' => array(
+    'permission' => array(
+      array('id' => 100, 'name' => 'admin'),
+      array('id' => 101, 'name' => 'normal')
+    )
+  )
+);
+</code></pre>
+
+<p>Setting to false will produce this:</p>
+
+<pre><code>$user = array('id' => 1, 'name' => 'Tito',
+  'permissions' => array(
+    array('id' => 100, 'name' => 'admin'),
+    array('id' => 101, 'name' => 'normal')
+  )
+);
+</code></pre></p></div></div>
+</div>
+<a name="%24model" id="$model"> </a><div class="element clickable property protected $model" data-toggle="collapse" data-target=".$model .collapse">
+<h2>$model</h2>
+<pre>$model </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24options" id="$options"> </a><div class="element clickable property protected $options" data-toggle="collapse" data-target=".$options .collapse">
+<h2>$options</h2>
+<pre>$options </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
+            generated on 2012-04-25T11:51:44-07:00.<br></footer></div>
+</div>
+</body>
+</html>

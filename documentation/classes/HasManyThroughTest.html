@@ -1,0 +1,463 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \HasManyThroughTest</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Account_Driver.html"><i class="icon-th"></i> Account_Driver</a></li>
+<li><a href="../namespaces/ActiveRecord.html"><i class="icon-th"></i> ActiveRecord</a></li>
+<li><a href="../namespaces/Cart_Driver.html"><i class="icon-th"></i> Cart_Driver</a></li>
+<li><a href="../namespaces/Checkout_Driver.html"><i class="icon-th"></i> Checkout_Driver</a></li>
+<li><a href="../namespaces/Gateway_Driver.html"><i class="icon-th"></i> Gateway_Driver</a></li>
+<li><a href="../namespaces/Library.html"><i class="icon-th"></i> Library</a></li>
+<li><a href="../namespaces/Model.html"><i class="icon-th"></i> Model</a></li>
+<li><a href="../namespaces/NamespaceTest.html"><i class="icon-th"></i> NamespaceTest</a></li>
+<li><a href="../namespaces/Shipping_Driver.html"><i class="icon-th"></i> Shipping_Driver</a></li>
+<li><a href="../namespaces/View.html"><i class="icon-th"></i> View</a></li>
+<li><a href="../namespaces/default.html"><i class="icon-th"></i> default</a></li>
+<li><a href="../namespaces/foo.html"><i class="icon-th"></i> foo</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/ActiveRecord.html"><i class="icon-folder-open"></i> ActiveRecord</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">1432</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">3</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">3</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public inherited"><a href="#__call" title="__call :: "><span class="description">__call()
+        </span><pre>__call()</pre></a></li>
+<li class="method public inherited"><a href="#assert_datetime_equals" title="assert_datetime_equals :: "><span class="description">assert_datetime_equals()
+        </span><pre>assert_datetime_equals()</pre></a></li>
+<li class="method public inherited"><a href="#assert_doesnt_has_keys" title="assert_doesnt_has_keys :: "><span class="description">assert_doesnt_has_keys()
+        </span><pre>assert_doesnt_has_keys()</pre></a></li>
+<li class="method public inherited"><a href="#assert_exception_message_contains" title="assert_exception_message_contains :: "><span class="description">assert_exception_message_contains()
+        </span><pre>assert_exception_message_contains()</pre></a></li>
+<li class="method public inherited"><a href="#assert_has_keys" title="assert_has_keys :: "><span class="description">assert_has_keys()
+        </span><pre>assert_has_keys()</pre></a></li>
+<li class="method public inherited"><a href="#assert_is_a" title="assert_is_a :: "><span class="description">assert_is_a()
+        </span><pre>assert_is_a()</pre></a></li>
+<li class="method public inherited"><a href="#assert_sql_doesnt_has" title="assert_sql_doesnt_has :: "><span class="description">assert_sql_doesnt_has()
+        </span><pre>assert_sql_doesnt_has()</pre></a></li>
+<li class="method public inherited"><a href="#assert_sql_has" title="assert_sql_has :: Returns true if $regex matches $actual."><span class="description">Returns true if $regex matches $actual.</span><pre>assert_sql_has()</pre></a></li>
+<li class="method public inherited"><a href="#setUp" title="setUp :: "><span class="description">setUp()
+        </span><pre>setUp()</pre></a></li>
+<li class="method public inherited"><a href="#set_up" title="set_up :: "><span class="description">set_up()
+        </span><pre>set_up()</pre></a></li>
+<li class="method public inherited"><a href="#tearDown" title="tearDown :: "><span class="description">tearDown()
+        </span><pre>tearDown()</pre></a></li>
+<li class="method public inherited"><a href="#tear_down" title="tear_down :: "><span class="description">tear_down()
+        </span><pre>tear_down()</pre></a></li>
+<li class="method public "><a href="#test_gh101_has_many_through" title="test_gh101_has_many_through :: "><span class="description">test_gh101_has_many_through()
+        </span><pre>test_gh101_has_many_through()</pre></a></li>
+<li class="method public "><a href="#test_gh101_has_many_through_include" title="test_gh101_has_many_through_include :: "><span class="description">test_gh101_has_many_through_include()
+        </span><pre>test_gh101_has_many_through_include()</pre></a></li>
+<li class="method public "><a href="#test_gh107_has_many_though_include_eager_with_namespace" title="test_gh107_has_many_though_include_eager_with_namespace :: "><span class="description">test_gh107_has_many_though_include_eager_with_namespace()
+        </span><pre>test_gh107_has_many_though_include_eager_with_namespace()</pre></a></li>
+<li class="method public "><a href="#test_gh107_has_many_through_include_eager" title="test_gh107_has_many_through_include_eager :: "><span class="description">test_gh107_has_many_through_include_eager()
+        </span><pre>test_gh107_has_many_through_include_eager()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private inherited"><a href="#setup_assert_keys" title="setup_assert_keys :: "><span class="description">setup_assert_keys()
+        </span><pre>setup_assert_keys()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public inherited"><a href="#%24log" title="$log :: "><span class="description">$log</span><pre>$log</pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="property protected inherited"><a href="#%24conn" title="$conn :: "><span class="description">$conn</span><pre>$conn</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CHasManyThroughTest" id="\HasManyThroughTest"></a><div href="../classes/HasManyThroughTest.html" class="element class"><div class="details">
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__call" id="__call"></a><div class="element clickable method public __call" data-toggle="collapse" data-target=".__call .collapse">
+<h2>__call()
+        </h2>
+<pre>__call($meth, $args) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\SnakeCase_PHPUnit_Framework_TestCase::__call()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::__call()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$meth</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="assert_datetime_equals" id="assert_datetime_equals"></a><div class="element clickable method public assert_datetime_equals" data-toggle="collapse" data-target=".assert_datetime_equals .collapse">
+<h2>assert_datetime_equals()
+        </h2>
+<pre>assert_datetime_equals($expected, $actual) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\SnakeCase_PHPUnit_Framework_TestCase::assert_datetime_equals()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::assert_datetime_equals()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$expected</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$actual</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="assert_doesnt_has_keys" id="assert_doesnt_has_keys"></a><div class="element clickable method public assert_doesnt_has_keys" data-toggle="collapse" data-target=".assert_doesnt_has_keys .collapse">
+<h2>assert_doesnt_has_keys()
+        </h2>
+<pre>assert_doesnt_has_keys() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\SnakeCase_PHPUnit_Framework_TestCase::assert_doesnt_has_keys()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::assert_doesnt_has_keys()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="assert_exception_message_contains" id="assert_exception_message_contains"></a><div class="element clickable method public assert_exception_message_contains" data-toggle="collapse" data-target=".assert_exception_message_contains .collapse">
+<h2>assert_exception_message_contains()
+        </h2>
+<pre>assert_exception_message_contains($contains, $closure) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::assert_exception_message_contains()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$contains</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$closure</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="assert_has_keys" id="assert_has_keys"></a><div class="element clickable method public assert_has_keys" data-toggle="collapse" data-target=".assert_has_keys .collapse">
+<h2>assert_has_keys()
+        </h2>
+<pre>assert_has_keys() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\SnakeCase_PHPUnit_Framework_TestCase::assert_has_keys()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::assert_has_keys()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="assert_is_a" id="assert_is_a"></a><div class="element clickable method public assert_is_a" data-toggle="collapse" data-target=".assert_is_a .collapse">
+<h2>assert_is_a()
+        </h2>
+<pre>assert_is_a($expected_class, $object) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\SnakeCase_PHPUnit_Framework_TestCase::assert_is_a()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::assert_is_a()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$expected_class</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$object</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="assert_sql_doesnt_has" id="assert_sql_doesnt_has"></a><div class="element clickable method public assert_sql_doesnt_has" data-toggle="collapse" data-target=".assert_sql_doesnt_has .collapse">
+<h2>assert_sql_doesnt_has()
+        </h2>
+<pre>assert_sql_doesnt_has($needle, $haystack) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::assert_sql_doesnt_has()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$needle</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$haystack</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="assert_sql_has" id="assert_sql_has"></a><div class="element clickable method public assert_sql_has" data-toggle="collapse" data-target=".assert_sql_has .collapse">
+<h2>Returns true if $regex matches $actual.</h2>
+<pre>assert_sql_has($needle, $haystack) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Takes database specific quotes into account by removing them. So, this won't
+work if you have actual quotes in your strings.</p></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::assert_sql_has()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$needle</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$haystack</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="setUp" id="setUp"></a><div class="element clickable method public setUp" data-toggle="collapse" data-target=".setUp .collapse">
+<h2>setUp()
+        </h2>
+<pre>setUp() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\SnakeCase_PHPUnit_Framework_TestCase::setUp()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::setUp()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="set_up" id="set_up"></a><div class="element clickable method public set_up" data-toggle="collapse" data-target=".set_up .collapse">
+<h2>set_up()
+        </h2>
+<pre>set_up($connection_name) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::set_up()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$connection_name</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="tearDown" id="tearDown"></a><div class="element clickable method public tearDown" data-toggle="collapse" data-target=".tearDown .collapse">
+<h2>tearDown()
+        </h2>
+<pre>tearDown() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\SnakeCase_PHPUnit_Framework_TestCase::tearDown()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::tearDown()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="tear_down" id="tear_down"></a><div class="element clickable method public tear_down" data-toggle="collapse" data-target=".tear_down .collapse">
+<h2>tear_down()
+        </h2>
+<pre>tear_down() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::tear_down()</td>
+</tr></table>
+</div></div>
+</div>
+<a name="test_gh101_has_many_through" id="test_gh101_has_many_through"></a><div class="element clickable method public test_gh101_has_many_through" data-toggle="collapse" data-target=".test_gh101_has_many_through .collapse">
+<h2>test_gh101_has_many_through()
+        </h2>
+<pre>test_gh101_has_many_through() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="test_gh101_has_many_through_include" id="test_gh101_has_many_through_include"></a><div class="element clickable method public test_gh101_has_many_through_include" data-toggle="collapse" data-target=".test_gh101_has_many_through_include .collapse">
+<h2>test_gh101_has_many_through_include()
+        </h2>
+<pre>test_gh101_has_many_through_include() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="test_gh107_has_many_though_include_eager_with_namespace" id="test_gh107_has_many_though_include_eager_with_namespace"></a><div class="element clickable method public test_gh107_has_many_though_include_eager_with_namespace" data-toggle="collapse" data-target=".test_gh107_has_many_though_include_eager_with_namespace .collapse">
+<h2>test_gh107_has_many_though_include_eager_with_namespace()
+        </h2>
+<pre>test_gh107_has_many_though_include_eager_with_namespace() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="test_gh107_has_many_through_include_eager" id="test_gh107_has_many_through_include_eager"></a><div class="element clickable method public test_gh107_has_many_through_include_eager" data-toggle="collapse" data-target=".test_gh107_has_many_through_include_eager .collapse">
+<h2>test_gh107_has_many_through_include_eager()
+        </h2>
+<pre>test_gh107_has_many_through_include_eager() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="setup_assert_keys" id="setup_assert_keys"></a><div class="element clickable method private setup_assert_keys" data-toggle="collapse" data-target=".setup_assert_keys .collapse">
+<h2>setup_assert_keys()
+        </h2>
+<pre>setup_assert_keys($args) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>inherited_from</th>
+<td>\SnakeCase_PHPUnit_Framework_TestCase::setup_assert_keys()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::setup_assert_keys()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$args</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24log" id="$log"> </a><div class="element clickable property public $log" data-toggle="collapse" data-target=".$log .collapse">
+<h2>$log</h2>
+<pre>$log </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::$$log</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24conn" id="$conn"> </a><div class="element clickable property protected $conn" data-toggle="collapse" data-target=".$conn .collapse">
+<h2>$conn</h2>
+<pre>$conn </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\DatabaseTest::$$conn</td>
+</tr></table>
+</div></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
+            generated on 2012-04-25T11:51:45-07:00.<br></footer></div>
+</div>
+</body>
+</html>

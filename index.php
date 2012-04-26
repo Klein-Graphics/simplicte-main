@@ -65,7 +65,7 @@ $thispage->body.='
                             [[display_cart]]
                             [[checkout_area]]
                             <div id="storebody">
-                                 <div id="customerControl">[[custcontrol]]</div>
+                                 <div id="customerControl">[[account_info]]</div>
                                  <div class="storeitemwrapper">
                                       <div class="storeitem image">
                                       <a href="images/aerocowlingsBIG.jpg" rel="prettyPhoto" title="Cowlings"><img src="images/aerocowlingsthumb.jpg"></a>
@@ -76,7 +76,7 @@ $thispage->body.='
                                       </div>
                                       <div class="storeitem cartoptions">
                                       [[addtocart|1]]
-                                      </div>
+                                      </div>            
                                       <div class="push"></div>
                                  </div>
                                  
@@ -111,7 +111,7 @@ $thispage->body.='
                                       <a href="images\bagliner2.jpg" rel="prettyPhoto" title="Bagger Lid Liner">Lid View</a>
                                       </div>
                                       <div class="storeitem cartoptions">
-                                      [[addtocart|i--AEROBAG]]
+                                      [[add_to_cart|i--AEROBAG]]
                                       </div>
                                       <div class="push"></div>
                                  </div>

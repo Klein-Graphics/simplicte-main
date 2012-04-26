@@ -1,0 +1,489 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \ActiveRecord\Config</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Account_Driver.html"><i class="icon-th"></i> Account_Driver</a></li>
+<li><a href="../namespaces/ActiveRecord.html"><i class="icon-th"></i> ActiveRecord</a></li>
+<li><a href="../namespaces/Cart_Driver.html"><i class="icon-th"></i> Cart_Driver</a></li>
+<li><a href="../namespaces/Checkout_Driver.html"><i class="icon-th"></i> Checkout_Driver</a></li>
+<li><a href="../namespaces/Gateway_Driver.html"><i class="icon-th"></i> Gateway_Driver</a></li>
+<li><a href="../namespaces/Library.html"><i class="icon-th"></i> Library</a></li>
+<li><a href="../namespaces/Model.html"><i class="icon-th"></i> Model</a></li>
+<li><a href="../namespaces/NamespaceTest.html"><i class="icon-th"></i> NamespaceTest</a></li>
+<li><a href="../namespaces/Shipping_Driver.html"><i class="icon-th"></i> Shipping_Driver</a></li>
+<li><a href="../namespaces/View.html"><i class="icon-th"></i> View</a></li>
+<li><a href="../namespaces/default.html"><i class="icon-th"></i> default</a></li>
+<li><a href="../namespaces/foo.html"><i class="icon-th"></i> foo</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/ActiveRecord.html"><i class="icon-folder-open"></i> ActiveRecord</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">1432</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">3</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">3</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#get_connection" title="get_connection :: Returns a connection string if found otherwise null."><span class="description">Returns a connection string if found otherwise null.</span><pre>get_connection()</pre></a></li>
+<li class="method public "><a href="#get_connections" title="get_connections :: Returns the connection strings array."><span class="description">Returns the connection strings array.</span><pre>get_connections()</pre></a></li>
+<li class="method public "><a href="#get_date_format" title="get_date_format :: "><span class="description">get_date_format()
+        </span><pre>get_date_format()</pre></a></li>
+<li class="method public "><a href="#get_default_connection" title="get_default_connection :: Returns the name of the default connection."><span class="description">Returns the name of the default connection.</span><pre>get_default_connection()</pre></a></li>
+<li class="method public "><a href="#get_default_connection_string" title="get_default_connection_string :: Returns the default connection string or null if there is none."><span class="description">Returns the default connection string or null if there is none.</span><pre>get_default_connection_string()</pre></a></li>
+<li class="method public "><a href="#get_logger" title="get_logger :: Returns the logger"><span class="description">Returns the logger</span><pre>get_logger()</pre></a></li>
+<li class="method public "><a href="#get_logging" title="get_logging :: Return whether or not logging is on"><span class="description">Return whether or not logging is on</span><pre>get_logging()</pre></a></li>
+<li class="method public "><a href="#get_model_directory" title="get_model_directory :: Returns the model directory."><span class="description">Returns the model directory.</span><pre>get_model_directory()</pre></a></li>
+<li class="method public "><a href="#initialize" title="initialize :: Allows config initialization using a closure."><span class="description">Allows config initialization using a closure.</span><pre>initialize()</pre></a></li>
+<li class="method public inherited"><a href="#instance" title="instance :: Static method for instantiating a singleton object."><span class="description">Static method for instantiating a singleton object.</span><pre>instance()</pre></a></li>
+<li class="method public "><a href="#set_cache" title="set_cache :: Sets the url for the cache server to enable query caching."><span class="description">Sets the url for the cache server to enable query caching.</span><pre>set_cache()</pre></a></li>
+<li class="method public "><a href="#set_connections" title="set_connections :: Sets the list of database connection strings."><span class="description">Sets the list of database connection strings.</span><pre>set_connections()</pre></a></li>
+<li class="method public "><a href="#set_date_format" title="set_date_format :: "><span class="description">set_date_format()
+        </span><pre>set_date_format()</pre></a></li>
+<li class="method public "><a href="#set_default_connection" title="set_default_connection :: Set the name of the default connection."><span class="description">Set the name of the default connection.</span><pre>set_default_connection()</pre></a></li>
+<li class="method public "><a href="#set_logger" title="set_logger :: Sets the logger object for future SQL logging"><span class="description">Sets the logger object for future SQL logging</span><pre>set_logger()</pre></a></li>
+<li class="method public "><a href="#set_logging" title="set_logging :: Turn on/off logging"><span class="description">Turn on/off logging</span><pre>set_logging()</pre></a></li>
+<li class="method public "><a href="#set_model_directory" title="set_model_directory :: Sets the directory where models are located."><span class="description">Sets the directory where models are located.</span><pre>set_model_directory()</pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="method protected inherited"><a href="#get_called_class" title="get_called_class :: Similar to a get_called_class() for a child class to invoke."><span class="description">Similar to a get_called_class() for a child class to invoke.</span><pre>get_called_class()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private inherited"><a href="#__clone" title="__clone :: Singleton objects should not be cloned."><span class="description">Singleton objects should not be cloned.</span><pre>__clone()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24connections" title="$connections :: Contains the list of database connection strings."><span class="description">Contains the list of database connection strings.</span><pre>$connections</pre></a></li>
+<li class="property private "><a href="#%24date_format" title="$date_format :: The format to serialize DateTime values into."><span class="description">The format to serialize DateTime values into.</span><pre>$date_format</pre></a></li>
+<li class="property private "><a href="#%24default_connection" title="$default_connection :: Name of the connection to use by default."><span class="description">Name of the connection to use by default.</span><pre>$default_connection</pre></a></li>
+<li class="property private inherited"><a href="#%24instances" title="$instances :: Array of cached singleton objects."><span class="description">Array of cached singleton objects.</span><pre>$instances</pre></a></li>
+<li class="property private "><a href="#%24logger" title="$logger :: Contains a Logger object that must impelement a log() method."><span class="description">Contains a Logger object that must impelement a log() method.</span><pre>$logger</pre></a></li>
+<li class="property private "><a href="#%24logging" title="$logging :: Switch for logging."><span class="description">Switch for logging.</span><pre>$logging</pre></a></li>
+<li class="property private "><a href="#%24model_directory" title="$model_directory :: Directory for the auto_loading of model classes."><span class="description">Directory for the auto_loading of model classes.</span><pre>$model_directory</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CActiveRecord%5CConfig" id="\ActiveRecord\Config"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/ActiveRecord.html">ActiveRecord</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/ActiveRecord.Config.html">Config</a>
+</li>
+</ul>
+<div href="../classes/ActiveRecord.Config.html" class="element class">
+<p class="short_description">Manages configuration options for ActiveRecord.</p>
+<div class="details">
+<p class="long_description"><pre><code>ActiveRecord::initialize(function($cfg) {
+  $cfg->set_model_home('models');
+  $cfg->set_connections(array(
+    'development' => 'mysql://user:pass@development.com/awesome_development',
+    'production' => 'mysql://user:pass@production.com/awesome_production'));
+});
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="..//packages/ActiveRecord.html">ActiveRecord</a></td>
+</tr></table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="get_connection" id="get_connection"></a><div class="element clickable method public get_connection" data-toggle="collapse" data-target=".get_connection .collapse">
+<h2>Returns a connection string if found otherwise null.</h2>
+<pre>get_connection(string $name) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Name of connection to retrieve</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>connection info for specified connection name</div>
+</div></div>
+</div>
+<a name="get_connections" id="get_connections"></a><div class="element clickable method public get_connections" data-toggle="collapse" data-target=".get_connections .collapse">
+<h2>Returns the connection strings array.</h2>
+<pre>get_connections() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a name="get_date_format" id="get_date_format"></a><div class="element clickable method public get_date_format" data-toggle="collapse" data-target=".get_date_format .collapse">
+<h2>get_date_format()
+        </h2>
+<pre>get_date_format() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="get_default_connection" id="get_default_connection"></a><div class="element clickable method public get_default_connection" data-toggle="collapse" data-target=".get_default_connection .collapse">
+<h2>Returns the name of the default connection.</h2>
+<pre>get_default_connection() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="get_default_connection_string" id="get_default_connection_string"></a><div class="element clickable method public get_default_connection_string" data-toggle="collapse" data-target=".get_default_connection_string .collapse">
+<h2>Returns the default connection string or null if there is none.</h2>
+<pre>get_default_connection_string() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="get_logger" id="get_logger"></a><div class="element clickable method public get_logger" data-toggle="collapse" data-target=".get_logger .collapse">
+<h2>Returns the logger</h2>
+<pre>get_logger() : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a name="get_logging" id="get_logging"></a><div class="element clickable method public get_logging" data-toggle="collapse" data-target=".get_logging .collapse">
+<h2>Return whether or not logging is on</h2>
+<pre>get_logging() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="get_model_directory" id="get_model_directory"></a><div class="element clickable method public get_model_directory" data-toggle="collapse" data-target=".get_model_directory .collapse">
+<h2>Returns the model directory.</h2>
+<pre>get_model_directory() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/ActiveRecord.ConfigException.html">\ActiveRecord\ConfigException</a></code></th>
+<td>if specified directory was not found</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="initialize" id="initialize"></a><div class="element clickable method public initialize" data-toggle="collapse" data-target=".initialize .collapse">
+<h2>Allows config initialization using a closure.</h2>
+<pre>initialize(Closure $initializer) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>This method is just syntatic sugar.</p>
+
+<pre><code>ActiveRecord\Config::initialize(function($cfg) {
+  $cfg->set_model_directory('/path/to/your/model_directory');
+  $cfg->set_connections(array(
+    'development' => 'mysql://username:password@127.0.0.1/database_name'));
+});
+</code></pre>
+
+<p>You can also initialize by grabbing the singleton object:</p>
+
+<pre><code>$cfg = ActiveRecord\Config::instance();
+$cfg->set_model_directory('/path/to/your/model_directory');
+$cfg->set_connections(array('development' =>
+  'mysql://username:password@localhost/database_name'));
+</code></pre></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$initializer</h4>
+<code><a href="http://php.net/manual/en/class.closure.php">\Closure</a></code><p>A closure</p></div>
+</div></div>
+</div>
+<a name="instance" id="instance"></a><div class="element clickable method public instance" data-toggle="collapse" data-target=".instance .collapse">
+<h2>Static method for instantiating a singleton object.</h2>
+<pre>instance() : object</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Singleton::instance()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a name="set_cache" id="set_cache"></a><div class="element clickable method public set_cache" data-toggle="collapse" data-target=".set_cache .collapse">
+<h2>Sets the url for the cache server to enable query caching.</h2>
+<pre>set_cache(string $url, array $options) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Only table schema queries are cached at the moment. A general query cache
+will follow.</p>
+
+<p>Example:</p>
+
+<pre><code>$config->set_cache("memcached://localhost");
+$config->set_cache("memcached://localhost",array("expire" => 60));
+</code></pre></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$url</h4>
+<code>string</code><p>Url to your cache server.</p></div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>Array of options</p></div>
+</div></div>
+</div>
+<a name="set_connections" id="set_connections"></a><div class="element clickable method public set_connections" data-toggle="collapse" data-target=".set_connections .collapse">
+<h2>Sets the list of database connection strings.</h2>
+<pre>set_connections(array $connections, string $default_connection) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><pre><code>$config->set_connections(array(
+    'development' => 'mysql://username:password@127.0.0.1/database_name'));
+</code></pre></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$connections</h4>
+<code>array</code><p>Array of connections</p></div>
+<div class="subelement argument">
+<h4>$default_connection</h4>
+<code>string</code><p>Optionally specify the default_connection</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/ActiveRecord.ConfigException.html">\ActiveRecord\ConfigException</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="set_date_format" id="set_date_format"></a><div class="element clickable method public set_date_format" data-toggle="collapse" data-target=".set_date_format .collapse">
+<h2>set_date_format()
+        </h2>
+<pre>set_date_format($format) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>deprecated</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$format</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="set_default_connection" id="set_default_connection"></a><div class="element clickable method public set_default_connection" data-toggle="collapse" data-target=".set_default_connection .collapse">
+<h2>Set the name of the default connection.</h2>
+<pre>set_default_connection(string $name) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Name of a connection in the connections array</p></div>
+</div></div>
+</div>
+<a name="set_logger" id="set_logger"></a><div class="element clickable method public set_logger" data-toggle="collapse" data-target=".set_logger .collapse">
+<h2>Sets the logger object for future SQL logging</h2>
+<pre>set_logger(object $logger) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$logger</h4>
+<code>object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/ActiveRecord.ConfigException.html">\ActiveRecord\ConfigException</a></code></th>
+<td>if Logger objecct does not implement public log()</td>
+</tr></table>
+</div></div>
+</div>
+<a name="set_logging" id="set_logging"></a><div class="element clickable method public set_logging" data-toggle="collapse" data-target=".set_logging .collapse">
+<h2>Turn on/off logging</h2>
+<pre>set_logging(boolean $bool) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$bool</h4>
+<code>boolean</code>
+</div>
+</div></div>
+</div>
+<a name="set_model_directory" id="set_model_directory"></a><div class="element clickable method public set_model_directory" data-toggle="collapse" data-target=".set_model_directory .collapse">
+<h2>Sets the directory where models are located.</h2>
+<pre>set_model_directory(string $dir) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$dir</h4>
+<code>string</code><p>Directory path containing your models</p></div>
+</div></div>
+</div>
+<a name="get_called_class" id="get_called_class"></a><div class="element clickable method protected get_called_class" data-toggle="collapse" data-target=".get_called_class .collapse">
+<h2>Similar to a get_called_class() for a child class to invoke.</h2>
+<pre>get_called_class() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Singleton::get_called_class()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="__clone" id="__clone"></a><div class="element clickable method private __clone" data-toggle="collapse" data-target=".__clone .collapse">
+<h2>Singleton objects should not be cloned.</h2>
+<pre>__clone() : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Singleton::__clone()</td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24connections" id="$connections"> </a><div class="element clickable property private $connections" data-toggle="collapse" data-target=".$connections .collapse">
+<h2>Contains the list of database connection strings.</h2>
+<pre>$connections : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24date_format" id="$date_format"> </a><div class="element clickable property private $date_format" data-toggle="collapse" data-target=".$date_format .collapse">
+<h2>The format to serialize DateTime values into.</h2>
+<pre>$date_format : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24default_connection" id="$default_connection"> </a><div class="element clickable property private $default_connection" data-toggle="collapse" data-target=".$default_connection .collapse">
+<h2>Name of the connection to use by default.</h2>
+<pre>$default_connection : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"><pre><code>ActiveRecord\Config::initialize(function($cfg) {
+  $cfg->set_model_directory('/your/app/models');
+  $cfg->set_connections(array(
+    'development' => 'mysql://user:pass@development.com/awesome_development',
+    'production' => 'mysql://user:pass@production.com/awesome_production'));
+});
+</code></pre>
+
+<p>This is a singleton class so you can retrieve the <a href="Singleton">Singleton</a> instance by doing:</p>
+
+<pre><code>$config = ActiveRecord\Config::instance();
+</code></pre></p></div></div>
+</div>
+<a name="%24instances" id="$instances"> </a><div class="element clickable property private $instances" data-toggle="collapse" data-target=".$instances .collapse">
+<h2>Array of cached singleton objects.</h2>
+<pre>$instances : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Singleton::$$instances</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24logger" id="$logger"> </a><div class="element clickable property private $logger" data-toggle="collapse" data-target=".$logger .collapse">
+<h2>Contains a Logger object that must impelement a log() method.</h2>
+<pre>$logger : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24logging" id="$logging"> </a><div class="element clickable property private $logging" data-toggle="collapse" data-target=".$logging .collapse">
+<h2>Switch for logging.</h2>
+<pre>$logging : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24model_directory" id="$model_directory"> </a><div class="element clickable property private $model_directory" data-toggle="collapse" data-target=".$model_directory .collapse">
+<h2>Directory for the auto_loading of model classes.</h2>
+<pre>$model_directory : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td>\ActiveRecord\activerecord_autoload</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
+            generated on 2012-04-25T11:51:44-07:00.<br></footer></div>
+</div>
+</body>
+</html>

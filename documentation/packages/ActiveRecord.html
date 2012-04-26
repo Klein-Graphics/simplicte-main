@@ -1,0 +1,613 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » ActiveRecord</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Account_Driver.html"><i class="icon-th"></i> Account_Driver</a></li>
+<li><a href="../namespaces/ActiveRecord.html"><i class="icon-th"></i> ActiveRecord</a></li>
+<li><a href="../namespaces/Cart_Driver.html"><i class="icon-th"></i> Cart_Driver</a></li>
+<li><a href="../namespaces/Checkout_Driver.html"><i class="icon-th"></i> Checkout_Driver</a></li>
+<li><a href="../namespaces/Gateway_Driver.html"><i class="icon-th"></i> Gateway_Driver</a></li>
+<li><a href="../namespaces/Library.html"><i class="icon-th"></i> Library</a></li>
+<li><a href="../namespaces/Model.html"><i class="icon-th"></i> Model</a></li>
+<li><a href="../namespaces/NamespaceTest.html"><i class="icon-th"></i> NamespaceTest</a></li>
+<li><a href="../namespaces/Shipping_Driver.html"><i class="icon-th"></i> Shipping_Driver</a></li>
+<li><a href="../namespaces/View.html"><i class="icon-th"></i> View</a></li>
+<li><a href="../namespaces/default.html"><i class="icon-th"></i> default</a></li>
+<li><a href="../namespaces/foo.html"><i class="icon-th"></i> foo</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/ActiveRecord.html"><i class="icon-folder-open"></i> ActiveRecord</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">1432</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">3</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">3</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/ActiveRecord.html" title="ActiveRecord"><i class="icon-folder-open"></i>ActiveRecord</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-function"></i> Functions</li>
+<li class="function  "><a href="#all" title="all :: Returns true if all values in $haystack === $needle"><span class="description">Returns true if all values in $haystack === $needle</span><pre>all</pre></a></li>
+<li class="function  "><a href="#array_flatten" title="array_flatten :: "><span class="description">array_flatten()
+        </span><pre>array_flatten</pre></a></li>
+<li class="function  "><a href="#classify" title="classify :: "><span class="description">classify()
+        </span><pre>classify</pre></a></li>
+<li class="function  "><a href="#collect" title="collect :: "><span class="description">collect()
+        </span><pre>collect</pre></a></li>
+<li class="function  "><a href="#denamespace" title="denamespace :: Strips a class name of any namespaces and namespace operator."><span class="description">Strips a class name of any namespaces and namespace operator.</span><pre>denamespace</pre></a></li>
+<li class="function  "><a href="#get_namespaces" title="get_namespaces :: "><span class="description">get_namespaces()
+        </span><pre>get_namespaces</pre></a></li>
+<li class="function  "><a href="#has_namespace" title="has_namespace :: "><span class="description">has_namespace()
+        </span><pre>has_namespace</pre></a></li>
+<li class="function  "><a href="#is_hash" title="is_hash :: Somewhat naive way to determine if an array is a hash."><span class="description">Somewhat naive way to determine if an array is a hash.</span><pre>is_hash</pre></a></li>
+<li class="function  "><a href="#wrap_strings_in_arrays" title="wrap_strings_in_arrays :: Wrap string definitions (if any) into arrays."><span class="description">Wrap string definitions (if any) into arrays.</span><pre>wrap_strings_in_arrays</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-interface"></i> Interfaces</li>
+<li><a href="#InterfaceRelationship" title="Interface for a table relationship.">InterfaceRelationship</a></li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#Model" title="The base class for your models.">Model</a></li>
+<li><a href="#Validations" title="Manages validations for a {@link Model}.">Validations</a></li>
+<li><a href="#Errors" title="Class that holds {@link Validations} errors.">Errors</a></li>
+<li><a href="#Table" title="Manages reading and writing to a database table.">Table</a></li>
+<li><a href="#Serialization" title="Base class for Model serializers.">Serialization</a></li>
+<li><a href="#ArraySerializer" title="Array serializer.">ArraySerializer</a></li>
+<li><a href="#JsonSerializer" title="JSON serializer.">JsonSerializer</a></li>
+<li><a href="#XmlSerializer" title="XML serializer.">XmlSerializer</a></li>
+<li><a href="#CsvSerializer" title="CSV serializer.">CsvSerializer</a></li>
+<li><a href="#OciAdapter" title="Adapter for OCI (not completed yet).">OciAdapter</a></li>
+<li><a href="#PgsqlAdapter" title="Adapter for Postgres (not completed yet)">PgsqlAdapter</a></li>
+<li><a href="#SqliteAdapter" title="Adapter for SQLite.">SqliteAdapter</a></li>
+<li><a href="#MysqlAdapter" title="Adapter for MySQL.">MysqlAdapter</a></li>
+<li><a href="#Config" title="Manages configuration options for ActiveRecord.">Config</a></li>
+<li><a href="#Expressions" title="Templating like class for building SQL statements.">Expressions</a></li>
+<li><a href="#DateTime" title="An extension of PHP's DateTime class to provide dirty flagging and easier formatting options.">DateTime</a></li>
+<li><a href="#Inflector" title="">Inflector</a></li>
+<li><a href="#StandardInflector" title="">StandardInflector</a></li>
+<li><a href="#Reflections" title="Simple class that caches reflections of classes.">Reflections</a></li>
+<li><a href="#Column" title="Class for a table column.">Column</a></li>
+<li><a href="#ActiveRecordException" title="Generic base exception for all ActiveRecord specific errors.">ActiveRecordException</a></li>
+<li><a href="#RecordNotFound" title="Thrown when a record cannot be found.">RecordNotFound</a></li>
+<li><a href="#DatabaseException" title="Thrown when there was an error performing a database operation.">DatabaseException</a></li>
+<li><a href="#ModelException" title="Thrown by {@link Model}.">ModelException</a></li>
+<li><a href="#ExpressionsException" title="Thrown by {@link Expressions}.">ExpressionsException</a></li>
+<li><a href="#ConfigException" title="Thrown for configuration problems.">ConfigException</a></li>
+<li><a href="#UndefinedPropertyException" title="Thrown when attempting to access an invalid property on a {@link Model}.">UndefinedPropertyException</a></li>
+<li><a href="#ReadOnlyException" title="Thrown when attempting to perform a write operation on a {@link Model} that is in read-only mode.">ReadOnlyException</a></li>
+<li><a href="#ValidationsArgumentError" title="Thrown for validations exceptions.">ValidationsArgumentError</a></li>
+<li><a href="#RelationshipException" title="Thrown for relationship exceptions.">RelationshipException</a></li>
+<li><a href="#HasManyThroughAssociationException" title="Thrown for has many thru exceptions.">HasManyThroughAssociationException</a></li>
+<li><a href="#Connection" title="The base class for database connection adapters.">Connection</a></li>
+<li><a href="#Utils" title="Some internal utility functions.">Utils</a></li>
+<li><a href="#AbstractRelationship" title="Abstract class that all relationships must extend from.">AbstractRelationship</a></li>
+<li><a href="#HasMany" title="One-to-many relationship.">HasMany</a></li>
+<li><a href="#HasOne" title="One-to-one relationship.">HasOne</a></li>
+<li><a href="#HasAndBelongsToMany" title="Abstract class that all relationships must extend from.">HasAndBelongsToMany</a></li>
+<li><a href="#BelongsTo" title="Belongs to relationship.">BelongsTo</a></li>
+<li><a href="#ConnectionManager" title="Singleton to manage any and all database connections.">ConnectionManager</a></li>
+<li><a href="#CallBack" title="Callbacks allow the programmer to hook into the life cycle of a {@link Model}.">CallBack</a></li>
+<li><a href="#SQLBuilder" title="Helper class for building sql statements progmatically.">SQLBuilder</a></li>
+<li><a href="#Singleton" title='This implementation of the singleton pattern does not conform to the strong definition
+given by the "Gang of Four." The __construct() method has not be privatized so that
+a singleton pattern is capable of being achieved; however, multiple instantiations are also
+possible. This allows the user more freedom with this pattern.'>Singleton</a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span>
+</li>
+<li class="active"><a href="../packages/ActiveRecord.html">ActiveRecord</a></li>
+</ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-function"></i> Functions</h3>
+<a name="all" id="all"></a><div class="element clickable function  all" data-toggle="collapse" data-target=".all .collapse">
+<h2>Returns true if all values in $haystack === $needle</h2>
+<pre>all($needle, array $haystack) : \ActiveRecord\unknown_type</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$needle</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$haystack</h4>
+<code></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\ActiveRecord\unknown_type</code></div>
+</div></div>
+</div>
+<a name="array_flatten" id="array_flatten"></a><div class="element clickable function  array_flatten" data-toggle="collapse" data-target=".array_flatten .collapse">
+<h2>array_flatten()
+        </h2>
+<pre>array_flatten(array $array) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="classify" id="classify"></a><div class="element clickable function  classify" data-toggle="collapse" data-target=".classify .collapse">
+<h2>classify()
+        </h2>
+<pre>classify($class_name, $singularize) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$class_name</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$singularize</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="collect" id="collect"></a><div class="element clickable function  collect" data-toggle="collapse" data-target=".collect .collapse">
+<h2>collect()
+        </h2>
+<pre>collect($enumerable, $name_or_closure) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$enumerable</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$name_or_closure</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="denamespace" id="denamespace"></a><div class="element clickable function  denamespace" data-toggle="collapse" data-target=".denamespace .collapse">
+<h2>Strips a class name of any namespaces and namespace operator.</h2>
+<pre>denamespace($class_name) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$class_name</h4>
+<code></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>stripped class name</div>
+</div></div>
+</div>
+<a name="get_namespaces" id="get_namespaces"></a><div class="element clickable function  get_namespaces" data-toggle="collapse" data-target=".get_namespaces .collapse">
+<h2>get_namespaces()
+        </h2>
+<pre>get_namespaces($class_name) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$class_name</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="has_namespace" id="has_namespace"></a><div class="element clickable function  has_namespace" data-toggle="collapse" data-target=".has_namespace .collapse">
+<h2>has_namespace()
+        </h2>
+<pre>has_namespace($class_name) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$class_name</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="is_hash" id="is_hash"></a><div class="element clickable function  is_hash" data-toggle="collapse" data-target=".is_hash .collapse">
+<h2>Somewhat naive way to determine if an array is a hash.</h2>
+<pre>is_hash($array) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="wrap_strings_in_arrays" id="wrap_strings_in_arrays"></a><div class="element clickable function  wrap_strings_in_arrays" data-toggle="collapse" data-target=".wrap_strings_in_arrays .collapse">
+<h2>Wrap string definitions (if any) into arrays.</h2>
+<pre>wrap_strings_in_arrays($strings) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$strings</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<a name="InterfaceRelationship" id="InterfaceRelationship"></a><div class="element ajax clickable interface" href="../classes/ActiveRecord.InterfaceRelationship.html">
+<h1>InterfaceRelationship<a href="../classes/ActiveRecord.InterfaceRelationship.html">¶</a>
+</h1>
+<p class="short_description">Interface for a table relationship.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.InterfaceRelationship.html" class="more">« More »</a>
+</div>
+<a name="AbstractRelationship" id="AbstractRelationship"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.AbstractRelationship.html">
+<h1>AbstractRelationship<a href="../classes/ActiveRecord.AbstractRelationship.html">¶</a>
+</h1>
+<p class="short_description">Abstract class that all relationships must extend from.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.AbstractRelationship.html" class="more">« More »</a>
+</div>
+<a name="ActiveRecordException" id="ActiveRecordException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.ActiveRecordException.html">
+<h1>ActiveRecordException<a href="../classes/ActiveRecord.ActiveRecordException.html">¶</a>
+</h1>
+<p class="short_description">Generic base exception for all ActiveRecord specific errors.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.ActiveRecordException.html" class="more">« More »</a>
+</div>
+<a name="ArraySerializer" id="ArraySerializer"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.ArraySerializer.html">
+<h1>ArraySerializer<a href="../classes/ActiveRecord.ArraySerializer.html">¶</a>
+</h1>
+<p class="short_description">Array serializer.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.ArraySerializer.html" class="more">« More »</a>
+</div>
+<a name="BelongsTo" id="BelongsTo"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.BelongsTo.html">
+<h1>BelongsTo<a href="../classes/ActiveRecord.BelongsTo.html">¶</a>
+</h1>
+<p class="short_description">Belongs to relationship.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.BelongsTo.html" class="more">« More »</a>
+</div>
+<a name="CallBack" id="CallBack"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.CallBack.html">
+<h1>CallBack<a href="../classes/ActiveRecord.CallBack.html">¶</a>
+</h1>
+<p class="short_description">Callbacks allow the programmer to hook into the life cycle of a {@link Model}.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.CallBack.html" class="more">« More »</a>
+</div>
+<a name="Column" id="Column"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Column.html">
+<h1>Column<a href="../classes/ActiveRecord.Column.html">¶</a>
+</h1>
+<p class="short_description">Class for a table column.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Column.html" class="more">« More »</a>
+</div>
+<a name="Config" id="Config"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Config.html">
+<h1>Config<a href="../classes/ActiveRecord.Config.html">¶</a>
+</h1>
+<p class="short_description">Manages configuration options for ActiveRecord.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Config.html" class="more">« More »</a>
+</div>
+<a name="ConfigException" id="ConfigException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.ConfigException.html">
+<h1>ConfigException<a href="../classes/ActiveRecord.ConfigException.html">¶</a>
+</h1>
+<p class="short_description">Thrown for configuration problems.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.ConfigException.html" class="more">« More »</a>
+</div>
+<a name="Connection" id="Connection"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Connection.html">
+<h1>Connection<a href="../classes/ActiveRecord.Connection.html">¶</a>
+</h1>
+<p class="short_description">The base class for database connection adapters.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Connection.html" class="more">« More »</a>
+</div>
+<a name="ConnectionManager" id="ConnectionManager"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.ConnectionManager.html">
+<h1>ConnectionManager<a href="../classes/ActiveRecord.ConnectionManager.html">¶</a>
+</h1>
+<p class="short_description">Singleton to manage any and all database connections.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.ConnectionManager.html" class="more">« More »</a>
+</div>
+<a name="CsvSerializer" id="CsvSerializer"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.CsvSerializer.html">
+<h1>CsvSerializer<a href="../classes/ActiveRecord.CsvSerializer.html">¶</a>
+</h1>
+<p class="short_description">CSV serializer.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.CsvSerializer.html" class="more">« More »</a>
+</div>
+<a name="DatabaseException" id="DatabaseException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.DatabaseException.html">
+<h1>DatabaseException<a href="../classes/ActiveRecord.DatabaseException.html">¶</a>
+</h1>
+<p class="short_description">Thrown when there was an error performing a database operation.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.DatabaseException.html" class="more">« More »</a>
+</div>
+<a name="DateTime" id="DateTime"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.DateTime.html">
+<h1>DateTime<a href="../classes/ActiveRecord.DateTime.html">¶</a>
+</h1>
+<p class="short_description">An extension of PHP's DateTime class to provide dirty flagging and easier formatting options.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.DateTime.html" class="more">« More »</a>
+</div>
+<a name="Errors" id="Errors"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Errors.html">
+<h1>Errors<a href="../classes/ActiveRecord.Errors.html">¶</a>
+</h1>
+<p class="short_description">Class that holds {@link Validations} errors.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Errors.html" class="more">« More »</a>
+</div>
+<a name="Expressions" id="Expressions"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Expressions.html">
+<h1>Expressions<a href="../classes/ActiveRecord.Expressions.html">¶</a>
+</h1>
+<p class="short_description">Templating like class for building SQL statements.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Expressions.html" class="more">« More »</a>
+</div>
+<a name="ExpressionsException" id="ExpressionsException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.ExpressionsException.html">
+<h1>ExpressionsException<a href="../classes/ActiveRecord.ExpressionsException.html">¶</a>
+</h1>
+<p class="short_description">Thrown by {@link Expressions}.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.ExpressionsException.html" class="more">« More »</a>
+</div>
+<a name="HasAndBelongsToMany" id="HasAndBelongsToMany"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.HasAndBelongsToMany.html">
+<h1>HasAndBelongsToMany<a href="../classes/ActiveRecord.HasAndBelongsToMany.html">¶</a>
+</h1>
+<p class="short_description">Abstract class that all relationships must extend from.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.HasAndBelongsToMany.html" class="more">« More »</a>
+</div>
+<a name="HasMany" id="HasMany"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.HasMany.html">
+<h1>HasMany<a href="../classes/ActiveRecord.HasMany.html">¶</a>
+</h1>
+<p class="short_description">One-to-many relationship.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.HasMany.html" class="more">« More »</a>
+</div>
+<a name="HasManyThroughAssociationException" id="HasManyThroughAssociationException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.HasManyThroughAssociationException.html">
+<h1>HasManyThroughAssociationException<a href="../classes/ActiveRecord.HasManyThroughAssociationException.html">¶</a>
+</h1>
+<p class="short_description">Thrown for has many thru exceptions.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.HasManyThroughAssociationException.html" class="more">« More »</a>
+</div>
+<a name="HasOne" id="HasOne"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.HasOne.html">
+<h1>HasOne<a href="../classes/ActiveRecord.HasOne.html">¶</a>
+</h1>
+<p class="short_description">One-to-one relationship.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.HasOne.html" class="more">« More »</a>
+</div>
+<a name="Inflector" id="Inflector"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Inflector.html">
+<h1>Inflector<a href="../classes/ActiveRecord.Inflector.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Inflector.html" class="more">« More »</a>
+</div>
+<a name="JsonSerializer" id="JsonSerializer"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.JsonSerializer.html">
+<h1>JsonSerializer<a href="../classes/ActiveRecord.JsonSerializer.html">¶</a>
+</h1>
+<p class="short_description">JSON serializer.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.JsonSerializer.html" class="more">« More »</a>
+</div>
+<a name="Model" id="Model"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Model.html">
+<h1>Model<a href="../classes/ActiveRecord.Model.html">¶</a>
+</h1>
+<p class="short_description">The base class for your models.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Model.html" class="more">« More »</a>
+</div>
+<a name="ModelException" id="ModelException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.ModelException.html">
+<h1>ModelException<a href="../classes/ActiveRecord.ModelException.html">¶</a>
+</h1>
+<p class="short_description">Thrown by {@link Model}.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.ModelException.html" class="more">« More »</a>
+</div>
+<a name="MysqlAdapter" id="MysqlAdapter"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.MysqlAdapter.html">
+<h1>MysqlAdapter<a href="../classes/ActiveRecord.MysqlAdapter.html">¶</a>
+</h1>
+<p class="short_description">Adapter for MySQL.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.MysqlAdapter.html" class="more">« More »</a>
+</div>
+<a name="OciAdapter" id="OciAdapter"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.OciAdapter.html">
+<h1>OciAdapter<a href="../classes/ActiveRecord.OciAdapter.html">¶</a>
+</h1>
+<p class="short_description">Adapter for OCI (not completed yet).</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.OciAdapter.html" class="more">« More »</a>
+</div>
+<a name="PgsqlAdapter" id="PgsqlAdapter"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.PgsqlAdapter.html">
+<h1>PgsqlAdapter<a href="../classes/ActiveRecord.PgsqlAdapter.html">¶</a>
+</h1>
+<p class="short_description">Adapter for Postgres (not completed yet)</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.PgsqlAdapter.html" class="more">« More »</a>
+</div>
+<a name="ReadOnlyException" id="ReadOnlyException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.ReadOnlyException.html">
+<h1>ReadOnlyException<a href="../classes/ActiveRecord.ReadOnlyException.html">¶</a>
+</h1>
+<p class="short_description">Thrown when attempting to perform a write operation on a {@link Model} that is in read-only mode.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.ReadOnlyException.html" class="more">« More »</a>
+</div>
+<a name="RecordNotFound" id="RecordNotFound"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.RecordNotFound.html">
+<h1>RecordNotFound<a href="../classes/ActiveRecord.RecordNotFound.html">¶</a>
+</h1>
+<p class="short_description">Thrown when a record cannot be found.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.RecordNotFound.html" class="more">« More »</a>
+</div>
+<a name="Reflections" id="Reflections"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Reflections.html">
+<h1>Reflections<a href="../classes/ActiveRecord.Reflections.html">¶</a>
+</h1>
+<p class="short_description">Simple class that caches reflections of classes.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Reflections.html" class="more">« More »</a>
+</div>
+<a name="RelationshipException" id="RelationshipException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.RelationshipException.html">
+<h1>RelationshipException<a href="../classes/ActiveRecord.RelationshipException.html">¶</a>
+</h1>
+<p class="short_description">Thrown for relationship exceptions.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.RelationshipException.html" class="more">« More »</a>
+</div>
+<a name="SQLBuilder" id="SQLBuilder"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.SQLBuilder.html">
+<h1>SQLBuilder<a href="../classes/ActiveRecord.SQLBuilder.html">¶</a>
+</h1>
+<p class="short_description">Helper class for building sql statements progmatically.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.SQLBuilder.html" class="more">« More »</a>
+</div>
+<a name="Serialization" id="Serialization"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Serialization.html">
+<h1>Serialization<a href="../classes/ActiveRecord.Serialization.html">¶</a>
+</h1>
+<p class="short_description">Base class for Model serializers.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Serialization.html" class="more">« More »</a>
+</div>
+<a name="Singleton" id="Singleton"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Singleton.html">
+<h1>Singleton<a href="../classes/ActiveRecord.Singleton.html">¶</a>
+</h1>
+<p class="short_description">This implementation of the singleton pattern does not conform to the strong definition
+given by the "Gang of Four." The __construct() method has not be privatized so that
+a singleton pattern is capable of being achieved; however, multiple instantiations are also
+possible. This allows the user more freedom with this pattern.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Singleton.html" class="more">« More »</a>
+</div>
+<a name="SqliteAdapter" id="SqliteAdapter"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.SqliteAdapter.html">
+<h1>SqliteAdapter<a href="../classes/ActiveRecord.SqliteAdapter.html">¶</a>
+</h1>
+<p class="short_description">Adapter for SQLite.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.SqliteAdapter.html" class="more">« More »</a>
+</div>
+<a name="StandardInflector" id="StandardInflector"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.StandardInflector.html">
+<h1>StandardInflector<a href="../classes/ActiveRecord.StandardInflector.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.StandardInflector.html" class="more">« More »</a>
+</div>
+<a name="Table" id="Table"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Table.html">
+<h1>Table<a href="../classes/ActiveRecord.Table.html">¶</a>
+</h1>
+<p class="short_description">Manages reading and writing to a database table.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Table.html" class="more">« More »</a>
+</div>
+<a name="UndefinedPropertyException" id="UndefinedPropertyException"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.UndefinedPropertyException.html">
+<h1>UndefinedPropertyException<a href="../classes/ActiveRecord.UndefinedPropertyException.html">¶</a>
+</h1>
+<p class="short_description">Thrown when attempting to access an invalid property on a {@link Model}.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.UndefinedPropertyException.html" class="more">« More »</a>
+</div>
+<a name="Utils" id="Utils"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Utils.html">
+<h1>Utils<a href="../classes/ActiveRecord.Utils.html">¶</a>
+</h1>
+<p class="short_description">Some internal utility functions.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Utils.html" class="more">« More »</a>
+</div>
+<a name="Validations" id="Validations"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.Validations.html">
+<h1>Validations<a href="../classes/ActiveRecord.Validations.html">¶</a>
+</h1>
+<p class="short_description">Manages validations for a {@link Model}.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.Validations.html" class="more">« More »</a>
+</div>
+<a name="ValidationsArgumentError" id="ValidationsArgumentError"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.ValidationsArgumentError.html">
+<h1>ValidationsArgumentError<a href="../classes/ActiveRecord.ValidationsArgumentError.html">¶</a>
+</h1>
+<p class="short_description">Thrown for validations exceptions.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.ValidationsArgumentError.html" class="more">« More »</a>
+</div>
+<a name="XmlSerializer" id="XmlSerializer"></a><div class="element ajax clickable class" href="../classes/ActiveRecord.XmlSerializer.html">
+<h1>XmlSerializer<a href="../classes/ActiveRecord.XmlSerializer.html">¶</a>
+</h1>
+<p class="short_description">XML serializer.</p>
+<div class="details collapse"></div>
+<a href="../classes/ActiveRecord.XmlSerializer.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
+            generated on 2012-04-25T11:51:43-07:00.<br></footer></div>
+</div>
+</body>
+</html>

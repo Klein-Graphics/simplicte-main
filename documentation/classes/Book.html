@@ -1,0 +1,2090 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Book</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Account_Driver.html"><i class="icon-th"></i> Account_Driver</a></li>
+<li><a href="../namespaces/ActiveRecord.html"><i class="icon-th"></i> ActiveRecord</a></li>
+<li><a href="../namespaces/Cart_Driver.html"><i class="icon-th"></i> Cart_Driver</a></li>
+<li><a href="../namespaces/Checkout_Driver.html"><i class="icon-th"></i> Checkout_Driver</a></li>
+<li><a href="../namespaces/Gateway_Driver.html"><i class="icon-th"></i> Gateway_Driver</a></li>
+<li><a href="../namespaces/Library.html"><i class="icon-th"></i> Library</a></li>
+<li><a href="../namespaces/Model.html"><i class="icon-th"></i> Model</a></li>
+<li><a href="../namespaces/NamespaceTest.html"><i class="icon-th"></i> NamespaceTest</a></li>
+<li><a href="../namespaces/Shipping_Driver.html"><i class="icon-th"></i> Shipping_Driver</a></li>
+<li><a href="../namespaces/View.html"><i class="icon-th"></i> View</a></li>
+<li><a href="../namespaces/default.html"><i class="icon-th"></i> default</a></li>
+<li><a href="../namespaces/foo.html"><i class="icon-th"></i> foo</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/ActiveRecord.html"><i class="icon-folder-open"></i> ActiveRecord</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">1432</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">3</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">3</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public inherited"><a href="#__call" title="__call :: Enables the use of build|create for associations."><span class="description">Enables the use of build|create for associations.</span><pre>__call()</pre></a></li>
+<li class="method public inherited"><a href="#__callStatic" title="__callStatic :: Enables the use of dynamic finders."><span class="description">Enables the use of dynamic finders.</span><pre>__callStatic()</pre></a></li>
+<li class="method public inherited"><a href="#__clone" title="__clone :: "><span class="description">__clone()
+        </span><pre>__clone()</pre></a></li>
+<li class="method public inherited"><a href="#__construct" title="__construct :: Constructs a model."><span class="description">Constructs a model.</span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#__get" title="__get :: Magic method which delegates to read_attribute(). This handles firing off getter methods,
+as they are not checked/invoked inside of read_attribute(). This circumvents the problem with
+a getter being accessed with the same name as an actual attribute."><span class="description">Magic method which delegates to read_attribute(). This handles firing off getter methods,
+as they are not checked/invoked inside of read_attribute(). This circumvents the problem with
+a getter being accessed with the same name as an actual attribute.</span><pre>__get()</pre></a></li>
+<li class="method public inherited"><a href="#__isset" title="__isset :: Determines if an attribute exists for this {@link Model}."><span class="description">Determines if an attribute exists for this {@link Model}.</span><pre>__isset()</pre></a></li>
+<li class="method public inherited"><a href="#__set" title="__set :: Magic allows un-defined attributes to set via $attributes."><span class="description">Magic allows un-defined attributes to set via $attributes.</span><pre>__set()</pre></a></li>
+<li class="method public inherited"><a href="#__wakeup" title="__wakeup :: "><span class="description">__wakeup()
+        </span><pre>__wakeup()</pre></a></li>
+<li class="method public inherited"><a href="#all" title="all :: Alias for self::find('all')."><span class="description">Alias for self::find('all').</span><pre>all()</pre></a></li>
+<li class="method public inherited"><a href="#assign_attribute" title="assign_attribute :: Assign a value to an attribute."><span class="description">Assign a value to an attribute.</span><pre>assign_attribute()</pre></a></li>
+<li class="method public inherited"><a href="#attribute_is_dirty" title="attribute_is_dirty :: Check if a particular attribute has been modified since loading the model."><span class="description">Check if a particular attribute has been modified since loading the model.</span><pre>attribute_is_dirty()</pre></a></li>
+<li class="method public inherited"><a href="#attributes" title="attributes :: Returns a copy of the model's attributes hash."><span class="description">Returns a copy of the model's attributes hash.</span><pre>attributes()</pre></a></li>
+<li class="method public inherited"><a href="#connection" title="connection :: Retrieve the connection for this model."><span class="description">Retrieve the connection for this model.</span><pre>connection()</pre></a></li>
+<li class="method public inherited"><a href="#count" title="count :: Get a count of qualifying records."><span class="description">Get a count of qualifying records.</span><pre>count()</pre></a></li>
+<li class="method public inherited"><a href="#create" title="create :: Creates a model and saves it to the database."><span class="description">Creates a model and saves it to the database.</span><pre>create()</pre></a></li>
+<li class="method public inherited"><a href="#delete" title="delete :: Deletes this model from the database and returns true if successful."><span class="description">Deletes this model from the database and returns true if successful.</span><pre>delete()</pre></a></li>
+<li class="method public inherited"><a href="#delete_all" title="delete_all :: Deletes records matching conditions in $options"><span class="description">Deletes records matching conditions in $options</span><pre>delete_all()</pre></a></li>
+<li class="method public inherited"><a href="#dirty_attributes" title="dirty_attributes :: Returns hash of attributes that have been modified since loading the model."><span class="description">Returns hash of attributes that have been modified since loading the model.</span><pre>dirty_attributes()</pre></a></li>
+<li class="method public inherited"><a href="#exists" title="exists :: Determine if a record exists."><span class="description">Determine if a record exists.</span><pre>exists()</pre></a></li>
+<li class="method public inherited"><a href="#find" title="find :: Find records in the database."><span class="description">Find records in the database.</span><pre>find()</pre></a></li>
+<li class="method public inherited"><a href="#find_by_pk" title="find_by_pk :: Finder method which will find by a single or array of primary keys for this model."><span class="description">Finder method which will find by a single or array of primary keys for this model.</span><pre>find_by_pk()</pre></a></li>
+<li class="method public inherited"><a href="#find_by_sql" title="find_by_sql :: Find using a raw SELECT query."><span class="description">Find using a raw SELECT query.</span><pre>find_by_sql()</pre></a></li>
+<li class="method public inherited"><a href="#first" title="first :: Alias for self::find('first')."><span class="description">Alias for self::find('first').</span><pre>first()</pre></a></li>
+<li class="method public inherited"><a href="#flag_dirty" title="flag_dirty :: Flags an attribute as dirty."><span class="description">Flags an attribute as dirty.</span><pre>flag_dirty()</pre></a></li>
+<li class="method public "><a href="#get_lower_name" title="get_lower_name :: "><span class="description">get_lower_name()
+        </span><pre>get_lower_name()</pre></a></li>
+<li class="method public "><a href="#get_name" title="get_name :: "><span class="description">get_name()
+        </span><pre>get_name()</pre></a></li>
+<li class="method public inherited"><a href="#get_primary_key" title="get_primary_key :: Retrieve the primary key name."><span class="description">Retrieve the primary key name.</span><pre>get_primary_key()</pre></a></li>
+<li class="method public inherited"><a href="#get_real_attribute_name" title="get_real_attribute_name :: Returns the actual attribute name if $name is aliased."><span class="description">Returns the actual attribute name if $name is aliased.</span><pre>get_real_attribute_name()</pre></a></li>
+<li class="method public "><a href="#get_upper_name" title="get_upper_name :: "><span class="description">get_upper_name()
+        </span><pre>get_upper_name()</pre></a></li>
+<li class="method public inherited"><a href="#get_validation_rules" title="get_validation_rules :: Returns array of validator data for this Model."><span class="description">Returns array of validator data for this Model.</span><pre>get_validation_rules()</pre></a></li>
+<li class="method public inherited"><a href="#get_values_for" title="get_values_for :: Returns an associative array containing values for all the attributes in $attributes"><span class="description">Returns an associative array containing values for all the attributes in $attributes</span><pre>get_values_for()</pre></a></li>
+<li class="method public inherited"><a href="#is_dirty" title="is_dirty :: Returns true if the model has been modified."><span class="description">Returns true if the model has been modified.</span><pre>is_dirty()</pre></a></li>
+<li class="method public inherited"><a href="#is_invalid" title="is_invalid :: Runs validations and returns true if invalid."><span class="description">Runs validations and returns true if invalid.</span><pre>is_invalid()</pre></a></li>
+<li class="method public inherited"><a href="#is_new_record" title="is_new_record :: Determine if the model is a new record."><span class="description">Determine if the model is a new record.</span><pre>is_new_record()</pre></a></li>
+<li class="method public inherited"><a href="#is_options_hash" title="is_options_hash :: Determines if the specified array is a valid ActiveRecord options array."><span class="description">Determines if the specified array is a valid ActiveRecord options array.</span><pre>is_options_hash()</pre></a></li>
+<li class="method public inherited"><a href="#is_readonly" title="is_readonly :: Determine if the model is in read-only mode."><span class="description">Determine if the model is in read-only mode.</span><pre>is_readonly()</pre></a></li>
+<li class="method public inherited"><a href="#is_valid" title="is_valid :: Run validations on model and returns whether or not model passed validation."><span class="description">Run validations on model and returns whether or not model passed validation.</span><pre>is_valid()</pre></a></li>
+<li class="method public inherited"><a href="#last" title="last :: Alias for self::find('last')"><span class="description">Alias for self::find('last')</span><pre>last()</pre></a></li>
+<li class="method public "><a href="#name" title="name :: "><span class="description">name()
+        </span><pre>name()</pre></a></li>
+<li class="method public inherited"><a href="#query" title="query :: Helper method to run arbitrary queries against the model's database connection."><span class="description">Helper method to run arbitrary queries against the model's database connection.</span><pre>query()</pre></a></li>
+<li class="method public inherited"><a href="#read_attribute" title="read_attribute :: Retrieves an attribute's value or a relationship object based on the name passed. If the attribute
+accessed is 'id' then it will return the model's primary key no matter what the actual attribute name is
+for the primary key."><span class="description">Retrieves an attribute's value or a relationship object based on the name passed. If the attribute
+accessed is 'id' then it will return the model's primary key no matter what the actual attribute name is
+for the primary key.</span><pre>read_attribute()</pre></a></li>
+<li class="method public inherited"><a href="#readonly" title="readonly :: Flag model as readonly."><span class="description">Flag model as readonly.</span><pre>readonly()</pre></a></li>
+<li class="method public inherited"><a href="#reestablish_connection" title="reestablish_connection :: Re-establishes the database connection with a new connection."><span class="description">Re-establishes the database connection with a new connection.</span><pre>reestablish_connection()</pre></a></li>
+<li class="method public inherited"><a href="#reload" title="reload :: Reloads the attributes and relationships of this object from the database."><span class="description">Reloads the attributes and relationships of this object from the database.</span><pre>reload()</pre></a></li>
+<li class="method public inherited"><a href="#reset_dirty" title="reset_dirty :: Resets the dirty array."><span class="description">Resets the dirty array.</span><pre>reset_dirty()</pre></a></li>
+<li class="method public inherited"><a href="#save" title="save :: Save the model to the database."><span class="description">Save the model to the database.</span><pre>save()</pre></a></li>
+<li class="method public inherited"><a href="#set_attributes" title="set_attributes :: Mass update the model with data from an attributes hash."><span class="description">Mass update the model with data from an attributes hash.</span><pre>set_attributes()</pre></a></li>
+<li class="method public inherited"><a href="#set_timestamps" title="set_timestamps :: Updates a model's timestamps."><span class="description">Updates a model's timestamps.</span><pre>set_timestamps()</pre></a></li>
+<li class="method public inherited"><a href="#table" title="table :: Returns the {@link Table} object for this model."><span class="description">Returns the {@link Table} object for this model.</span><pre>table()</pre></a></li>
+<li class="method public inherited"><a href="#table_name" title="table_name :: Retrieves the name of the table for this Model."><span class="description">Retrieves the name of the table for this Model.</span><pre>table_name()</pre></a></li>
+<li class="method public inherited"><a href="#to_array" title="to_array :: Returns an Array representation of this model."><span class="description">Returns an Array representation of this model.</span><pre>to_array()</pre></a></li>
+<li class="method public inherited"><a href="#to_csv" title="to_csv :: Returns an CSV representation of this model."><span class="description">Returns an CSV representation of this model.</span><pre>to_csv()</pre></a></li>
+<li class="method public inherited"><a href="#to_json" title="to_json :: Returns a JSON representation of this model."><span class="description">Returns a JSON representation of this model.</span><pre>to_json()</pre></a></li>
+<li class="method public inherited"><a href="#to_xml" title="to_xml :: Returns an XML representation of this model."><span class="description">Returns an XML representation of this model.</span><pre>to_xml()</pre></a></li>
+<li class="method public inherited"><a href="#transaction" title="transaction :: Executes a block of code inside a database transaction."><span class="description">Executes a block of code inside a database transaction.</span><pre>transaction()</pre></a></li>
+<li class="method public inherited"><a href="#update_all" title="update_all :: Updates records using set in $options"><span class="description">Updates records using set in $options</span><pre>update_all()</pre></a></li>
+<li class="method public inherited"><a href="#update_attribute" title="update_attribute :: Updates a single attribute and saves the record without going through the normal validation procedure."><span class="description">Updates a single attribute and saves the record without going through the normal validation procedure.</span><pre>update_attribute()</pre></a></li>
+<li class="method public inherited"><a href="#update_attributes" title="update_attributes :: Mass update the model with an array of attribute data and saves to the database."><span class="description">Mass update the model with an array of attribute data and saves to the database.</span><pre>update_attributes()</pre></a></li>
+<li class="method public "><a href="#upper_name" title="upper_name :: "><span class="description">upper_name()
+        </span><pre>upper_name()</pre></a></li>
+<li class="method public inherited"><a href="#values_for" title="values_for :: Helper to return a hash of values for the specified attributes."><span class="description">Helper to return a hash of values for the specified attributes.</span><pre>values_for()</pre></a></li>
+<li class="method public inherited"><a href="#values_for_pk" title="values_for_pk :: Helper that creates an array of values for the primary key(s)."><span class="description">Helper that creates an array of values for the primary key(s).</span><pre>values_for_pk()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private inherited"><a href="#_validate" title="_validate :: Validates the model."><span class="description">Validates the model.</span><pre>_validate()</pre></a></li>
+<li class="method private inherited"><a href="#insert" title="insert :: Issue an INSERT sql statement for this model's attribute."><span class="description">Issue an INSERT sql statement for this model's attribute.</span><pre>insert()</pre></a></li>
+<li class="method private inherited"><a href="#invoke_callback" title="invoke_callback :: Invokes the specified callback on this model."><span class="description">Invokes the specified callback on this model.</span><pre>invoke_callback()</pre></a></li>
+<li class="method private inherited"><a href="#is_delegated" title="is_delegated :: Returns the attribute name on the delegated relationship if $name is
+delegated or null if not delegated."><span class="description">Returns the attribute name on the delegated relationship if $name is
+delegated or null if not delegated.</span><pre>is_delegated()</pre></a></li>
+<li class="method private inherited"><a href="#serialize" title="serialize :: Creates a serializer based on pre-defined to_serializer()"><span class="description">Creates a serializer based on pre-defined to_serializer()</span><pre>serialize()</pre></a></li>
+<li class="method private inherited"><a href="#set_attributes_via_mass_assignment" title="set_attributes_via_mass_assignment :: Passing $guard_attributes as true will throw an exception if an attribute does not exist."><span class="description">Passing $guard_attributes as true will throw an exception if an attribute does not exist.</span><pre>set_attributes_via_mass_assignment()</pre></a></li>
+<li class="method private inherited"><a href="#update" title="update :: Issue an UPDATE sql statement for this model's dirty attributes."><span class="description">Issue an UPDATE sql statement for this model's dirty attributes.</span><pre>update()</pre></a></li>
+<li class="method private inherited"><a href="#verify_not_readonly" title="verify_not_readonly :: Throws an exception if this model is set to readonly."><span class="description">Throws an exception if this model is set to readonly.</span><pre>verify_not_readonly()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public inherited"><a href="#%24VALID_OPTIONS" title="$VALID_OPTIONS :: A list of valid finder options."><span class="description">A list of valid finder options.</span><pre>$VALID_OPTIONS</pre></a></li>
+<li class="property public inherited"><a href="#%24alias_attribute" title="$alias_attribute :: Allows you to create aliases for attributes."><span class="description">Allows you to create aliases for attributes.</span><pre>$alias_attribute</pre></a></li>
+<li class="property public inherited"><a href="#%24attr_accessible" title="$attr_accessible :: Whitelist of attributes that are checked from mass-assignment calls such as constructing a model or using update_attributes."><span class="description">Whitelist of attributes that are checked from mass-assignment calls such as constructing a model or using update_attributes.</span><pre>$attr_accessible</pre></a></li>
+<li class="property public inherited"><a href="#%24attr_protected" title="$attr_protected :: Blacklist of attributes that cannot be mass-assigned."><span class="description">Blacklist of attributes that cannot be mass-assigned.</span><pre>$attr_protected</pre></a></li>
+<li class="property public "><a href="#%24belongs_to" title="$belongs_to :: "><span class="description">$belongs_to</span><pre>$belongs_to</pre></a></li>
+<li class="property public inherited"><a href="#%24connection" title="$connection :: Set to the name of the connection this {@link Model} should use."><span class="description">Set to the name of the connection this {@link Model} should use.</span><pre>$connection</pre></a></li>
+<li class="property public inherited"><a href="#%24db" title="$db :: Set to the name of the database this Model's table is in."><span class="description">Set to the name of the database this Model's table is in.</span><pre>$db</pre></a></li>
+<li class="property public inherited"><a href="#%24delegate" title="$delegate :: Delegates calls to a relationship."><span class="description">Delegates calls to a relationship.</span><pre>$delegate</pre></a></li>
+<li class="property public inherited"><a href="#%24errors" title="$errors :: An instance of {@link Errors} and will be instantiated once a write method is called."><span class="description">An instance of {@link Errors} and will be instantiated once a write method is called.</span><pre>$errors</pre></a></li>
+<li class="property public "><a href="#%24has_one" title="$has_one :: "><span class="description">$has_one</span><pre>$has_one</pre></a></li>
+<li class="property public inherited"><a href="#%24primary_key" title='$primary_key :: Set this to override the default primary key name if different from default name of "id".'><span class="description">Set this to override the default primary key name if different from default name of "id".</span><pre>$primary_key</pre></a></li>
+<li class="property public inherited"><a href="#%24sequence" title="$sequence :: Set this to explicitly specify the sequence name for the table."><span class="description">Set this to explicitly specify the sequence name for the table.</span><pre>$sequence</pre></a></li>
+<li class="property public inherited"><a href="#%24table_name" title="$table_name :: Set this to explicitly specify the model's table name if different from inferred name."><span class="description">Set this to explicitly specify the model's table name if different from inferred name.</span><pre>$table_name</pre></a></li>
+<li class="property public "><a href="#%24use_custom_get_name_getter" title="$use_custom_get_name_getter :: "><span class="description">$use_custom_get_name_getter</span><pre>$use_custom_get_name_getter</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="property private inherited"><a href="#%24__dirty" title="$__dirty :: Flag whether or not this model's attributes have been modified since it will either be null or an array of column_names that have been modified"><span class="description">Flag whether or not this model's attributes have been modified since it will either be null or an array of column_names that have been modified</span><pre>$__dirty</pre></a></li>
+<li class="property private inherited"><a href="#%24__new_record" title="$__new_record :: Flag that determines if a call to save() should issue an insert or an update sql statement"><span class="description">Flag that determines if a call to save() should issue an insert or an update sql statement</span><pre>$__new_record</pre></a></li>
+<li class="property private inherited"><a href="#%24__readonly" title="$__readonly :: Flag that determines of this model can have a writer method invoked such as: save/update/insert/delete"><span class="description">Flag that determines of this model can have a writer method invoked such as: save/update/insert/delete</span><pre>$__readonly</pre></a></li>
+<li class="property private inherited"><a href="#%24__relationships" title="$__relationships :: Array of relationship objects as model_attribute_name =&gt; relationship"><span class="description">Array of relationship objects as model_attribute_name =&gt; relationship</span><pre>$__relationships</pre></a></li>
+<li class="property private inherited"><a href="#%24attributes" title="$attributes :: Contains model values as column_name =&gt; value"><span class="description">Contains model values as column_name =&gt; value</span><pre>$attributes</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CBook" id="\Book"></a><div href="../classes/Book.html" class="element class">
+<p class="short_description">The base class for your models.</p>
+<div class="details">
+<p class="long_description"><p>Defining an ActiveRecord model for a table called people and orders:</p>
+
+<pre><code>CREATE TABLE people(
+  id int primary key auto_increment,
+  parent_id int,
+  first_name varchar(50),
+  last_name varchar(50)
+);
+
+CREATE TABLE orders(
+  id int primary key auto_increment,
+  person_id int not null,
+  cost decimal(10,2),
+  total decimal(10,2)
+);
+</code></pre>
+
+<pre><code>class Person extends ActiveRecord\Model {
+  static $belongs_to = array(
+    array('parent', 'foreign_key' => 'parent_id', 'class_name' => 'Person')
+  );
+
+  static $has_many = array(
+    array('children', 'foreign_key' => 'parent_id', 'class_name' => 'Person'),
+    array('orders')
+  );
+
+  static $validates_length_of = array(
+    array('first_name', 'within' => array(1,50)),
+    array('last_name', 'within' => array(1,50))
+  );
+}
+
+class Order extends ActiveRecord\Model {
+  static $belongs_to = array(
+    array('person')
+  );
+
+  static $validates_numericality_of = array(
+    array('cost', 'greater_than' => 0),
+    array('total', 'greater_than' => 0)
+  );
+
+  static $before_save = array('calculate_total_with_tax');
+
+  public function calculate_total_with_tax() {
+    $this->total = $this->cost * 0.045;
+  }
+}
+</code></pre>
+
+<p>For a more in-depth look at defining models, relationships, callbacks and many other things
+please consult our <a href="http://www.phpactiverecord.org/guides">Guides</a>.</p></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="..//packages/Default.html">ActiveRecord</a></td>
+</tr></table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__call" id="__call"></a><div class="element clickable method public __call" data-toggle="collapse" data-target=".__call .collapse">
+<h2>Enables the use of build|create for associations.</h2>
+<pre>__call(string $method, mixed $args) : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::__call()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code><p>Name of method</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>mixed</code><p>Method args</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>An instance of a given {@link AbstractRelationship}</div>
+</div></div>
+</div>
+<a name="__callStatic" id="__callStatic"></a><div class="element clickable method public __callStatic" data-toggle="collapse" data-target=".__callStatic .collapse">
+<h2>Enables the use of dynamic finders.</h2>
+<pre>__callStatic(string $method, mixed $args) : <a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Dynamic finders are just an easy way to do queries quickly without having to
+specify an options array with conditions in it.</p>
+
+<pre><code>SomeModel::find_by_first_name('Tito');
+SomeModel::find_by_first_name_and_last_name('Tito','the Grief');
+SomeModel::find_by_first_name_or_last_name('Tito','the Grief');
+SomeModel::find_all_by_last_name('Smith');
+SomeModel::count_by_name('Bob')
+SomeModel::count_by_name_or_state('Bob','VA')
+SomeModel::count_by_name_and_state('Bob','VA')
+</code></pre>
+
+<p>You can also create the model if the find call returned no results:</p>
+
+<pre><code>Person::find_or_create_by_name('Tito');
+
+# would be the equivalent of
+if (!Person::find_by_name('Tito'))
+  Person::create(array('Tito'));
+</code></pre>
+
+<p>Some other examples of find_or_create_by:</p>
+
+<pre><code>Person::find_or_create_by_name_and_id('Tito',1);
+Person::find_or_create_by_name_and_id(array('name' => 'Tito', 'id' => 1));
+</code></pre></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\find</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::__callStatic()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code><p>Name of method</p></div>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>mixed</code><p>Method args</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\ActiveRecord\{@link</code></th>
+<td>ActiveRecordException} if invalid query</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></code></div>
+</div></div>
+</div>
+<a name="__clone" id="__clone"></a><div class="element clickable method public __clone" data-toggle="collapse" data-target=".__clone .collapse">
+<h2>__clone()
+        </h2>
+<pre>__clone() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::__clone()</td>
+</tr></table>
+</div></div>
+</div>
+<a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
+<h2>Constructs a model.</h2>
+<pre>__construct(array $attributes, boolean $guard_attributes, boolean $instantiating_via_find, boolean $new_record) : <a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>When a user instantiates a new object (e.g.: it was not ActiveRecord that instantiated via a find)
+then @var $attributes will be mapped according to the schema's defaults. Otherwise, the given
+$attributes will be mapped via set_attributes_via_mass_assignment.</p>
+
+<pre><code>new Person(array('first_name' => 'Tito', 'last_name' => 'the Grief'));
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::__construct()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attributes</h4>
+<code>array</code><p>Hash containing names and values to mass assign to the model</p></div>
+<div class="subelement argument">
+<h4>$guard_attributes</h4>
+<code>boolean</code><p>Set to true to guard protected/non-accessible attributes</p>
+</div>
+<div class="subelement argument">
+<h4>$instantiating_via_find</h4>
+<code>boolean</code><p>Set to true if this model is being created from a find call</p></div>
+<div class="subelement argument">
+<h4>$new_record</h4>
+<code>boolean</code><p>Set to true if this should be considered a new record</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></code></div>
+</div></div>
+</div>
+<a name="__get" id="__get"></a><div class="element clickable method public __get" data-toggle="collapse" data-target=".__get .collapse">
+<h2>Magic method which delegates to read_attribute(). This handles firing off getter methods,
+as they are not checked/invoked inside of read_attribute(). This circumvents the problem with
+a getter being accessed with the same name as an actual attribute.</h2>
+<pre>__get(string $name) : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>You can also define customer getter methods for the model.</p>
+
+<p>EXAMPLE:</p>
+
+<pre><code>class User extends ActiveRecord\Model {
+
+  # define custom getter methods. Note you must
+  # prepend get_ to your method name:
+  function get_middle_initial() {
+    return $this->middle_name{0};
+  }
+}
+
+$user = new User();
+echo $user->middle_name;  # will call $user->get_middle_name()
+</code></pre>
+
+<p>If you define a custom getter with the same name as an attribute then you
+will need to use read_attribute() to get the attribute's value.
+This is necessary due to the way __get() works.</p>
+
+<p>For example, assume 'name' is a field on the table and we're defining a
+custom getter for 'name':</p>
+
+<pre><code>class User extends ActiveRecord\Model {
+
+  # INCORRECT way to do it
+  # function get_name() {
+  #   return strtoupper($this->name);
+  # }
+
+  function get_name() {
+    return strtoupper($this->read_attribute('name'));
+  }
+}
+
+$user = new User();
+$user->name = 'bob';
+echo $user->name; # => BOB
+</code></pre></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\read_attribute()</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::__get()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Name of an attribute</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>The value of the attribute</div>
+</div></div>
+</div>
+<a name="__isset" id="__isset"></a><div class="element clickable method public __isset" data-toggle="collapse" data-target=".__isset .collapse">
+<h2>Determines if an attribute exists for this {@link Model}.</h2>
+<pre>__isset(string $attribute_name) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::__isset()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attribute_name</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="__set" id="__set"></a><div class="element clickable method public __set" data-toggle="collapse" data-target=".__set .collapse">
+<h2>Magic allows un-defined attributes to set via $attributes.</h2>
+<pre>__set(string $name, mixed $value) : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>You can also define customer setter methods for the model.</p>
+
+<p>EXAMPLE:</p>
+
+<pre><code>class User extends ActiveRecord\Model {
+
+  # define custom setter methods. Note you must
+  # prepend set_ to your method name:
+  function set_password($plaintext) {
+    $this->encrypted_password = md5($plaintext);
+  }
+}
+
+$user = new User();
+$user->password = 'plaintext';  # will call $user->set_password('plaintext')
+</code></pre>
+
+<p>If you define a custom setter with the same name as an attribute then you
+will need to use assign_attribute() to assign the value to the attribute.
+This is necessary due to the way __set() works.</p>
+
+<p>For example, assume 'name' is a field on the table and we're defining a
+custom setter for 'name':</p>
+
+<pre><code>class User extends ActiveRecord\Model {
+
+  # INCORRECT way to do it
+  # function set_name($name) {
+  #   $this->name = strtoupper($name);
+  # }
+
+  function set_name($name) {
+    $this->assign_attribute('name',strtoupper($name));
+  }
+}
+
+$user = new User();
+$user->name = 'bob';
+echo $user->name; # => BOB
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::__set()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Name of attribute, relationship or other to set</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>The value</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\ActiveRecord\{@link</code></th>
+<td>UndefinedPropertyException} if $name does not exist</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>The value</div>
+</div></div>
+</div>
+<a name="__wakeup" id="__wakeup"></a><div class="element clickable method public __wakeup" data-toggle="collapse" data-target=".__wakeup .collapse">
+<h2>__wakeup()
+        </h2>
+<pre>__wakeup() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::__wakeup()</td>
+</tr></table>
+</div></div>
+</div>
+<a name="all" id="all"></a><div class="element clickable method public all" data-toggle="collapse" data-target=".all .collapse">
+<h2>Alias for self::find('all').</h2>
+<pre>all() : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\find</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::all()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>array of records found</div>
+</div></div>
+</div>
+<a name="assign_attribute" id="assign_attribute"></a><div class="element clickable method public assign_attribute" data-toggle="collapse" data-target=".assign_attribute .collapse">
+<h2>Assign a value to an attribute.</h2>
+<pre>assign_attribute(string $name, mixed $value) : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::assign_attribute()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Name of the attribute</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>&$value Value of the attribute</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>the attribute value</div>
+</div></div>
+</div>
+<a name="attribute_is_dirty" id="attribute_is_dirty"></a><div class="element clickable method public attribute_is_dirty" data-toggle="collapse" data-target=".attribute_is_dirty .collapse">
+<h2>Check if a particular attribute has been modified since loading the model.</h2>
+<pre>attribute_is_dirty(string $attribute) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::attribute_is_dirty()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attribute</h4>
+<code>string</code><p>Name of the attribute</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>TRUE if it has been modified.</div>
+</div></div>
+</div>
+<a name="attributes" id="attributes"></a><div class="element clickable method public attributes" data-toggle="collapse" data-target=".attributes .collapse">
+<h2>Returns a copy of the model's attributes hash.</h2>
+<pre>attributes() : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::attributes()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>A copy of the model's attribute data</div>
+</div></div>
+</div>
+<a name="connection" id="connection"></a><div class="element clickable method public connection" data-toggle="collapse" data-target=".connection .collapse">
+<h2>Retrieve the connection for this model.</h2>
+<pre>connection() : <a href="../classes/ActiveRecord.Connection.html">\ActiveRecord\Connection</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::connection()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Connection.html">\ActiveRecord\Connection</a></code></div>
+</div></div>
+</div>
+<a name="count" id="count"></a><div class="element clickable method public count" data-toggle="collapse" data-target=".count .collapse">
+<h2>Get a count of qualifying records.</h2>
+<pre>count() : int</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><pre><code>YourModel::count(array('conditions' => 'amount > 3.14159265'));
+</code></pre></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\find</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::count()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>int</code>Number of records that matched the query</div>
+</div></div>
+</div>
+<a name="create" id="create"></a><div class="element clickable method public create" data-toggle="collapse" data-target=".create .collapse">
+<h2>Creates a model and saves it to the database.</h2>
+<pre>create(array $attributes, boolean $validate) : <a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::create()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attributes</h4>
+<code>array</code><p>Array of the models attributes</p></div>
+<div class="subelement argument">
+<h4>$validate</h4>
+<code>boolean</code><p>True if the validators should be run</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></code></div>
+</div></div>
+</div>
+<a name="delete" id="delete"></a><div class="element clickable method public delete" data-toggle="collapse" data-target=".delete .collapse">
+<h2>Deletes this model from the database and returns true if successful.</h2>
+<pre>delete() : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::delete()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="delete_all" id="delete_all"></a><div class="element clickable method public delete_all" data-toggle="collapse" data-target=".delete_all .collapse">
+<h2>Deletes records matching conditions in $options</h2>
+<pre>delete_all($options) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Does not instantiate models and therefore does not invoke callbacks</p>
+
+<p>Delete all using a hash:</p>
+
+<pre><code>YourModel::delete_all(array('conditions' => array('name' => 'Tito')));
+</code></pre>
+
+<p>Delete all using an array:</p>
+
+<pre><code>YourModel::delete_all(array('conditions' => array('name = ?', 'Tito')));
+</code></pre>
+
+<p>Delete all using a string:</p>
+
+<pre><code>YourModel::delete_all(array('conditions' => 'name = "Tito"));
+</code></pre>
+
+<p>An options array takes the following parameters:</p>
+
+<ul>
+<li><b>conditions:</b> Conditions using a string/hash/array</li>
+<li><b>limit:</b> Limit number of records to delete (MySQL & Sqlite only)</li>
+<li><b>order:</b> A SQL fragment for ordering such as: 'name asc', 'id desc, name asc' (MySQL & Sqlite only)</li>
+</ul></p>
+<table class="table table-bordered">
+<tr>
+<th>params</th>
+<td>array $options
+return integer Number of rows affected</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::delete_all()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="dirty_attributes" id="dirty_attributes"></a><div class="element clickable method public dirty_attributes" data-toggle="collapse" data-target=".dirty_attributes .collapse">
+<h2>Returns hash of attributes that have been modified since loading the model.</h2>
+<pre>dirty_attributes() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::dirty_attributes()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>null if no dirty attributes otherwise returns array of dirty attributes.</div>
+</div></div>
+</div>
+<a name="exists" id="exists"></a><div class="element clickable method public exists" data-toggle="collapse" data-target=".exists .collapse">
+<h2>Determine if a record exists.</h2>
+<pre>exists() : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><pre><code>SomeModel::exists(123);
+SomeModel::exists(array('conditions' => array('id=? and name=?', 123, 'Tito')));
+SomeModel::exists(array('id' => 123, 'name' => 'Tito'));
+</code></pre></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\find</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::exists()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="find" id="find"></a><div class="element clickable method public find" data-toggle="collapse" data-target=".find .collapse">
+<h2>Find records in the database.</h2>
+<pre>find() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Finding by the primary key:</p>
+
+<pre><code># queries for the model with id=123
+YourModel::find(123);
+
+# queries for model with id in(1,2,3)
+YourModel::find(1,2,3);
+
+# finding by pk accepts an options array
+YourModel::find(123,array('order' => 'name desc'));
+</code></pre>
+
+<p>Finding by using a conditions array:</p>
+
+<pre><code>YourModel::find('first', array('conditions' => array('name=?','Tito'),
+  'order' => 'name asc'))
+YourModel::find('all', array('conditions' => 'amount > 3.14159265'));
+YourModel::find('all', array('conditions' => array('id in(?)', array(1,2,3))));
+</code></pre>
+
+<p>Finding by using a hash:</p>
+
+<pre><code>YourModel::find(array('name' => 'Tito', 'id' => 1));
+YourModel::find('first',array('name' => 'Tito', 'id' => 1));
+YourModel::find('all',array('name' => 'Tito', 'id' => 1));
+</code></pre>
+
+<p>An options array can take the following parameters:</p>
+
+<ul>
+<li><b>select:</b> A SQL fragment for what fields to return such as: '*', 'people.*', 'first_name, last_name, id'</li>
+<li><b>joins:</b> A SQL join fragment such as: 'JOIN roles ON(roles.user_id=user.id)' or a named association on the model</li>
+<li><b>include:</b> TODO not implemented yet</li>
+<li><b>conditions:</b> A SQL fragment such as: 'id=1', array('id=1'), array('name=? and id=?','Tito',1), array('name IN(?)', array('Tito','Bob')),
+array('name' => 'Tito', 'id' => 1)</li>
+<li><b>limit:</b> Number of records to limit the query to</li>
+<li><b>offset:</b> The row offset to return results from for the query</li>
+<li><b>order:</b> A SQL fragment for order such as: 'name asc', 'name asc, id desc'</li>
+<li><b>readonly:</b> Return all the models in readonly mode</li>
+<li><b>group:</b> A SQL group by fragment</li>
+</ul></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::find()</td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\ActiveRecord\{@link</code></th>
+<td>RecordNotFound} if no options are passed or finding by pk and no records matched</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>An array of records found if doing a find_all otherwise a single Model object or null if it wasn't found. NULL is only return when doing a first/last find. If doing an all find and no records matched this will return an empty array.</div>
+</div></div>
+</div>
+<a name="find_by_pk" id="find_by_pk"></a><div class="element clickable method public find_by_pk" data-toggle="collapse" data-target=".find_by_pk .collapse">
+<h2>Finder method which will find by a single or array of primary keys for this model.</h2>
+<pre>find_by_pk(array $values, array $options) : <a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\find</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::find_by_pk()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$values</h4>
+<code>array</code><p>An array containing values for the pk</p></div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>An options array</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\ActiveRecord\{@link</code></th>
+<td>RecordNotFound} if a record could not be found</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></code></div>
+</div></div>
+</div>
+<a name="find_by_sql" id="find_by_sql"></a><div class="element clickable method public find_by_sql" data-toggle="collapse" data-target=".find_by_sql .collapse">
+<h2>Find using a raw SELECT query.</h2>
+<pre>find_by_sql(string $sql, array $values) : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><pre><code>YourModel::find_by_sql("SELECT * FROM people WHERE name=?",array('Tito'));
+YourModel::find_by_sql("SELECT * FROM people WHERE name='Tito'");
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::find_by_sql()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql</h4>
+<code>string</code><p>The raw SELECT query</p></div>
+<div class="subelement argument">
+<h4>$values</h4>
+<code>array</code><p>An array of values for any parameters that needs to be bound</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array of models</div>
+</div></div>
+</div>
+<a name="first" id="first"></a><div class="element clickable method public first" data-toggle="collapse" data-target=".first .collapse">
+<h2>Alias for self::find('first').</h2>
+<pre>first() : <a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\find</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::first()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></code>The first matched record or null if not found</div>
+</div></div>
+</div>
+<a name="flag_dirty" id="flag_dirty"></a><div class="element clickable method public flag_dirty" data-toggle="collapse" data-target=".flag_dirty .collapse">
+<h2>Flags an attribute as dirty.</h2>
+<pre>flag_dirty(string $name) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::flag_dirty()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Attribute name</p></div>
+</div></div>
+</div>
+<a name="get_lower_name" id="get_lower_name"></a><div class="element clickable method public get_lower_name" data-toggle="collapse" data-target=".get_lower_name .collapse">
+<h2>get_lower_name()
+        </h2>
+<pre>get_lower_name() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="get_name" id="get_name"></a><div class="element clickable method public get_name" data-toggle="collapse" data-target=".get_name .collapse">
+<h2>get_name()
+        </h2>
+<pre>get_name() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="get_primary_key" id="get_primary_key"></a><div class="element clickable method public get_primary_key" data-toggle="collapse" data-target=".get_primary_key .collapse">
+<h2>Retrieve the primary key name.</h2>
+<pre>get_primary_key(boolean $first) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::get_primary_key()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$first</h4>
+<code>boolean</code><p>Set to true to return the first value in the pk array only</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The primary key for the model</div>
+</div></div>
+</div>
+<a name="get_real_attribute_name" id="get_real_attribute_name"></a><div class="element clickable method public get_real_attribute_name" data-toggle="collapse" data-target=".get_real_attribute_name .collapse">
+<h2>Returns the actual attribute name if $name is aliased.</h2>
+<pre>get_real_attribute_name(string $name) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::get_real_attribute_name()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>An attribute name</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="get_upper_name" id="get_upper_name"></a><div class="element clickable method public get_upper_name" data-toggle="collapse" data-target=".get_upper_name .collapse">
+<h2>get_upper_name()
+        </h2>
+<pre>get_upper_name() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="get_validation_rules" id="get_validation_rules"></a><div class="element clickable method public get_validation_rules" data-toggle="collapse" data-target=".get_validation_rules .collapse">
+<h2>Returns array of validator data for this Model.</h2>
+<pre>get_validation_rules() : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Will return an array looking like:</p>
+
+<pre><code>array(
+  'name' => array(
+    array('validator' => 'validates_presence_of'),
+    array('validator' => 'validates_inclusion_of', 'in' => array('Bob','Joe','John')),
+  'password' => array(
+    array('validator' => 'validates_length_of', 'minimum' => 6))
+  )
+);
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::get_validation_rules()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array containing validator data for this model.</div>
+</div></div>
+</div>
+<a name="get_values_for" id="get_values_for"></a><div class="element clickable method public get_values_for" data-toggle="collapse" data-target=".get_values_for .collapse">
+<h2>Returns an associative array containing values for all the attributes in $attributes</h2>
+<pre>get_values_for(array $attributes) : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::get_values_for()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attributes</h4>
+<code>array</code><p>Array containing attribute names</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>A hash containing $name => $value</div>
+</div></div>
+</div>
+<a name="is_dirty" id="is_dirty"></a><div class="element clickable method public is_dirty" data-toggle="collapse" data-target=".is_dirty .collapse">
+<h2>Returns true if the model has been modified.</h2>
+<pre>is_dirty() : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::is_dirty()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if modified</div>
+</div></div>
+</div>
+<a name="is_invalid" id="is_invalid"></a><div class="element clickable method public is_invalid" data-toggle="collapse" data-target=".is_invalid .collapse">
+<h2>Runs validations and returns true if invalid.</h2>
+<pre>is_invalid() : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\is_valid</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::is_invalid()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="is_new_record" id="is_new_record"></a><div class="element clickable method public is_new_record" data-toggle="collapse" data-target=".is_new_record .collapse">
+<h2>Determine if the model is a new record.</h2>
+<pre>is_new_record() : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::is_new_record()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="is_options_hash" id="is_options_hash"></a><div class="element clickable method public is_options_hash" data-toggle="collapse" data-target=".is_options_hash .collapse">
+<h2>Determines if the specified array is a valid ActiveRecord options array.</h2>
+<pre>is_options_hash(array $array, bool $throw) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::is_options_hash()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>An options array</p></div>
+<div class="subelement argument">
+<h4>$throw</h4>
+<code>bool</code><p>True to throw an exception if not valid</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\ActiveRecord\{@link</code></th>
+<td>ActiveRecordException} if the array contained any invalid options</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if valid otherwise valse</div>
+</div></div>
+</div>
+<a name="is_readonly" id="is_readonly"></a><div class="element clickable method public is_readonly" data-toggle="collapse" data-target=".is_readonly .collapse">
+<h2>Determine if the model is in read-only mode.</h2>
+<pre>is_readonly() : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::is_readonly()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="is_valid" id="is_valid"></a><div class="element clickable method public is_valid" data-toggle="collapse" data-target=".is_valid .collapse">
+<h2>Run validations on model and returns whether or not model passed validation.</h2>
+<pre>is_valid() : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\is_invalid</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::is_valid()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a name="last" id="last"></a><div class="element clickable method public last" data-toggle="collapse" data-target=".last .collapse">
+<h2>Alias for self::find('last')</h2>
+<pre>last() : <a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\find</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::last()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></code>The last matched record or null if not found</div>
+</div></div>
+</div>
+<a name="name" id="name"></a><div class="element clickable method public name" data-toggle="collapse" data-target=".name .collapse">
+<h2>name()
+        </h2>
+<pre>name() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="query" id="query"></a><div class="element clickable method public query" data-toggle="collapse" data-target=".query .collapse">
+<h2>Helper method to run arbitrary queries against the model's database connection.</h2>
+<pre>query(string $sql, array $values) : object</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::query()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql</h4>
+<code>string</code><p>SQL to execute</p></div>
+<div class="subelement argument">
+<h4>$values</h4>
+<code>array</code><p>Bind values, if any, for the query</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>A PDOStatement object</div>
+</div></div>
+</div>
+<a name="read_attribute" id="read_attribute"></a><div class="element clickable method public read_attribute" data-toggle="collapse" data-target=".read_attribute .collapse">
+<h2>Retrieves an attribute's value or a relationship object based on the name passed. If the attribute
+accessed is 'id' then it will return the model's primary key no matter what the actual attribute name is
+for the primary key.</h2>
+<pre>read_attribute(string $name) : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::read_attribute()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Name of an attribute</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\ActiveRecord\{@link</code></th>
+<td>UndefinedPropertyException} if name could not be resolved to an attribute, relationship, ...</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>The value of the attribute</div>
+</div></div>
+</div>
+<a name="readonly" id="readonly"></a><div class="element clickable method public readonly" data-toggle="collapse" data-target=".readonly .collapse">
+<h2>Flag model as readonly.</h2>
+<pre>readonly(boolean $readonly) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::readonly()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$readonly</h4>
+<code>boolean</code><p>Set to true to put the model into readonly mode</p></div>
+</div></div>
+</div>
+<a name="reestablish_connection" id="reestablish_connection"></a><div class="element clickable method public reestablish_connection" data-toggle="collapse" data-target=".reestablish_connection .collapse">
+<h2>Re-establishes the database connection with a new connection.</h2>
+<pre>reestablish_connection() : <a href="../classes/ActiveRecord.Connection.html">\ActiveRecord\Connection</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::reestablish_connection()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Connection.html">\ActiveRecord\Connection</a></code></div>
+</div></div>
+</div>
+<a name="reload" id="reload"></a><div class="element clickable method public reload" data-toggle="collapse" data-target=".reload .collapse">
+<h2>Reloads the attributes and relationships of this object from the database.</h2>
+<pre>reload() : <a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::reload()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Model.html">\ActiveRecord\Model</a></code></div>
+</div></div>
+</div>
+<a name="reset_dirty" id="reset_dirty"></a><div class="element clickable method public reset_dirty" data-toggle="collapse" data-target=".reset_dirty .collapse">
+<h2>Resets the dirty array.</h2>
+<pre>reset_dirty() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\dirty_attributes</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::reset_dirty()</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="save" id="save"></a><div class="element clickable method public save" data-toggle="collapse" data-target=".save .collapse">
+<h2>Save the model to the database.</h2>
+<pre>save(boolean $validate) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>This function will automatically determine if an INSERT or UPDATE needs to occur.
+If a validation or a callback for this model returns false, then the model will
+not be saved and this will return false.</p>
+
+<p>If saving an existing model only data that has changed will be saved.</p></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::save()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$validate</h4>
+<code>boolean</code><p>Set to true or false depending on if you want the validators to run or not</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the model was saved to the database otherwise false</div>
+</div></div>
+</div>
+<a name="set_attributes" id="set_attributes"></a><div class="element clickable method public set_attributes" data-toggle="collapse" data-target=".set_attributes .collapse">
+<h2>Mass update the model with data from an attributes hash.</h2>
+<pre>set_attributes(array $attributes) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Unlike update_attributes() this method only updates the model's data
+but DOES NOT save it to the database.</p></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\update_attributes</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::set_attributes()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attributes</h4>
+<code>array</code><p>An array containing data to update in the form array(name => value, ...)</p>
+</div>
+</div></div>
+</div>
+<a name="set_timestamps" id="set_timestamps"></a><div class="element clickable method public set_timestamps" data-toggle="collapse" data-target=".set_timestamps .collapse">
+<h2>Updates a model's timestamps.</h2>
+<pre>set_timestamps() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::set_timestamps()</td>
+</tr></table>
+</div></div>
+</div>
+<a name="table" id="table"></a><div class="element clickable method public table" data-toggle="collapse" data-target=".table .collapse">
+<h2>Returns the {@link Table} object for this model.</h2>
+<pre>table() : <a href="../classes/ActiveRecord.Table.html">\ActiveRecord\Table</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Be sure to call in static scoping: static::table()</p></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::table()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/ActiveRecord.Table.html">\ActiveRecord\Table</a></code></div>
+</div></div>
+</div>
+<a name="table_name" id="table_name"></a><div class="element clickable method public table_name" data-toggle="collapse" data-target=".table_name .collapse">
+<h2>Retrieves the name of the table for this Model.</h2>
+<pre>table_name() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::table_name()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="to_array" id="to_array"></a><div class="element clickable method public to_array" data-toggle="collapse" data-target=".to_array .collapse">
+<h2>Returns an Array representation of this model.</h2>
+<pre>to_array(array $options) : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\Serialization</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::to_array()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>An array containing options for json serialization (see {@link Serialization} for valid options)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Array representation of the model</div>
+</div></div>
+</div>
+<a name="to_csv" id="to_csv"></a><div class="element clickable method public to_csv" data-toggle="collapse" data-target=".to_csv .collapse">
+<h2>Returns an CSV representation of this model.</h2>
+<pre>to_csv(array $options) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Can take optional delimiter and enclosure
+(defaults are , and double quotes)</p>
+
+<p>Ex:</p>
+
+<pre><code>ActiveRecord\CsvSerializer::$delimiter=';';
+ActiveRecord\CsvSerializer::$enclosure='';
+YourModel::find('first')->to_csv(array('only'=>array('name','level')));
+returns: Joe,2
+
+YourModel::find('first')->to_csv(array('only_header'=>true,'only'=>array('name','level')));
+returns: name,level
+</code></pre></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\Serialization</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::to_csv()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>An array containing options for csv serialization (see {@link Serialization} for valid options)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>CSV representation of the model</div>
+</div></div>
+</div>
+<a name="to_json" id="to_json"></a><div class="element clickable method public to_json" data-toggle="collapse" data-target=".to_json .collapse">
+<h2>Returns a JSON representation of this model.</h2>
+<pre>to_json(array $options) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\Serialization</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::to_json()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>An array containing options for json serialization (see {@link Serialization} for valid options)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>JSON representation of the model</div>
+</div></div>
+</div>
+<a name="to_xml" id="to_xml"></a><div class="element clickable method public to_xml" data-toggle="collapse" data-target=".to_xml .collapse">
+<h2>Returns an XML representation of this model.</h2>
+<pre>to_xml(array $options) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\Serialization</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::to_xml()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>An array containing options for xml serialization (see {@link Serialization} for valid options)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>XML representation of the model</div>
+</div></div>
+</div>
+<a name="transaction" id="transaction"></a><div class="element clickable method public transaction" data-toggle="collapse" data-target=".transaction .collapse">
+<h2>Executes a block of code inside a database transaction.</h2>
+<pre>transaction(\ActiveRecord\Closure $closure) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><pre><code>YourModel::transaction(function()
+{
+  YourModel::create(array("name" => "blah"));
+});
+</code></pre>
+
+<p>If an exception is thrown inside the closure the transaction will
+automatically be rolled back. You can also return false from your
+closure to cause a rollback:</p>
+
+<pre><code>YourModel::transaction(function()
+{
+  YourModel::create(array("name" => "blah"));
+  throw new Exception("rollback!");
+});
+
+YourModel::transaction(function()
+{
+  YourModel::create(array("name" => "blah"));
+  return false; # rollback!
+});
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::transaction()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$closure</h4>
+<code>\ActiveRecord\Closure</code><p>The closure to execute. To cause a rollback have your closure return false or throw an exception.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the transaction was committed, False if rolled back.</div>
+</div></div>
+</div>
+<a name="update_all" id="update_all"></a><div class="element clickable method public update_all" data-toggle="collapse" data-target=".update_all .collapse">
+<h2>Updates records using set in $options</h2>
+<pre>update_all($options) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Does not instantiate models and therefore does not invoke callbacks</p>
+
+<p>Update all using a hash:</p>
+
+<pre><code>YourModel::update_all(array('set' => array('name' => "Bob")));
+</code></pre>
+
+<p>Update all using a string:</p>
+
+<pre><code>YourModel::update_all(array('set' => 'name = "Bob"'));
+</code></pre>
+
+<p>An options array takes the following parameters:</p>
+
+<ul>
+<li><b>set:</b> String/hash of field names and their values to be updated with
+<li><b>conditions:</b> Conditions using a string/hash/array</li>
+<li><b>limit:</b> Limit number of records to update (MySQL & Sqlite only)</li>
+<li><b>order:</b> A SQL fragment for ordering such as: 'name asc', 'id desc, name asc' (MySQL & Sqlite only)</li>
+</ul></p>
+<table class="table table-bordered">
+<tr>
+<th>params</th>
+<td>array $options
+return integer Number of rows affected</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::update_all()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="update_attribute" id="update_attribute"></a><div class="element clickable method public update_attribute" data-toggle="collapse" data-target=".update_attribute .collapse">
+<h2>Updates a single attribute and saves the record without going through the normal validation procedure.</h2>
+<pre>update_attribute(string $name, mixed $value) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::update_attribute()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Name of attribute</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Value of the attribute</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if successful otherwise false</div>
+</div></div>
+</div>
+<a name="update_attributes" id="update_attributes"></a><div class="element clickable method public update_attributes" data-toggle="collapse" data-target=".update_attributes .collapse">
+<h2>Mass update the model with an array of attribute data and saves to the database.</h2>
+<pre>update_attributes(array $attributes) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::update_attributes()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attributes</h4>
+<code>array</code><p>An attribute data array in the form array(name => value, ...)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if successfully updated and saved otherwise false</div>
+</div></div>
+</div>
+<a name="upper_name" id="upper_name"></a><div class="element clickable method public upper_name" data-toggle="collapse" data-target=".upper_name .collapse">
+<h2>upper_name()
+        </h2>
+<pre>upper_name() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="values_for" id="values_for"></a><div class="element clickable method public values_for" data-toggle="collapse" data-target=".values_for .collapse">
+<h2>Helper to return a hash of values for the specified attributes.</h2>
+<pre>values_for(array $attribute_names) : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::values_for()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attribute_names</h4>
+<code>array</code><p>Array of attribute names</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array in the form array(name => value, ...)</div>
+</div></div>
+</div>
+<a name="values_for_pk" id="values_for_pk"></a><div class="element clickable method public values_for_pk" data-toggle="collapse" data-target=".values_for_pk .collapse">
+<h2>Helper that creates an array of values for the primary key(s).</h2>
+<pre>values_for_pk() : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::values_for_pk()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array in the form array(key_name => value, ...)</div>
+</div></div>
+</div>
+<a name="_validate" id="_validate"></a><div class="element clickable method private _validate" data-toggle="collapse" data-target="._validate .collapse">
+<h2>Validates the model.</h2>
+<pre>_validate() : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::_validate()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if passed validators otherwise false</div>
+</div></div>
+</div>
+<a name="insert" id="insert"></a><div class="element clickable method private insert" data-toggle="collapse" data-target=".insert .collapse">
+<h2>Issue an INSERT sql statement for this model's attribute.</h2>
+<pre>insert(boolean $validate) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\save</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::insert()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$validate</h4>
+<code>boolean</code><p>Set to true or false depending on if you want the validators to run or not</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the model was saved to the database otherwise false</div>
+</div></div>
+</div>
+<a name="invoke_callback" id="invoke_callback"></a><div class="element clickable method private invoke_callback" data-toggle="collapse" data-target=".invoke_callback .collapse">
+<h2>Invokes the specified callback on this model.</h2>
+<pre>invoke_callback(string $method_name, boolean $must_exist) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::invoke_callback()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method_name</h4>
+<code>string</code><p>Name of the call back to run.</p></div>
+<div class="subelement argument">
+<h4>$must_exist</h4>
+<code>boolean</code><p>Set to true to raise an exception if the callback does not exist.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if invoked or null if not</div>
+</div></div>
+</div>
+<a name="is_delegated" id="is_delegated"></a><div class="element clickable method private is_delegated" data-toggle="collapse" data-target=".is_delegated .collapse">
+<h2>Returns the attribute name on the delegated relationship if $name is
+delegated or null if not delegated.</h2>
+<pre>is_delegated(string $name, array $delegate) : \ActiveRecord\delegated</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::is_delegated()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Name of an attribute</p></div>
+<div class="subelement argument">
+<h4>$delegate</h4>
+<code>array</code><p>An array containing delegate data</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\ActiveRecord\delegated</code>attribute name or null</div>
+</div></div>
+</div>
+<a name="serialize" id="serialize"></a><div class="element clickable method private serialize" data-toggle="collapse" data-target=".serialize .collapse">
+<h2>Creates a serializer based on pre-defined to_serializer()</h2>
+<pre>serialize(string $type, array $options) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>An options array can take the following parameters:</p>
+
+<ul>
+<li><b>only:</b> a string or array of attributes to be included.</li>
+<li><b>excluded:</b> a string or array of attributes to be excluded.</li>
+<li><b>methods:</b> a string or array of methods to invoke. The method's name will be used as a key for the final attributes array
+along with the method's returned value</li>
+<li><b>include:</b> a string or array of associated models to include in the final serialized product.</li>
+</ul></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::serialize()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>Either Xml, Json, Csv or Array</p></div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>Options array for the serializer</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Serialized representation of the model</div>
+</div></div>
+</div>
+<a name="set_attributes_via_mass_assignment" id="set_attributes_via_mass_assignment"></a><div class="element clickable method private set_attributes_via_mass_assignment" data-toggle="collapse" data-target=".set_attributes_via_mass_assignment .collapse">
+<h2>Passing $guard_attributes as true will throw an exception if an attribute does not exist.</h2>
+<pre>set_attributes_via_mass_assignment(array $attributes, boolean $guard_attributes) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::set_attributes_via_mass_assignment()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$attributes</h4>
+<code>array</code><p>An array in the form array(name => value, ...)</p>
+</div>
+<div class="subelement argument">
+<h4>$guard_attributes</h4>
+<code>boolean</code><p>Flag of whether or not protected/non-accessible attributes should be guarded</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/ActiveRecord.UndefinedPropertyException.html">\ActiveRecord\UndefinedPropertyException</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="update" id="update"></a><div class="element clickable method private update" data-toggle="collapse" data-target=".update .collapse">
+<h2>Issue an UPDATE sql statement for this model's dirty attributes.</h2>
+<pre>update(boolean $validate) : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td>\ActiveRecord\save</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::update()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$validate</h4>
+<code>boolean</code><p>Set to true or false depending on if you want the validators to run or not</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if the model was saved to the database otherwise false</div>
+</div></div>
+</div>
+<a name="verify_not_readonly" id="verify_not_readonly"></a><div class="element clickable method private verify_not_readonly" data-toggle="collapse" data-target=".verify_not_readonly .collapse">
+<h2>Throws an exception if this model is set to readonly.</h2>
+<pre>verify_not_readonly(string $method_name) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::verify_not_readonly()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method_name</h4>
+<code>string</code><p>Name of method that was invoked on model for exception message</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/ActiveRecord.ReadOnlyException.html">\ActiveRecord\ReadOnlyException</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24VALID_OPTIONS" id="$VALID_OPTIONS"> </a><div class="element clickable property public $VALID_OPTIONS" data-toggle="collapse" data-target=".$VALID_OPTIONS .collapse">
+<h2>A list of valid finder options.</h2>
+<pre>$VALID_OPTIONS : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$VALID_OPTIONS</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24alias_attribute" id="$alias_attribute"> </a><div class="element clickable property public $alias_attribute" data-toggle="collapse" data-target=".$alias_attribute .collapse">
+<h2>Allows you to create aliases for attributes.</h2>
+<pre>$alias_attribute : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><pre><code>class Person extends ActiveRecord\Model {
+  static $alias_attribute = array(
+    'alias_first_name' => 'first_name',
+    'alias_last_name' => 'last_name');
+}
+
+$person = Person::first();
+$person->alias_first_name = 'Tito';
+echo $person->alias_first_name;
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$alias_attribute</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24attr_accessible" id="$attr_accessible"> </a><div class="element clickable property public $attr_accessible" data-toggle="collapse" data-target=".$attr_accessible .collapse">
+<h2>Whitelist of attributes that are checked from mass-assignment calls such as constructing a model or using update_attributes.</h2>
+<pre>$attr_accessible : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>This is the opposite of <a href="attr_protected">$attr_protected</a>.</p>
+
+<pre><code>class Person extends ActiveRecord\Model {
+  static $attr_accessible = array('first_name','last_name');
+}
+
+$person = new Person(array(
+  'first_name' => 'Tito',
+  'last_name' => 'the Grief',
+  'id' => 11111));
+
+echo $person->id; # => null
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$attr_accessible</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24attr_protected" id="$attr_protected"> </a><div class="element clickable property public $attr_protected" data-toggle="collapse" data-target=".$attr_protected .collapse">
+<h2>Blacklist of attributes that cannot be mass-assigned.</h2>
+<pre>$attr_protected : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>This is the opposite of <a href="attr_accessible">$attr_accessible</a> and the format
+for defining these are exactly the same.</p>
+
+<p>If the attribute is both accessible and protected, it is treated as protected.</p></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$attr_protected</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24belongs_to" id="$belongs_to"> </a><div class="element clickable property public $belongs_to" data-toggle="collapse" data-target=".$belongs_to .collapse">
+<h2>$belongs_to</h2>
+<pre>$belongs_to </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24connection" id="$connection"> </a><div class="element clickable property public $connection" data-toggle="collapse" data-target=".$connection .collapse">
+<h2>Set to the name of the connection this {@link Model} should use.</h2>
+<pre>$connection : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$connection</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24db" id="$db"> </a><div class="element clickable property public $db" data-toggle="collapse" data-target=".$db .collapse">
+<h2>Set to the name of the database this Model's table is in.</h2>
+<pre>$db : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$db</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24delegate" id="$delegate"> </a><div class="element clickable property public $delegate" data-toggle="collapse" data-target=".$delegate .collapse">
+<h2>Delegates calls to a relationship.</h2>
+<pre>$delegate : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><pre><code>class Person extends ActiveRecord\Model {
+  static $belongs_to = array(array('venue'),array('host'));
+  static $delegate = array(
+    array('name', 'state', 'to' => 'venue'),
+    array('name', 'to' => 'host', 'prefix' => 'woot'));
+}
+</code></pre>
+
+<p>Can then do:</p>
+
+<pre><code>$person->state     # same as calling $person->venue->state
+$person->name      # same as calling $person->venue->name
+$person->woot_name # same as calling $person->host->name
+</code></pre></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$delegate</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24errors" id="$errors"> </a><div class="element clickable property public $errors" data-toggle="collapse" data-target=".$errors .collapse">
+<h2>An instance of {@link Errors} and will be instantiated once a write method is called.</h2>
+<pre>$errors : <a href="../classes/ActiveRecord.Errors.html">\ActiveRecord\Errors</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$errors</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24has_one" id="$has_one"> </a><div class="element clickable property public $has_one" data-toggle="collapse" data-target=".$has_one .collapse">
+<h2>$has_one</h2>
+<pre>$has_one </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24primary_key" id="$primary_key"> </a><div class="element clickable property public $primary_key" data-toggle="collapse" data-target=".$primary_key .collapse">
+<h2>Set this to override the default primary key name if different from default name of "id".</h2>
+<pre>$primary_key : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$primary_key</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24sequence" id="$sequence"> </a><div class="element clickable property public $sequence" data-toggle="collapse" data-target=".$sequence .collapse">
+<h2>Set this to explicitly specify the sequence name for the table.</h2>
+<pre>$sequence : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$sequence</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24table_name" id="$table_name"> </a><div class="element clickable property public $table_name" data-toggle="collapse" data-target=".$table_name .collapse">
+<h2>Set this to explicitly specify the model's table name if different from inferred name.</h2>
+<pre>$table_name : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>If your table doesn't follow our table name convention you can set this to the
+name of your table to explicitly tell ActiveRecord what your table is called.</p></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$table_name</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24use_custom_get_name_getter" id="$use_custom_get_name_getter"> </a><div class="element clickable property public $use_custom_get_name_getter" data-toggle="collapse" data-target=".$use_custom_get_name_getter .collapse">
+<h2>$use_custom_get_name_getter</h2>
+<pre>$use_custom_get_name_getter </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+</div>
+<a name="%24__dirty" id="$__dirty"> </a><div class="element clickable property private $__dirty" data-toggle="collapse" data-target=".$__dirty .collapse">
+<h2>Flag whether or not this model's attributes have been modified since it will either be null or an array of column_names that have been modified</h2>
+<pre>$__dirty : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$__dirty</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24__new_record" id="$__new_record"> </a><div class="element clickable property private $__new_record" data-toggle="collapse" data-target=".$__new_record .collapse">
+<h2>Flag that determines if a call to save() should issue an insert or an update sql statement</h2>
+<pre>$__new_record : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$__new_record</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24__readonly" id="$__readonly"> </a><div class="element clickable property private $__readonly" data-toggle="collapse" data-target=".$__readonly .collapse">
+<h2>Flag that determines of this model can have a writer method invoked such as: save/update/insert/delete</h2>
+<pre>$__readonly : boolean</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$__readonly</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24__relationships" id="$__relationships"> </a><div class="element clickable property private $__relationships" data-toggle="collapse" data-target=".$__relationships .collapse">
+<h2>Array of relationship objects as model_attribute_name =&gt; relationship</h2>
+<pre>$__relationships : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$__relationships</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24attributes" id="$attributes"> </a><div class="element clickable property private $attributes" data-toggle="collapse" data-target=".$attributes .collapse">
+<h2>Contains model values as column_name =&gt; value</h2>
+<pre>$attributes : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ActiveRecord\Model::$$attributes</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
+            generated on 2012-04-25T11:51:46-07:00.<br></footer></div>
+</div>
+</body>
+</html>
