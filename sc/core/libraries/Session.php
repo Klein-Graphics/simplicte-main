@@ -1,20 +1,51 @@
 <?php
-  
-  namespace Library;
+/**
+ * Session Library
+ *
+ * Handles the customer's PHP session, setting an getting details about who's
+ * logged-in
+ *
+ * @package Session
+ */
+namespace Library;
 
-  class Session extends \SC_Library {
-  
+/**
+ * Session library class
+ *
+ * @package Session
+ */
+class Session extends \SC_Library {
+
+    /**
+     * This class requires the Customer and Transactions libraries
+     */
     public static $required_libraries = array('Customer','Transactions');
-    
+
+    /**
+     * Construct
+     *
+     * Starts the PHP session and initializes the class
+     *
+     * @return null
+     */
     function __construct() {
-      parent::__construct();
-      
-      session_start();   
-      
-      $this->initialize();                 
+        parent::__construct();
+
+        session_start();   
+
+        $this->initialize();                 
             
     }   
-    
+
+    /**
+     * Get Magic Method
+     *
+     * Allows the object to return session variables as object properties
+     *
+     * @return mixed
+     *
+     * @param string $name The name of the variable
+     */
     function __get($name) {
         if (isset($_SESSION[$name])) {
             return $_SESSION[$name];
@@ -29,14 +60,28 @@
         $trace = debug_backtrace();
         trigger_error("Invalid session variable: <strong>$name</strong>, called at {$trace[0]['line']} in {$trace[0]['file']}",E_USER_WARNING);
     }
-    
+
+    /**
+     * Initialize
+     *
+     * Initialize the various required session variables
+     *
+     * @return null
+     */
     function initialize() {
         //Make sure everything has been setup
         $this->get_user();
         $this->get_customer();
         $this->get_open_transaction();     
     }
-    
+
+    /**
+     * Get User
+     *
+     * Gets the current customer's DB id, creating a DB record if one doesn't exist
+     *
+     * @return int
+     */
     function get_user() {
       //Have they been designated a user id?
       if (isset($_SESSION['user_id'])) {
@@ -55,7 +100,15 @@
       
       return $_SESSION['user_id'];                  
     }
-    
+
+    /**
+     * Get Customer
+     *
+     * Gets the current customer's human-readable customer number, creating a DB record
+     * if one doesn't exist
+     *
+     * @return string
+     */
     function get_customer() {
       if (isset($_SESSION['customer_id'])) {
         return $_SESSION['customer_id'];
@@ -73,7 +126,15 @@
       
       return $_SESSION['customer_id'];
     }
-    
+
+    /**
+     * Get Open Transaction
+     *
+     * Gets the current customer's transaction DB id, creating a transaction if one
+     * doesn't exist
+     *
+     * @return int
+     */
     function get_open_transaction() {
       //Do they have an open transaction?
       if (isset($_SESSION['transaction_id'])) {
@@ -91,7 +152,14 @@
       
       return $_SESSION['transaction_id'];      
     }
-    
+
+    /**
+     * Customer Has Account?
+     *
+     * Checks to see if the customer has an account, or is using a a temporary ID
+     *
+     * @return bool
+     */
     function has_account() {
         //Using the customer's current customer number. Do they have an account?
         $customer = $this->get_customer();
@@ -103,7 +171,17 @@
         }        
         
     }
-    
+
+    /**
+     * Login Customer
+     *
+     * Validates and logs in a customer, associating a cart with them, or them with a cart
+     *
+     * @return bool
+     *
+     * @param array $post_data The data posted from the login form, should contain 'sc_login_email',
+     * 'sc_login_password', and 'sc_login_remember_me.' Password should be MD5 hashed
+     */
     function login_customer($post_data) {
         $customer = \Model\Customer::first(array(
             'conditions' => array('email = ? AND passwordmd5 != ""', $post_data['sc_login_email']),
@@ -118,7 +196,7 @@
             return FALSE;
         }   
 
-        /*
+        /**
          * Alrighty then, we're good, if this cart exists and is empty dump it and run get_open_transaction
          */
         $_SESSION['customer_id'] = $customer->custid;
@@ -139,13 +217,20 @@
                
         $this->SC->Transactions->associate_customer($this->get_open_transaction(),$customer->id); 
         
-        return true;                                               
+        return TRUE;                                               
         
     }
-    
+
+    /**
+     * Logout Customer
+     * 
+     * Logs out the customer, destroying the session
+     *
+     * @return null
+     */
     function logout_customer() {        
         session_destroy();
         setcookie('PHPSESSID','');       
     }
-    
-  }
+
+}
