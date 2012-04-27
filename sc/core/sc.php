@@ -88,7 +88,7 @@ class SC {
      *
      * @return null
      *
-     * @param string $view The name of the ajax call. No extention
+     * @param string $call The name of the ajax call. No extention
      * @param array $data An array of data to be sequentially passed to
      * the ajax call's possible function call.
      *
@@ -105,19 +105,21 @@ class SC {
         if (file_exists("core/ajax/controllers/$call.php")) {
             require_once("core/ajax/controllers/$call.php");
         } else if (file_exists("core/ajax/controllers/$call/index.php")) { //Folder
-            require_once "core/ajax/controlers/$call/index.php";
+            require_once "core/ajax/controllers/$call/index.php";
         } else {
             $controller = false;  
         }   
         
         if (function_exists("\Ajax\\$call")) {
-          $return_vars = call_user_func_array("\Ajax\\$call",$data);
-          
-          foreach ($return_vars as $name => $value) {
-            if (!isset($$name)) {
-                $$name = $value;
+            $return_vars = call_user_func_array("\Ajax\\$call",$data);
+
+            if (is_array($return_vars)) {
+                foreach ($return_vars as $name => $value) {
+                    if (!isset($$name)) {
+                        $$name = $value;
+                    }
+                }
             }
-          }
         }       
         
         $view = true;

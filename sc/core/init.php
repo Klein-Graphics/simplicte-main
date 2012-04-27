@@ -86,7 +86,7 @@ require 'core/debug/error.php';
 //-----------
 // Database
 //-----------
-require 'core/activerecord/ActiveRecord.php';
+require 'core/includes/activerecord/ActiveRecord.php';
 
 ActiveRecord\Config::initialize(function($cfg) {
   

@@ -1,5 +1,29 @@
 <?php
-//Error Handler
+
+/**
+ * Error Handling
+ *
+ * This file contains the throw_error function and the registers SC's
+ * shutdown function
+ *
+ * @package Debug
+ */
+
+/**
+ * Error Handler
+ *
+ * Throws an error, either dumping it at the end of the script, or storing
+ * it in a file to be viewed by the store administrator
+ *
+ * @return null
+ *
+ * @param int $levels A binary integer containing the levels of error to throw
+ * @param string $message The error message
+ * @param string $file The file containing the error
+ * @param string $line The line the error is on
+ * @param string $context The context of the error
+ *
+ */
 function throw_error($levels,$message,$file,$line,$context) {
     
     global $ERRORS;
@@ -34,6 +58,9 @@ function throw_error($levels,$message,$file,$line,$context) {
 
 set_error_handler('throw_error');
 
+/**
+ * This is the shutdown function closure
+ */
 register_shutdown_function(function() {  
 
   chdir(dirname(dirname(__DIR__)));

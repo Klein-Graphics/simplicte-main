@@ -1,38 +1,77 @@
 <?php
 
-  //----------------------
-  //Items library
-  //----------------------
-  //
-  // This libarary handles the CRUD of Items and Item Options
-  //
+  /**
+   * The Items library
+   * 
+   * This library handles the CRUD of Items and Item Options
+   * 
+   * @package Items
+   */
   
   namespace Library;
   
-  class Items extends \SC_Library {
-  
-    //Items
+  /**
+   * The Items library class
+   *
+   * @package Items
+   */
+  class Items extends \SC_Library {  
     
-    //Main function
+    /**
+     * Get Item
+     * 
+     * Gets and returns a specific item
+     *
+     * @return mixed
+     *
+     * @param int $id The item's DB id
+     * @param string $return_cols The column(s) you want returned, seperated by ','
+     */
     function get_item($id,$return_cols='*') {
       
       $item = \Model\Item::find($id,array('select'=>$return_cols));
       
       return db_return($item,$return_cols);
 
-    }
+    }    
     
-    //Specific detail wrappers:
-    
+    /**
+     * Get Item Price
+     *
+     * An alias to get the item price
+     *
+     * @return float
+     *
+     * @param int $id The item's DB id
+     */
     function item_price($id) {
       return $this->get_item($id,'price');
     }
     
+    /**
+     * Get Item Name
+     *
+     * An alias to get the item name
+     *
+     * @return string
+     *
+     * @param int $id The item's DB id
+     */
     function item_name($id) {
       return $this->get_item($id,'name');
     }
     
-    //other stuff
+    /**
+     * Check Item Flag
+     *
+     * Checks to see if a flag exists on an item, returning false if it doesn't
+     * or the flag and its arguments if it does
+     *
+     * @return mixed
+     *
+     * @param int $id The item's DB id
+     * @param string $check_flag The flag to search for
+     */
     function item_flag($id,$check_flag) {
         $item = \Model\Item::find($id,array('select'=>'flags'));
         
@@ -50,9 +89,16 @@
         
     }
     
-    //Item options
-    
-    //Main function
+    /**
+     * Get Item
+     * 
+     * Gets and returns a specific item option
+     *
+     * @return mixed
+     *
+     * @param int $id The item option's DB id
+     * @param string $return_cols The column(s) you want returned, seperated by ','
+     */
     function get_option($id,$return_cols='*') {
     
       $option = \Model\Itemoption::find($id,array('select'=>$return_cols));
@@ -60,15 +106,43 @@
       return db_return($option,$return_cols);
     }
     
-    //Specific detail wrappers:    
+    /**
+     * Get Item Option Price
+     *
+     * An alias to get the item option price
+     *
+     * @return float
+     *
+     * @param int $id The item option's DB id
+     */
     function option_price($id) {
       return $this->get_option($id,'price');
     }
     
+    /**
+     * Get Item Option Name
+     *
+     * An alias to get the item option name
+     *
+     * @return string
+     *
+     * @param int $id The item option's DB id
+     */
     function option_name($id) {
       return $this->get_option($id,'name');
     } 
     
+    /**
+     * Check Item Option Flag
+     *
+     * Checks to see if a flag exists on an item option, returning false if it 
+     * doesn't or the flag and its arguments if it does
+     *
+     * @return mixed
+     *
+     * @param int $id The item option's DB id
+     * @param string $check_flag The flag to search for
+     */
     function option_flag($id,$check_flag) {
         $item = \Model\Itemoption::find($id,array('select'=>'flags'));
         

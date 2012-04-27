@@ -12,16 +12,16 @@
  
  if ($second = implode('/',$this->URI->get_request())) {        
     $this->load_ajax('checkout/'.$second);
-    return;
+    exit;
  }
  
  if ($this->Cart->is_empty($this->Session->get_open_transaction())) {
     header("HTTP/1.1 204 No Content");
-    return;
+    exit;
  }
  
  if ($this->Session->has_account()) {
     $this->load_ajax('checkout/verify_cart');
-    return;
+    exit;
  }
 ?>

@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Simplecart2 Out-Parsing File
+ *
+ * This file must be included in any page where SC's display parsing needs to 
+ * happen. It must be included *after* any output from the page.
+ *
+ * @package Parsing
+ *
+ * @see Core/page_in.php
+ */
+
 //Get, End, and Output output buffer
 $output = ob_get_contents();
 ob_end_clean();

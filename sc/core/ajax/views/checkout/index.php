@@ -9,11 +9,11 @@
 
 <div class="sc_checkout_login">
     If you have already created an account, login below:
-    <?php $this->load_ajax_view('login');?>
+    <?php $this->load_ajax('login');?>
 </div><!--.sc_checkout_login-->
 <div class="sc_checkout_new_account">
     If you don't have an account, you can create one now:
-    <?php $this->load_ajax_view('create_account');?>
+    <?php $this->load_ajax('create_account');?>
 </div>
 <div class="sc_checkout_no_register">
     <a href="<?=sc_ajax('enter_customer_details')?>">Continue without registering</a>

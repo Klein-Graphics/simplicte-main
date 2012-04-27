@@ -6,7 +6,7 @@
  * @package Cart
  */
 
-namespace View;
+namespace Ajax;
 /**
  * Ajax Call To Add Item
  *

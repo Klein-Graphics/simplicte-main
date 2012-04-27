@@ -1,34 +1,59 @@
 <?php
 
-  //----------------------
-  // Cart Library
-  //----------------------
-  //
-  // This libary handles the modification and display of the user's cart
-  //
+  /**
+   * Cart Library
+   *
+   * This libary handles the modification and display of the user's cart
+   *
+   * @package Cart
+   */
   
   namespace Library;
-  
+  /**
+   * The Cart library class
+   *
+   * @package Cart
+   */
   class Cart extends \SC_Library {
-     
+    
+    /**
+     * Required libraries
+     *
+     * @see Transactions\Transactions
+     * @see Items\Items
+     */ 
     public static $required_libraries = array(
       'Transactions',
       'Items'  
     );
   
-    function explode_cart($id) {    
+    /**
+     * Explode Cart
+     * 
+     * This function takes input pertaining to a cart and returns an 
+     * exploded array of that cart. Each item in the cart will contain the
+     * following keys: 'id', 'options', 'quantity', 'price'. Options will be an
+     * array of options each containing 'id', 'quantity' and 'price' keys.
+     *
+     * @return array
+     *
+     * @param int|string|array $cart If $cart is numeric, SC will look up the
+     * transaction ID in the database and return the items string. If it's a
+     * string, SC will assume that it's the items string and explode it. If it's
+     * an array, the function will simply return that same array.
+     *
+     */
+    function explode_cart($cart) {    
     
-      if (is_array($id)) {
-        return $id;
+      if (is_array($cart)) {
+        return $cart;
       }
     
-      if (is_numeric($id)) { //Is this an ID or the cart itself?
-        $transaction = \Model\Transaction::find($id);
+      if (is_numeric($cart)) { //Is this an ID or the cart itself?
+        $transaction = \Model\Transaction::find($cart);
       
         $cart = $transaction->items;
         
-      } else {
-        $cart = $id;
       }
       
       if ( ! $cart) {
@@ -46,7 +71,20 @@
         
     }
     
-    function implode_cart($cart,$update=FALSE) {
+    /**
+     * Implode Cart
+     * 
+     * This function takes an exploded cart array and implodes it back to a
+     * string, possibly updating the cart in the database
+     *
+     * @return string|bool
+     * 
+     * @param array $cart An array of cart items
+     * @param int $update The ID of the transaction to update. If set, the
+     * function will return that it was successfully updated, other wise it
+     * will just return the cart string
+     */
+    function implode_cart($cart,$update=NULL) {
       
       foreach($cart as &$item) {                    
         $item = $this->implode_item($item);
@@ -64,6 +102,15 @@
     
     }
     
+    /**
+     * Explode Item
+     *
+     * This function takes an item string and explodes it into an array
+     *
+     * @return string
+     *
+     * @param array $item The item array
+     */
     function explode_item($item) {
     
       if (is_array($item)) {
@@ -79,6 +126,16 @@
       return $item;
     }
     
+    /**
+     * Implode Item
+     * 
+     * This function takes an item array and implodes it into a string
+     *
+     * @return array
+     *
+     * @param string $item The item string
+     */
+     
     function implode_item($item) {
     
       if (is_string($item)) {
@@ -97,8 +154,16 @@
     
     }
     
-    
-    
+    /**
+     * Explode Options
+     * 
+     * This function takes an option string from an item and explodes it into
+     * an array of Option arrays
+     *
+     * @return array
+     *
+     * @param string $option_string The option string
+     */    
     function explode_options($option_string) {
     
       if (!$option_string) {
@@ -123,6 +188,15 @@
       
     }
     
+    /**
+     * Implode Options
+     * 
+     * This function takes an array of option arrays and implodes it into a string
+     *
+     * @return string
+     *
+     * @param array $option_array The option array
+     */ 
     function implode_options($option_array) {
     
       if (!$option_array) {
@@ -144,6 +218,15 @@
       return $option_string;        
     }
     
+    /**
+     * Verify Options
+     * 
+     * Verifies an array of options so that the price of each option is correct
+     * 
+     * @return array
+     * 
+     * @param array $option_array The option array to verify
+     */
     function verify_options($option_array) {    
     
       if (!$option_array) {
@@ -159,6 +242,16 @@
       return $option_array;
     }
     
+    /**
+     * Check If Item In Cart
+     *
+     * Checks to see if a specific item it contained in the cart.
+     *
+     * @return int The key of the item if found, returns boolean false if not found
+     *
+     * @param mixed $cart A valid cart or transaction ID
+     * @param mixed $check_item A valid item to check
+     */
     function item_in_cart($cart,$check_item) {
         $cart = $this->explode_cart($cart);
         $check_item = $this->implode_item($check_item);        
@@ -168,8 +261,29 @@
                 return $key;
             }
         }
+        
+        return FALSE;
     }
     
+    /**
+     * Add Item to Cart
+     *
+     * Adds an item to the specified cart.
+     *
+     * @return array|int Returns either the modified cart, the imploded cart, 
+     * or that the update was successful
+     *
+     * @param array|int|string $cart Either the cart array, cart string, or the 
+     * ID of the transaction
+     * @param array|int $item Either the item id, or an item array
+     * @param string $options An option string or option array
+     * @param int $qty The quanitity of the item
+     * @param bool $implode Whether or not to implode the cart. If $cart is a 
+     * string or numeric, then it defaults to true, otherwise it defaults to false
+     * @param bool $update Whether or not to update the cart. If $cart is numeric,
+     * then it defaults to that number, otherwise it defaults to false 
+     *
+     */
     function add_item($cart,$item,$options='0',$qty=1,$implode=NULL,$update=NULL) {
     
       if (!is_array($cart)) {          
@@ -225,7 +339,7 @@
         
       $item['options'] = $this->verify_options($item['options']);
             
-      if ($the_line = $this->item_in_cart($cart,$item)) {
+      if (($the_line = $this->item_in_cart($cart,$item)) !== FALSE) {
         $cart[$the_line]['quantity'] += $item['quantity'];
       } else {
             
@@ -240,6 +354,24 @@
       
     }
     
+    /**
+     * Remove Item from Cart
+     *
+     * Removes an item from the specified cart
+     *
+     * @return array|int Returns either the modified cart, the imploded cart, 
+     * or that the update was successful. If no line is supplied, it empties
+     * the cart.
+     *
+     * @param array|int|string $cart Either the cart array, cart string, or the 
+     * ID of the transaction
+     * @param array|int|string $line Either the line number to remove an array
+     * containing multiple lines to remove, or an item string to search for and remove.
+     * @param bool $implode Whether or not to implode the cart. If $cart is a 
+     * string or numeric, then it defaults to true, otherwise it defaults to false
+     * @param bool $update Whether or not to update the cart. If $cart is numeric,
+     * then it defaults to that number, otherwise it defaults to false 
+     */ 
     function remove_item($cart,$line=FALSE,$implode=NULL,$update=NULL) {
       
       if (!is_array($cart)) {          
@@ -281,17 +413,44 @@
       
     }
     
+    /**
+     * Clear Cart
+     *
+     * Clears the cart. An alias for Libaray\Cart::remove_item($cart);
+     *
+     * @return array|int Returns either an empty array (the emptied cart) or TRUE 
+     * if the cart was updated
+     *
+     * @param array|int|string A valid cart or transaction ID
+     */
     function clear_cart($cart) {
       return $this->remove_item($cart);
     }
     
+    /**
+     * Item count
+     *
+     * Counts how many items are in a cart.
+     *
+     * @return float
+     *
+     * @param array|int|string $cart A valid cart or transaction ID
+     */    
     function item_count($cart) {
       $cart = $this->explode_cart($cart);
       
-      return count($cart);
-      
+      return count($cart);      
     }
     
+    /**
+     * Subtotal
+     * 
+     * Calculates the subtotal of the cart
+     *
+     * @return float
+     *
+     * @param array|int|string $cart A valid cart or transaction ID
+     */    
     function subtotal($cart) {
       $cart = $this->explode_cart($cart);
       
@@ -316,6 +475,17 @@
               
     }
     
+    /**
+     * Line Total
+     *
+     * Calculates the total of a specific line or line in a cart
+     *
+     * @return float
+     *
+     * @param array|int|string $line Either a valid item, or a specific line number 
+     * in a cart
+     * @param array|int|string $cart A valid cart or transaction ID
+     */
     function line_total($line,$cart = FALSE) {
         if ($cart) {
             if (!is_array($cart)) {          
@@ -334,6 +504,15 @@
         return ($line['price'] + $options_price) * $line['quantity'];
     }
     
+    /**
+     * Weigh Cart
+     *
+     * Walks through a cart and calculates the weight
+     *
+     * @return float
+     *
+     * @param array|int|string $cart A valid cart or transaction ID
+     */
     function weigh_cart($cart) {                
         $cart = $this->explode_cart($cart);
         
@@ -353,6 +532,15 @@
         return $total_weight;
     }
     
+    /**
+     * Shipping Required
+     *
+     * Checks if items are all digitial or shipping may be required
+     *
+     * @return BOOL
+     *
+     * @param array|int|string $cart A valid cart or transaction ID
+     */
     function shipping_required($cart) {
         $cart = $this->explode_cart($cart);        
         
@@ -365,6 +553,15 @@
         return FALSE;
     }
     
+    /**
+     * Calculate Tax
+     *
+     * Calulates the tax of the cart
+     *
+     * @return float
+     *
+     * @param array|int|string $cart A valid cart or transaction ID
+     */
     function calculate_tax($cart) {
         $cart = $this->explode_cart($cart);
         
@@ -379,20 +576,42 @@
         return round($taxable * $this->SC->Config->get_setting('salestax'),2);
     }
     
+    /**
+     * Is Cart Empty?
+     *
+     * Checks if a cart is empty
+     *
+     * @return bool
+     *
+     * @param array|int|string $cart A valid cart or transaction ID
+     */    
     function is_empty($cart) {
         $cart = $this->explode_cart($cart);
         
         return empty($cart);
     }
     
-    function calculate_total($transaction,$shipping_method=FALSE,$discount_code=FALSE) {
-    
-        $cart = $this->explode_cart($transaction->items);
-    
+    /**
+     * Calculate Total
+     *
+     * Calculates the grand total for a transaction, including shipping and any discounts.
+     * 
+     * @return array Returns an array containing the following information: 'subtotal',
+     * 'shipping', 'taxrate', 'items', 'discount', 'total', 'messages'
+     *
+     * @param object $transaction The transaction object
+     * @param string $shipping_method The shipping method
+     * @param string $discount_code The discount code
+     */
+    function calculate_total($transaction,$shipping_method=FALSE,$discount_code=FALSE) {        
         $this->SC->load_library(array(
             'Shipping',
-            'Discounts'
-        ));         
+            'Discounts',
+        ));   
+        
+        $cart = $this->explode_cart($transaction->items);
+    
+              
     
         $messages = array();
         
@@ -458,21 +677,7 @@
             'discount' => $total_discount,
             'total' => $subtotal + $shipping + $tax,
             'messages' => $messages
-        );
-        
-        
-    }
-
-    function calculate_soft_total($transaction) {
-        if (is_numeric($transaction)) {
-            $transaction = $this->get_transcation($transcation);
-        }
-         
-        return 
-            $this->subtotal($transaction->items) 
-            - $transaction->discount 
-            + $transaction->shipping 
-            + $transaction->taxrate;
+        );                
     }
 }
   

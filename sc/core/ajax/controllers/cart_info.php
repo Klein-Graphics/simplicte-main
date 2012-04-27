@@ -1,5 +1,11 @@
 <?php
   
+  /**
+   * Calulates and displays the simple cart info.
+   *
+   * @package Cart
+   */
+  
   global $SC;
   
   $SC->load_library(array('Session','Cart'));

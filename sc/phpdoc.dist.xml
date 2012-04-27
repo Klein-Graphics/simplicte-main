@@ -9,7 +9,7 @@
   </transformer>
   <files>
     <directory>.</directory>
-    <ignore>core/activerecord/*</ignore>
+    <ignore>core/includes/*</ignore>
     <ignore>core/models/*</ignore>
     <ignore>core/ajax/views/*</ignore>
   </files>
