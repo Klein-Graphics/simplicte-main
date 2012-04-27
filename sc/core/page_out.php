@@ -27,6 +27,9 @@ $output = $SC->Page_loading->replace_tag($output,array(
     'cart_info'=>'<span class="sc_cartinfo"></span>'
 ));
 
+//Hack for old checkout tag
+$output = $SC->Page_loading->replace_tag($output,'checkout','[[view_checkout]]');
+
 //Replace buttons
 $buttons = array('view_cart','clear_cart','view_checkout');
 foreach ($buttons as $button) {
