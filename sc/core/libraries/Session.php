@@ -29,8 +29,11 @@ class Session extends \SC_Library {
      * @return null
      */
     function __construct() {
+        global $CONFIG;
         parent::__construct();
 
+        $cookie_params = session_get_cookie_params();
+        session_set_cookie_params($cookie_params['lifetime'],$CONFIG['URL']);
         session_start();   
 
         $this->initialize();                 
@@ -183,6 +186,8 @@ class Session extends \SC_Library {
      * 'sc_login_password', and 'sc_login_remember_me.' Password should be MD5 hashed
      */
     function login_customer($post_data) {
+        global $CONFIG;
+        
         $customer = \Model\Customer::first(array(
             'conditions' => array('email = ? AND passwordmd5 != ""', $post_data['sc_login_email']),
             'select' => 'passwordmd5,custid,id'
@@ -203,7 +208,7 @@ class Session extends \SC_Library {
         $_SESSION['user_id'] = $customer->id;
         
         if (!isset($post_data['sc_remember_me'])) {
-            session_set_cookie_params(0);
+            session_set_cookie_params(ONE_HUNDRED_YEARS,$CONFIG['URL']);
             session_regenerate_id();
         }
         

@@ -49,5 +49,5 @@ class Config extends \SC_Library {
             return false;
         }
 
-    }
+    }    
 }
