@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project version="2.0.0a2" title="Simplecart2">
-  <file path="core/sc.php" hash="085a0651b3db5e72b5459ee6ab4d53dd" package="Core">
+  <file path="core/sc.php" hash="2e79c9a1cf58327d8da9e65f5b7e6f79" package="Core">
     <docblock line="3">
       <description><![CDATA[Main Simplecart2 Include File]]></description>
       <long-description><![CDATA[<p>This file is included in the init script and contains the
@@ -9,10 +9,6 @@ main SC class and the main SC Library class.</p>]]></long-description>
       <tag line="3" name="package" description="Core"/>
       <tag line="3" name="used-by" description="Core/init.php"/>
     </docblock>
-    <parse_markers>
-      <error line="72" code="50014">Name of argument $call does not match with the DocBlock's name $view in load_ajax()</error>
-      <notice line="72" code="50013">Parameter $view could not be found in load_ajax()</notice>
-    </parse_markers>
     <class final="false" abstract="false" namespace="default" line="26" package="Core">
       <name>SC</name>
       <full_name>\SC</full_name>
@@ -75,7 +71,7 @@ function should belong to the "Ajax" namespace</p>
           <tag line="72" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
-          <tag line="72" name="param" description="The name of the ajax call. No extention" type="string" variable="$view">
+          <tag line="72" name="param" description="The name of the ajax call. No extention" type="string" variable="$call">
             <type by_reference="false">string</type>
           </tag>
           <tag line="72" name="param" description="An array of data to be sequentially passed to the ajax call's possible function call." type="array" variable="$data">
@@ -95,29 +91,29 @@ function should belong to the "Ajax" namespace</p>
         </argument>
       </method>
     </class>
-    <class final="false" abstract="false" namespace="default" line="151" package="Default">
+    <class final="false" abstract="false" namespace="default" line="153" package="Default">
       <name>SC_Library</name>
       <full_name>\SC_Library</full_name>
       <extends/>
-      <docblock line="144">
+      <docblock line="146">
         <description><![CDATA[Simplecart's Library class]]></description>
         <long-description><![CDATA[<p>This class simply contains adds the $SC property to each library which
 allows access to the global $SC object</p>]]></long-description>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="158" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="160" package="">
         <name>__construct</name>
         <type>function</type>
-        <docblock line="153">
+        <docblock line="155">
           <description><![CDATA[Adds the $SC property]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="153" name="return" description="" type="null">
+          <tag line="155" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
         </docblock>
       </method>
     </class>
   </file>
-  <file path="core/ajax/controllers/checkout/index.php" hash="e11460416b8b0adbc3fe4223d165286a" package="Checkout">
+  <file path="core/ajax/controllers/checkout/index.php" hash="241eb444963d83d628fefc7d609d4afb" package="Checkout">
     <docblock line="2">
       <description><![CDATA[Checkout Controller]]></description>
       <long-description><![CDATA[<p>This is the initial checkout script that loads whatever the first screen the
@@ -160,13 +156,13 @@ customer needs to be on</p>]]></long-description>
       <tag line="3" name="package" description="Account"/>
     </docblock>
   </file>
-  <file path="core/ajax/controllers/add_item.php" hash="cfeaa35e5cd633b7397efeb24383a6d3" package="Cart">
+  <file path="core/ajax/controllers/add_item.php" hash="ed046bdb1c01121cc504ce8365917e92" package="Cart">
     <docblock line="3">
       <description><![CDATA[Adds an item to the users cart]]></description>
       <long-description><![CDATA[]]></long-description>
       <tag line="3" name="package" description="Cart"/>
     </docblock>
-    <function namespace="View" line="25" package="Cart">
+    <function namespace="Ajax" line="25" package="Cart">
       <name>add_item</name>
       <type>function</type>
       <docblock line="10">
@@ -197,45 +193,79 @@ passed via the URI. All other (variable) data is posted to the function.</p>]]><
       <tag line="2" name="package" description="Account"/>
     </docblock>
   </file>
-  <file path="core/ajax/controllers/cart_info.php" hash="3b033933599a9c6dcd6de75337b3845a" package="Default">
-    <parse_markers>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax/controllers/cart_info.php</error>
-    </parse_markers>
+  <file path="core/ajax/controllers/cart_info.php" hash="fd2fdd8ed3f3570a835902c8905e4408" package="Cart">
+    <docblock line="3">
+      <description><![CDATA[Calulates and displays the simple cart info.]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="Cart"/>
+    </docblock>
   </file>
-  <file path="core/ajax/controllers/logout.php" hash="9d2f5b8d97717a9efd670844467819b7" package="Default">
-    <parse_markers>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax/controllers/logout.php</error>
-    </parse_markers>
+  <file path="core/ajax/controllers/logout.php" hash="c027c958067402786de195b3ee5d739a" package="Account">
+    <docblock line="3">
+      <description><![CDATA[Logs out the customer]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="Account"/>
+    </docblock>
   </file>
-  <file path="core/ajax/controllers/change_qty.php" hash="f38f7c633445384ca80c8bd72f3ad8f6" package="Default">
-    <parse_markers>
-      <error line="3" code="50009">No DocBlock was found for function change_qty()</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax/controllers/change_qty.php</error>
-    </parse_markers>
-    <function namespace="View" line="3" package="Default">
+  <file path="core/ajax/controllers/change_qty.php" hash="be9996635307df0286975c0ea460e126" package="Cart">
+    <docblock line="2">
+      <description><![CDATA[Changes the quantity of an item in the cart]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="package" description="Cart"/>
+    </docblock>
+    <function namespace="Ajax" line="22" package="Cart">
       <name>change_qty</name>
       <type>function</type>
-      <argument line="3">
+      <docblock line="8">
+        <description><![CDATA[Ajax Call To Change Quantity]]></description>
+        <long-description><![CDATA[<p><em>Ajax Controller Function</em> Changes the quantity of a specific line item. Echos
+"1" to let SC know it worked</p>]]></long-description>
+        <tag line="8" name="package" description="Cart"/>
+        <tag line="8" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+        <tag line="8" name="param" description="The cart line to change" type="int" variable="$line">
+          <type by_reference="false">int</type>
+        </tag>
+        <tag line="8" name="param" description="The quantity to set" type="float" variable="$quantity">
+          <type by_reference="false">float</type>
+        </tag>
+      </docblock>
+      <argument line="22">
         <name>$line</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
-      <argument line="3">
+      <argument line="22">
         <name>$quantity</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
     </function>
   </file>
-  <file path="core/ajax/controllers/remove_item.php" hash="dc8130adef5c57e5b5f6397f08388dc8" package="Default">
-    <parse_markers>
-      <error line="3" code="50009">No DocBlock was found for function remove_item()</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/ajax/controllers/remove_item.php</error>
-    </parse_markers>
-    <function namespace="View" line="3" package="Default">
+  <file path="core/ajax/controllers/remove_item.php" hash="06306d89648f0af6315134045d8a41af" package="Cart">
+    <docblock line="2">
+      <description><![CDATA[Removes an item from the customer's cart]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="package" description="Cart"/>
+    </docblock>
+    <function namespace="Ajax" line="22" package="Cart">
       <name>remove_item</name>
       <type>function</type>
-      <argument line="3">
+      <docblock line="8">
+        <description><![CDATA[Ajax Call To Remove Item]]></description>
+        <long-description><![CDATA[<p><em>Ajax Controller Function</em> Reoves a specific line item. Echos
+"1" to let SC know it worked</p>]]></long-description>
+        <tag line="8" name="package" description="Cart"/>
+        <tag line="8" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+        <tag line="8" name="param" description="The line to remove or the imploded string version of the item." type="int|string" variable="$item_num">
+          <type by_reference="false">int</type>
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="22">
         <name>$item_num</name>
         <default><![CDATA[]]></default>
         <type/>
@@ -323,161 +353,96 @@ here. The file expects the following post data:</p>
       </docblock>
     </include>
   </file>
-  <file path="core/includes/upsRate.php" hash="4bafa233ad6bd607d3a63b09a803543b" package="Default">
-    <parse_markers>
-      <error line="3" code="50018">No DocBlock was found for property $AccessLicenseNumber</error>
-      <error line="4" code="50018">No DocBlock was found for property $UserId</error>
-      <error line="5" code="50018">No DocBlock was found for property $Password</error>
-      <error line="6" code="50018">No DocBlock was found for property $shipperNumber</error>
-      <error line="7" code="50018">No DocBlock was found for property $credentials</error>
-      <error line="16" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="35" code="50010">No DocBlock was found for method getRate()</error>
-      <error line="2" code="50000">No DocBlock was found for upsRate</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/includes/upsRate.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="default" line="2" package="Default">
-      <name>upsRate</name>
-      <full_name>\upsRate</full_name>
-      <extends/>
-      <property final="false" static="false" visibility="public" line="3" package="Default">
-        <name>$AccessLicenseNumber</name>
-        <default><![CDATA[]]></default>
-      </property>
-      <property final="false" static="false" visibility="public" line="4" package="Default">
-        <name>$UserId</name>
-        <default><![CDATA[]]></default>
-      </property>
-      <property final="false" static="false" visibility="public" line="5" package="Default">
-        <name>$Password</name>
-        <default><![CDATA[]]></default>
-      </property>
-      <property final="false" static="false" visibility="public" line="6" package="Default">
-        <name>$shipperNumber</name>
-        <default><![CDATA[]]></default>
-      </property>
-      <property final="false" static="false" visibility="public" line="7" package="Default">
-        <name>$credentials</name>
-        <default><![CDATA[]]></default>
-      </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="16" package="">
-        <name>__construct</name>
-        <type>function</type>
-        <argument line="16">
-          <name>$access</name>
-          <default><![CDATA[""]]></default>
-          <type/>
-        </argument>
-        <argument line="16">
-          <name>$user</name>
-          <default><![CDATA[""]]></default>
-          <type/>
-        </argument>
-        <argument line="16">
-          <name>$pass</name>
-          <default><![CDATA[""]]></default>
-          <type/>
-        </argument>
-        <argument line="16">
-          <name>$shipper</name>
-          <default><![CDATA[""]]></default>
-          <type/>
-        </argument>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="35" package="">
-        <name>getRate</name>
-        <type>function</type>
-        <argument line="35">
-          <name>$PostalCode</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-        <argument line="35">
-          <name>$dest_zip</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-        <argument line="35">
-          <name>$service</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-        <argument line="35">
-          <name>$length</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-        <argument line="35">
-          <name>$width</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-        <argument line="35">
-          <name>$height</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-        <argument line="35">
-          <name>$weight</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-      </method>
-    </class>
+  <file path="core/page_out.php" hash="16a32e18a26d27c718dc965c19a64d0f" package="Parsing">
+    <docblock line="3">
+      <description><![CDATA[Simplecart2 Out-Parsing File]]></description>
+      <long-description><![CDATA[<p>This file must be included in any page where SC's display parsing needs to
+happen. It must be included <em>after</em> any output from the page.</p>]]></long-description>
+      <tag line="3" name="package" description="Parsing"/>
+      <tag line="3" name="see" description="\Core/page_in.php" refers="\Core/page_in.php"/>
+    </docblock>
   </file>
-  <file path="core/page_out.php" hash="5541dbb8fe86b456d13fdce4372ef35d" package="Default">
-    <parse_markers>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/page_out.php</error>
-    </parse_markers>
-  </file>
-  <file path="core/debug/error.php" hash="368986fc7ef5ca8c3c97a86d0e9d0385" package="Default">
-    <parse_markers>
-      <error line="3" code="50009">No DocBlock was found for function throw_error()</error>
-      <error line="37" code="50009">No DocBlock was found for function Closure()</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/debug/error.php</error>
-    </parse_markers>
-    <function namespace="default" line="3" package="Default">
+  <file path="core/debug/error.php" hash="263edbe32ecf6f266bedd4efe686267a" package="Debug">
+    <docblock line="3">
+      <description><![CDATA[Error Handling]]></description>
+      <long-description><![CDATA[<p>This file contains the throw_error function and the registers SC's
+shutdown function</p>]]></long-description>
+      <tag line="3" name="package" description="Debug"/>
+    </docblock>
+    <function namespace="default" line="27" package="Debug">
       <name>throw_error</name>
       <type>function</type>
-      <argument line="3">
+      <docblock line="12">
+        <description><![CDATA[Error Handler]]></description>
+        <long-description><![CDATA[<p>Throws an error, either dumping it at the end of the script, or storing
+it in a file to be viewed by the store administrator</p>]]></long-description>
+        <tag line="12" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+        <tag line="12" name="param" description="A binary integer containing the levels of error to throw" type="int" variable="$levels">
+          <type by_reference="false">int</type>
+        </tag>
+        <tag line="12" name="param" description="The error message" type="string" variable="$message">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="12" name="param" description="The file containing the error" type="string" variable="$file">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="12" name="param" description="The line the error is on" type="string" variable="$line">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="12" name="param" description="The context of the error" type="string" variable="$context">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="27">
         <name>$levels</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
-      <argument line="3">
+      <argument line="27">
         <name>$message</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
-      <argument line="3">
+      <argument line="27">
         <name>$file</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
-      <argument line="3">
+      <argument line="27">
         <name>$line</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
-      <argument line="3">
+      <argument line="27">
         <name>$context</name>
         <default><![CDATA[]]></default>
         <type/>
       </argument>
     </function>
-    <function namespace="default" line="37" package="Default">
+    <function namespace="default" line="64" package="Debug">
       <name>Closure</name>
       <type>closure</type>
+      <docblock line="61">
+        <description><![CDATA[This is the shutdown function closure]]></description>
+        <long-description><![CDATA[]]></long-description>
+      </docblock>
     </function>
   </file>
-  <file path="core/debug/delete_session.php" hash="cf50feac16263fe9bc95c05bb6c84f33" package="Default">
-    <parse_markers>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/debug/delete_session.php</error>
-    </parse_markers>
+  <file path="core/debug/delete_session.php" hash="8e710bd1b5db58617638bb36bf533fe8" package="Debug">
+    <docblock line="3">
+      <description><![CDATA[Debugging file that clears the current session]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="Debug"/>
+    </docblock>
   </file>
-  <file path="core/debug/print_session.php" hash="a78c078370bca0cc9aebb0ac3529132d" package="Default">
-    <parse_markers>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/debug/print_session.php</error>
-    </parse_markers>
+  <file path="core/debug/print_session.php" hash="00a2a2f95dce55c3cb49293a1576a025" package="Debug">
+    <docblock line="2">
+      <description><![CDATA[Prints the session variables]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="2" name="package" description="Debug"/>
+    </docblock>
   </file>
   <file path="core/libraries/Validation.php" hash="c55469e49281e790ce61777bbec2ed79" package="Default">
     <parse_markers>
@@ -642,110 +607,202 @@ here. The file expects the following post data:</p>
       </method>
     </class>
   </file>
-  <file path="core/libraries/Items.php" hash="d5fd2f0d66d8f740cbad96b25cecd1ee" package="Default">
-    <parse_markers>
-      <error line="17" code="50010">No DocBlock was found for method get_item()</error>
-      <error line="27" code="50010">No DocBlock was found for method item_price()</error>
-      <error line="31" code="50010">No DocBlock was found for method item_name()</error>
-      <error line="36" code="50010">No DocBlock was found for method item_flag()</error>
-      <error line="56" code="50010">No DocBlock was found for method get_option()</error>
-      <error line="64" code="50010">No DocBlock was found for method option_price()</error>
-      <error line="68" code="50010">No DocBlock was found for method option_name()</error>
-      <error line="72" code="50010">No DocBlock was found for method option_flag()</error>
-      <error line="12" code="50000">No DocBlock was found for Items</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Items.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="Library" line="12" package="Default">
+  <file path="core/libraries/Items.php" hash="ee46dc869a75dfe88f0361bf928171ab" package="Items">
+    <docblock line="3">
+      <description><![CDATA[The Items library]]></description>
+      <long-description><![CDATA[<p>This library handles the CRUD of Items and Item Options</p>]]></long-description>
+      <tag line="3" name="package" description="Items"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Library" line="18" package="Items">
       <name>Items</name>
       <full_name>\Library\Items</full_name>
       <extends>\SC_Library</extends>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="17" package="">
+      <docblock line="13">
+        <description><![CDATA[The Items library class]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="13" name="package" description="Items"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="30" package="">
         <name>get_item</name>
         <type>function</type>
-        <argument line="17">
+        <docblock line="20">
+          <description><![CDATA[Get Item]]></description>
+          <long-description><![CDATA[<p>Gets and returns a specific item</p>]]></long-description>
+          <tag line="20" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="20" name="param" description="The item's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="20" name="param" description="The column(s) you want returned, seperated by ','" type="string" variable="$return_cols">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="30">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="17">
+        <argument line="30">
           <name>$return_cols</name>
           <default><![CDATA['*']]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="27" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="47" package="">
         <name>item_price</name>
         <type>function</type>
-        <argument line="27">
+        <docblock line="38">
+          <description><![CDATA[Get Item Price]]></description>
+          <long-description><![CDATA[<p>An alias to get the item price</p>]]></long-description>
+          <tag line="38" name="return" description="" type="float">
+            <type by_reference="false">float</type>
+          </tag>
+          <tag line="38" name="param" description="The item's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="47">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="31" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="60" package="">
         <name>item_name</name>
         <type>function</type>
-        <argument line="31">
+        <docblock line="51">
+          <description><![CDATA[Get Item Name]]></description>
+          <long-description><![CDATA[<p>An alias to get the item name</p>]]></long-description>
+          <tag line="51" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="51" name="param" description="The item's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="60">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="36" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="75" package="">
         <name>item_flag</name>
         <type>function</type>
-        <argument line="36">
+        <docblock line="64">
+          <description><![CDATA[Check Item Flag]]></description>
+          <long-description><![CDATA[<p>Checks to see if a flag exists on an item, returning false if it doesn't
+or the flag and its arguments if it does</p>]]></long-description>
+          <tag line="64" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="64" name="param" description="The item's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="64" name="param" description="The flag to search for" type="string" variable="$check_flag">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="75">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="36">
+        <argument line="75">
           <name>$check_flag</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="56" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="102" package="">
         <name>get_option</name>
         <type>function</type>
-        <argument line="56">
+        <docblock line="92">
+          <description><![CDATA[Get Item]]></description>
+          <long-description><![CDATA[<p>Gets and returns a specific item option</p>]]></long-description>
+          <tag line="92" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="92" name="param" description="The item option's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="92" name="param" description="The column(s) you want returned, seperated by ','" type="string" variable="$return_cols">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="102">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="56">
+        <argument line="102">
           <name>$return_cols</name>
           <default><![CDATA['*']]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="64" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="118" package="">
         <name>option_price</name>
         <type>function</type>
-        <argument line="64">
+        <docblock line="109">
+          <description><![CDATA[Get Item Option Price]]></description>
+          <long-description><![CDATA[<p>An alias to get the item option price</p>]]></long-description>
+          <tag line="109" name="return" description="" type="float">
+            <type by_reference="false">float</type>
+          </tag>
+          <tag line="109" name="param" description="The item option's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="118">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="68" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="131" package="">
         <name>option_name</name>
         <type>function</type>
-        <argument line="68">
+        <docblock line="122">
+          <description><![CDATA[Get Item Option Name]]></description>
+          <long-description><![CDATA[<p>An alias to get the item option name</p>]]></long-description>
+          <tag line="122" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="122" name="param" description="The item option's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="131">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="72" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="146" package="">
         <name>option_flag</name>
         <type>function</type>
-        <argument line="72">
+        <docblock line="135">
+          <description><![CDATA[Check Item Option Flag]]></description>
+          <long-description><![CDATA[<p>Checks to see if a flag exists on an item option, returning false if it
+doesn't or the flag and its arguments if it does</p>]]></long-description>
+          <tag line="135" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="135" name="param" description="The item option's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="135" name="param" description="The flag to search for" type="string" variable="$check_flag">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="146">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="72">
+        <argument line="146">
           <name>$check_flag</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -753,130 +810,251 @@ here. The file expects the following post data:</p>
       </method>
     </class>
   </file>
-  <file path="core/libraries/Page_loading.php" hash="5661830c69e8d635340efdf0298ad5cd" package="Default">
-    <parse_markers>
-      <error line="14" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="24" code="50010">No DocBlock was found for method replace_tag()</error>
-      <error line="65" code="50010">No DocBlock was found for method replace_button()</error>
-      <error line="76" code="50010">No DocBlock was found for method replace_details()</error>
-      <error line="105" code="50010">No DocBlock was found for method initialize_item_templates()</error>
-      <error line="159" code="50010">No DocBlock was found for method run_item_templates()</error>
-      <error line="234" code="50010">No DocBlock was found for method generate_options_code()</error>
-      <error line="315" code="50010">No DocBlock was found for method load_drivers()</error>
-      <error line="319" code="50010">No DocBlock was found for method load_driver()</error>
-      <error line="365" code="50010">No DocBlock was found for method add_javascript()</error>
-      <error line="374" code="50010">No DocBlock was found for method insert_javascript()</error>
-      <error line="12" code="50000">No DocBlock was found for Page_loading</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Page_loading.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="Library" line="12" package="Default">
+  <file path="core/libraries/Page_loading.php" hash="c4ae57592d21cfa021f77d69b27340f3" package="Display">
+    <docblock line="3">
+      <description><![CDATA[Page Loading Library]]></description>
+      <long-description><![CDATA[<p>Contains the display parsing for simplecart, including the tag replacement and
+javascript insertion</p>]]></long-description>
+      <tag line="3" name="package" description="Display"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Library" line="19" package="Display">
       <name>Page_loading</name>
       <full_name>\Library\Page_loading</full_name>
       <extends>\SC_Library</extends>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="14" package="">
+      <docblock line="14">
+        <description><![CDATA[Page Loading library class]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="14" name="package" description="Display"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="29" package="">
         <name>__construct</name>
         <type>function</type>
+        <docblock line="21">
+          <description><![CDATA[Construct]]></description>
+          <long-description><![CDATA[<p>Initializes the Javascript and Loaded Drivers variables, then loads the
+display drivers and initalizes the item templates</p>]]></long-description>
+          <tag line="21" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="24" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="55" package="">
         <name>replace_tag</name>
         <type>function</type>
-        <argument line="24">
+        <docblock line="39">
+          <description><![CDATA[Replace Tag]]></description>
+          <long-description><![CDATA[<p>Replaces a short tag with the desired html or data</p>]]></long-description>
+          <tag line="39" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="39" name="param" description="The input to search for the tag" type="string" variable="$input">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="39" name="param" description="Either a string containing the tag to replace or an associate array, with the keys being the tags to replace and the value being what to replace them with" type="string|array" variable="$tag">
+            <type by_reference="false">string</type>
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="39" name="param" description="A string containing what to replace the tag with, or a callback function that is fed the attributes that are appended to the tag, and whose return value is used to replace the tag" type="string|callback" variable="$replacement">
+            <type by_reference="false">string</type>
+            <type by_reference="false">callback</type>
+          </tag>
+        </docblock>
+        <argument line="55">
           <name>$input</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="24">
+        <argument line="55">
           <name>$tag</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="24">
+        <argument line="55">
           <name>$replacement</name>
           <default><![CDATA[NULL]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="65" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="110" package="">
         <name>replace_button</name>
         <type>function</type>
-        <argument line="65">
+        <docblock line="98">
+          <description><![CDATA[Replace Button]]></description>
+          <long-description><![CDATA[<p>Specialized function to automatically replace button tags with their correct
+image and class</p>]]></long-description>
+          <tag line="98" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="98" name="param" description="The input to search for the tag" type="string" variable="$input">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="98" name="param" description="The tag to replace" type="string|\string[]" variable="$tag">
+            <type by_reference="false">string</type>
+            <type by_reference="false">\string[]</type>
+          </tag>
+          <tag line="98" name="param" description="Which button to replace the tag with" type="string" variable="$button">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="110">
           <name>$input</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="65">
+        <argument line="110">
           <name>$tag</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="65">
+        <argument line="110">
           <name>$button</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="76" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="131" package="">
         <name>replace_details</name>
         <type>function</type>
-        <argument line="76">
+        <docblock line="121">
+          <description><![CDATA[Replace Details]]></description>
+          <long-description><![CDATA[<p>Replaces all Detail tags with their respective data. Also contains
+aliases for the depreciated 'name' and 'desc' tags</p>]]></long-description>
+          <tag line="121" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="121" name="param" description="The input to search for the tags" type="string" variable="$input">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="131">
           <name>$input</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="105" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="169" package="">
         <name>initialize_item_templates</name>
         <type>function</type>
+        <docblock line="160">
+          <description><![CDATA[Initialize Item Templates]]></description>
+          <long-description><![CDATA[<p>Proccesses and sorts the item templates into their various class
+properties</p>]]></long-description>
+          <tag line="160" name="return" description="Returns false if the template file is missing, otherwise true" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="159" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="232" package="">
         <name>run_item_templates</name>
         <type>function</type>
-        <argument line="159">
+        <docblock line="223">
+          <description><![CDATA[Run Item Templates]]></description>
+          <long-description><![CDATA[<p>Parse the item templates across the input</p>]]></long-description>
+          <tag line="223" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="223" name="param" description="The input to parse" type="string" variable="$input">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="232">
           <name>$input</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="234" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="317" package="">
         <name>generate_options_code</name>
         <type>function</type>
-        <argument line="234">
+        <docblock line="307">
+          <description><![CDATA[Generate Options Code]]></description>
+          <long-description><![CDATA[<p>Generates the options code for a specific item, based on the options template</p>]]></long-description>
+          <tag line="307" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="307" name="param" description="Either the item's DB id or it's human readable ID prefixed with i--" type="int|string" variable="$item">
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="317">
           <name>$item</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="315" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="405" package="">
         <name>load_drivers</name>
         <type>function</type>
+        <docblock line="396">
+          <description><![CDATA[Load Drivers]]></description>
+          <long-description><![CDATA[<p>Not to be confused with load_driver()</p>]]></long-description>
+          <tag line="396" name="see" description="\Library\Display/Page_loading/load_driver()" refers="\Library\Display/Page_loading/load_driver()"/>
+          <tag line="396" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="319" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="419" package="">
         <name>load_driver</name>
         <type>function</type>
-        <argument line="319">
+        <docblock line="409">
+          <description><![CDATA[Load Driver]]></description>
+          <long-description><![CDATA[<p>Loads the specified driver type, checking the Details DB for
+which driver to load</p>]]></long-description>
+          <tag line="409" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="409" name="param" description="The type of driver to load" type="string|\string[]" variable="$type">
+            <type by_reference="false">string</type>
+            <type by_reference="false">\string[]</type>
+          </tag>
+        </docblock>
+        <argument line="419">
           <name>$type</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="365" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="476" package="">
         <name>add_javascript</name>
         <type>function</type>
-        <argument line="365">
+        <docblock line="467">
+          <description><![CDATA[Add Javascript]]></description>
+          <long-description><![CDATA[<p>Adds a Javascript file or code</p>]]></long-description>
+          <tag line="467" name="param" description="A Javascript file, or an array containing the source at index 0 and raw code at index 1" type="string|array" variable="$src">
+            <type by_reference="false">string</type>
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="467" name="param" description="Raw code to be added" type="string" variable="$script">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="476">
           <name>$src</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="365">
+        <argument line="476">
           <name>$script</name>
           <default><![CDATA['']]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="374" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="494" package="">
         <name>insert_javascript</name>
         <type>function</type>
-        <argument line="374">
+        <docblock line="485">
+          <description><![CDATA[Insert Javascript]]></description>
+          <long-description><![CDATA[<p>Inserts Javascript on to the page.</p>]]></long-description>
+          <tag line="485" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="485" name="param" description="The input to insert the javascript into" type="string" variable="$input">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="494">
           <name>$input</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -884,20 +1062,36 @@ here. The file expects the following post data:</p>
       </method>
     </class>
   </file>
-  <file path="core/libraries/Config.php" hash="1130eaddcc18bc251638e777e525a7d9" package="Default">
-    <parse_markers>
-      <error line="7" code="50010">No DocBlock was found for method get_setting()</error>
-      <error line="5" code="50000">No DocBlock was found for Config</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Config.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+  <file path="core/libraries/Config.php" hash="1d51a6eb5d5214d52eabd6de8bf0455c" package="Config">
+    <docblock line="3">
+      <description><![CDATA[Config Library]]></description>
+      <long-description><![CDATA[<p>This library handles the configuration of Simplecart2 and the read and storing of
+misc. data in the "details" database</p>]]></long-description>
+      <tag line="3" name="package" description="Config"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Library" line="19" package="Config">
       <name>Config</name>
       <full_name>\Library\Config</full_name>
       <extends>\SC_Library</extends>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="7" package="">
+      <docblock line="14">
+        <description><![CDATA[The Config class]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="14" name="package" description="Config"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="30" package="">
         <name>get_setting</name>
         <type>function</type>
-        <argument line="7">
+        <docblock line="21">
+          <description><![CDATA[Get Setting]]></description>
+          <long-description><![CDATA[<p>Gets a setting or other data-piece from the "details" database</p>]]></long-description>
+          <tag line="21" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="21" name="param" description="The name of the setting" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="30">
           <name>$name</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -905,60 +1099,110 @@ here. The file expects the following post data:</p>
       </method>
     </class>
   </file>
-  <file path="core/libraries/Discounts.php" hash="7d20bac91547fd30adea96abe91ac773" package="Default">
-    <parse_markers>
-      <error line="6" code="50010">No DocBlock was found for method get_discount()</error>
-      <error line="52" code="50010">No DocBlock was found for method create_discount()</error>
-      <error line="56" code="50010">No DocBlock was found for method delete_discount()</error>
-      <error line="60" code="50010">No DocBlock was found for method run_item_discount()</error>
-      <error line="165" code="50010">No DocBlock was found for method run_total_discount()</error>
-      <error line="4" code="50000">No DocBlock was found for Discounts</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Discounts.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="Library" line="4" package="Default">
+  <file path="core/libraries/Discounts.php" hash="fc3eec298ab8ef19d401357b1ca8d989" package="Checkout">
+    <docblock line="2">
+      <description><![CDATA[Discounts Library]]></description>
+      <long-description><![CDATA[<p>This library handles the CRUD and handling of discounts</p>]]></long-description>
+      <tag line="2" name="package" description="Checkout"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Library" line="15" package="Checkout">
       <name>Discounts</name>
       <full_name>\Library\Discounts</full_name>
       <extends>\SC_Library</extends>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="6" package="">
+      <docblock line="10">
+        <description><![CDATA[Discounts Library Class]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="10" name="package" description="Checkout"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="28" package="">
         <name>get_discount</name>
         <type>function</type>
-        <argument line="6">
+        <docblock line="17">
+          <description><![CDATA[Get Discount]]></description>
+          <long-description><![CDATA[<p>Looks up the provided discount code and returns information about it</p>]]></long-description>
+          <tag line="17" name="return" description="Returns an assoc array with the following possible keys: 'type', 'description', 'single', 'item', 'percent', 'amount', 'bamount', 'gamount'" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="17" name="param" description="The discount code" type="string" variable="$code">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="28">
           <name>$code</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="52" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="78" package="">
         <name>create_discount</name>
         <type>function</type>
+        <docblock line="74">
+          <description><![CDATA[Create discount]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="74" name="todo" description=""/>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="56" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="86" package="">
         <name>delete_discount</name>
         <type>function</type>
+        <docblock line="82">
+          <description><![CDATA[Delete discount]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="82" name="todo" description=""/>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="60" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="101" package="">
         <name>run_item_discount</name>
         <type>function</type>
-        <argument line="60">
+        <docblock line="90">
+          <description><![CDATA[Run Item Discount]]></description>
+          <long-description><![CDATA[<p>Calculates item-level discounts on a cart</p>]]></long-description>
+          <tag line="90" name="return" description="Returns an array with index 0 being the description of the discount, or any errors pertaining to the discount and index 1 being the modified cart" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="90" name="param" description="Either a discount code, or discount array" type="string|array" variable="$discount">
+            <type by_reference="false">string</type>
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="90" name="param" description="A valid cart or transaction ID" type="string|int|array" variable="$cart">
+            <type by_reference="false">string</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="101">
           <name>$discount</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="60">
+        <argument line="101">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="165" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="220" package="">
         <name>run_total_discount</name>
         <type>function</type>
-        <argument line="165">
+        <docblock line="209">
+          <description><![CDATA[Run Total Discount]]></description>
+          <long-description><![CDATA[<p>Calculates a transaction-level discount</p>
+
+<p>return float</p>]]></long-description>
+          <tag line="209" name="param" description="A discount code or discount array" type="string|array" variable="$discount">
+            <type by_reference="false">string</type>
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="209" name="param" description="The total from the transaction you would like to calulate the discount on." type="float" variable="$total">
+            <type by_reference="false">float</type>
+          </tag>
+        </docblock>
+        <argument line="220">
           <name>$discount</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="165">
+        <argument line="220">
           <name>$total</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -1049,7 +1293,7 @@ here. The file expects the following post data:</p>
       </method>
     </class>
   </file>
-  <file path="core/libraries/Transactions.php" hash="ebf00589eb593dcd93c66024fe2e41e2" package="Default">
+  <file path="core/libraries/Transactions.php" hash="7a8b42d09343418bce9ef200f47e2f0a" package="Default">
     <parse_markers>
       <error line="14" code="50010">No DocBlock was found for method get_transaction()</error>
       <error line="32" code="50010">No DocBlock was found for method create_transaction()</error>
@@ -1058,6 +1302,7 @@ here. The file expects the following post data:</p>
       <error line="74" code="50010">No DocBlock was found for method delete_transaction()</error>
       <error line="84" code="50010">No DocBlock was found for method associate_customer()</error>
       <error line="123" code="50010">No DocBlock was found for method get_stale_transactions()</error>
+      <error line="139" code="50010">No DocBlock was found for method calculate_soft_total()</error>
       <error line="12" code="50000">No DocBlock was found for Transactions</error>
       <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Transactions.php</error>
     </parse_markers>
@@ -1155,6 +1400,15 @@ here. The file expects the following post data:</p>
         <argument line="123">
           <name>$date</name>
           <default><![CDATA[NULL]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="139" package="">
+        <name>calculate_soft_total</name>
+        <type>function</type>
+        <argument line="139">
+          <name>$transaction</name>
+          <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
@@ -1653,328 +1907,613 @@ here. The file expects the following post data:</p>
       </method>
     </class>
   </file>
-  <file path="core/libraries/Cart.php" hash="8f92cecae10b829316024c75d374dc49" package="Default">
-    <parse_markers>
-      <error line="14" code="50018">No DocBlock was found for property $required_libraries</error>
-      <error line="19" code="50010">No DocBlock was found for method explode_cart()</error>
-      <error line="49" code="50010">No DocBlock was found for method implode_cart()</error>
-      <error line="67" code="50010">No DocBlock was found for method explode_item()</error>
-      <error line="82" code="50010">No DocBlock was found for method implode_item()</error>
-      <error line="102" code="50010">No DocBlock was found for method explode_options()</error>
-      <error line="126" code="50010">No DocBlock was found for method implode_options()</error>
-      <error line="147" code="50010">No DocBlock was found for method verify_options()</error>
-      <error line="162" code="50010">No DocBlock was found for method item_in_cart()</error>
-      <error line="173" code="50010">No DocBlock was found for method add_item()</error>
-      <error line="243" code="50010">No DocBlock was found for method remove_item()</error>
-      <error line="284" code="50010">No DocBlock was found for method clear_cart()</error>
-      <error line="288" code="50010">No DocBlock was found for method item_count()</error>
-      <error line="295" code="50010">No DocBlock was found for method subtotal()</error>
-      <error line="319" code="50010">No DocBlock was found for method line_total()</error>
-      <error line="337" code="50010">No DocBlock was found for method weigh_cart()</error>
-      <error line="356" code="50010">No DocBlock was found for method shipping_required()</error>
-      <error line="368" code="50010">No DocBlock was found for method calculate_tax()</error>
-      <error line="382" code="50010">No DocBlock was found for method is_empty()</error>
-      <error line="388" code="50010">No DocBlock was found for method calculate_total()</error>
-      <error line="466" code="50010">No DocBlock was found for method calculate_soft_total()</error>
-      <error line="12" code="50000">No DocBlock was found for Cart</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Cart.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="Library" line="12" package="Default">
+  <file path="core/libraries/Cart.php" hash="247508ba3d9643f434ff8b8944465d7b" package="Cart">
+    <docblock line="3">
+      <description><![CDATA[Cart Library]]></description>
+      <long-description><![CDATA[<p>This libary handles the modification and display of the user's cart</p>]]></long-description>
+      <tag line="3" name="package" description="Cart"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Library" line="17" package="Cart">
       <name>Cart</name>
       <full_name>\Library\Cart</full_name>
       <extends>\SC_Library</extends>
-      <property final="false" static="true" visibility="public" line="14" package="Default">
+      <docblock line="12">
+        <description><![CDATA[The Cart library class]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="12" name="package" description="Cart"/>
+      </docblock>
+      <property final="false" static="true" visibility="public" line="25" package="Default">
         <name>$required_libraries</name>
         <default><![CDATA[array(
       'Transactions',
       'Items'  
     )]]></default>
+        <docblock line="19">
+          <description><![CDATA[Required libraries]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="19" name="see" description="\Transactions\Transactions" refers="\Transactions\Transactions"/>
+          <tag line="19" name="see" description="\Items\Items" refers="\Items\Items"/>
+        </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="19" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="46" package="">
         <name>explode_cart</name>
         <type>function</type>
-        <argument line="19">
-          <name>$id</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="49" package="">
-        <name>implode_cart</name>
-        <type>function</type>
-        <argument line="49">
+        <docblock line="30">
+          <description><![CDATA[Explode Cart]]></description>
+          <long-description><![CDATA[<p>This function takes input pertaining to a cart and returns an
+exploded array of that cart. Each item in the cart will contain the
+following keys: 'id', 'options', 'quantity', 'price'. Options will be an
+array of options each containing 'id', 'quantity' and 'price' keys.</p>]]></long-description>
+          <tag line="30" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="30" name="param" description="If $cart is numeric, SC will look up the transaction ID in the database and return the items string. If it's a string, SC will assume that it's the items string and explode it. If it's an array, the function will simply return that same array." type="int|string|array" variable="$cart">
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="46">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="49">
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="87" package="">
+        <name>implode_cart</name>
+        <type>function</type>
+        <docblock line="74">
+          <description><![CDATA[Implode Cart]]></description>
+          <long-description><![CDATA[<p>This function takes an exploded cart array and implodes it back to a
+string, possibly updating the cart in the database</p>]]></long-description>
+          <tag line="74" name="return" description="" type="string|bool">
+            <type by_reference="false">string</type>
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="74" name="param" description="An array of cart items" type="array" variable="$cart">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="74" name="param" description="The ID of the transaction to update. If set, the function will return that it was successfully updated, other wise it will just return the cart string" type="int" variable="$update">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="87">
+          <name>$cart</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="87">
           <name>$update</name>
-          <default><![CDATA[FALSE]]></default>
+          <default><![CDATA[NULL]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="67" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="114" package="">
         <name>explode_item</name>
         <type>function</type>
-        <argument line="67">
+        <docblock line="105">
+          <description><![CDATA[Explode Item]]></description>
+          <long-description><![CDATA[<p>This function takes an item string and explodes it into an array</p>]]></long-description>
+          <tag line="105" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="105" name="param" description="The item array" type="array" variable="$item">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="114">
           <name>$item</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="82" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="139" package="">
         <name>implode_item</name>
         <type>function</type>
-        <argument line="82">
+        <docblock line="129">
+          <description><![CDATA[Implode Item]]></description>
+          <long-description><![CDATA[<p>This function takes an item array and implodes it into a string</p>]]></long-description>
+          <tag line="129" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="129" name="param" description="The item string" type="string" variable="$item">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="139">
           <name>$item</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="102" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="167" package="">
         <name>explode_options</name>
         <type>function</type>
-        <argument line="102">
+        <docblock line="157">
+          <description><![CDATA[Explode Options]]></description>
+          <long-description><![CDATA[<p>This function takes an option string from an item and explodes it into
+an array of Option arrays</p>]]></long-description>
+          <tag line="157" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="157" name="param" description="The option string" type="string" variable="$option_string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="167">
           <name>$option_string</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="126" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="200" package="">
         <name>implode_options</name>
         <type>function</type>
-        <argument line="126">
+        <docblock line="191">
+          <description><![CDATA[Implode Options]]></description>
+          <long-description><![CDATA[<p>This function takes an array of option arrays and implodes it into a string</p>]]></long-description>
+          <tag line="191" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="191" name="param" description="The option array" type="array" variable="$option_array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="200">
           <name>$option_array</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="147" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="230" package="">
         <name>verify_options</name>
         <type>function</type>
-        <argument line="147">
+        <docblock line="221">
+          <description><![CDATA[Verify Options]]></description>
+          <long-description><![CDATA[<p>Verifies an array of options so that the price of each option is correct</p>]]></long-description>
+          <tag line="221" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="221" name="param" description="The option array to verify" type="array" variable="$option_array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="230">
           <name>$option_array</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="162" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="255" package="">
         <name>item_in_cart</name>
         <type>function</type>
-        <argument line="162">
+        <docblock line="245">
+          <description><![CDATA[Check If Item In Cart]]></description>
+          <long-description><![CDATA[<p>Checks to see if a specific item it contained in the cart.</p>]]></long-description>
+          <tag line="245" name="return" description="The key of the item if found, returns boolean false if not found" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="245" name="param" description="A valid cart or transaction ID" type="mixed" variable="$cart">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="245" name="param" description="A valid item to check" type="mixed" variable="$check_item">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="255">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="162">
+        <argument line="255">
           <name>$check_item</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="173" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="287" package="">
         <name>add_item</name>
         <type>function</type>
-        <argument line="173">
+        <docblock line="268">
+          <description><![CDATA[Add Item to Cart]]></description>
+          <long-description><![CDATA[<p>Adds an item to the specified cart.</p>]]></long-description>
+          <tag line="268" name="return" description="Returns either the modified cart, the imploded cart, or that the update was successful" type="array|int">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="268" name="param" description="Either the cart array, cart string, or the ID of the transaction" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="268" name="param" description="Either the item id, or an item array" type="array|int" variable="$item">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="268" name="param" description="An option string or option array" type="string" variable="$options">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="268" name="param" description="The quanitity of the item" type="int" variable="$qty">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="268" name="param" description="Whether or not to implode the cart. If $cart is a string or numeric, then it defaults to true, otherwise it defaults to false" type="bool" variable="$implode">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="268" name="param" description="Whether or not to update the cart. If $cart is numeric, then it defaults to that number, otherwise it defaults to false" type="bool" variable="$update">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="287">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="173">
+        <argument line="287">
           <name>$item</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="173">
+        <argument line="287">
           <name>$options</name>
           <default><![CDATA['0']]></default>
           <type/>
         </argument>
-        <argument line="173">
+        <argument line="287">
           <name>$qty</name>
           <default><![CDATA[1]]></default>
           <type/>
         </argument>
-        <argument line="173">
+        <argument line="287">
           <name>$implode</name>
           <default><![CDATA[NULL]]></default>
           <type/>
         </argument>
-        <argument line="173">
+        <argument line="287">
           <name>$update</name>
           <default><![CDATA[NULL]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="243" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="375" package="">
         <name>remove_item</name>
         <type>function</type>
-        <argument line="243">
+        <docblock line="357">
+          <description><![CDATA[Remove Item from Cart]]></description>
+          <long-description><![CDATA[<p>Removes an item from the specified cart</p>]]></long-description>
+          <tag line="357" name="return" description="Returns either the modified cart, the imploded cart, or that the update was successful. If no line is supplied, it empties the cart." type="array|int">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="357" name="param" description="Either the cart array, cart string, or the ID of the transaction" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="357" name="param" description="Either the line number to remove an array containing multiple lines to remove, or an item string to search for and remove." type="array|int|string" variable="$line">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="357" name="param" description="Whether or not to implode the cart. If $cart is a string or numeric, then it defaults to true, otherwise it defaults to false" type="bool" variable="$implode">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="357" name="param" description="Whether or not to update the cart. If $cart is numeric, then it defaults to that number, otherwise it defaults to false" type="bool" variable="$update">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="375">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="243">
+        <argument line="375">
           <name>$line</name>
           <default><![CDATA[FALSE]]></default>
           <type/>
         </argument>
-        <argument line="243">
+        <argument line="375">
           <name>$implode</name>
           <default><![CDATA[NULL]]></default>
           <type/>
         </argument>
-        <argument line="243">
+        <argument line="375">
           <name>$update</name>
           <default><![CDATA[NULL]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="284" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="426" package="">
         <name>clear_cart</name>
         <type>function</type>
-        <argument line="284">
+        <docblock line="416">
+          <description><![CDATA[Clear Cart]]></description>
+          <long-description><![CDATA[<p>Clears the cart. An alias for Libaray\Cart::remove_item($cart);</p>]]></long-description>
+          <tag line="416" name="return" description="Returns either an empty array (the emptied cart) or TRUE if the cart was updated" type="array|int">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="416" name="param" description="A valid cart or transaction ID" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="426">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="288" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="439" package="">
         <name>item_count</name>
         <type>function</type>
-        <argument line="288">
+        <docblock line="430">
+          <description><![CDATA[Item count]]></description>
+          <long-description><![CDATA[<p>Counts how many items are in a cart.</p>]]></long-description>
+          <tag line="430" name="return" description="" type="float">
+            <type by_reference="false">float</type>
+          </tag>
+          <tag line="430" name="param" description="A valid cart or transaction ID" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="439">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="295" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="454" package="">
         <name>subtotal</name>
         <type>function</type>
-        <argument line="295">
+        <docblock line="445">
+          <description><![CDATA[Subtotal]]></description>
+          <long-description><![CDATA[<p>Calculates the subtotal of the cart</p>]]></long-description>
+          <tag line="445" name="return" description="" type="float">
+            <type by_reference="false">float</type>
+          </tag>
+          <tag line="445" name="param" description="A valid cart or transaction ID" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="454">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="319" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="489" package="">
         <name>line_total</name>
         <type>function</type>
-        <argument line="319">
+        <docblock line="478">
+          <description><![CDATA[Line Total]]></description>
+          <long-description><![CDATA[<p>Calculates the total of a specific line or line in a cart</p>]]></long-description>
+          <tag line="478" name="return" description="" type="float">
+            <type by_reference="false">float</type>
+          </tag>
+          <tag line="478" name="param" description="Either a valid item, or a specific line number in a cart" type="array|int|string" variable="$line">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="478" name="param" description="A valid cart or transaction ID" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="489">
           <name>$line</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="319">
+        <argument line="489">
           <name>$cart</name>
           <default><![CDATA[FALSE]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="337" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="516" package="">
         <name>weigh_cart</name>
         <type>function</type>
-        <argument line="337">
+        <docblock line="507">
+          <description><![CDATA[Weigh Cart]]></description>
+          <long-description><![CDATA[<p>Walks through a cart and calculates the weight</p>]]></long-description>
+          <tag line="507" name="return" description="" type="float">
+            <type by_reference="false">float</type>
+          </tag>
+          <tag line="507" name="param" description="A valid cart or transaction ID" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="516">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="356" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="544" package="">
         <name>shipping_required</name>
         <type>function</type>
-        <argument line="356">
+        <docblock line="535">
+          <description><![CDATA[Shipping Required]]></description>
+          <long-description><![CDATA[<p>Checks if items are all digitial or shipping may be required</p>]]></long-description>
+          <tag line="535" name="return" description="" type="BOOL">
+            <type by_reference="false">BOOL</type>
+          </tag>
+          <tag line="535" name="param" description="A valid cart or transaction ID" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="544">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="368" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="565" package="">
         <name>calculate_tax</name>
         <type>function</type>
-        <argument line="368">
+        <docblock line="556">
+          <description><![CDATA[Calculate Tax]]></description>
+          <long-description><![CDATA[<p>Calulates the tax of the cart</p>]]></long-description>
+          <tag line="556" name="return" description="" type="float">
+            <type by_reference="false">float</type>
+          </tag>
+          <tag line="556" name="param" description="A valid cart or transaction ID" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="565">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="382" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="588" package="">
         <name>is_empty</name>
         <type>function</type>
-        <argument line="382">
+        <docblock line="579">
+          <description><![CDATA[Is Cart Empty?]]></description>
+          <long-description><![CDATA[<p>Checks if a cart is empty</p>]]></long-description>
+          <tag line="579" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="579" name="param" description="A valid cart or transaction ID" type="array|int|string" variable="$cart">
+            <type by_reference="false">array</type>
+            <type by_reference="false">int</type>
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="588">
           <name>$cart</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="388" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="606" package="">
         <name>calculate_total</name>
         <type>function</type>
-        <argument line="388">
+        <docblock line="594">
+          <description><![CDATA[Calculate Total]]></description>
+          <long-description><![CDATA[<p>Calculates the grand total for a transaction, including shipping and any discounts.</p>]]></long-description>
+          <tag line="594" name="return" description="Returns an array containing the following information: 'subtotal', 'shipping', 'taxrate', 'items', 'discount', 'total', 'messages'" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="594" name="param" description="The transaction object" type="object" variable="$transaction">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="594" name="param" description="The shipping method" type="string" variable="$shipping_method">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="594" name="param" description="The discount code" type="string" variable="$discount_code">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="606">
           <name>$transaction</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="388">
+        <argument line="606">
           <name>$shipping_method</name>
           <default><![CDATA[FALSE]]></default>
           <type/>
         </argument>
-        <argument line="388">
+        <argument line="606">
           <name>$discount_code</name>
           <default><![CDATA[FALSE]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="466" package="">
-        <name>calculate_soft_total</name>
-        <type>function</type>
-        <argument line="466">
-          <name>$transaction</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-      </method>
     </class>
   </file>
-  <file path="core/libraries/Gateways.php" hash="dc1cca33fa4f1734c37015430a2bb8aa" package="Default">
-    <parse_markers>
-      <error line="6" code="50010">No DocBlock was found for method __construct()</error>
-      <error line="15" code="50010">No DocBlock was found for method initialize_drivers()</error>
-      <error line="29" code="50010">No DocBlock was found for method load_driver()</error>
-      <error line="50" code="50010">No DocBlock was found for method generate_gateway_dropdown()</error>
-      <error line="4" code="50000">No DocBlock was found for Gateways</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Gateways.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="Library" line="4" package="Default">
+  <file path="core/libraries/Gateways.php" hash="b087b23d3bc6347a5f6f57893c703b43" package="Checkout">
+    <docblock line="2">
+      <description><![CDATA[Gateways Library]]></description>
+      <long-description><![CDATA[<p>This library handles the loading and managment of the various payment gateway
+drivers.</p>]]></long-description>
+      <tag line="2" name="package" description="Checkout"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Library" line="17" package="Checkout">
       <name>Gateways</name>
       <full_name>\Library\Gateways</full_name>
       <extends>\SC_Library</extends>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="6" package="">
+      <docblock line="12">
+        <description><![CDATA[The Gateways Library Class]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="12" name="package" description="Checkout"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="26" package="">
         <name>__construct</name>
         <type>function</type>
+        <docblock line="19">
+          <description><![CDATA[Construct]]></description>
+          <long-description><![CDATA[<p>Loads the primary Gateway_Driver class and run the initilization method</p>]]></long-description>
+          <tag line="19" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="15" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="43" package="">
         <name>initialize_drivers</name>
         <type>function</type>
+        <docblock line="35">
+          <description><![CDATA[Initialize Drivers]]></description>
+          <long-description><![CDATA[<p>Loads the Payment Drivers specificed by the "paymentmethods" configuration.
+returns whether or not the initialization was completely successful</p>]]></long-description>
+          <tag line="35" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="29" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="67" package="">
         <name>load_driver</name>
         <type>function</type>
-        <argument line="29">
+        <docblock line="57">
+          <description><![CDATA[Load Driver]]></description>
+          <long-description><![CDATA[<p>Loads an individual payment driver</p>]]></long-description>
+          <tag line="57" name="return" description="Returns whether or not the driver it exists" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="57" name="param" description="The name of the driver" type="int" variable="$method">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="57" name="param" description="The human readable description of the driver I.E &quot;Paypal&quot;" type="int" variable="$name">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+        <argument line="67">
           <name>$method</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="29">
+        <argument line="67">
           <name>$name</name>
           <default><![CDATA[FALSE]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="50" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="96" package="">
         <name>generate_gateway_dropdown</name>
         <type>function</type>
+        <docblock line="88">
+          <description><![CDATA[Generate Gateway Dropdown]]></description>
+          <long-description><![CDATA[<p>Generates the html code for the selection box that the user will be
+presented at checkout.</p>
+
+<p>return string</p>]]></long-description>
+        </docblock>
       </method>
     </class>
   </file>
@@ -2014,78 +2553,114 @@ here. The file expects the following post data:</p>
       </method>
     </class>
   </file>
-  <file path="core/libraries/Customer.php" hash="41c72be3a0f8119b681ea4515b68e612" package="Default">
-    <parse_markers>
-      <error line="7" code="50010">No DocBlock was found for method get_customer()</error>
-      <error line="22" code="50010">No DocBlock was found for method create_customer()</error>
-      <error line="35" code="50010">No DocBlock was found for method update_customer()</error>
-      <error line="46" code="50010">No DocBlock was found for method get_cart()</error>
-      <error line="5" code="50000">No DocBlock was found for Customer</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file core/libraries/Customer.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="Library" line="5" package="Default">
+  <file path="core/libraries/Customer.php" hash="5b04c03f4f33b84cc6400771567b458a" package="Account">
+    <docblock line="3">
+      <description><![CDATA[Customer Library]]></description>
+      <long-description><![CDATA[<p>This Library contains handles the CRUD of the customer database</p>]]></long-description>
+      <tag line="3" name="package" description="Account"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Library" line="17" package="Account">
       <name>Customer</name>
       <full_name>\Library\Customer</full_name>
       <extends>\SC_Library</extends>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="7" package="">
+      <docblock line="12">
+        <description><![CDATA[The Customer library class]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="12" name="package" description="Account"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="30" package="">
         <name>get_customer</name>
         <type>function</type>
-        <argument line="7">
+        <docblock line="19">
+          <description><![CDATA[Get Customer]]></description>
+          <long-description><![CDATA[<p>Searches and returns a customer information</p>]]></long-description>
+          <tag line="19" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="19" name="param" description="The value to search for" type="string" variable="$search">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="19" name="param" description="The column(s) you want returned, seperated by ','" type="string" variable="$return_col">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="19" name="param" description="The column that should be searched for $search" type="string" variable="$search_col">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="30">
           <name>$search</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="7">
+        <argument line="30">
           <name>$return_col</name>
           <default><![CDATA['*']]></default>
           <type/>
         </argument>
-        <argument line="7">
+        <argument line="30">
           <name>$search_col</name>
           <default><![CDATA['id']]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="22" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="56" package="">
         <name>create_customer</name>
         <type>function</type>
-        <argument line="22">
+        <docblock line="45">
+          <description><![CDATA[Create Customer]]></description>
+          <long-description><![CDATA[<p>Creates a new customer</p>]]></long-description>
+          <tag line="45" name="return" description="The customer's DB id" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="45" name="param" description="The human-readable customer ID, or an array containing data to pass to the new customer" type="string|array" variable="$cust_id">
+            <type by_reference="false">string</type>
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="45" name="param" description="Data to pass to the new customer" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="56">
           <name>$cust_id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="22">
+        <argument line="56">
           <name>$data</name>
           <default><![CDATA[FALSE]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="35" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="79" package="">
         <name>update_customer</name>
         <type>function</type>
-        <argument line="35">
+        <docblock line="69">
+          <description><![CDATA[Update Customer]]></description>
+          <long-description><![CDATA[<p>Updates a customer</p>]]></long-description>
+          <tag line="69" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="69" name="param" description="The customer's DB id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="69" name="param" description="The data to update" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="79">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="35">
+        <argument line="79">
           <name>$data</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Library" line="46" package="">
-        <name>get_cart</name>
-        <type>function</type>
-        <argument line="46">
-          <name>$cust_id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
     </class>
   </file>
-  <file path="core/init.php" hash="cbbfba606a3e9913618c6844dcdfe89a" package="Default">
+  <file path="core/init.php" hash="cfa00542985e17a5adb4bfb09db5d0a1" package="Default">
     <parse_markers>
       <error line="31" code="50009">No DocBlock was found for function recursive_search()</error>
       <error line="91" code="50009">No DocBlock was found for function Closure()</error>
@@ -2101,7 +2676,7 @@ here. The file expects the following post data:</p>
       <name>core/debug/error.php</name>
     </include>
     <include line="89" type="Require" package="Default">
-      <name>core/activerecord/ActiveRecord.php</name>
+      <name>core/includes/activerecord/ActiveRecord.php</name>
     </include>
     <include line="102" type="Require" package="Default">
       <name>core/global.php</name>
@@ -2300,20 +2875,23 @@ here. The file expects the following post data:</p>
   <package name="Account" full_name="Account"/>
   <package name="Cart" full_name="Cart"/>
   <package name="Checkout" full_name="Checkout"/>
+  <package name="Config" full_name="Config"/>
   <package name="Core" full_name="Core"/>
+  <package name="Debug" full_name="Debug"/>
   <package name="Default" full_name="Default"/>
   <package name="Display" full_name="Display"/>
+  <package name="Items" full_name="Items"/>
   <package name="Parsing" full_name="Parsing"/>
   <package name="checkout" full_name="checkout"/>
   <namespace name="Account_Driver" full_name="Account_Driver"/>
+  <namespace name="Ajax" full_name="Ajax"/>
   <namespace name="Cart_Driver" full_name="Cart_Driver"/>
   <namespace name="Checkout_Driver" full_name="Checkout_Driver"/>
   <namespace name="Gateway_Driver" full_name="Gateway_Driver"/>
   <namespace name="Library" full_name="Library"/>
   <namespace name="Shipping_Driver" full_name="Shipping_Driver"/>
-  <namespace name="View" full_name="View"/>
   <namespace name="default" full_name="default"/>
-  <marker count="3">todo</marker>
+  <marker count="5">todo</marker>
   <marker count="0">fixme</marker>
   <deprecated count="0"/>
 </project>

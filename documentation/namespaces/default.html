@@ -20,9 +20,15 @@
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
+<li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Cart.html"><i class="icon-folder-open"></i> Cart</a></li>
+<li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
+<li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
+<li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
 <li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
+<li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -33,10 +39,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">214</span></a></li>
+                <span class="label label-info">124</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">3</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -75,8 +81,7 @@
 <h3>
 <i class="icon-custom icon-function"></i> Functions</h3>
 <a name="Closure" id="Closure"></a><div class="element clickable function  Closure" data-toggle="collapse" data-target=".Closure .collapse">
-<h2>Closure()
-        </h2>
+<h2>This is the shutdown function closure</h2>
 <pre>Closure() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
@@ -288,33 +293,30 @@
 </div></div>
 </div>
 <a name="throw_error" id="throw_error"></a><div class="element clickable function  throw_error" data-toggle="collapse" data-target=".throw_error .collapse">
-<h2>throw_error()
-        </h2>
-<pre>throw_error($levels, $message, $file, $line, $context) </pre>
+<h2>Error Handler</h2>
+<pre>throw_error(int $levels, string $message, string $file, string $line, string $context) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Throws an error, either dumping it at the end of the script, or storing
+it in a file to be viewed by the store administrator</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$levels</h4>
-<code></code>
-</div>
+<code>int</code><p>A binary integer containing the levels of error to throw</p></div>
 <div class="subelement argument">
 <h4>$message</h4>
-<code></code>
-</div>
+<code>string</code><p>The error message</p></div>
 <div class="subelement argument">
 <h4>$file</h4>
-<code></code>
-</div>
+<code>string</code><p>The file containing the error</p></div>
 <div class="subelement argument">
 <h4>$line</h4>
-<code></code>
-</div>
+<code>string</code><p>The line the error is on</p></div>
 <div class="subelement argument">
 <h4>$context</h4>
-<code></code>
-</div>
+<code>string</code><p>The context of the error</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <h3>
@@ -368,13 +370,6 @@
 <div class="details collapse"></div>
 <a href="../classes/SC_Shipping_Driver.html" class="more">« More »</a>
 </div>
-<a name="upsRate" id="upsRate"></a><div class="element ajax clickable class" href="../classes/upsRate.html">
-<h1>upsRate<a href="../classes/upsRate.html">¶</a>
-</h1>
-<p class="short_description"></p>
-<div class="details collapse"></div>
-<a href="../classes/upsRate.html" class="more">« More »</a>
-</div>
 <h3>
 <i class="icon-custom icon-constant"></i> Constants</h3>
 <a name="FINITE_STOCK" id="FINITE_STOCK"> </a><div class="element clickable constant  FINITE_STOCK" data-toggle="collapse" data-target=".FINITE_STOCK .collapse">
@@ -401,7 +396,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-04-26T11:31:10-07:00.<br></footer></div>
+            generated on 2012-04-27T10:35:45-07:00.<br></footer></div>
 </div>
 </body>
 </html>

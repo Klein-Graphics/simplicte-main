@@ -20,9 +20,15 @@
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
+<li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Cart.html"><i class="icon-folder-open"></i> Cart</a></li>
+<li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
+<li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
+<li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
 <li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
+<li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -33,10 +39,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">214</span></a></li>
+                <span class="label label-info">124</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">3</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -59,27 +65,17 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
-<li class="method public "><a href="#__construct" title="__construct :: Adds the $SC property"><span class="description">Adds the $SC property</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#add_javascript" title="add_javascript :: "><span class="description">add_javascript()
-        </span><pre>add_javascript()</pre></a></li>
-<li class="method public "><a href="#generate_options_code" title="generate_options_code :: "><span class="description">generate_options_code()
-        </span><pre>generate_options_code()</pre></a></li>
-<li class="method public "><a href="#initialize_item_templates" title="initialize_item_templates :: "><span class="description">initialize_item_templates()
-        </span><pre>initialize_item_templates()</pre></a></li>
-<li class="method public "><a href="#insert_javascript" title="insert_javascript :: "><span class="description">insert_javascript()
-        </span><pre>insert_javascript()</pre></a></li>
-<li class="method public "><a href="#load_driver" title="load_driver :: "><span class="description">load_driver()
-        </span><pre>load_driver()</pre></a></li>
-<li class="method public "><a href="#load_drivers" title="load_drivers :: "><span class="description">load_drivers()
-        </span><pre>load_drivers()</pre></a></li>
-<li class="method public "><a href="#replace_button" title="replace_button :: "><span class="description">replace_button()
-        </span><pre>replace_button()</pre></a></li>
-<li class="method public "><a href="#replace_details" title="replace_details :: "><span class="description">replace_details()
-        </span><pre>replace_details()</pre></a></li>
-<li class="method public "><a href="#replace_tag" title="replace_tag :: "><span class="description">replace_tag()
-        </span><pre>replace_tag()</pre></a></li>
-<li class="method public "><a href="#run_item_templates" title="run_item_templates :: "><span class="description">run_item_templates()
-        </span><pre>run_item_templates()</pre></a></li>
+<li class="method public "><a href="#__construct" title="__construct :: Construct"><span class="description">Construct</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#add_javascript" title="add_javascript :: Add Javascript"><span class="description">Add Javascript</span><pre>add_javascript()</pre></a></li>
+<li class="method public "><a href="#generate_options_code" title="generate_options_code :: Generate Options Code"><span class="description">Generate Options Code</span><pre>generate_options_code()</pre></a></li>
+<li class="method public "><a href="#initialize_item_templates" title="initialize_item_templates :: Initialize Item Templates"><span class="description">Initialize Item Templates</span><pre>initialize_item_templates()</pre></a></li>
+<li class="method public "><a href="#insert_javascript" title="insert_javascript :: Insert Javascript"><span class="description">Insert Javascript</span><pre>insert_javascript()</pre></a></li>
+<li class="method public "><a href="#load_driver" title="load_driver :: Load Driver"><span class="description">Load Driver</span><pre>load_driver()</pre></a></li>
+<li class="method public "><a href="#load_drivers" title="load_drivers :: Load Drivers"><span class="description">Load Drivers</span><pre>load_drivers()</pre></a></li>
+<li class="method public "><a href="#replace_button" title="replace_button :: Replace Button"><span class="description">Replace Button</span><pre>replace_button()</pre></a></li>
+<li class="method public "><a href="#replace_details" title="replace_details :: Replace Details"><span class="description">Replace Details</span><pre>replace_details()</pre></a></li>
+<li class="method public "><a href="#replace_tag" title="replace_tag :: Replace Tag"><span class="description">Replace Tag</span><pre>replace_tag()</pre></a></li>
+<li class="method public "><a href="#run_item_templates" title="run_item_templates :: Run Item Templates"><span class="description">Run Item Templates</span><pre>run_item_templates()</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -93,166 +89,180 @@
 </li>
 </ul>
 <div href="../classes/Library.Page_loading.html" class="element class">
-<p class="short_description">Simplecart's Library class</p>
+<p class="short_description">Page Loading library class</p>
 <div class="details">
 <p class="long_description"><p>This class simply contains adds the $SC property to each library which
 allows access to the global $SC object</p></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="..//packages/Display.html">Display</a></td>
+</tr></table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
-<h2>Adds the $SC property</h2>
+<h2>Construct</h2>
 <pre>__construct() : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Initializes the Javascript and Loaded Drivers variables, then loads the
+display drivers and initalizes the item templates</p></p>
 <h3>Returns</h3>
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a name="add_javascript" id="add_javascript"></a><div class="element clickable method public add_javascript" data-toggle="collapse" data-target=".add_javascript .collapse">
-<h2>add_javascript()
-        </h2>
-<pre>add_javascript($src, $script) </pre>
+<h2>Add Javascript</h2>
+<pre>add_javascript(string | array $src, string $script) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Adds a Javascript file or code</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$src</h4>
-<code></code>
-</div>
+<code>stringarray</code><p>A Javascript file, or an array containing the source at index 0 and raw code at index 1</p></div>
 <div class="subelement argument">
 <h4>$script</h4>
-<code></code>
-</div>
+<code>string</code><p>Raw code to be added</p></div>
 </div></div>
 </div>
 <a name="generate_options_code" id="generate_options_code"></a><div class="element clickable method public generate_options_code" data-toggle="collapse" data-target=".generate_options_code .collapse">
-<h2>generate_options_code()
-        </h2>
-<pre>generate_options_code($item) </pre>
+<h2>Generate Options Code</h2>
+<pre>generate_options_code(int | string $item) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Generates the options code for a specific item, based on the options template</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$item</h4>
-<code></code>
+<code>intstring</code><p>Either the item's DB id or it's human readable ID prefixed with i--</p>
 </div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a name="initialize_item_templates" id="initialize_item_templates"></a><div class="element clickable method public initialize_item_templates" data-toggle="collapse" data-target=".initialize_item_templates .collapse">
-<h2>initialize_item_templates()
-        </h2>
-<pre>initialize_item_templates() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
-</div>
-<a name="insert_javascript" id="insert_javascript"></a><div class="element clickable method public insert_javascript" data-toggle="collapse" data-target=".insert_javascript .collapse">
-<h2>insert_javascript()
-        </h2>
-<pre>insert_javascript($input) </pre>
+<h2>Initialize Item Templates</h2>
+<pre>initialize_item_templates() : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Proccesses and sorts the item templates into their various class
+properties</p></p>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>Returns false if the template file is missing, otherwise true</div>
+</div></div>
+</div>
+<a name="insert_javascript" id="insert_javascript"></a><div class="element clickable method public insert_javascript" data-toggle="collapse" data-target=".insert_javascript .collapse">
+<h2>Insert Javascript</h2>
+<pre>insert_javascript(string $input) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Inserts Javascript on to the page.</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$input</h4>
-<code></code>
-</div>
+<code>string</code><p>The input to insert the javascript into</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a name="load_driver" id="load_driver"></a><div class="element clickable method public load_driver" data-toggle="collapse" data-target=".load_driver .collapse">
-<h2>load_driver()
-        </h2>
-<pre>load_driver($type) </pre>
+<h2>Load Driver</h2>
+<pre>load_driver(string | \string[] $type) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Loads the specified driver type, checking the Details DB for
+which driver to load</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$type</h4>
-<code></code>
-</div>
+<code>string\string[]</code><p>The type of driver to load</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <a name="load_drivers" id="load_drivers"></a><div class="element clickable method public load_drivers" data-toggle="collapse" data-target=".load_drivers .collapse">
-<h2>load_drivers()
-        </h2>
-<pre>load_drivers() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
-</div>
-<a name="replace_button" id="replace_button"></a><div class="element clickable method public replace_button" data-toggle="collapse" data-target=".replace_button .collapse">
-<h2>replace_button()
-        </h2>
-<pre>replace_button($input, $tag, $button) </pre>
+<h2>Load Drivers</h2>
+<pre>load_drivers() : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Not to be confused with load_driver()</p></p>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td>\Library\Display/Page_loading/load_driver()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
+</div></div>
+</div>
+<a name="replace_button" id="replace_button"></a><div class="element clickable method public replace_button" data-toggle="collapse" data-target=".replace_button .collapse">
+<h2>Replace Button</h2>
+<pre>replace_button(string $input, string | \string[] $tag, string $button) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Specialized function to automatically replace button tags with their correct
+image and class</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$input</h4>
-<code></code>
-</div>
+<code>string</code><p>The input to search for the tag</p></div>
 <div class="subelement argument">
 <h4>$tag</h4>
-<code></code>
-</div>
+<code>string\string[]</code><p>The tag to replace</p></div>
 <div class="subelement argument">
 <h4>$button</h4>
-<code></code>
-</div>
+<code>string</code><p>Which button to replace the tag with</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a name="replace_details" id="replace_details"></a><div class="element clickable method public replace_details" data-toggle="collapse" data-target=".replace_details .collapse">
-<h2>replace_details()
-        </h2>
-<pre>replace_details($input) </pre>
+<h2>Replace Details</h2>
+<pre>replace_details(string $input) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Replaces all Detail tags with their respective data. Also contains
+aliases for the depreciated 'name' and 'desc' tags</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$input</h4>
-<code></code>
-</div>
+<code>string</code><p>The input to search for the tags</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a name="replace_tag" id="replace_tag"></a><div class="element clickable method public replace_tag" data-toggle="collapse" data-target=".replace_tag .collapse">
-<h2>replace_tag()
-        </h2>
-<pre>replace_tag($input, $tag, $replacement) </pre>
+<h2>Replace Tag</h2>
+<pre>replace_tag(string $input, string | array $tag, string | callback $replacement) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Replaces a short tag with the desired html or data</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$input</h4>
-<code></code>
-</div>
+<code>string</code><p>The input to search for the tag</p></div>
 <div class="subelement argument">
 <h4>$tag</h4>
-<code></code>
-</div>
+<code>stringarray</code><p>Either a string containing the tag to replace or an associate array, with the keys being the tags to replace and the value being what to replace them with</p></div>
 <div class="subelement argument">
 <h4>$replacement</h4>
-<code></code>
-</div>
+<code>stringcallback</code><p>A string containing what to replace the tag with, or a callback function that is fed the attributes that are appended to the tag, and whose return value is used to replace the tag</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a name="run_item_templates" id="run_item_templates"></a><div class="element clickable method public run_item_templates" data-toggle="collapse" data-target=".run_item_templates .collapse">
-<h2>run_item_templates()
-        </h2>
-<pre>run_item_templates($input) </pre>
+<h2>Run Item Templates</h2>
+<pre>run_item_templates(string $input) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Parse the item templates across the input</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$input</h4>
-<code></code>
-</div>
+<code>string</code><p>The input to parse</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 </div>
@@ -262,7 +272,7 @@ allows access to the global $SC object</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-04-26T11:31:10-07:00.<br></footer></div>
+            generated on 2012-04-27T10:35:45-07:00.<br></footer></div>
 </div>
 </body>
 </html>

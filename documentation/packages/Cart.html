@@ -20,9 +20,15 @@
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
+<li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Cart.html"><i class="icon-folder-open"></i> Cart</a></li>
+<li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
+<li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
+<li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
 <li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
+<li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -33,10 +39,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">214</span></a></li>
+                <span class="label label-info">124</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">3</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -65,6 +71,11 @@
 <li class="nav-header">
 <i class="icon-custom icon-function"></i> Functions</li>
 <li class="function  "><a href="#add_item" title="add_item :: Ajax Call To Add Item"><span class="description">Ajax Call To Add Item</span><pre>add_item</pre></a></li>
+<li class="function  "><a href="#change_qty" title="change_qty :: Ajax Call To Change Quantity"><span class="description">Ajax Call To Change Quantity</span><pre>change_qty</pre></a></li>
+<li class="function  "><a href="#remove_item" title="remove_item :: Ajax Call To Remove Item"><span class="description">Ajax Call To Remove Item</span><pre>remove_item</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#Cart" title="The Cart library class">Cart</a></li>
 </ul>
 </div>
 <div class="span8 package-contents">
@@ -98,13 +109,63 @@ passed via the URI. All other (variable) data is posted to the function.</p></p>
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
+<a name="change_qty" id="change_qty"></a><div class="element clickable function  change_qty" data-toggle="collapse" data-target=".change_qty .collapse">
+<h2>Ajax Call To Change Quantity</h2>
+<pre>change_qty(int $line, float $quantity) : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p><em>Ajax Controller Function</em> Changes the quantity of a specific line item. Echos
+"1" to let SC know it worked</p></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="..//packages/Cart.html">Cart</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code><p>The cart line to change</p></div>
+<div class="subelement argument">
+<h4>$quantity</h4>
+<code>float</code><p>The quantity to set</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
+</div></div>
+</div>
+<a name="remove_item" id="remove_item"></a><div class="element clickable function  remove_item" data-toggle="collapse" data-target=".remove_item .collapse">
+<h2>Ajax Call To Remove Item</h2>
+<pre>remove_item(int | string $item_num) : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p><em>Ajax Controller Function</em> Reoves a specific line item. Echos
+"1" to let SC know it worked</p></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="..//packages/Cart.html">Cart</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$item_num</h4>
+<code>intstring</code><p>The line to remove or the imploded string version of the item.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<a name="Cart" id="Cart"></a><div class="element ajax clickable class" href="../classes/Library.Cart.html">
+<h1>Cart<a href="../classes/Library.Cart.html">¶</a>
+</h1>
+<p class="short_description">The Cart library class</p>
+<div class="details collapse"></div>
+<a href="../classes/Library.Cart.html" class="more">« More »</a>
+</div>
 </div>
 </div>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-04-26T11:31:10-07:00.<br></footer></div>
+            generated on 2012-04-27T10:35:45-07:00.<br></footer></div>
 </div>
 </body>
 </html>

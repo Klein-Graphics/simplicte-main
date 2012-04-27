@@ -20,7 +20,7 @@
 <path fill="none" stroke="gray" d="M254,-1122C254,-1116 260,-1110 266,-1110"/>
 <text text-anchor="middle" x="298.5" y="-1169.2" font-family="Times,serif" font-size="11.00" fill="gray">Account_Driver</text>
 </g>
-<g id="graph3" class="cluster"><title>cluster_Cart_Driver</title>
+<g id="graph4" class="cluster"><title>cluster_Cart_Driver</title>
 <polyline fill="none" stroke="gray" points="271,-1030 327,-1030 "/>
 <path fill="none" stroke="gray" d="M327,-1030C333,-1030 339,-1036 339,-1042"/>
 <polyline fill="none" stroke="gray" points="339,-1042 339,-1090 "/>
@@ -31,7 +31,7 @@
 <path fill="none" stroke="gray" d="M259,-1042C259,-1036 265,-1030 271,-1030"/>
 <text text-anchor="middle" x="299" y="-1089.2" font-family="Times,serif" font-size="11.00" fill="gray">Cart_Driver</text>
 </g>
-<g id="graph4" class="cluster"><title>cluster_Checkout_Driver</title>
+<g id="graph5" class="cluster"><title>cluster_Checkout_Driver</title>
 <polyline fill="none" stroke="gray" points="264,-950 333,-950 "/>
 <path fill="none" stroke="gray" d="M333,-950C339,-950 345,-956 345,-962"/>
 <polyline fill="none" stroke="gray" points="345,-962 345,-1010 "/>
@@ -42,7 +42,7 @@
 <path fill="none" stroke="gray" d="M252,-962C252,-956 258,-950 264,-950"/>
 <text text-anchor="middle" x="298.5" y="-1009.2" font-family="Times,serif" font-size="11.00" fill="gray">Checkout_Driver</text>
 </g>
-<g id="graph5" class="cluster"><title>cluster_Gateway_Driver</title>
+<g id="graph6" class="cluster"><title>cluster_Gateway_Driver</title>
 <polyline fill="none" stroke="gray" points="230,-816 368,-816 "/>
 <path fill="none" stroke="gray" d="M368,-816C374,-816 380,-822 380,-828"/>
 <polyline fill="none" stroke="gray" points="380,-828 380,-930 "/>
@@ -53,7 +53,7 @@
 <path fill="none" stroke="gray" d="M218,-828C218,-822 224,-816 230,-816"/>
 <text text-anchor="middle" x="299" y="-929.2" font-family="Times,serif" font-size="11.00" fill="gray">Gateway_Driver</text>
 </g>
-<g id="graph6" class="cluster"><title>cluster_Library</title>
+<g id="graph7" class="cluster"><title>cluster_Library</title>
 <polyline fill="none" stroke="gray" points="254,-88 344,-88 "/>
 <path fill="none" stroke="gray" d="M344,-88C350,-88 356,-94 356,-100"/>
 <polyline fill="none" stroke="gray" points="356,-100 356,-796 "/>
@@ -64,7 +64,7 @@
 <path fill="none" stroke="gray" d="M242,-100C242,-94 248,-88 254,-88"/>
 <text text-anchor="middle" x="299" y="-795.2" font-family="Times,serif" font-size="11.00" fill="gray">Library</text>
 </g>
-<g id="graph7" class="cluster"><title>cluster_Shipping_Driver</title>
+<g id="graph8" class="cluster"><title>cluster_Shipping_Driver</title>
 <polyline fill="none" stroke="gray" points="266,-8 331,-8 "/>
 <path fill="none" stroke="gray" d="M331,-8C337,-8 343,-14 343,-20"/>
 <polyline fill="none" stroke="gray" points="343,-20 343,-68 "/>
@@ -78,11 +78,11 @@
 <g id="graph9" class="cluster"><title>cluster_default</title>
 <polyline fill="none" stroke="none" points="20,-466 150,-466 "/>
 <path fill="none" stroke="none" d="M150,-466C156,-466 162,-472 162,-478"/>
-<polyline fill="none" stroke="none" points="162,-478 162,-884 "/>
-<path fill="none" stroke="none" d="M162,-884C162,-890 156,-896 150,-896"/>
-<polyline fill="none" stroke="none" points="150,-896 20,-896 "/>
-<path fill="none" stroke="none" d="M20,-896C14,-896 8,-890 8,-884"/>
-<polyline fill="none" stroke="none" points="8,-884 8,-478 "/>
+<polyline fill="none" stroke="none" points="162,-478 162,-830 "/>
+<path fill="none" stroke="none" d="M162,-830C162,-836 156,-842 150,-842"/>
+<polyline fill="none" stroke="none" points="150,-842 20,-842 "/>
+<path fill="none" stroke="none" d="M20,-842C14,-842 8,-836 8,-830"/>
+<polyline fill="none" stroke="none" points="8,-830 8,-478 "/>
 <path fill="none" stroke="none" d="M8,-478C8,-472 14,-466 20,-466"/>
 </g>
 <!-- \\Account_Driver\\Folding -->
@@ -93,26 +93,26 @@
 </a>
 </g>
 <!-- \\SC_Account_Driver -->
-<g id="node32" class="node"><title>\\SC_Account_Driver</title>
+<g id="node31" class="node"><title>\\SC_Account_Driver</title>
 <a xlink:href="core.libraries.account_drivers.Account_Driver.html" xlink:title="SC_Account_Driver" target="_parent">
-<polygon fill="none" stroke="black" points="150.5,-834 19.5,-834 19.5,-798 150.5,-798 150.5,-834"/>
-<text text-anchor="middle" x="85" y="-813.2" font-family="Courier,monospace" font-size="11.00">SC_Account_Driver</text>
+<polygon fill="none" stroke="black" points="150.5,-780 19.5,-780 19.5,-744 150.5,-744 150.5,-780"/>
+<text text-anchor="middle" x="85" y="-759.2" font-family="Courier,monospace" font-size="11.00">SC_Account_Driver</text>
 </a>
 </g>
 <!-- \\Account_Driver\\Folding&#45;&gt;\\SC_Account_Driver -->
 <g id="edge22" class="edge"><title>\\Account_Driver\\Folding&#45;&gt;\\SC_Account_Driver</title>
-<path fill="none" stroke="black" d="M266.895,-1131.7C250.077,-1127.77 230.292,-1120.28 218,-1106 140.017,-1015.44 240.768,-932.878 162,-843 160.962,-841.815 159.868,-840.683 158.726,-839.6"/>
-<polygon fill="none" stroke="black" points="160.571,-836.597 150.553,-833.149 156.234,-842.092 160.571,-836.597"/>
+<path fill="none" stroke="black" d="M266.704,-1131.86C249.824,-1127.98 230.041,-1120.49 218,-1106 126.551,-995.971 254.403,-898.228 162,-789 160.983,-787.797 159.908,-786.648 158.783,-785.55"/>
+<polygon fill="none" stroke="black" points="160.679,-782.583 150.701,-779.022 156.28,-788.028 160.679,-782.583"/>
 </g>
 <!-- \\Cart_Driver\\Folding -->
-<g id="node4" class="node"><title>\\Cart_Driver\\Folding</title>
+<g id="node5" class="node"><title>\\Cart_Driver\\Folding</title>
 <a xlink:href="core.libraries.cart_drivers.Folding.html" xlink:title="Folding" target="_parent">
 <polygon fill="none" stroke="black" points="331,-1074 267,-1074 267,-1038 331,-1038 331,-1074"/>
 <text text-anchor="middle" x="299" y="-1053.2" font-family="Courier,monospace" font-size="11.00">Folding</text>
 </a>
 </g>
 <!-- \\SC_Cart_Driver -->
-<g id="node31" class="node"><title>\\SC_Cart_Driver</title>
+<g id="node30" class="node"><title>\\SC_Cart_Driver</title>
 <a xlink:href="core.libraries.cart_drivers.Cart_Driver.html" xlink:title="SC_Cart_Driver" target="_parent">
 <polygon fill="none" stroke="black" points="140.5,-726 29.5,-726 29.5,-690 140.5,-690 140.5,-726"/>
 <text text-anchor="middle" x="85" y="-705.2" font-family="Courier,monospace" font-size="11.00">SC_Cart_Driver</text>
@@ -124,14 +124,14 @@
 <polygon fill="none" stroke="black" points="151.108,-721.219 140.655,-719.49 147.748,-727.36 151.108,-721.219"/>
 </g>
 <!-- \\Checkout_Driver\\Folding -->
-<g id="node6" class="node"><title>\\Checkout_Driver\\Folding</title>
+<g id="node7" class="node"><title>\\Checkout_Driver\\Folding</title>
 <a xlink:href="core.libraries.checkout_drivers.Folding.html" xlink:title="Folding" target="_parent">
 <polygon fill="none" stroke="black" points="331,-994 267,-994 267,-958 331,-958 331,-994"/>
 <text text-anchor="middle" x="299" y="-973.2" font-family="Courier,monospace" font-size="11.00">Folding</text>
 </a>
 </g>
 <!-- \\SC_Checkout_Driver -->
-<g id="node34" class="node"><title>\\SC_Checkout_Driver</title>
+<g id="node33" class="node"><title>\\SC_Checkout_Driver</title>
 <a xlink:href="core.libraries.checkout_drivers.Checkout_Driver.html" xlink:title="SC_Checkout_Driver" target="_parent">
 <polygon fill="none" stroke="black" points="154,-672 16,-672 16,-636 154,-636 154,-672"/>
 <text text-anchor="middle" x="85" y="-651.2" font-family="Courier,monospace" font-size="11.00">SC_Checkout_Driver</text>
@@ -143,14 +143,14 @@
 <polygon fill="none" stroke="black" points="161.881,-675.806 151.957,-672.095 157.4,-681.184 161.881,-675.806"/>
 </g>
 <!-- \\Gateway_Driver\\Paypal_EC -->
-<g id="node8" class="node"><title>\\Gateway_Driver\\Paypal_EC</title>
+<g id="node9" class="node"><title>\\Gateway_Driver\\Paypal_EC</title>
 <a xlink:href="core.libraries.gateway_drivers.Paypal_EC.html" xlink:title="Paypal_EC" target="_parent">
 <polygon fill="none" stroke="black" points="337.5,-914 260.5,-914 260.5,-878 337.5,-878 337.5,-914"/>
 <text text-anchor="middle" x="299" y="-893.2" font-family="Courier,monospace" font-size="11.00">Paypal_EC</text>
 </a>
 </g>
 <!-- \\SC_Gateway_Driver -->
-<g id="node35" class="node"><title>\\SC_Gateway_Driver</title>
+<g id="node34" class="node"><title>\\SC_Gateway_Driver</title>
 <a xlink:href="core.libraries.gateway_drivers.Gateway_Driver.html" xlink:title="SC_Gateway_Driver" target="_parent">
 <polygon fill="none" stroke="black" points="150.5,-618 19.5,-618 19.5,-582 150.5,-582 150.5,-618"/>
 <text text-anchor="middle" x="85" y="-597.2" font-family="Courier,monospace" font-size="11.00">SC_Gateway_Driver</text>
@@ -162,7 +162,7 @@
 <polygon fill="none" stroke="black" points="160.855,-620.883 150.833,-617.447 156.525,-626.383 160.855,-620.883"/>
 </g>
 <!-- \\Gateway_Driver\\Authorizedotnet_SIM -->
-<g id="node9" class="node"><title>\\Gateway_Driver\\Authorizedotnet_SIM</title>
+<g id="node10" class="node"><title>\\Gateway_Driver\\Authorizedotnet_SIM</title>
 <a xlink:href="core.libraries.gateway_drivers.Authorizedotnet_SIM.html" xlink:title="Authorizedotnet_SIM" target="_parent">
 <polygon fill="none" stroke="black" points="371.5,-860 226.5,-860 226.5,-824 371.5,-824 371.5,-860"/>
 <text text-anchor="middle" x="299" y="-839.2" font-family="Courier,monospace" font-size="11.00">Authorizedotnet_SIM</text>
@@ -174,7 +174,7 @@
 <polygon fill="none" stroke="black" points="160.659,-620.911 150.565,-617.695 156.45,-626.504 160.659,-620.911"/>
 </g>
 <!-- \\Library\\Validation -->
-<g id="node11" class="node"><title>\\Library\\Validation</title>
+<g id="node12" class="node"><title>\\Library\\Validation</title>
 <a xlink:href="core.libraries.Validation.html" xlink:title="Validation" target="_parent">
 <polygon fill="none" stroke="black" points="341,-780 257,-780 257,-744 341,-744 341,-780"/>
 <text text-anchor="middle" x="299" y="-759.2" font-family="Courier,monospace" font-size="11.00">Validation</text>
@@ -193,7 +193,7 @@
 <polygon fill="none" stroke="black" points="137.85,-553.55 127.256,-553.397 135.442,-560.123 137.85,-553.55"/>
 </g>
 <!-- \\Library\\Items -->
-<g id="node12" class="node"><title>\\Library\\Items</title>
+<g id="node13" class="node"><title>\\Library\\Items</title>
 <a xlink:href="core.libraries.Items.html" xlink:title="Items" target="_parent">
 <polygon fill="none" stroke="black" points="326,-726 272,-726 272,-690 326,-690 326,-726"/>
 <text text-anchor="middle" x="299" y="-705.2" font-family="Courier,monospace" font-size="11.00">Items</text>
@@ -205,7 +205,7 @@
 <polygon fill="none" stroke="black" points="137.851,-554.685 127.258,-554.493 135.419,-561.249 137.851,-554.685"/>
 </g>
 <!-- \\Library\\Page_loading -->
-<g id="node13" class="node"><title>\\Library\\Page_loading</title>
+<g id="node14" class="node"><title>\\Library\\Page_loading</title>
 <a xlink:href="core.libraries.Page_loading.html" xlink:title="Page_loading" target="_parent">
 <polygon fill="none" stroke="black" points="348,-672 250,-672 250,-636 348,-636 348,-672"/>
 <text text-anchor="middle" x="299" y="-651.2" font-family="Courier,monospace" font-size="11.00">Page_loading</text>
@@ -217,7 +217,7 @@
 <polygon fill="none" stroke="black" points="137.895,-557.307 127.302,-557.105 135.457,-563.869 137.895,-557.307"/>
 </g>
 <!-- \\Library\\Config -->
-<g id="node14" class="node"><title>\\Library\\Config</title>
+<g id="node15" class="node"><title>\\Library\\Config</title>
 <a xlink:href="core.libraries.Config.html" xlink:title="Config" target="_parent">
 <polygon fill="none" stroke="black" points="327.5,-618 270.5,-618 270.5,-582 327.5,-582 327.5,-618"/>
 <text text-anchor="middle" x="299" y="-597.2" font-family="Courier,monospace" font-size="11.00">Config</text>
@@ -229,7 +229,7 @@
 <polygon fill="none" stroke="black" points="137.748,-555.57 127.194,-556.493 136.021,-562.353 137.748,-555.57"/>
 </g>
 <!-- \\Library\\Discounts -->
-<g id="node15" class="node"><title>\\Library\\Discounts</title>
+<g id="node16" class="node"><title>\\Library\\Discounts</title>
 <a xlink:href="core.libraries.Discounts.html" xlink:title="Discounts" target="_parent">
 <polygon fill="none" stroke="black" points="337.5,-564 260.5,-564 260.5,-528 337.5,-528 337.5,-564"/>
 <text text-anchor="middle" x="299" y="-543.2" font-family="Courier,monospace" font-size="11.00">Discounts</text>
@@ -241,7 +241,7 @@
 <polygon fill="none" stroke="black" points="137.194,-542.5 127.194,-546 137.194,-549.5 137.194,-542.5"/>
 </g>
 <!-- \\Library\\Shipping -->
-<g id="node16" class="node"><title>\\Library\\Shipping</title>
+<g id="node17" class="node"><title>\\Library\\Shipping</title>
 <a xlink:href="core.libraries.Shipping.html" xlink:title="Shipping" target="_parent">
 <polygon fill="none" stroke="black" points="334.5,-510 263.5,-510 263.5,-474 334.5,-474 334.5,-510"/>
 <text text-anchor="middle" x="299" y="-489.2" font-family="Courier,monospace" font-size="11.00">Shipping</text>
@@ -253,7 +253,7 @@
 <polygon fill="none" stroke="black" points="135.885,-529.682 127.058,-535.542 137.613,-536.465 135.885,-529.682"/>
 </g>
 <!-- \\Library\\Transactions -->
-<g id="node17" class="node"><title>\\Library\\Transactions</title>
+<g id="node18" class="node"><title>\\Library\\Transactions</title>
 <a xlink:href="core.libraries.Transactions.html" xlink:title="Transactions" target="_parent">
 <polygon fill="none" stroke="black" points="348,-456 250,-456 250,-420 348,-420 348,-456"/>
 <text text-anchor="middle" x="299" y="-435.2" font-family="Courier,monospace" font-size="11.00">Transactions</text>
@@ -265,7 +265,7 @@
 <polygon fill="none" stroke="black" points="135.457,-528.131 127.302,-534.895 137.895,-534.693 135.457,-528.131"/>
 </g>
 <!-- \\Library\\Stock -->
-<g id="node18" class="node"><title>\\Library\\Stock</title>
+<g id="node19" class="node"><title>\\Library\\Stock</title>
 <a xlink:href="core.libraries.Stock.html" xlink:title="Stock" target="_parent">
 <polygon fill="none" stroke="black" points="326,-402 272,-402 272,-366 326,-366 326,-402"/>
 <text text-anchor="middle" x="299" y="-381.2" font-family="Courier,monospace" font-size="11.00">Stock</text>
@@ -277,7 +277,7 @@
 <polygon fill="none" stroke="black" points="135.419,-530.751 127.258,-537.507 137.851,-537.315 135.419,-530.751"/>
 </g>
 <!-- \\Library\\Session -->
-<g id="node19" class="node"><title>\\Library\\Session</title>
+<g id="node20" class="node"><title>\\Library\\Session</title>
 <a xlink:href="core.libraries.Session.html" xlink:title="Session" target="_parent">
 <polygon fill="none" stroke="black" points="331,-348 267,-348 267,-312 331,-312 331,-348"/>
 <text text-anchor="middle" x="299" y="-327.2" font-family="Courier,monospace" font-size="11.00">Session</text>
@@ -289,7 +289,7 @@
 <polygon fill="none" stroke="black" points="135.442,-531.877 127.256,-538.603 137.85,-538.45 135.442,-531.877"/>
 </g>
 <!-- \\Library\\Cart -->
-<g id="node20" class="node"><title>\\Library\\Cart</title>
+<g id="node21" class="node"><title>\\Library\\Cart</title>
 <a xlink:href="core.libraries.Cart.html" xlink:title="Cart" target="_parent">
 <polygon fill="none" stroke="black" points="326,-294 272,-294 272,-258 326,-258 326,-294"/>
 <text text-anchor="middle" x="299" y="-273.2" font-family="Courier,monospace" font-size="11.00">Cart</text>
@@ -301,7 +301,7 @@
 <polygon fill="none" stroke="black" points="135.525,-532.464 127.313,-539.159 137.907,-539.047 135.525,-532.464"/>
 </g>
 <!-- \\Library\\Gateways -->
-<g id="node21" class="node"><title>\\Library\\Gateways</title>
+<g id="node22" class="node"><title>\\Library\\Gateways</title>
 <a xlink:href="core.libraries.Gateways.html" xlink:title="Gateways" target="_parent">
 <polygon fill="none" stroke="black" points="334.5,-240 263.5,-240 263.5,-204 334.5,-204 334.5,-240"/>
 <text text-anchor="middle" x="299" y="-219.2" font-family="Courier,monospace" font-size="11.00">Gateways</text>
@@ -313,7 +313,7 @@
 <polygon fill="none" stroke="black" points="135.438,-532.871 127.206,-539.54 137.801,-539.46 135.438,-532.871"/>
 </g>
 <!-- \\Library\\URI -->
-<g id="node22" class="node"><title>\\Library\\URI</title>
+<g id="node23" class="node"><title>\\Library\\URI</title>
 <a xlink:href="core.libraries.URI.html" xlink:title="URI" target="_parent">
 <polygon fill="none" stroke="black" points="326,-186 272,-186 272,-150 326,-150 326,-186"/>
 <text text-anchor="middle" x="299" y="-165.2" font-family="Courier,monospace" font-size="11.00">URI</text>
@@ -325,7 +325,7 @@
 <polygon fill="none" stroke="black" points="135.264,-533.19 127.009,-539.832 137.604,-539.787 135.264,-533.19"/>
 </g>
 <!-- \\Library\\Customer -->
-<g id="node23" class="node"><title>\\Library\\Customer</title>
+<g id="node24" class="node"><title>\\Library\\Customer</title>
 <a xlink:href="core.libraries.Customer.html" xlink:title="Customer" target="_parent">
 <polygon fill="none" stroke="black" points="334.5,-132 263.5,-132 263.5,-96 334.5,-96 334.5,-132"/>
 <text text-anchor="middle" x="299" y="-111.2" font-family="Courier,monospace" font-size="11.00">Customer</text>
@@ -337,14 +337,14 @@
 <polygon fill="none" stroke="black" points="135.409,-533.311 127.154,-539.952 137.749,-539.908 135.409,-533.311"/>
 </g>
 <!-- \\Shipping_Driver\\UPS -->
-<g id="node25" class="node"><title>\\Shipping_Driver\\UPS</title>
+<g id="node26" class="node"><title>\\Shipping_Driver\\UPS</title>
 <a xlink:href="core.libraries.shipping_drivers.UPS.html" xlink:title="UPS" target="_parent">
 <polygon fill="none" stroke="black" points="326,-52 272,-52 272,-16 326,-16 326,-52"/>
 <text text-anchor="middle" x="299" y="-31.2" font-family="Courier,monospace" font-size="11.00">UPS</text>
 </a>
 </g>
 <!-- \\SC_Shipping_Driver -->
-<g id="node33" class="node"><title>\\SC_Shipping_Driver</title>
+<g id="node32" class="node"><title>\\SC_Shipping_Driver</title>
 <a xlink:href="core.libraries.shipping_drivers.Shipping_Driver.html" xlink:title="SC_Shipping_Driver" target="_parent">
 <polygon fill="none" stroke="black" points="154,-510 16,-510 16,-474 154,-474 154,-510"/>
 <text text-anchor="middle" x="85" y="-489.2" font-family="Courier,monospace" font-size="11.00">SC_Shipping_Driver</text>
@@ -358,15 +358,8 @@
 <!-- \\SC -->
 <g id="node28" class="node"><title>\\SC</title>
 <a xlink:href="core.sc.html" xlink:title="SC" target="_parent">
-<polygon fill="none" stroke="black" points="112,-888 58,-888 58,-852 112,-852 112,-888"/>
-<text text-anchor="middle" x="85" y="-867.2" font-family="Courier,monospace" font-size="11.00">SC</text>
-</a>
-</g>
-<!-- \\upsRate -->
-<g id="node30" class="node"><title>\\upsRate</title>
-<a xlink:href="core.includes.upsRate.html" xlink:title="upsRate" target="_parent">
-<polygon fill="none" stroke="black" points="117,-780 53,-780 53,-744 117,-744 117,-780"/>
-<text text-anchor="middle" x="85" y="-759.2" font-family="Courier,monospace" font-size="11.00">upsRate</text>
+<polygon fill="none" stroke="black" points="112,-834 58,-834 58,-798 112,-798 112,-834"/>
+<text text-anchor="middle" x="85" y="-813.2" font-family="Courier,monospace" font-size="11.00">SC</text>
 </a>
 </g>
 </g>
