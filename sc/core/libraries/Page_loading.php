@@ -109,8 +109,8 @@ class Page_loading extends \SC_Library {
      */
     function replace_button($input,$tag,$button) {
 
-        $readable = str_replace('_',' ',ucfirst($button));
-
+        $readable = str_replace('_',' ',ucfirst($button));                
+        
         return $this->replace_tag($input,$tag,'
                 <a href="'.sc_ajax($button).'" title="'.$readable.'" class="sc_'.$button.'">
                     <img src="'.sc_asset('button',$button).'" alt="'.$readable.'" />

@@ -22,15 +22,16 @@ $output = $SC->Page_loading->run_item_templates($output);
 $output = $SC->Page_loading->replace_details($output);
 
 //Replace cart info
-$output = $SC->Page_loading->replace_tag($output,'cartinfo','<span class="sc_cartinfo"></span>');
-
-//Hack to keep the old check tag working
-$output = $SC->Page_loading->replace_tag($output,'checkout','[[viewcheckout]]');
+$output = $SC->Page_loading->replace_tag($output,array(
+    'cartinfo'=>'<span class="sc_cartinfo"></span>', //hack for old tag
+    'cart_info'=>'<span class="sc_cartinfo"></span>'
+));
 
 //Replace buttons
 $buttons = array('view_cart','clear_cart','view_checkout');
 foreach ($buttons as $button) {
-  $output = $SC->Page_loading->replace_button($output,str_replace('_','',$button),$button);
+    $output = $SC->Page_loading->replace_button($output,$button,$button);
+    $output = $SC->Page_loading->replace_button($output,str_replace('_','',$button),$button); //hack for old tag
 }
 
 
