@@ -6,9 +6,9 @@
 <!--AUTHOR Simplecart -->
 
 <!--TAG item -->
-    <div class="sc_item_wrapper">
+    <div class="sc_item_wrapper sc_item_number_[[detail|id|%i]]">
       <div class="sc_item_image">
-        [[detail|image|%i]]
+        <img src="[[detail|image|%i]]" alt="An image of the item: [[detail|name|%i]]" />
       </div>
       <div class="sc_item_description">
         <h2>[[detail|name|%i]]</h2>
@@ -24,7 +24,7 @@
     <div class="sc_item_price">
         $[[detail|price|%i]]
     </div>
-    <div class="sc_add_to_cart_button">
+    <div class="sc_add_to_cart_button_area">
         [[message_area]]
         [[add_button]]
         [[qty_selection]]
@@ -33,8 +33,6 @@
         [[options|%i]]
     </ul>
 <!--ENDTAG-->
-
-<!--SPECIALTAG detail price i--AEROCOWL-->[[detail|price|i--AEROCOWL]]/month<!--ENDSPECIALTAG-->
 
 <!--OPTION multiple -->
     <li class="sc_item_option sc_multi_option">

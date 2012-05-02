@@ -112,7 +112,7 @@ class Page_loading extends \SC_Library {
         $readable = str_replace('_',' ',ucfirst($button));                
         
         return $this->replace_tag($input,$tag,'
-                <a href="'.sc_ajax($button).'" title="'.$readable.'" class="sc_'.$button.'">
+                <a href="'.sc_ajax($button).'" title="'.$readable.'" class="sc_'.$button.' sc_button">
                     <img src="'.sc_asset('button',$button).'" alt="'.$readable.'" />
                 </a>'
             );
@@ -195,6 +195,7 @@ class Page_loading extends \SC_Library {
         }  
 
         preg_match_all('/<!--SPECIALTAG (.*?)\s*-->(.*?)<!--ENDSPECIALTAG-->/s',$raw_template,$special_tags);
+        $this->special_tags = array();
         foreach ($special_tags[1] as $key => $tag) {
             $tag = explode(' ',$tag);    
             
@@ -205,10 +206,15 @@ class Page_loading extends \SC_Library {
                   $item = \Model\Item::find('first',array('conditions' => array('number = ?',$this_tag))); 
                         
                   $this_tag = $item->id;      
-                } 
-            }
+                }
+                if ($this_tag == '*') {
+                    $this_tag = '([0-9]*)';
+                } else {
+                    $this_tag = preg_quote($this_tag);
+                }
+            }                        
             
-            $the_tags = preg_quote(implode('|',$tag));
+            $the_tags = implode('\|',$tag);
             
             $this->special_tags[] = array(
                 'regex' => "/\[\[$the_tags\]\]/",
@@ -237,9 +243,9 @@ class Page_loading extends \SC_Library {
 
         $tags = $this->tags;        
 
-        $output = $this->replace_tag($input,'item',function($args) use ($tags,$SC) { 
+        $input = $this->replace_tag($input,'item',function($args) use ($tags,$SC) { 
             //Insert the item numbers into the raw template            
-            return str_replace('%i',$item,$tags['item']);
+            return str_replace('%i',$args[1],$tags['item']);
         });
         unset($tags['item']);                        
 
@@ -256,14 +262,14 @@ class Page_loading extends \SC_Library {
             
             $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,array(
                 'message_area' => '<div class="sc_message_area" style="display:none;"></div>',
-                'add_button' => '<input type="image" src="'.sc_asset('button','add_to_cart').'" alt="Add To Cart" />'
+                'add_button' => '<input type="image" src="'.sc_asset('button','add_to_cart').'" class="sc_add_to_cart_button" alt="Add To Cart" />'
             )); 
                        
             $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,
                 'qty_selection',
                 (($SC->Items->item_flag($args[1],'hide_qty')) 
                     ? '<input class="sc_qty_input" type="hidden' 
-                    : '<label class="sc_qty_label sc_label_right">qty:</label><input type="text'
+                    : '<label class="sc_qty_label sc_label_right">Qty:</label><input type="text'
                 )
                 .'" size=1 name="item_qty" value="'.
                 (($min = $SC->Items->item_flag($args[1],'min'))
