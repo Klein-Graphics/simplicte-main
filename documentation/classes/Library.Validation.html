@@ -29,6 +29,9 @@
 <li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
+<li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
+<li><a href="../packages/Transactions.html"><i class="icon-folder-open"></i> Transactions</a></li>
+<li><a href="../packages/Validation.html"><i class="icon-folder-open"></i> Validation</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -39,7 +42,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">124</span></a></li>
+                <span class="label label-info">62</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">5</span>
@@ -66,27 +69,19 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public inherited"><a href="#__construct" title="__construct :: Adds the $SC property"><span class="description">Adds the $SC property</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#add_rule" title="add_rule :: "><span class="description">add_rule()
-        </span><pre>add_rule()</pre></a></li>
-<li class="method public "><a href="#do_validation" title="do_validation :: "><span class="description">do_validation()
-        </span><pre>do_validation()</pre></a></li>
-<li class="method public "><a href="#email" title="email :: "><span class="description">email()
-        </span><pre>email()</pre></a></li>
-<li class="method public "><a href="#get_messages" title="get_messages :: "><span class="description">get_messages()
-        </span><pre>get_messages()</pre></a></li>
-<li class="method public "><a href="#is_required" title="is_required :: "><span class="description">is_required()
-        </span><pre>is_required()</pre></a></li>
-<li class="method public "><a href="#match" title="match :: "><span class="description">match()
-        </span><pre>match()</pre></a></li>
-<li class="method public "><a href="#min" title="min :: "><span class="description">min()
-        </span><pre>min()</pre></a></li>
-<li class="method public "><a href="#required" title="required :: "><span class="description">required()
-        </span><pre>required()</pre></a></li>
+<li class="method public "><a href="#add_rule" title="add_rule :: Add Rule"><span class="description">Add Rule</span><pre>add_rule()</pre></a></li>
+<li class="method public "><a href="#do_validation" title="do_validation :: Do Validation"><span class="description">Do Validation</span><pre>do_validation()</pre></a></li>
+<li class="method public "><a href="#email" title="email :: Email?"><span class="description">Email?</span><pre>email()</pre></a></li>
+<li class="method public "><a href="#get_messages" title="get_messages :: Get Messages"><span class="description">Get Messages</span><pre>get_messages()</pre></a></li>
+<li class="method public "><a href="#is_required" title="is_required :: Is Required"><span class="description">Is Required</span><pre>is_required()</pre></a></li>
+<li class="method public "><a href="#match" title="match :: Match?"><span class="description">Match?</span><pre>match()</pre></a></li>
+<li class="method public "><a href="#min" title="min :: Min?"><span class="description">Min?</span><pre>min()</pre></a></li>
+<li class="method public "><a href="#required" title="required :: Required"><span class="description">Required</span><pre>required()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
-<li class="property public "><a href="#%24language" title="$language :: "><span class="description">$language</span><pre>$language</pre></a></li>
-<li class="property public "><a href="#%24messages" title="$messages :: "><span class="description">$messages</span><pre>$messages</pre></a></li>
-<li class="property public "><a href="#%24rules" title="$rules :: "><span class="description">$rules</span><pre>$rules</pre></a></li>
+<li class="property public "><a href="#%24language" title="$language :: Language for each rule"><span class="description">Language for each rule</span><pre>$language</pre></a></li>
+<li class="property public "><a href="#%24messages" title="$messages :: Messages to return"><span class="description">Messages to return</span><pre>$messages</pre></a></li>
+<li class="property public "><a href="#%24rules" title="$rules :: The rules to validate"><span class="description">The rules to validate</span><pre>$rules</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -100,10 +95,14 @@
 </li>
 </ul>
 <div href="../classes/Library.Validation.html" class="element class">
-<p class="short_description">Simplecart's Library class</p>
+<p class="short_description">Validation Library Class</p>
 <div class="details">
 <p class="long_description"><p>This class simply contains adds the $SC property to each library which
 allows access to the global $SC object</p></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="..//packages/Validation.html">Validation</a></td>
+</tr></table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
@@ -121,142 +120,142 @@ allows access to the global $SC object</p></p>
 </div></div>
 </div>
 <a name="add_rule" id="add_rule"></a><div class="element clickable method public add_rule" data-toggle="collapse" data-target=".add_rule .collapse">
-<h2>add_rule()
-        </h2>
-<pre>add_rule($elements, $display_name, $rules) </pre>
+<h2>Add Rule</h2>
+<pre>add_rule(string | array $elements, string | array $display_name, string $rules) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Adds a validation rule</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$elements</h4>
-<code></code>
-</div>
+<code>stringarray</code><p>A string of the name of an element to the validation or an array of elements to add the same validation to</p></div>
 <div class="subelement argument">
 <h4>$display_name</h4>
-<code></code>
-</div>
+<code>stringarray</code><p>A string of the human readable name of an element or an array corresponding to the array of elements</p></div>
 <div class="subelement argument">
 <h4>$rules</h4>
-<code></code>
-</div>
+<code>string</code><p>Rules to add, delimited with a pipe</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a name="do_validation" id="do_validation"></a><div class="element clickable method public do_validation" data-toggle="collapse" data-target=".do_validation .collapse">
-<h2>do_validation()
-        </h2>
-<pre>do_validation() </pre>
+<h2>Do Validation</h2>
+<pre>do_validation() : bool</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Runs the validation, pulling the data from the POST array</p></p>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>Whether or not the validation was successful</div>
+</div></div>
 </div>
 <a name="email" id="email"></a><div class="element clickable method public email" data-toggle="collapse" data-target=".email .collapse">
-<h2>email()
-        </h2>
-<pre>email($element_value) </pre>
+<h2>Email?</h2>
+<pre>email(string $element_value) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$element_value</h4>
-<code></code>
-</div>
+<code>string</code><p>The value of the element to validate</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <a name="get_messages" id="get_messages"></a><div class="element clickable method public get_messages" data-toggle="collapse" data-target=".get_messages .collapse">
-<h2>get_messages()
-        </h2>
-<pre>get_messages($delimiter) </pre>
+<h2>Get Messages</h2>
+<pre>get_messages(string $delimiter) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Implodes the messages</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$delimiter</h4>
-<code></code>
-</div>
+<code>string</code><p>The delimiter to put between the messages</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a name="is_required" id="is_required"></a><div class="element clickable method public is_required" data-toggle="collapse" data-target=".is_required .collapse">
-<h2>is_required()
-        </h2>
-<pre>is_required($element) </pre>
+<h2>Is Required</h2>
+<pre>is_required(string $element) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Checks if an element is requred</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$element</h4>
-<code></code>
-</div>
+<code>string</code><p>The element</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <a name="match" id="match"></a><div class="element clickable method public match" data-toggle="collapse" data-target=".match .collapse">
-<h2>match()
-        </h2>
-<pre>match($element_value, $matching_element) </pre>
+<h2>Match?</h2>
+<pre>match(string $element_value, string $matching_element) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Matches one element against another</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$element_value</h4>
-<code></code>
-</div>
+<code>string</code><p>The value of the element to validate</p></div>
 <div class="subelement argument">
 <h4>$matching_element</h4>
-<code></code>
-</div>
+<code>string</code><p>The element to match against</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <a name="min" id="min"></a><div class="element clickable method public min" data-toggle="collapse" data-target=".min .collapse">
-<h2>min()
-        </h2>
-<pre>min($element_value, $min) </pre>
+<h2>Min?</h2>
+<pre>min(string $element_value, int $min) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Checks to see if an element is a minumum amount of characters</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$element_value</h4>
-<code></code>
-</div>
+<code>string</code><p>The value of the element to validate</p></div>
 <div class="subelement argument">
 <h4>$min</h4>
-<code></code>
-</div>
+<code>int</code><p>The minumum amount of characters</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <a name="required" id="required"></a><div class="element clickable method public required" data-toggle="collapse" data-target=".required .collapse">
-<h2>required()
-        </h2>
-<pre>required($element_value) </pre>
+<h2>Required</h2>
+<pre>required(string $element_value) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$element_value</h4>
-<code></code>
-</div>
+<code>string</code><p>The value of the element to validate</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24language" id="$language"> </a><div class="element clickable property public $language" data-toggle="collapse" data-target=".$language .collapse">
-<h2>$language</h2>
+<h2>Language for each rule</h2>
 <pre>$language </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 <a name="%24messages" id="$messages"> </a><div class="element clickable property public $messages" data-toggle="collapse" data-target=".$messages .collapse">
-<h2>$messages</h2>
+<h2>Messages to return</h2>
 <pre>$messages </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
 <a name="%24rules" id="$rules"> </a><div class="element clickable property public $rules" data-toggle="collapse" data-target=".$rules .collapse">
-<h2>$rules</h2>
+<h2>The rules to validate</h2>
 <pre>$rules </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
@@ -268,7 +267,7 @@ allows access to the global $SC object</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-04-27T10:35:45-07:00.<br></footer></div>
+            generated on 2012-05-03T11:51:26-07:00.<br></footer></div>
 </div>
 </body>
 </html>

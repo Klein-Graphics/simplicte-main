@@ -29,6 +29,9 @@
 <li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
+<li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
+<li><a href="../packages/Transactions.html"><i class="icon-folder-open"></i> Transactions</a></li>
+<li><a href="../packages/Validation.html"><i class="icon-folder-open"></i> Validation</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -39,7 +42,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">124</span></a></li>
+                <span class="label label-info">62</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">5</span>
@@ -66,22 +69,14 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public inherited"><a href="#__construct" title="__construct :: Adds the $SC property"><span class="description">Adds the $SC property</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#associate_customer" title="associate_customer :: "><span class="description">associate_customer()
-        </span><pre>associate_customer()</pre></a></li>
-<li class="method public "><a href="#calculate_soft_total" title="calculate_soft_total :: "><span class="description">calculate_soft_total()
-        </span><pre>calculate_soft_total()</pre></a></li>
-<li class="method public "><a href="#create_transaction" title="create_transaction :: "><span class="description">create_transaction()
-        </span><pre>create_transaction()</pre></a></li>
-<li class="method public "><a href="#delete_transaction" title="delete_transaction :: "><span class="description">delete_transaction()
-        </span><pre>delete_transaction()</pre></a></li>
-<li class="method public "><a href="#generate_order_number" title="generate_order_number :: "><span class="description">generate_order_number()
-        </span><pre>generate_order_number()</pre></a></li>
-<li class="method public "><a href="#get_stale_transactions" title="get_stale_transactions :: "><span class="description">get_stale_transactions()
-        </span><pre>get_stale_transactions()</pre></a></li>
-<li class="method public "><a href="#get_transaction" title="get_transaction :: "><span class="description">get_transaction()
-        </span><pre>get_transaction()</pre></a></li>
-<li class="method public "><a href="#update_transaction" title="update_transaction :: "><span class="description">update_transaction()
-        </span><pre>update_transaction()</pre></a></li>
+<li class="method public "><a href="#associate_customer" title="associate_customer :: Associate customer"><span class="description">Associate customer</span><pre>associate_customer()</pre></a></li>
+<li class="method public "><a href="#calculate_soft_total" title="calculate_soft_total :: Calculate Soft Total"><span class="description">Calculate Soft Total</span><pre>calculate_soft_total()</pre></a></li>
+<li class="method public "><a href="#create_transaction" title="create_transaction :: Create transaction"><span class="description">Create transaction</span><pre>create_transaction()</pre></a></li>
+<li class="method public "><a href="#delete_transaction" title="delete_transaction :: Delete Transation"><span class="description">Delete Transation</span><pre>delete_transaction()</pre></a></li>
+<li class="method public "><a href="#generate_order_number" title="generate_order_number :: Generate Order Number"><span class="description">Generate Order Number</span><pre>generate_order_number()</pre></a></li>
+<li class="method public "><a href="#get_stale_transactions" title="get_stale_transactions :: Get Stale Transactions"><span class="description">Get Stale Transactions</span><pre>get_stale_transactions()</pre></a></li>
+<li class="method public "><a href="#get_transaction" title="get_transaction :: Get Transaction"><span class="description">Get Transaction</span><pre>get_transaction()</pre></a></li>
+<li class="method public "><a href="#update_transaction" title="update_transaction :: Update Transaction"><span class="description">Update Transaction</span><pre>update_transaction()</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -95,10 +90,14 @@
 </li>
 </ul>
 <div href="../classes/Library.Transactions.html" class="element class">
-<p class="short_description">Simplecart's Library class</p>
+<p class="short_description">Transactions Library Class</p>
 <div class="details">
 <p class="long_description"><p>This class simply contains adds the $SC property to each library which
 allows access to the global $SC object</p></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="..//packages/Transactions.html">Transactions</a></td>
+</tr></table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
@@ -116,139 +115,139 @@ allows access to the global $SC object</p></p>
 </div></div>
 </div>
 <a name="associate_customer" id="associate_customer"></a><div class="element clickable method public associate_customer" data-toggle="collapse" data-target=".associate_customer .collapse">
-<h2>associate_customer()
-        </h2>
-<pre>associate_customer($transaction, $cust_id) </pre>
+<h2>Associate customer</h2>
+<pre>associate_customer(int $transaction, int $cust_id) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Copies customer data to a transaction</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$transaction</h4>
-<code></code>
-</div>
+<code>int</code><p>The trasaction id</p></div>
 <div class="subelement argument">
 <h4>$cust_id</h4>
-<code></code>
+<code>int</code><p>The customer's id</p>
 </div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a name="calculate_soft_total" id="calculate_soft_total"></a><div class="element clickable method public calculate_soft_total" data-toggle="collapse" data-target=".calculate_soft_total .collapse">
-<h2>calculate_soft_total()
-        </h2>
-<pre>calculate_soft_total($transaction) </pre>
+<h2>Calculate Soft Total</h2>
+<pre>calculate_soft_total(int | object $transaction) : int</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Uses information from the transaction database to calculate a transaction total</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$transaction</h4>
-<code></code>
-</div>
+<code>intobject</code><p>A transaction DB object or a transaction id</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
 </div></div>
 </div>
 <a name="create_transaction" id="create_transaction"></a><div class="element clickable method public create_transaction" data-toggle="collapse" data-target=".create_transaction .collapse">
-<h2>create_transaction()
-        </h2>
-<pre>create_transaction($custid, $data) </pre>
+<h2>Create transaction</h2>
+<pre>create_transaction(string | array $custid, array $data) : int</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Creates a transaction</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$custid</h4>
-<code></code>
+<code>stringarray</code><p>Either the customer's ID or an array containing all the transaction data including the 'custid' field</p>
 </div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code></code>
-</div>
+<code>array</code><p>Data to insert into the transaction</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
 </div></div>
 </div>
 <a name="delete_transaction" id="delete_transaction"></a><div class="element clickable method public delete_transaction" data-toggle="collapse" data-target=".delete_transaction .collapse">
-<h2>delete_transaction()
-        </h2>
-<pre>delete_transaction($id) </pre>
+<h2>Delete Transation</h2>
+<pre>delete_transaction(int $id) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Deletes a transaction</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$id</h4>
-<code></code>
+<code>int</code><p>The transaction's id</p>
 </div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <a name="generate_order_number" id="generate_order_number"></a><div class="element clickable method public generate_order_number" data-toggle="collapse" data-target=".generate_order_number .collapse">
-<h2>generate_order_number()
-        </h2>
-<pre>generate_order_number($id, $update) </pre>
+<h2>Generate Order Number</h2>
+<pre>generate_order_number(int $id, bool $update) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Generates an order number based on the transaction ID and the date</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$id</h4>
-<code></code>
-</div>
+<code>int</code><p>The id of the order</p></div>
 <div class="subelement argument">
 <h4>$update</h4>
-<code></code>
-</div>
+<code>bool</code><p>Whether or not to update the order number in the database</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <a name="get_stale_transactions" id="get_stale_transactions"></a><div class="element clickable method public get_stale_transactions" data-toggle="collapse" data-target=".get_stale_transactions .collapse">
-<h2>get_stale_transactions()
-        </h2>
-<pre>get_stale_transactions($date) </pre>
+<h2>Get Stale Transactions</h2>
+<pre>get_stale_transactions(int $date) : \object[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Returns transactions that have been sitting around pending for too long</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$date</h4>
-<code></code>
-</div>
+<code>int</code><p>A unix timestamp</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\object[]</code></div>
 </div></div>
 </div>
 <a name="get_transaction" id="get_transaction"></a><div class="element clickable method public get_transaction" data-toggle="collapse" data-target=".get_transaction .collapse">
-<h2>get_transaction()
-        </h2>
-<pre>get_transaction($search, $return_col, $search_col) </pre>
+<h2>Get Transaction</h2>
+<pre>get_transaction(int | string $search, string $return_col, string $search_col) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Returns information about a specific transaction</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$search</h4>
-<code></code>
-</div>
+<code>intstring</code><p>The value to search for</p></div>
 <div class="subelement argument">
 <h4>$return_col</h4>
-<code></code>
-</div>
+<code>string</code><p>A comma sperated list of columns to return or an asterisk</p></div>
 <div class="subelement argument">
 <h4>$search_col</h4>
-<code></code>
+<code>string</code><p>The column to search for $search in</p>
 </div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>If $return_col contains a comma or is a asterisk, then the entire object is return, otherwise, just the single return value</div>
 </div></div>
 </div>
 <a name="update_transaction" id="update_transaction"></a><div class="element clickable method public update_transaction" data-toggle="collapse" data-target=".update_transaction .collapse">
-<h2>update_transaction()
-        </h2>
-<pre>update_transaction($id, $attributes) </pre>
+<h2>Update Transaction</h2>
+<pre>update_transaction(int $id, array $attributes) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Updates a transaction</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$id</h4>
-<code></code>
+<code>int</code><p>The transaction's id</p>
 </div>
 <div class="subelement argument">
 <h4>$attributes</h4>
-<code></code>
-</div>
+<code>array</code><p>An array of data to update</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 </div>
@@ -258,7 +257,7 @@ allows access to the global $SC object</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-04-27T10:35:45-07:00.<br></footer></div>
+            generated on 2012-05-03T11:51:26-07:00.<br></footer></div>
 </div>
 </body>
 </html>

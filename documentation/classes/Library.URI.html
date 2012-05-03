@@ -29,6 +29,9 @@
 <li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
+<li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
+<li><a href="../packages/Transactions.html"><i class="icon-folder-open"></i> Transactions</a></li>
+<li><a href="../packages/Validation.html"><i class="icon-folder-open"></i> Validation</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -39,7 +42,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">124</span></a></li>
+                <span class="label label-info">62</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">5</span>
@@ -65,13 +68,10 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
-<li class="method public "><a href="#__construct" title="__construct :: Adds the $SC property"><span class="description">Adds the $SC property</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#get_request" title="get_request :: "><span class="description">get_request()
-        </span><pre>get_request()</pre></a></li>
-<li class="method public "><a href="#get_view" title="get_view :: "><span class="description">get_view()
-        </span><pre>get_view()</pre></a></li>
-<li class="method public "><a href="#initialize_query_string" title="initialize_query_string :: "><span class="description">initialize_query_string()
-        </span><pre>initialize_query_string()</pre></a></li>
+<li class="method public "><a href="#__construct" title="__construct :: Construct"><span class="description">Construct</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#get_request" title="get_request :: Get Request"><span class="description">Get Request</span><pre>get_request()</pre></a></li>
+<li class="method public "><a href="#get_view" title="get_view :: Get View"><span class="description">Get View</span><pre>get_view()</pre></a></li>
+<li class="method public "><a href="#initialize_query_string" title="initialize_query_string :: Initialize Query String"><span class="description">Initialize Query String</span><pre>initialize_query_string()</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -85,49 +85,61 @@
 </li>
 </ul>
 <div href="../classes/Library.URI.html" class="element class">
-<p class="short_description">Simplecart's Library class</p>
+<p class="short_description">URI Library Class</p>
 <div class="details">
 <p class="long_description"><p>This class simply contains adds the $SC property to each library which
 allows access to the global $SC object</p></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="..//packages/Core.html">Core</a></td>
+</tr></table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
-<h2>Adds the $SC property</h2>
+<h2>Construct</h2>
 <pre>__construct() : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Runs the initialization method</p></p>
 <h3>Returns</h3>
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a name="get_request" id="get_request"></a><div class="element clickable method public get_request" data-toggle="collapse" data-target=".get_request .collapse">
-<h2>get_request()
-        </h2>
-<pre>get_request($part) </pre>
+<h2>Get Request</h2>
+<pre>get_request(int $part) : string | array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"></p>
+<p class="long_description"><p>Gets the request</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$part</h4>
-<code></code>
+<code>int</code><p>The request section to grab</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>array</code>
 </div>
 </div></div>
 </div>
 <a name="get_view" id="get_view"></a><div class="element clickable method public get_view" data-toggle="collapse" data-target=".get_view .collapse">
-<h2>get_view()
-        </h2>
-<pre>get_view() </pre>
+<h2>Get View</h2>
+<pre>get_view() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Gets the name of the view</p></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
 </div>
 <a name="initialize_query_string" id="initialize_query_string"></a><div class="element clickable method public initialize_query_string" data-toggle="collapse" data-target=".initialize_query_string .collapse">
-<h2>initialize_query_string()
-        </h2>
-<pre>initialize_query_string() </pre>
+<h2>Initialize Query String</h2>
+<pre>initialize_query_string() : array</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Parses the query string</p></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
 </div>
 </div>
 </div>
@@ -136,7 +148,7 @@ allows access to the global $SC object</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-04-27T10:35:45-07:00.<br></footer></div>
+            generated on 2012-05-03T11:51:26-07:00.<br></footer></div>
 </div>
 </body>
 </html>
