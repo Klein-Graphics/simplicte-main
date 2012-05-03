@@ -5,14 +5,14 @@
    *
    * This libary handles the modification and display of the user's cart
    *
-   * @package Cart
+   * @package Transactions
    */
   
   namespace Library;
   /**
    * The Cart library class
    *
-   * @package Cart
+   * @package Transactions
    */
   class Cart extends \SC_Library {
     

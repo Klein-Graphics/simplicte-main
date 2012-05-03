@@ -5,7 +5,7 @@
   //Database
   //-----------
   $CONFIG['DATABASE'] = array(
-    'development' => 'mysql://root:@localhost/simplecart2',
+    'development' => '',
     'production' => ''
   );
   
@@ -21,7 +21,7 @@
    * determine this value is executed, a kitten is killed. Please think of the 
    * kittens.
    */ 
-  $CONFIG['URL'] = '/dockets/simplecart2';
+  $CONFIG['URL'] = '';
   
   //Error Handling and Debugging
   //---------------
@@ -51,10 +51,9 @@
     'All'
   );
   
-  /*
+  /**
    * Other
-   */
-   
+   */   
   $CONFIG['EMAIL_REGEX'] = "/[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)\b/i";  
   $CONFIG['SEED'] = 'simplecart12345678910111213141516'; //Change this value to anything.
   

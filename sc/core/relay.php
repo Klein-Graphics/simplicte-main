@@ -20,7 +20,7 @@ require 'init.php';
 
 $SC->load_library(array('Transaction'));
 
-/*
+/**
  * Get all post data and make sure that the posted key is right
  */
  

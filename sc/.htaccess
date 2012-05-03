@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /dockets/simplecart2/sc/    
+    RewriteBase /dockets/carefast/site/sc/    
 
     #Checks to see if this is an request for an ajax view
     RewriteRule ^ajax(.*)$ core/ajax.php?$1 [L]

@@ -1,16 +1,34 @@
 <?php
 
-//----------------------
-//Transaction Functions
-//----------------------
-//
-// These functions handle the CRUD of Transactions
-//
+/**
+ * Transactions Library
+ *
+ * Handles the CRUD of Transactions 
+ * 
+ * @package Transactions
+ */
 
 namespace Library;
 
+/**
+ * Transactions Library Class
+ *
+ * @package Transactions 
+ */
 class Transactions extends \SC_Library {
 
+    /**
+     * Get Transaction
+     *
+     * Returns information about a specific transaction
+     *
+     * @return mixed If $return_col contains a comma or is a asterisk, then the entire object is return,
+     * otherwise, just the single return value
+     * 
+     * @param int|string $search The value to search for
+     * @param string $return_col A comma sperated list of columns to return or an asterisk
+     * @param string $search_col The column to search for $search in
+     */
     function get_transaction($search,$return_col='*',$search_col='id') {
         
         if (is_array($return_col)) {
@@ -29,6 +47,17 @@ class Transactions extends \SC_Library {
       
     }                
 
+    /**
+     * Create transaction
+     *
+     * Creates a transaction
+     *
+     * @return int
+     *
+     * @param string|array $custid Either the customer's ID or an array containing all the
+     * transaction data including the 'custid' field
+     * @param array $data Data to insert into the transaction
+     */
     function create_transaction($custid,$data=FALSE) {
         if (is_array($custid) && ! $data) {
             $data = $custid;
@@ -45,6 +74,16 @@ class Transactions extends \SC_Library {
         return $transaction->id;
     }
 
+    /**
+     * Generate Order Number
+     *
+     * Generates an order number based on the transaction ID and the date
+     *
+     * @return string
+     *
+     * @param int $id The id of the order
+     * @param bool $update Whether or not to update the order number in the database    
+     */
     function generate_order_number($id,$update=FALSE) {
         $order_number = date('ymd').str_pad($id%10000,4,'0',STR_PAD_LEFT);
 
@@ -57,6 +96,16 @@ class Transactions extends \SC_Library {
       
     }
 
+    /**
+     * Update Transaction
+     *
+     * Updates a transaction
+     *
+     * @return bool
+     *
+     * @param int $id The transaction's id
+     * @param array $attributes An array of data to update
+     */
     function update_transaction($id,$attributes) {
       
         $transaction = \Model\Transaction::find($id);                                             
@@ -71,6 +120,15 @@ class Transactions extends \SC_Library {
       
     }
     
+    /**
+     * Delete Transation
+     *
+     * Deletes a transaction
+     *
+     * @return bool
+     *
+     * @param int $id The transaction's id
+     */
     function delete_transaction($id) {
         
         $transaction = \Model\Transaction::find($id);
@@ -81,6 +139,16 @@ class Transactions extends \SC_Library {
         
     }
 
+    /**
+     * Associate customer
+     *
+     * Copies customer data to a transaction
+     *
+     * @return null
+     *
+     * @param int $transaction The trasaction id
+     * @param int $cust_id The customer's id
+     */
     function associate_customer($transaction,$cust_id) {           
         
         $fields_to_copy = array(
@@ -120,6 +188,15 @@ class Transactions extends \SC_Library {
         
     }
     
+    /**
+     * Get Stale Transactions
+     *
+     * Returns transactions that have been sitting around pending for too long
+     *
+     * @return object[]
+     *
+     * @param int $date A unix timestamp 
+     */
     function get_stale_transactions($date=NULL) {
         $date = (
             ($date!=NULL) 
@@ -136,6 +213,15 @@ class Transactions extends \SC_Library {
         return $orders;                                                    
     }
     
+    /**
+     * Calculate Soft Total
+     *
+     * Uses information from the transaction database to calculate a transaction total
+     *
+     * @return int
+     *
+     * @param int|object $transaction A transaction DB object or a transaction id
+     */
     function calculate_soft_total($transaction) {
         if (is_numeric($transaction)) {
             $transaction = $this->get_transcation($transcation);

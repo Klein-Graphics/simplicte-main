@@ -1,9 +1,28 @@
 <?php
+/**
+ * Shipping Library
+ *
+ * Handles loading shipping drivers and taring the cart
+ *
+ * @package Checkout
+ */
 
 namespace Library;
 
+/**
+ * Shipping Library Class
+ *
+ * @package Checkout
+ */
 class Shipping extends \SC_Library {
- 
+    
+    /**
+     * Construct
+     *
+     * Loads the drivers specified in the store configuration
+     *
+     * @return null
+     */
     function __construct() {
         parent::__construct();
         
@@ -23,6 +42,15 @@ class Shipping extends \SC_Library {
         }        
     }
     
+    /**
+     * Load Driver
+     *
+     * Loads a specific shipping driver
+     *
+     * @return bool Returns whether or not the driver(s) loaded
+     *
+     * @param string|string[] $driver Name of driver or an array of names
+     */
     function load_driver($driver) {
         
         if (is_array($driver)) {
@@ -38,7 +66,7 @@ class Shipping extends \SC_Library {
         
         if (!file_exists("core/libraries/shipping_drivers/$driver.php")) {
             trigger_error("Shipping driver '$driver' does not exist");
-            return false;
+            return FALSE;
         }
         
         include_once "core/libraries/shipping_drivers/$driver.php"; 
@@ -47,10 +75,18 @@ class Shipping extends \SC_Library {
         
         $this->Drivers->$driver = new $namespaced_driver;
         
-        return true;
+        return TRUE;
         
     }
     
+    /**
+     * Get Shipping Methods
+     *
+     * Returns a list of shipping methods
+     *
+     * @return array An array of methods where the key is the name of the service
+     * and the value is an array of the actuall shipping options
+     */
     function get_shipping_methods() {
         
         $shipping_methods = array();
@@ -62,11 +98,18 @@ class Shipping extends \SC_Library {
         return $shipping_methods;
     }
     
+    /**
+     * Generate Shipping Dropdown
+     *
+     * Generates a dropdown menu of shipping methods
+     *
+     * return string
+     */
     function generate_shipping_dropdown() {
         $shipping_methods = $this->get_shipping_methods();
         
         /*
-         * TODO: Weed out disabled shipping methods
+         * TODO: Weed out disabled/invalid shipping methods.
          */
         
         $output = '<select name="shipping_method" class="sc_shipping_method_select">
