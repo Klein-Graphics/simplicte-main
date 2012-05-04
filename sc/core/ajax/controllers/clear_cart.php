@@ -2,7 +2,7 @@
 /**
  * Clears the customers's cart.
  *
- * @package Cart
+ * @package Transactions
  */
 
 global $SC;

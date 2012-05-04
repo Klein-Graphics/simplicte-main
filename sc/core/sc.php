@@ -149,6 +149,7 @@ class SC {
 * This class simply contains adds the $SC property to each library which
 * allows access to the global $SC object
 *
+* @package Core 
 */
 class SC_Library {
     

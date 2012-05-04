@@ -1,8 +1,28 @@
 <?php 
-
+/**
+ * Folding Driver
+ *
+ * This driver creates folding elements on the page, that slide open and closed
+ *
+ * @package Account\Drivers
+ */
 namespace Account_Driver;
-class Folding extends \SC_Account_Driver {
 
+/**
+ * Folding Driver Class
+ *
+ * @package Account\Drivers
+ */
+class Folding extends \SC_Account_Driver {
+    /**
+     * Add Account Info
+     *
+     * Adds the account info dialog to the page
+     *
+     * @return string The ouput
+     *
+     * @param $input The input
+     */
     function add_account_info($input) {
         
         $account_info = '
@@ -23,6 +43,15 @@ class Folding extends \SC_Account_Driver {
         
     }
     
+    /**
+     * Add Login Info
+     *
+     * Adds the login dialog to the page
+     *
+     * @return string The ouput
+     *
+     * @param $input The input
+     */
     function add_login($input) {
         
         $account_info = '

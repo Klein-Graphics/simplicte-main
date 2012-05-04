@@ -1,4 +1,8 @@
 <?php
 
-
+    /**
+     * @ignore
+     *
+     * @package foo
+     */
 

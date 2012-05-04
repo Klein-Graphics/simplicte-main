@@ -2,7 +2,7 @@
 /**
  * Changes the quantity of an item in the cart
  *
- * @package Cart
+ * @package Transactions
  */
 namespace Ajax;
 /**
@@ -11,7 +11,7 @@ namespace Ajax;
  * *Ajax Controller Function* Changes the quantity of a specific line item. Echos
  * "1" to let SC know it worked
  *
- * @package Cart
+ * @package Transactions
  *
  * @return null
  *

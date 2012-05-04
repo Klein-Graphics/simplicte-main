@@ -1,6 +1,10 @@
 <?php
 
-  //Simple cart configuration
+  /**
+   * Simple cart configuration
+   *
+   * @package Core
+   */
   
   //Database
   //-----------

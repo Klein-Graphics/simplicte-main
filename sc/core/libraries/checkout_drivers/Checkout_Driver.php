@@ -1,9 +1,23 @@
 <?php 
+/**
+ * Checkout Driver
+ *
+ * @package Checkout\Checkout_Drivers
+ */
 
+/**
+ * Checkout Driver Parent Class
+ *
+ * @package Checkout\Checkout_Drivers
+ */
 class SC_Checkout_Driver {
-  function __construct() {
-    global $SC;
-    $this->SC = $SC;
-  }
-
+    /**
+     * Construct
+     *
+     * @return null
+     */  
+    function __construct() {
+        global $SC;
+        $this->SC = $SC;
+    }
 }

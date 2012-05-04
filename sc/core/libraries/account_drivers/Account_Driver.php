@@ -1,9 +1,25 @@
 <?php 
-
+/**
+ * Account Driver
+ *
+ * @package Account
+ */
+ 
+/**
+ * Account Driver Parent Class
+ *
+ * @package Account\Drivers
+ */
 class SC_Account_Driver {
-  function __construct() {
-    global $SC;
-    $this->SC = $SC;
-  }
+    
+    /**
+     * Construct
+     *
+     * @return null
+     */
+    function __construct() {
+        global $SC;
+        $this->SC = $SC;
+    }
 
 }

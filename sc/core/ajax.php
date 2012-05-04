@@ -1,6 +1,12 @@
 <?php
 
-  // This is the main script that loads specific ajax pseudo-views
+  /**
+   * AJAX request script
+   *
+   * This is the main script that loads specific ajax pseudo-views
+   *
+   * @package Ajax
+   */ 
   
   require_once 'init.php';
   $CONFIG['DUMP_SESSION'] = FALSE;

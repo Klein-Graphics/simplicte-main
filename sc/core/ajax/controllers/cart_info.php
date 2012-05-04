@@ -3,7 +3,7 @@
   /**
    * Calulates and displays the simple cart info.
    *
-   * @package Cart
+   * @package Transactions
    */
   
   global $SC;

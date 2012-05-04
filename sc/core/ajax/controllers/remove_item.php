@@ -2,7 +2,7 @@
 /**
  * Removes an item from the customer's cart
  *
- * @package Cart
+ * @package Transactions
  */
 namespace Ajax;
 /**
@@ -11,7 +11,7 @@ namespace Ajax;
  * *Ajax Controller Function* Reoves a specific line item. Echos
  * "1" to let SC know it worked
  *
- * @package Cart
+ * @package Transactions
  *
  * @return null
  *

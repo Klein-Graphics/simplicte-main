@@ -1,7 +1,9 @@
 <?php
-//--------------
-// Configuration
-//--------------
+/**
+ * Initilization script
+ *
+ * @package Core
+ */
 $start_time = microtime(true);
 
 //Make sure that this script's cwd is SC's root
@@ -27,7 +29,15 @@ if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROO
   $r_marker_file = fopen('../'.$marker_name,'w');
   fclose($r_marker_file);
   
-  //starting at webroot, recursively read up the file system until the marker is found
+  /**
+   * Recursive Search
+   *
+   * Starting at webroot, recursively read up the file system until the marker is found
+   *
+   * @return bool|string
+   *
+   * @param string $directory The directory to enter
+   */
   function recursive_search($directory) {
     global $marker_name;
     global $cur_dir;   
@@ -88,6 +98,11 @@ require 'core/debug/error.php';
 //-----------
 require 'core/includes/activerecord/ActiveRecord.php';
 
+/**
+ * Closure
+ *
+ * @ignore
+ */
 ActiveRecord\Config::initialize(function($cfg) {
   
   global $CONFIG;

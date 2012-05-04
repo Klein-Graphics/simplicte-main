@@ -3,7 +3,7 @@
 /** 
  * Adds an item to the users cart
  *
- * @package Cart
+ * @package Transactions
  */
 
 namespace Ajax;
@@ -15,7 +15,7 @@ namespace Ajax;
  * there item couldn't quite be added the way they wanted it. Item number is 
  * passed via the URI. All other (variable) data is posted to the function.
  *
- * @package Cart
+ * @package Transactions
  *
  * @return null
  *
