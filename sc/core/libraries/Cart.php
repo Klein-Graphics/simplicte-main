@@ -679,6 +679,28 @@
             'messages' => $messages
         );                
     }
+	
+	    /**
+     * Calculate Soft Total
+     *
+     * Uses information from the transaction database to calculate a transaction total
+     *
+     * @return int
+     *
+     * @param int|object $transaction A transaction DB object or a transaction id
+     */
+    function calculate_soft_total($transaction) {
+        if (is_numeric($transaction)) {
+            $transaction = $this->SC->Transactions->get_transcation($transcation);
+        }
+         
+        return 
+            $this->subtotal($transaction->items) 
+            - $transaction->discount 
+            + $transaction->shipping 
+            + $transaction->taxrate;
+    }
+
 }
   
   

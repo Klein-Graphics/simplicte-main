@@ -81,6 +81,5 @@ register_shutdown_function(function() {
         <?=($CONFIG['SHOW_ERROR_CONTEXT'])?'<br />'.$error['context']:''?>
       </div>
     <?php endforeach; ?>
-    <?=xdebug_get_profiler_filename();?>
   <?php endif;
 });

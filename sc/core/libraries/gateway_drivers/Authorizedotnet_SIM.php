@@ -7,6 +7,7 @@
  * @package Checkout\Gateway Drivers
  */
 namespace Gateway_Driver;
+
 /**
  * Authorize.net Server Integration Method Driver Class
  *

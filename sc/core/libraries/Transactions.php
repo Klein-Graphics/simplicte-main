@@ -213,25 +213,5 @@ class Transactions extends \SC_Library {
         return $orders;                                                    
     }
     
-    /**
-     * Calculate Soft Total
-     *
-     * Uses information from the transaction database to calculate a transaction total
-     *
-     * @return int
-     *
-     * @param int|object $transaction A transaction DB object or a transaction id
-     */
-    function calculate_soft_total($transaction) {
-        if (is_numeric($transaction)) {
-            $transaction = $this->get_transcation($transcation);
-        }
-         
-        return 
-            $this->subtotal($transaction->items) 
-            - $transaction->discount 
-            + $transaction->shipping 
-            + $transaction->taxrate;
-    }
 
 }
