@@ -83,6 +83,12 @@ HTML;
         return $output;
     }
     
+    function relay() {
+         echo 'hi';
+        
+        
+    }
+    
     /**
      * Generate Fingerprint
      *

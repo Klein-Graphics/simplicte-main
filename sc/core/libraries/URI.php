@@ -45,39 +45,39 @@ class URI extends \SC_Library {
 
         $query = explode('/',$query);
 
-        $this->view = array_shift($query);
+        $this->request = array_shift($query);
 
-        $this->request = $query;
+        $this->data = $query;
 
-        return array($this->view,$this->request);
+        return array($this->request,$this->data);
 
-    }
-
-    /**
-     * Get View
-     *
-     * Gets the name of the view
-     *
-     * @return string
-     */
-    function get_view() {
-        return $this->view;
     }
 
     /**
      * Get Request
      *
-     * Gets the request
+     * Gets the name of the request method
+     *
+     * @return string
+     */
+    function get_request() {
+        return $this->request;
+    }
+
+    /**
+     * Get Data
+     *
+     * Gets the request data
      *
      * @return string|array
      *
      * @param int $part The request section to grab
      */
-    function get_request($part=FALSE) {
+    function get_data($part=FALSE) {
         if ($part) {
-            return $this->request[$part];
+            return $this->data[$part];
         } else {
-            return $this->request;
+            return $this->data;
         }
     }
 

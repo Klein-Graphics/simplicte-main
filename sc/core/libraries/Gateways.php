@@ -74,9 +74,7 @@ class Gateways extends \SC_Library {
             return FALSE;
         }
         
-        $namespaced_driver = "\\Gateway_Driver\\$method";
-        
-        
+        $namespaced_driver = "\\Gateway_Driver\\$method";                
         
         include_once $file;
         $this->Drivers->$method = new $namespaced_driver($name);

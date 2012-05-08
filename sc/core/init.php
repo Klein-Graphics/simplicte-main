@@ -21,7 +21,7 @@ if (! $CONFIG['SC_LOCATION']) {
   $CONFIG['SC_LOCATION'] = substr($sc_dir,strrpos($sc_dir,'/')+1);        
 }
 
-/*if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROOT']}/{$CONFIG['URL']}/{$CONFIG['SC_LOCATION']}/config.php"))) {  
+if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROOT']}/{$CONFIG['URL']}/{$CONFIG['SC_LOCATION']}/config.php"))) {  
   
   //Do something complicated to get the url:
   
@@ -38,7 +38,7 @@ if (! $CONFIG['SC_LOCATION']) {
    * @return bool|string
    *
    * @param string $directory The directory to enter
-   *//*
+   */
   function recursive_search($directory) {
     global $marker_name;
     global $cur_dir;   
@@ -82,7 +82,7 @@ if (! $CONFIG['SC_LOCATION']) {
   $r_config_file = fopen('config.php','w');
   fwrite($r_config_file,$config_file);
    
-}*/
+}
 
 
 
