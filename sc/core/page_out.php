@@ -11,6 +11,7 @@
  * @see Core/page_in.php
  */
 
+chdir($sc_cwd);
 //Get, End, and Output output buffer
 $output = ob_get_contents();
 ob_end_clean();
@@ -51,7 +52,8 @@ if ($SC->Session->has_account()) {
 }
 
 //Add Ajax loader
-$output = $SC->Page_loading->replace_tag($output,'ajax_loader','<span class="ajax_loader"><img src="'.sc_asset('img','ajax-loader.gif').'" title="Loading..." /></span>');
+$output = $SC->Page_loading->replace_tag($output,'ajax_loader','<span class="ajax_loader"><img src="'.
+    $SC->Page_loading->get_ajax_loader().'" title="Loading..." /></span>');
 
 //Add and insert javascript, including global function wrappers
 $SC->Page_loading->add_javascript('',' 
@@ -80,8 +82,8 @@ $SC->Page_loading->add_javascript('','
   }
 ');
 
-$SC->Page_loading->add_javascript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
-$SC->Page_loading->add_javascript(sc_asset('js','jquery.crypt'));
+$SC->Page_loading->add_top_javascript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
+$SC->Page_loading->add_top_javascript(sc_asset('js','jquery.crypt'));
 $SC->Page_loading->add_javascript(sc_asset('js','page_display'));
 
 //Load display drivers

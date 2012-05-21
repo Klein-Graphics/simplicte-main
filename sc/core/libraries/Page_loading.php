@@ -29,6 +29,7 @@ class Page_loading extends \SC_Library {
     function __construct() {
         parent::__construct();
         $this->js = array();
+        $this->top_js = array();
 
         $this->loaded_drivers = array();
         $this->load_drivers();
@@ -487,6 +488,24 @@ class Page_loading extends \SC_Library {
 
         $this->js[] = array($src,$script);
     }  
+    
+    /**
+     * Add Top Javascript
+     *
+     * Adds a Javascript file or code at the top of the page
+     *
+     * @param string|array $src A Javascript file, or an array containing the
+     * source at index 0 and raw code at index 1
+     * @param string Raw code to be added
+     */
+    function add_top_javascript($src,$script='') {
+        if (is_array($src)) {
+            $this->top_js[] = $src;
+            return TRUE;
+        }
+
+        $this->top_js[] = array($src,$script);
+    }  
 
     /**
      * Insert Javascript
@@ -501,18 +520,57 @@ class Page_loading extends \SC_Library {
 
         $output = '';
 
-        if ( ! count($this->js)) {
-        return $input;
+        if ( ! count($this->js) && ! count($this->top_js)) {
+            return $input;
         }
 
         foreach ($this->js as $js) {
-        $output .= "<script type='text/javascript' ".(($js[0])?"src='{$js[0]}'":"").">{$js[1]}</script>".PHP_EOL;
+            $output .= "<script type='text/javascript' ".(($js[0])?"src='{$js[0]}'":"").">{$js[1]}</script>".PHP_EOL;
         }
+        
         $output .= '</body>'.PHP_EOL;
+        
+        $output = str_ireplace('</body>',$output,$input);
+        
+        $top_js_code = '';
+        foreach ($this->top_js as $js) {
+            $top_js_code .= "<script type='text/javascript' ".(($js[0])?"src='{$js[0]}'":"").">{$js[1]}</script>".PHP_EOL;  
+        }
+        
+        $top_js_code .= '</head>'.PHP_EOL;
+        
+        $output = str_ireplace('</head>',$top_js_code,$output);
 
-
-        return str_ireplace('</body>',$output,$input);
-
-        }            
+        return $output;
+    }            
+    
+    /**
+     * Get Ajax Loader
+     *
+     * Returns the ajax loader location
+     *
+     * @return string
+     */
+    function get_ajax_loader() {
+        //Is there a defined loader?
+        $this->SC->load_library('Config');
+        if ($loader = $this->SC->Config->get_setting('ajax_loader')) {
+            if (file_exists("assets/img/$loader")) {
+                return sc_asset('img',$loader);
+            }
+            
+            if (file_exists("{$_CONFIG['URL']}/$loader")) {
+                return site_url($loader);
+            }
+            
+            return $loader;
+        }
+        
+        if (file_exists("assets/img/ajax-loader_1.gif")) {
+            return sc_asset('img','ajax-loader_1.gif');
+        }
+        
+        return sc_asset('img','ajax-loader_1.gif');
+    }
 
 }

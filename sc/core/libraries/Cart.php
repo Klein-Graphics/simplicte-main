@@ -43,29 +43,26 @@
      * an array, the function will simply return that same array.
      *
      */
-    function explode_cart($cart) {    
-    
+    function explode_cart($cart) {            
       if (is_array($cart)) {
         return $cart;
-      }
+      }            
     
       if (is_numeric($cart)) { //Is this an ID or the cart itself?
         $transaction = \Model\Transaction::find($cart);
       
-        $cart = $transaction->items;
-        
-      }
+        $cart = $transaction->items;        
+      }      
       
       if ( ! $cart) {
         return array();
-      }
+      }     
       
-      $cart = explode('||',$cart);
+      $cart = explode('||',$cart);      
       
       foreach ($cart as &$item) {
-        $item = $this->explode_item($item); 
-        
-      }
+        $item = $this->explode_item($item);         
+      }      
       
       return $cart;
         
@@ -93,9 +90,7 @@
       $cart = implode('||',$cart);
       
       if ($update) {      
-        $this->SC->Transactions->update_transaction($update,array('items'=>$cart));
-        
-        return TRUE;             
+        $this->SC->Transactions->update_transaction($update,array('items'=>$cart));            
       } 
       
       return $cart;      

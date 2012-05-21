@@ -21,7 +21,7 @@ class Stock extends \SC_Library {
      *
      * Returns the number of items in stock
      *
-     * @return int
+     * @return int|string
      *
      * @param int $item The item's id
      */
@@ -38,7 +38,7 @@ class Stock extends \SC_Library {
      * @return int The item's new stock
      *
      * @param int $item The item's id
-     * @param int $amount The new amount
+     * @param int|string $amount The new amount
      */
     function modify_item_stock($item,$amount) {
         $item = \Model\Item::find($item);
@@ -110,7 +110,8 @@ class Stock extends \SC_Library {
      * @param int $item The item's id
      */
     function item_in_stock($item) {
-        $item = \Model\Item::find($item);   
+        $item = \Model\Item::find($item);
+        
         if ($item->stock == 'inf') {
             return TRUE;
         } else if (is_numeric($item->stock)) {
@@ -137,7 +138,7 @@ class Stock extends \SC_Library {
      * 
      * Returns the number of an item's option in stock
      *
-     * @return int
+     * @return int|string
      *
      * @param int $option The option's id
      */     
@@ -154,7 +155,7 @@ class Stock extends \SC_Library {
      * @return int The option's new stock
      *
      * @param int $option The option's id
-     * @param int $amount The new amount
+     * @param int|string $amount The new amount
      */
     function modify_option_stock($option,$amount) {
         $option = \Model\Itemoption::find($option);
@@ -245,7 +246,7 @@ class Stock extends \SC_Library {
      */
     function pull_cart($cart) {
         $this->SC->load_library('Cart');
-        $cart = $this->SC->Cart->explode_cart($cart);
+        $cart = $this->SC->Cart->explode_cart($cart);        
         
         foreach ($cart as $item) {
             if ($this->item_stock_type($item['id']) === FINITE_STOCK) {
@@ -261,7 +262,7 @@ class Stock extends \SC_Library {
     }    
     
     /**
-     * Pull Cart
+     * Return Cart
      *
      * Returns a carts items to stock
      *
@@ -283,6 +284,71 @@ class Stock extends \SC_Library {
                 }
             }
         }
-    }        
+    }    
+    
+    /**
+     * Verify Stock
+     *
+     * Verifies that no items or options are under a certain limit, and if they are reports it
+     *
+     * @return int[]|array[] If $cart is set, returns an array of the lines that under the limit. 
+     * If not, it returns an array where index 0 is and item id's that are below the limit and 
+     * index 1 is option id's that are below the limit.
+     *
+     * @param int $amount The amount to check for
+     * @param int|string|array $cart A valid cart or cart id
+     */
+    function verify_stock($amount,$cart=FALSE) {    
+        $bad_items = array();
+        $bad_options = array();
+            
+        if ($cart) {
+            $this->SC->load_library('Cart');
+            $cart = $this->SC->Cart->explode_cart($cart);
+            
+            foreach ($cart as $key => $item) {
+                $good = TRUE;
+                $item_stock = $this->get_item_stock($item['id']);
+                              
+                if (is_numeric($item_stock) && $item_stock < $amount) {
+                    $good = FALSE;
+                }                                     
+                
+                foreach ($item['options'] as $opt_key => $option) {
+                    $option_stock = $this->get_option_stock($option['id']);
+                    
+                    if (is_numeric($option_stock) && $option_stock < $amount) {
+                        $good = FALSE;
+                    }
+                }
+                
+                if (!$good) {
+                    $bad_items[] = $key;
+                }
+            }   
+            
+        return $bad_items;
+ 
+        } else {
+            $this->SC->load_library('Items');
+            $items = $this->SC->Items->get_all_items();
+            
+            foreach ($items as $item) {
+                if (is_numeric($item['stock']) && $item['stock'] < $amount) {
+                    $bad_items[] = $item['id'];
+                }
+                
+                foreach ($item['options'] as $option) {
+                    if (is_numeric($option['stock']) && $option['stock'] < $amount) {
+                        $bad_options[] = $option['id'];
+                    }
+                }
+            }
+            
+            return array($bad_items,$bad_options);
+        }
+        
+    
+    }  
     
 }

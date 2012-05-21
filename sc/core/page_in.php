@@ -10,13 +10,15 @@
  *
  * @see Core/page_out.php
  */
-
+$page_cwd = getcwd();
 require 'init.php'; //Initialize Simplecart
+$sc_cwd = getcwd();
 
 $SC->load_library('Session'); //Get sessions ready
 $SC->load_library('Page_loading'); //Pageloading library
 
 //Begin output buffering
-ob_flush();
+@ob_flush();
 ob_start();
+chdir($page_cwd);
 

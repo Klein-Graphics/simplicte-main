@@ -4,5 +4,6 @@
     #Checks to see if this is an request for an ajax view
     RewriteRule ^ajax(.*)$ core/ajax.php?$1 [L]
     RewriteRule ^relay(.*)$ core/outgoing_relay.php?$1 [L]
+    RewriteRule ^receipt(.*)$ core/receipt.php?$1 [L]
 
 </IfModule>

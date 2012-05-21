@@ -18,6 +18,7 @@ $fields = array(
     'apt' => 'Apt #',
     'city' => 'City'.$req,
     'state' => 'State'.$req,
+    'country' => 'Country'.$req,
     'postalcode' => 'Postal Code'.$req,
     'phone' => 'Phone'.$req
 );            

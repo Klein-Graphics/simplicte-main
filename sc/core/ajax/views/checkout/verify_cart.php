@@ -42,7 +42,9 @@
 </form>
 
 <script type="text/javascript">
-    $(document).ready(function() {        
+    $(document).ready(function() { 
+        page_display.cart.refresh();
+               
         $(".sc_verify_form").submit(function(e) {    
             e.preventDefault();
             

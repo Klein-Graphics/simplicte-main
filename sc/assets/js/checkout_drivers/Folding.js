@@ -33,7 +33,7 @@ page_display.checkout = {
                     case 'refresh':
                         location.href +='#checkout';
                         window.location.reload();
-                    break;
+                    break;                    
                     
                     case 'display_good':
                         $('.sc_display')

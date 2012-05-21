@@ -15,6 +15,8 @@ namespace Gateway_Driver;
  */
 class Authorizedotnet_SIM extends \SC_Gateway_Driver {        
     
+    public static $default_name = 'Credit Card';
+        
     /**
      * Construct
      *
@@ -25,11 +27,9 @@ class Authorizedotnet_SIM extends \SC_Gateway_Driver {
      *
      * @param string $name The human readable name
      */
-    function __construct($name='Credit Card') {
+    function __construct($name=NULL) {
     
-        parent::__construct();
-        
-        $this->name = $name;
+        parent::__construct($name);
     
         $this->SC->load_library(array('Session','Cart','Customer'));
     
@@ -83,10 +83,33 @@ HTML;
         return $output;
     }
     
-    function relay() {
-         echo 'hi';
+    /**
+     * Relay
+     *
+     * Translates gateway-specific information to simplecart's
+     * incoming relay script. Like all relay scripts, simplecart hasn't been
+     * initiated yet, so this can only use php functions and SC's global
+     * functions. This function is also called statically, so it cannot use
+     * the "this" keyword
+     *
+     * @return Bool whether or not the transaction was successful
+     */
+    static function relay() {
+        global $CONFIG;
+    
+        require_once 'core/includes/Curl.php';  
         
+        $curl = new \Curl();
         
+        $transaction_result = array(
+            'transaction' => $_POST['x_invoice_num'],
+            'method' => $_POST['x_card_type'].' ending in '.$_POST['x_account_number'],
+            'hash' => md5("{$_POST['x_invoice_num']} {$CONFIG['SEED']}"),
+            'status_code' => ($_POST['x_response_code'] == 1),
+            'status_text' => $_POST['x_response_reason_text'],
+        );
+        
+        return $curl->post(INCOMING_RELAY_URL,$transaction_result,$info);     
     }
     
     /**
@@ -136,7 +159,7 @@ HTML;
             'x_relay_response' => 'TRUE',
             'x_delim_data' => 'FALSE',
             //Order information
-            'x_invoice_number' => $this->transaction->ordernumber,
+            'x_invoice_num' => $this->transaction->ordernumber,
             'x_description' => 'Purchase from '.$this->SC->Config->get_setting('storename'),
             'x_tax' => $this->transaction->taxrate,
             'x_freight' => $this->transaction->shipping,
@@ -152,8 +175,8 @@ HTML;
             'x_country' => $this->transaction->bill_country,
             'x_phone' => $this->transaction->bill_phone,                
             'x_cust_id' => $this->transaction->custid,
-            'x_ship_to_first' => $this->transaction->ship_firstname,
-            'x_ship_to_last' => $this->transaction->ship_lastname,
+            'x_ship_to_first_name' => $this->transaction->ship_firstname,
+            'x_ship_to_last_name' => $this->transaction->ship_lastname,
             'x_ship_to_address' => $this->transaction->ship_streetaddress,
             'x_ship_to_city' => $this->transaction->ship_city,
             'x_ship_to_state' => $this->transaction->ship_state,
@@ -170,8 +193,8 @@ HTML;
             'x_logo_url' => $this->SC->Config->get_setting('authorizedotnetlogourl'),
             'x_background_url' => $this->SC->Config->get_setting('authorizedotnetbgurl'),
             //Return URLS
-            'x_cancel_url' => '', //TODO
-            'x_relay_url' =>  '', //TODO
+            'x_cancel_url' => sc_location('cancel.php'),
+            'x_relay_url' =>  $this->outgoing_relay_url,
             //Additional Fields
             'x_version' => '3.1',
             'x_method' => 'CC',
@@ -194,7 +217,8 @@ HTML;
         
         foreach ($items as $num => $item) {
             $num++;
-            $inputs['x_line_item'][] = "item$num<|>".$this->SC->Items->item_name($item['id']).
+            $inputs['x_line_item'][] = 
+                "item$num<|>".str_trunc($this->SC->Items->item_name($item['id']),31).
                 "<|><|>{$item['quantity']}<|>".$this->SC->Cart->line_total($item)."<|>"
                 .(($this->SC->Items->item_flag($item['id'],'notax')) ? 'FALSE' : 'TRUE');
         }

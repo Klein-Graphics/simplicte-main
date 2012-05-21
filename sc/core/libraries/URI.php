@@ -75,7 +75,10 @@ class URI extends \SC_Library {
      */
     function get_data($part=FALSE) {
         if ($part) {
-            return $this->data[$part];
+            $part--;
+            return (isset($this->data[$part]))
+                ? $this->data[$part]
+                : '';
         } else {
             return $this->data;
         }

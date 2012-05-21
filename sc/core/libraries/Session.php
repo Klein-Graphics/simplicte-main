@@ -32,12 +32,16 @@ class Session extends \SC_Library {
         global $CONFIG;
         parent::__construct();
 
+        
         $cookie_params = session_get_cookie_params();
         session_set_cookie_params($cookie_params['lifetime'],$CONFIG['URL']);
+        if (isset($_GET[session_name()])) {
+            session_id($_GET[session_name()]);
+        }
+        
         session_start();   
 
-        $this->initialize();                 
-            
+        $this->initialize();                             
     }   
 
     /**
@@ -86,22 +90,22 @@ class Session extends \SC_Library {
      * @return int
      */
     function get_user() {
-      //Have they been designated a user id?
-      if (isset($_SESSION['user_id'])) {
-        return $_SESSION['user_id'];
-      }
-      
-      //Do they have a customer ID?
-      if (isset($_SESSION['customer_id'])) {
-        $_SESSION['user_id'] = $this->SC->Customer->get_customer($_SESSION['customer_id'],'id','custid');
-        return $_SESSION['user_id'];
-      }  
-      
-      //Guess not, make them a temporary one and create a database entry for them
-      $_SESSION['customer_id'] = 'temp'.date('ymdHis').rand(1000,9999); 
-      $_SESSION['user_id'] = $this->SC->Customer->create_customer($_SESSION['customer_id']);
-      
-      return $_SESSION['user_id'];                  
+        //Have they been designated a user id?
+        if (isset($_SESSION['user_id'])) {
+            return $_SESSION['user_id'];
+        }
+
+        //Do they have a customer ID?
+        if (isset($_SESSION['customer_id'])) {
+            $_SESSION['user_id'] = $this->SC->Customer->get_customer($_SESSION['customer_id'],'id','custid');
+            return $_SESSION['user_id'];
+        }  
+
+        //Guess not, make them a temporary one and create a database entry for them
+        $_SESSION['customer_id'] = 'temp'.date('ymdHis').rand(1000,9999); 
+        $_SESSION['user_id'] = $this->SC->Customer->create_customer($_SESSION['customer_id']);
+
+        return $_SESSION['user_id'];                  
     }
 
     /**
@@ -113,21 +117,21 @@ class Session extends \SC_Library {
      * @return string
      */
     function get_customer() {
-      if (isset($_SESSION['customer_id'])) {
+        if (isset($_SESSION['customer_id'])) {
+            return $_SESSION['customer_id'];
+        }
+
+        //Do they have a user ID?
+        if (isset($_SESSION['user_id'])) {
+            $_SESSION['customer_id'] = $this->SC->Customer->get_customer($_SESSION['user_id'],'custid');
+            return $_SESSION['customer_id'];
+        } 
+
+        //Guess not, make them a temporary one and create a database entry for them
+        $_SESSION['customer_id'] = 'temp'.date('ymdHis').rand(1000,9999); 
+        $_SESSION['user_id'] = $this->SC->Customer->create_customer($_SESSION['customer_id']);
+
         return $_SESSION['customer_id'];
-      }
-      
-      //Do they have a user ID?
-      if (isset($_SESSION['user_id'])) {
-        $_SESSION['customer_id'] = $this->SC->Customer->get_customer($_SESSION['user_id'],'custid');
-        return $_SESSION['customer_id'];
-      } 
-      
-      //Guess not, make them a temporary one and create a database entry for them
-      $_SESSION['customer_id'] = 'temp'.date('ymdHis').rand(1000,9999); 
-      $_SESSION['user_id'] = $this->SC->Customer->create_customer($_SESSION['customer_id']);
-      
-      return $_SESSION['customer_id'];
     }
 
     /**
@@ -139,21 +143,42 @@ class Session extends \SC_Library {
      * @return int
      */
     function get_open_transaction() {
-      //Do they have an open transaction?
-      if (isset($_SESSION['transaction_id'])) {
-        return $_SESSION['transaction_id'];
-      }
-      
-      //No? Any pending transactions? Get the first one.
-      if ($transaction = $this->SC->Transactions->get_transaction($this->get_customer(),'id','custid')) {
-        $_SESSION['transaction_id'] = $transaction;
-        return $transaction;
-      }
-      
-      //Still no? Lets start a new one
-      $_SESSION['transaction_id'] = $this->SC->Transactions->create_transaction($this->get_customer());
-      
-      return $_SESSION['transaction_id'];      
+        //Do they have an open transaction?
+        if (isset($_SESSION['transaction_id'])) {
+            return $_SESSION['transaction_id'];
+        }
+
+        //No? Any pending transactions? Get the first one.
+        if ($transaction = \Model\Transaction::first(array(
+            'custid' => $this->get_customer(),
+            'status' => 'pending'
+           ))) {            
+            $_SESSION['transaction_id'] = $transaction->id;
+            return $transaction->id;
+        }
+
+        //Still no? Lets start a new one
+        $_SESSION['transaction_id'] = $this->SC->Transactions->create_transaction($this->get_customer());
+
+        $this->SC->Transactions->associate_customer($_SESSION['transaction_id'],$this->get_user());
+
+        return $_SESSION['transaction_id'];      
+    }
+
+    /**
+     * New Transaction
+     *
+     * Creates and associates a new blank transaction for the customer, keeping
+     * the old one in the database
+     *
+     * @return int
+     */     
+    function new_transaction() {
+        $_SESSION['transaction_id'] = $this->SC->Transactions->create_transaction($this->get_customer());
+
+        $this->SC->Transactions->associate_customer($_SESSION['transaction_id'],$this->get_user());
+
+        return $_SESSION['transaction_id']; 
     }
 
     /**
@@ -164,7 +189,7 @@ class Session extends \SC_Library {
      * @return bool
      */
     function has_account() {
-        //Using the customer's current customer number. Do they have an account?
+        //Using the customer's current customer number, do they have an account?
         $customer = $this->get_customer();
         
         if (strpos($customer,'temp')===0) {

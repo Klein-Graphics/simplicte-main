@@ -91,9 +91,7 @@ class Transactions extends \SC_Library {
             $this->update_transaction($id,array('ordernumber'=>$order_number));
         }
 
-        return $order_number;
-      
-      
+        return $order_number;            
     }
 
     /**
@@ -149,7 +147,7 @@ class Transactions extends \SC_Library {
      * @param int $transaction The trasaction id
      * @param int $cust_id The customer's id
      */
-    function associate_customer($transaction,$cust_id) {           
+    function associate_customer($transaction,$cust_id) {         
         
         $fields_to_copy = array(
             'custid',
@@ -164,6 +162,7 @@ class Transactions extends \SC_Library {
             'ship_country',
             'ship_phone',
             'bill_firstname',
+            'bill_lastname',
             'bill_initial',
             'bill_streetaddress',
             'bill_apt',

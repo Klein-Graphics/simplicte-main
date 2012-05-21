@@ -26,7 +26,7 @@ class Gateways extends \SC_Library {
     function __construct() {
         parent::__construct();
         
-        require_once('core/libraries/gateway_drivers/Gateway_Driver.php');
+        require_once('core/libraries/gateway_drivers/Gateway_Driver.php');        
         
         $this->Drivers = new \stdClass;
         $this->initialize_drivers();

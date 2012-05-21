@@ -10,7 +10,7 @@
  
  $this->load_library(array('Session','Cart'));
  
- if ($second = implode('/',$this->URI->get_request())) {        
+ if ($second = implode('/',$this->URI->get_data())) {        
     $this->load_ajax('checkout/'.$second);
     exit;
  }

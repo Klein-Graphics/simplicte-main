@@ -213,3 +213,26 @@
     function array_to_lower(array $array, $round = 0){ 
         return unserialize(strtolower(serialize($array))); 
     } 
+    
+    /**
+     * Truncate String
+     *
+     * Truncates a string
+     *
+     * @return string
+     *
+     * @param $string The string to truncate
+     *
+     * @copyright Original PHP code by Chirp Internet: www.chirp.com.au
+     */
+    function str_trunc($string, $limit, $break=" ", $pad="...") {
+        // return with no change if string is shorter than $limit
+        if(strlen($string) <= $limit) return $string;
+
+        $string = substr($string, 0, $limit);
+        if(false !== ($breakpoint = strrpos($string, $break))) {
+            $string = substr($string, 0, $breakpoint);
+        }
+
+        return $string . $pad;
+    }
