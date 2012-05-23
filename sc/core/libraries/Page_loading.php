@@ -238,7 +238,7 @@ class Page_loading extends \SC_Library {
      */
     function run_item_templates($input) {      
 
-        $this->SC->load_library('Items');
+        $this->SC->load_library(array('Items','Stock'));
 
         $SC = &$this->SC;                                         
 
@@ -251,30 +251,41 @@ class Page_loading extends \SC_Library {
         unset($tags['item']);                        
 
         $add_to_cart_callback = function($args) use ($tags,$SC) { 
-            //Check if the item is in stock
-            
             //Insert the item numbers into the raw template
             $add_to_cart_code = str_replace('%i',$args[1],$tags['add_to_cart']);  
             
-            $add_to_cart_code = '<form 
-                class="sc_add_to_cart_form sc_item_'.$args[1].'" 
-                method="POST" 
-                action="'.sc_ajax('add_item/'.$args[1]).'">'           
-                    .$add_to_cart_code.
-                '</form>';
-            
+            //Check if the item is in stock            
+            if ($SC->Stock->item_in_stock($args[1])) {
+                $add_to_cart_code = '<form 
+                    class="sc_add_to_cart_form sc_item_'.$args[1].'" 
+                    method="POST" 
+                    action="'.sc_ajax('add_item/'.$args[1]).'">'           
+                        .$add_to_cart_code.
+                    '</form>';
+                        
+                $add_button = '<input type="image" src="'.sc_asset('button','add_to_cart').'" class="sc_add_to_cart_button" alt="Add To Cart" />';
+                $qty_enabled = true;                    
+            } else {
+                $add_button = '<img src="'.sc_asset('button','out_of_stock').'" class="sc_out_of_stock_button" alt="Out Of Stock" />';
+                $qty_enabled = false;      
+            }
+                
             $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,array(
                 'message_area' => '<div class="sc_message_area" style="display:none;"></div>',
-                'add_button' => '<input type="image" src="'.sc_asset('button','add_to_cart').'" class="sc_add_to_cart_button" alt="Add To Cart" />'
-            )); 
+                'add_button' => $add_button
+            ));             
                        
             $add_to_cart_code = $SC->Page_loading->replace_tag($add_to_cart_code,
                 'qty_selection',
                 (($SC->Items->item_flag($args[1],'hide_qty')) 
-                    ? '<input class="sc_qty_input" type="hidden' 
-                    : '<label class="sc_qty_label sc_label_right">Qty:</label><input type="text'
+                    ? '<input class="sc_qty_input" type="hidden" ' 
+                    : '<label class="sc_qty_label sc_label_right">Qty:</label><input type="text" '
                 )
-                .'" size=1 name="item_qty" value="'.
+                .(($qty_enabled)
+                    ? ' '
+                    : 'disabled="disabled" '
+                )   
+                .'size=1 name="item_qty" value="'.
                 (($min = $SC->Items->item_flag($args[1],'min'))
                     ? $min[1]
                     : 1
@@ -325,7 +336,7 @@ class Page_loading extends \SC_Library {
      */
     function generate_options_code($item) {    
 
-        $this->SC->load_library('Items');
+        $this->SC->load_library(array('Items','Stock'));
 
         if (strpos($item,'i--')!==FALSE) {
             $item_num = substr($item,3);
@@ -357,8 +368,12 @@ class Page_loading extends \SC_Library {
                 $sorted_options[$cat]['code'] = $this->replace_tag($this->option_templates['multiple'],'cat',$cat);
                 $this_option_code = '';
                 foreach ($item_options as $item_option) {
-                    $this_option_code .= "<option value=\"{$item_option->id}\">{$item_option->name} (+\${$item_option->price})</option>".PHP_EOL;
-                }
+                    if ($this->SC->Stock->option_in_stock($item_option->id)) {
+                        $this_option_code .= "<option value=\"{$item_option->id}\">{$item_option->name} (+\${$item_option->price})</option>".PHP_EOL;
+                    } else {
+                        $this_option_code .= "<option value=0 disabled=\"disabled\">{$item_option->name} (+\${$item_option->price} Out of stock)</option>".PHP_EOL;
+                    }
+                }                                
                 
                 $this_option_code = '<select name="options['.$i.']">'.$this_option_code.'</select>';
                 
@@ -373,7 +388,9 @@ class Page_loading extends \SC_Library {
                     function($args) use ($item_option) {
                         return $item_option->$args[1]; 
                     }
-                );                
+                );           
+                
+                $out_of_stock = !$this->SC->Stock->option_in_stock($item_option->id);    
                 
                 $sorted_options[$cat]['code'] = $this->replace_tag(
                     $sorted_options[$cat]['code'],
@@ -381,10 +398,18 @@ class Page_loading extends \SC_Library {
                     '<input type="'.(
                         ($this->SC->Items->option_flag($item_option->id,'req')) 
                         ? 'hidden'  
-                        : 'checkbox'
-                    )."\" name=\"options[$i]\" value={$item_option->id} />".
+                        : 'checkbox'                    
+                    ).'"'.(
+                        ($out_of_stock)
+                        ? 'disabled="disabled" '
+                        : ' '                        
+                    )."name=\"options[$i]\" value={$item_option->id} />".
                     (($this->SC->Items->option_flag($item_option->id,'allow_qty')) 
                         ? "<input type=\"text\" name=\"option_qty[$i]\" class=\"sc_option_qty\" size=1 value=1 />" 
+                        : ''
+                    ).(
+                        ($out_of_stock)
+                        ? '(Out of stock)   '
                         : ''
                     )
                 );

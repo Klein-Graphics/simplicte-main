@@ -25,7 +25,12 @@ namespace Ajax;
 function add_item($item_num) {
     global $SC;
 
-    $SC->load_library('Cart');
+    $SC->load_library(array('Cart','Stock'));
+    
+    //Make sure this item is even in stock
+    if (!$SC->Stock->item_in_stock($item_num)) {
+        die('Item out of stock');
+    }
 
     $options = (isset($_POST['options'])) ? $_POST['options'] : array() ;         
 
