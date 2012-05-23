@@ -29,10 +29,10 @@ $output = $SC->Page_loading->replace_tag($output,array(
 ));
 
 //Hack for old checkout tag
-$output = $SC->Page_loading->replace_tag($output,'checkout','[[view_checkout]]');
+$output = $SC->Page_loading->replace_tag($output,'view_checkout','[[checkout]]');
 
 //Replace buttons
-$buttons = array('view_cart','clear_cart','view_checkout');
+$buttons = array('view_cart','clear_cart','checkout');
 foreach ($buttons as $button) {
     $output = $SC->Page_loading->replace_button($output,$button,$button);
     $output = $SC->Page_loading->replace_button($output,str_replace('_','',$button),$button); //hack for old tag

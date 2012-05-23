@@ -22,8 +22,12 @@ if (!$validation) {
                
 }
 
-//Try to login the customer
+//A little hack to make sure the password is MD5'd
+if (strlen($_POST['sc_login_password']) != 32) {
+    $_POST['sc_login_password'] = md5($_POST['sc_login_password']);    
+}
 
+//Try to login the customer
 if (!$SC->Session->login_customer($_POST)) {
     exit(json_encode(array(
         'do_this' => 'display_error',

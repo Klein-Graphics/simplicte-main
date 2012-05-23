@@ -81,7 +81,7 @@ page_display.checkout = {
   },
   
   bind: function() {
-    $('.sc_view_checkout').click(function(e){
+    $('.sc_checkout').click(function(e){
       e.preventDefault();
       page_display.checkout.show();
     });

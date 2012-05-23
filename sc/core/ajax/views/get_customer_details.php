@@ -24,14 +24,14 @@ $fields = array(
 );            
 
 ?>
-Please fill out the following details:
+Please fill out the following details: 
 <form class="sc_account_form" action="<?=sc_ajax('do_get_customer_details')?>" method="POST">
 <?php if (isset($_POST['new_customer'])) : ?>
     <input type="hidden" name="new_customer" value="1" />
 <?php endif ?>
     <table>
         <thead>
-            <td colspan="2">Shipping Info:</td>
+            <td>Shipping Info:</td><td></td>
             <td>Billing Info:</td>
             <td>
                 <input type="checkbox" name="sc_copy_information" class="sc_copy_information" />

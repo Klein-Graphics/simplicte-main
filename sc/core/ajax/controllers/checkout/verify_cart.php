@@ -45,6 +45,9 @@ $transaction->items = $this->Cart->implode_cart($cart,$transaction->id);
 
 if ($out_of_stock_flag) {
     $messages[] = 'Unfortunately some of the items in your cart were out of stock. These items have been removed.';
+    //Check if there's even still items in the cart
+    
+    
 }
 
 //Remove the items from stock. Set order to pending

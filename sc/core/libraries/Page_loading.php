@@ -251,6 +251,8 @@ class Page_loading extends \SC_Library {
         unset($tags['item']);                        
 
         $add_to_cart_callback = function($args) use ($tags,$SC) { 
+            //Check if the item is in stock
+            
             //Insert the item numbers into the raw template
             $add_to_cart_code = str_replace('%i',$args[1],$tags['add_to_cart']);  
             

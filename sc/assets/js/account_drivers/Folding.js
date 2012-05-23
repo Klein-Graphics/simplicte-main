@@ -7,6 +7,7 @@ page_display.account = {
     load: function(link_url,data){
         $('#sc_account_action').load(link_url,data,function(){                 
             $('#sc_account_action').slideDown();
+            
             $("form.sc_account_form").submit(function(e) {
                 e.preventDefault();
                 
@@ -77,6 +78,8 @@ page_display.account = {
         
         
       });      
+      
+      $('#sc_account_action').hide();
     
     }
 }

@@ -1,7 +1,7 @@
 <?php 
 
-  namespace Model;
-  
-  class Customer extends \ActiveRecord\model {
-  
-  }
+    namespace Model;
+
+    class Customer extends \ActiveRecord\model {
+
+    }
