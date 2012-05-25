@@ -409,7 +409,7 @@ class Page_loading extends \SC_Library {
                         : ''
                     ).(
                         ($out_of_stock)
-                        ? '(Out of stock)   '
+                        ? '(Out of stock) '
                         : ''
                     )
                 );
