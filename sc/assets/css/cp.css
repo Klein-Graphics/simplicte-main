@@ -1,0 +1,63 @@
+body {
+    padding-top: 50px;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+ 
+.input-prepend .btn-group .btn, 
+.input-append .btn-group .btn {
+    margin-left: -1px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.input-append .btn-group .btn:last-child {
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;        
+}
+
+.input-append div {
+    display: inline;
+}
+
+label.inline {
+    display: inline;
+}
+
+.button-message {
+    margin: 0 5px;
+}
+
+#add_items_modal .modal-header {
+    padding-bottom: 0;
+    border-bottom: none;    
+}
+
+#container {
+    background: #FAFAFF;
+    min-width: 960px;
+    width: 85%;
+}
+
+#module_menu {
+    background: #fff;
+}
+
+#footer {
+    background: #fff;
+    border-top: 1px solid #ddd;
+}
+
+#image_upload {
+    display: inline;
+}
+
+#search {
+    margin-bottom: 0;
+}
+
+
