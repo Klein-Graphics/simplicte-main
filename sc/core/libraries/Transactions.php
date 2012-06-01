@@ -41,7 +41,7 @@ class Transactions extends \SC_Library {
                 "$search_col" => $search,
                 "transtype" => 'order'
             )
-        ));
+        ));        
 
         return db_return($transaction,$return_col);
       

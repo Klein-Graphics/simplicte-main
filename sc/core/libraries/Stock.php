@@ -119,11 +119,11 @@ class Stock extends \SC_Library {
         } else {
             $stock = explode(':',$item->stock);
             $dep_options = \Model\Itemoption::all(array(
-                'conditions' => array('cat = ?',$stock[1])
+                'conditions' => array('cat = ? AND itemid = ?',$stock[1],$item->id)
             ));
             $good = FALSE;
             foreach ($dep_options as $option) {
-                if ($option->stock > 0) {
+                if ($this->option_in_stock($option->id) > 0) {
                     $good = TRUE;
                     break;
                 }

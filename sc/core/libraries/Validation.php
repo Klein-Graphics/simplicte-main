@@ -26,6 +26,11 @@ class Validation extends \SC_Library {
     public $messages = array();        
     
     /**
+     * Elements that failed to validate
+     */
+    public $bad_inputs = array(); 
+    
+    /**
      * Language for each rule
      */
     public $language = array(
@@ -103,6 +108,7 @@ class Validation extends \SC_Library {
                 
                 $message = str_replace($arg_matches[0],$arg_matches[1],$message);
                 
+                $this->bad_inputs[] = $rule['element'];
                 $this->messages[] = $message;
             }
         }

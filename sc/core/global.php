@@ -186,6 +186,36 @@
 
         return sc_location("ajax/$name$args");
     }
+    
+    /**
+     * SC CP
+     *
+     * A helper to generate a url for a CP request
+     *
+     * @return string
+     *
+     * @param string $name The name of the request
+     * @param string|string $args An array or string of arguments to pass to the script     
+     */
+    function sc_cp($name,$args=FALSE) {
+
+        global $CONFIG;        
+
+        if ($args !== FALSE) {
+          if (is_array($args)) {
+            $args = implode('/',$args);
+          }
+          $args = '/'.ltrim($args,'/');
+        }
+              
+        if ($append = $name.$args) {
+            $append = trim($name.$args,'/').'/';
+        }
+        
+        
+
+        return sc_location("cp/$append");
+    }
   
     /**
      * Is Multi?
@@ -221,7 +251,10 @@
      *
      * @return string
      *
-     * @param $string The string to truncate
+     * @param string $string The string to truncate
+     * @param int $limit The amount of characters to reduce to
+     * @param string $break Where to break the strings at
+     * @param string $pad What to pad the string with
      *
      * @copyright Original PHP code by Chirp Internet: www.chirp.com.au
      */
@@ -235,7 +268,55 @@
         }
 
         return $string . $pad;
-    }
+    }    
+    
+    /**
+     * HTML Truncate String
+     *
+     * Truncates a string ignoring html
+     *
+     * @return string
+     *
+     * @param string $string The string to truncate
+     * @param int $limit The amount of characters to reduce to
+     * @param string $break Where to break the strings at
+     * @param string $pad What to pad the string with
+     *
+     * @copyright Original PHP code by Chirp Internet: www.chirp.com.au
+     */
+     function html_str_trunc($string, $limit, $break=" ", $pad="...") {
+        $string_to_count = strip_tags($string);
+        // return with no change if string is shorter than $limit
+        if(strlen($string_to_count) <= $limit) return $string;
+        
+        $count = 0;
+        $do_count = TRUE;
+        $output_string = '';
+        foreach (str_split($string) as $key => $char) {
+            //Add the character
+            $output_string .= $char;                        
+            
+            if ($char == '<') {    
+                $do_count = FALSE;
+            }
+            
+            $count += $do_count;
+            
+            if ($char == '>') {
+                $do_count = TRUE;
+            }            
+            
+            if ($count == $limit) {
+                break;
+            }            
+        } 
+
+        if(false !== ($breakpoint = strrpos($output_string, $break))) {
+            $output_string = substr($output_string, 0, $breakpoint);
+        }
+
+        return $output_string . $pad;
+    }  
     
     /** 
      * Is Ajax

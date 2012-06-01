@@ -366,12 +366,15 @@ class Page_loading extends \SC_Library {
              
              if (count($sorted_options[$cat]) > 1) {
                 $sorted_options[$cat]['code'] = $this->replace_tag($this->option_templates['multiple'],'cat',$cat);
-                $this_option_code = '';
+                $this_option_code = '';                
                 foreach ($item_options as $item_option) {
+                    $price = ($item_option->price) ? "(+\${$item_option->price})"  : "";
+                    
                     if ($this->SC->Stock->option_in_stock($item_option->id)) {
-                        $this_option_code .= "<option value=\"{$item_option->id}\">{$item_option->name} (+\${$item_option->price})</option>".PHP_EOL;
+                        $this_option_code .= "<option value=\"{$item_option->id}\">{$item_option->name} $price </option>".PHP_EOL;
                     } else {
-                        $this_option_code .= "<option value=0 disabled=\"disabled\">{$item_option->name} (+\${$item_option->price} Out of stock)</option>".PHP_EOL;
+                        $price = '('.trim($price,'()').'Out of stock)';
+                        $this_option_code .= "<option value=0 disabled=\"disabled\">{$item_option->name} $price</option>".PHP_EOL;
                     }
                 }                                
                 

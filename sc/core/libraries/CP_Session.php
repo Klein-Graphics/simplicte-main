@@ -57,7 +57,48 @@ class CP_Session extends \SC_Library {
      * @return bool|int Returns false if not, the ID if they are
      */     
     function logged_in() {
-         return (isset($_SESSION['user_id']));
+         if (isset($_SESSION['user_id'])) {
+            return $_SESSION['user_id'];
+         } else {
+            return FALSE;
+         }
+    }
+    
+    /**
+     * Log In
+     *
+     * Attempts to login a user
+     *
+     * @return bool|int Returns false if they can't be logged in, 
+     * the user ID if successful
+     */
+    function log_in($post_data) {
+        $user = \Model\User::first(array(
+            'username' => $post_data['login_username']
+        ));
+        
+        if (!$user) {
+            return FALSE;
+        }
+        
+        if ($user->passwordmd5 != $post_data['login_password']) {
+            return FALSE;
+        }
+        
+        $_SESSION['user_id'] = $user->id;
+        
+        return $user->id;
+    }
+    
+    /**
+     * Log Out
+     *
+     * Logs out the user
+     *
+     * @return null
+     */
+    function log_out() {
+        unset($_SESSION['user_id']);
     }
 
 }

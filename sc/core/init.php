@@ -94,6 +94,10 @@ $ERRORS = array();
 
 require 'core/debug/error.php';
 
+//Load Global Functions
+
+require 'core/global.php';
+
 //-----------
 // Database
 //-----------
@@ -112,10 +116,6 @@ ActiveRecord\Config::initialize(function($cfg) {
   $cfg->set_connections($CONFIG['DATABASE']);
   
 });
-
-//Load Global Functions
-
-require 'core/global.php';
 
 //Initialize main SC classes
 
