@@ -7,6 +7,7 @@
    */
   
   //Database
+  // 'driver://username:password@localhost/database_name'
   //-----------
   $CONFIG['DATABASE'] = array(
     'development' => '',
