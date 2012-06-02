@@ -1,4 +1,4 @@
-<?php
+    <?php
 /*
  * jQuery File Upload Plugin PHP Class 5.11.1
  * https://github.com/blueimp/jQuery-File-Upload
@@ -16,9 +16,9 @@ class UploadHandler
 
     function __construct($options=null) {
         $this->options = array(
-            'script_url' => $this->getFullUrl().'/',
-            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/files/',
-            'upload_url' => $this->getFullUrl().'/files/',
+            'script_url' => $this->getFullUrl().'/file_upload.php',
+            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/assets/upload/',
+            'upload_url' => $this->getFullUrl().'/assets/upload/',
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
@@ -36,7 +36,7 @@ class UploadHandler
             'min_width' => 1,
             'min_height' => 1,
             // Set the following option to false to enable resumable uploads:
-            'discard_aborted_uploads' => true,
+            'discard_aborted_uploads' => false,
             // Set to true to rotate images based on EXIF meta data, if available:
             'orient_image' => false,
             'image_versions' => array(
@@ -53,8 +53,8 @@ class UploadHandler
                 ),
                 */
                 'thumbnail' => array(
-                    'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/thumbnails/',
-                    'upload_url' => $this->getFullUrl().'/thumbnails/',
+                    'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/assets/upload/thumbnails/',
+                    'upload_url' => $this->getFullUrl().'/assets/upload/thumbnails/',
                     'max_width' => 80,
                     'max_height' => 80
                 )

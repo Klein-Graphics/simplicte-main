@@ -22,7 +22,18 @@ class Stock extends \SC_CP_Module {
         $items = \Model\Item::all();
         
         $this->SC->CP->load_view('stock/view_items',array('items'=>$items));
-    }    
+    }
+    
+    function _prepare_option() {
+        $cells = array();
+        foreach ($_POST as $key => $value) {
+            if ($key != 'flags') {
+                $cells[] = "<td>$value<input type=\"hidden\" value=\"$value\" name=\"option[{$_POST['sort']]\"
+            }
+        }
+        
+        
+    }       
     
     function _add_item() {
     

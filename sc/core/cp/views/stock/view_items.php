@@ -39,15 +39,22 @@
                     </span> 
                 </div>
             </div>                
-            <div class="row">
-                <div class="span1">
-                    <label for="image_upload"><h3>Image</h3></label>
+            <div class="row image-upload">
+                    <div class="span2">
+                        <span class="btn fileinput-button">
+                            <span>Upload Image</span>
+                            <input class="input-file" type="file" name="files[]" accept="image/*"  data-url="<?=sc_location('file_upload.php')?>"/>                     
+                            <input type="hidden" name="image" class="file-location"/>
+                        </spn>
+                    </div>
+                    <div class="span3">
+                        <div class="progress">
+                          <div class="bar"
+                               style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="span1 image-thumbnail"></div>
                 </div>
-                <div class="span4">
-                    <input class="input-file" type="file" id="image_upload" />                     
-                    <input type="hidden" name="image" />
-                </div>
-            </div>
             <div class="row">
                 <table class="span4">                
                     <thead> 
@@ -70,23 +77,25 @@
             </div>
         </form><!--#item-->   
         <div class="tab-pane" id="options">
-            <form id="add_option" action="<?=sc_cp('Stock/verify_option');?>">
+            <form id="add_option" action="<?=sc_cp('Stock/prepare_option');?>">
+                <input type="hidden" name="sort"/>
+                <input type="hidden" name="id"/>
                 <div class="row">
                     <div class="span3">
-                        <input type="text" name="option_name" placeholder="Name" />
+                        <input type="text" name="name" placeholder="Name" />
                     </div>
                     <div class="span3">
-                        <input type="text" name="option_number" placeholder="Number" />
+                        <input type="text" name="number" placeholder="Number" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="span3">
                         <span class="input-prepend pull-left">
-                            <span class="add-on">+$</span><input class="input-small" type="text" name="option_price" placeholder="0.00" />
+                            <span class="add-on">+$</span><input class="input-small" type="text" name="price" placeholder="0.00" />
                         </span>   
                     </div>
                     <div class="span3">
-                        <input type="hidden" name="option_weight" id="weight" />
+                        <input type="hidden" name="weight" id="weight" />
                         <span class="input-prepend input-append overflow-hidden">
                             <span class="add-on pull-left">+</span><input class="pull-left input-small" type="text" id="show_weight" placeholder="Weight" /><div class="btn-group" data-toggle="buttons-radio">
                                 <button class="btn" value=1>Lbs</button>
@@ -97,23 +106,24 @@
                 </div> 
                 <div class="row">
                     <div class="span6 input-prepend">
-                        <span class="add-on">Category</span><input type="text" name="option_cat" id="option_cat" />
+                        <span class="add-on">Category</span><input type="text" name="cat" id="option_cat" />
                     </div>
                 </div>
-                <div class="row">
-                    <div class="span1">
-                        <label for="image_upload"><h3>Image</h3></label>
+                <div class="row image-upload">
+                    <div class="span2">
+                        <span class="btn fileinput-button">
+                            <span>Upload Image</span>
+                            <input class="input-file" type="file" name="files[]" accept="image/*" data-url="<?=sc_location('file_upload.php')?>"/>                     
+                            <input type="hidden" name="image" class="file-location" />
+                        </spn>
                     </div>
                     <div class="span3">
-                        <input class="input-file" type="file" name="image_file" data-url="<?=sc_cp('Stock/upload_file/')?>" id="option_image_upload" />                     
-                        <input type="hidden" name="option_image" />
-                    </div>
-                    <div class="span2">
                         <div class="progress">
                           <div class="bar"
-                               style="width: 60%;"></div>
+                               style="width: 0%;"></div>
                         </div>
                     </div>
+                    <div class="span1 image-thumbnail"></div>
                 </div>
                 <div class="row">
                     <table class="span4">                
@@ -129,8 +139,8 @@
                         </thead>                    
                         <tbody>
                             <tr>
-                                <td><input type="text" name="option_flag[0][flag]" /></td>
-                                <td><input type="text" name="option_flag[0][args]" /></td>
+                                <td><input type="text" name="flags[0][flag]" /></td>
+                                <td><input type="text" name="flags[0][args]" /></td>
                             </tr>                        
                         </tbody>                
                     </table>
@@ -150,6 +160,8 @@
                         <thead>
                             <tr><td>Number</td><td>Name</td><td>Price</td><td>Weight</td><td>Image</td><td>Flags</td><td></td></tr>    
                         </thead>
+                        <tbody>
+                        </tbody>
                     </table>
                 </fieldset>
             </form>
