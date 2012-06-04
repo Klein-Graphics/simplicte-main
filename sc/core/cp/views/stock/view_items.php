@@ -78,14 +78,14 @@
         </form><!--#item-->   
         <div class="tab-pane" id="options">
             <form id="add_option" action="<?=sc_cp('Stock/prepare_option');?>">
-                <input type="hidden" name="sort"/>
+                <input type="hidden" name="optorder"/>
                 <input type="hidden" name="id"/>
                 <div class="row">
                     <div class="span3">
                         <input type="text" name="name" placeholder="Name" />
                     </div>
                     <div class="span3">
-                        <input type="text" name="number" placeholder="Number" />
+                        <input type="text" name="code" placeholder="Number" />
                     </div>
                 </div>
                 <div class="row">

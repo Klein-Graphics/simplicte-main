@@ -35,6 +35,7 @@ label.inline {
 .fileinput-button {
     width: 100px;
     height: 18px;
+    position: relative;
     overflow: hidden;
 }
 

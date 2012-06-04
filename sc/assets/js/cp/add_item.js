@@ -48,13 +48,13 @@ $(document).ready(function(){
         e.preventDefault();
         if ($(this).find('input[name="name"]').val()) { //Add the line            
             $('#add_option_message').fadeOut();
-            if ($(this).find('input[name="sort"]').val()==="") {
-                $(this).find('input[name="sort"]').val($('#added_options tbody tr').length);   
+            if ($(this).find('input[name="optorder"]').val()==="") {
+                $(this).find('input[name="optorder"]').val($('#added_options tbody tr').length);   
             }
             
             $.post($(this).attr('action'),$(this).serialize(),function(data) {                
                 if (!data.row || data.row-1 < 0 || !$('#added_options tbody').length) {
-                    $('#added_options tbody').prepend(data.row);
+                    $('#added_options tbody').prepend(data.content);
                 } else {
                     $('#added_options tbody').eq(data.row-1).after(data.content);
                 }
