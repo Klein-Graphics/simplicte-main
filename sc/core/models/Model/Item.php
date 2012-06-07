@@ -41,6 +41,12 @@
                 return 'Dependant on Option: '.$option;
             }
             
-        }        
+        }  
+
+        //Getters
+        
+        function get_price() {
+            return number_format($this->read_attribute('price'),2);
+        }
 
     }
