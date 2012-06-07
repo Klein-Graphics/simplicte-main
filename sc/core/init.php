@@ -78,7 +78,7 @@ if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROO
   $CONFIG['URL'] = $site_url;
   
   $config_file = file_get_contents('config.php');
-  $config_file = preg_replace('/\$CONFIG\[(\'|")URL(\'|")\][^('."\n".')]*'."\n".'/',"\$CONFIG['URL'] = '$site_url';"."\n",$config_file);
+  $config_file = preg_replace('/\$CONFIG\[(\'|")URL(\'|")\][^([\n\r\n])]*'."\n\r\n".'/',"\$CONFIG['URL'] = '$site_url';"."\n",$config_file);
   $r_config_file = fopen('config.php','w');
   fwrite($r_config_file,$config_file);
    

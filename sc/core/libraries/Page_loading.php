@@ -350,7 +350,8 @@ class Page_loading extends \SC_Library {
         }        
 
         $item_options = \Model\Itemoption::find('all',array(
-            'conditions' => array('itemid = ?',$item)
+            'conditions' => array('itemid = ?',$item),
+            'order' => 'optorder asc'
         ));
 
         $sorted_options = array();                     

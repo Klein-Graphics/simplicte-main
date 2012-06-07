@@ -14,7 +14,13 @@
         }
         
         function image_tag($addl='') {
-            return "<img src=\"".site_url($this->image)."\" alt=\"{$this->name}\" $addl />";
+            if ($this->image) {
+                $image = (strpos($this->image,'http')===FALSE) ?
+                    site_url($this->image) : $this->image;
+                return "<img src=\"".$image."\" alt=\"{$this->name}\" $addl />";
+            } else {
+                return "";
+            }
         }
         
         function display_flags() {

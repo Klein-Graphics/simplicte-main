@@ -51,8 +51,8 @@ class SC_CP_Module {
     function index() {
         $methods = $this->methods;
         if (count($this->methods)>1) {
-            $methods = array_shift($methods);   
-            $this->SC->CP->load_view('module_home',array('methods'=>$this->methods));
+            array_shift($methods);   
+            $this->SC->CP->load_view('module_home',array('methods'=>$methods));
         } else {    
             $this->$methods[0]['name']();
         }
@@ -60,8 +60,8 @@ class SC_CP_Module {
     
     function _load_module_menu() {
         if (count($this->methods)>1) { 
-            $SC->load_library('URI');
-            $SC->CP->load_view('module_menu',array('methods'=>$this->methods));
+            $this->SC->load_library('URI');
+            $this->SC->CP->load_view('module_menu',array('methods'=>$this->methods));
         }
     }
 
