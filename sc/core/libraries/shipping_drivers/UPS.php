@@ -127,8 +127,7 @@ class UPS extends \SC_Shipping_Driver {
     function get_rate_from_transcation($transaction,$service) {
         $this->SC->load_library('Transaction');
         
-        $transaction = $this->SC->Transaction->get_transaction($transaction);
-        
+        $transaction = $this->SC->Transaction->get_transaction($transaction);        
         $rate = $this->get_rate_from_cart($this->SC->Config->get_setting('storeZipcode'),$transaction->ship_postalcode,$service,$transaction->items);
         
         return $rate;

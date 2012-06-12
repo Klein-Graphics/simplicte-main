@@ -127,6 +127,13 @@ $SC = new SC;
 
 $SC->load_library('Config');
 
+//Load any extentions
+if (isset($EXTENTIONS)) {
+    foreach ($EXTENTIONS as $ext) {
+        require 'external_scripts/'.$ext;
+    }
+}
+
 /*
  * Set time zone
  */

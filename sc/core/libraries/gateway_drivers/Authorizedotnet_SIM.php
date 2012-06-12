@@ -57,7 +57,7 @@ class Authorizedotnet_SIM extends \SC_Gateway_Driver {
         $output .= $this->generate_elements();
         
         $output .= <<<HTML
-Click below to be taken to the payment processor. You will leave the site.<br />
+Click below to be taken to the payment processor's secure webform. You will leave this site.<br />
 <input type="submit" value="Continue To Processor" />
 </form>            
 HTML;

@@ -84,12 +84,23 @@ class Gateways extends \SC_Library {
     }  
     
     /**
+     * Number of Gateways
+     *
+     * Returns the number of gateways available
+     
+     * @return int
+     */
+    function number_of_gateways() {
+        return count($this->Drivers);
+    }    
+    
+    /**
      * Generate Gateway Dropdown
      *
      * Generates the html code for the selection box that the user will be
      * presented at checkout.
      *
-     * return string
+     * @return string
      */
     function generate_gateway_dropdown() {
     

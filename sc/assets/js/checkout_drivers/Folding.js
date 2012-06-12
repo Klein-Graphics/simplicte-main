@@ -52,7 +52,7 @@ page_display.checkout = {
                     break;               
                     
                     case 'load':
-                        page_display.account.load(data.location,data.data);
+                        page_display.checkout.load(data.location,data.data);
                     break;
                         
                 }

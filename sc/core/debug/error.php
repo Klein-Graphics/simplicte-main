@@ -69,17 +69,45 @@ register_shutdown_function(function() {
   global $ERRORS;
   global $start_time;
   
-  if (isset($_SESSION) && $CONFIG['DUMP_SESSION']) {    
-    require 'core/debug/print_session.php';
-    echo 'exectime: '.round((microtime(true) - $start_time)*pow(10,3),2).' msecs';
-  }
+  if ($CONFIG['DUMP_SESSION'] || ($CONFIG['SHOW_ERRORS'] && count($ERRORS))) : ?>  
+<div id="sc_debug_controls">&Dagger;</div>
+<div id="sc_debug_footer">    
+    <?php
+    if (isset($_SESSION) && $CONFIG['DUMP_SESSION']) {    
+        require 'core/debug/print_session.php';
+        echo 'exectime: '.round((microtime(true) - $start_time)*pow(10,3),2).' msecs';
+    }
   
-  if ($CONFIG['SHOW_ERRORS']) : ?>
-    <?php foreach ($ERRORS as $error) : ?>
-      <div class="php_error">
+        if ($CONFIG['SHOW_ERRORS']) : ?>
+            <?php foreach ($ERRORS as $error) : ?>
+    <div class="php_error">
         <strong><?=$error['level']?>:</strong> <?=$error['message']?> in file <strong><?=$error['file']?></strong> at line <strong><?=$error['line']?></strong>.
         <?=($CONFIG['SHOW_ERROR_CONTEXT'])?'<br />'.$error['context']:''?>
-      </div>
-    <?php endforeach; ?>
-  <?php endif;
+    </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    <script type="text/javascript">
+        $(document).ready(function(){           
+            $('#sc_debug_footer').hide();                 
+            $('#sc_debug_controls').click(function() {
+                $('#sc_debug_footer').slideToggle(function() {
+                    if ($(this).is(':visible')) {
+                        $(document).scroll(function() {
+                            var vis_height = $(document).height() - $(window).height() - 10;
+                            if ($(this).scrollTop() > vis_height && $('#sc_debug_footer').is(':visible')) {
+                                $('#sc_debug_footer').slideUp('fast');        
+                            } else if ($(this).scrollTop() < vis_height && ! $('#sc_debug_footer').is(':visible')) {                                
+                                $('#sc_debug_footer').slideDown('fast');        
+                            }
+                        });
+                    } else {
+                        $(document).unbind('scroll');
+                    }   
+                });                                   
+            });
+        });
+    </script>
+</div>
+    <?php endif; ?>
+<?
 });

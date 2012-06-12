@@ -6,7 +6,7 @@
  * @package Account
  */
 
-$this->load_library(array('Customer','Validation','Session'));
+$this->load_library(array('Customer','Validation','Session','Transactions'));
 
 $required_fields = array(
         array(
@@ -62,6 +62,7 @@ if (isset($_POST['new_customer'])) {
 }
 
 $this->Customer->update_customer($this->Session->get_user(),$_POST);
+$this->Transactions->associate_customer($this->Session->get_open_transaction(),$this->Session->get_user());
 
 echo json_encode(array(
         'do_this' => ($new_customer) ? 'refresh' : 'display_good',

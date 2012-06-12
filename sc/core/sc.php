@@ -29,6 +29,14 @@ class SC {
      * Records the loaded libraries
      */
     public $loaded_libraries = array();
+    
+    /**
+     * Extention hooks
+     */
+    public $hooks = array(
+        'page-in' => array(),
+        'page-out' => array()
+    );
 
     /**
      * Loads a Library into SC
@@ -140,7 +148,7 @@ class SC {
         
         
       }    
-    }           
+    }               
 }
 
 /**

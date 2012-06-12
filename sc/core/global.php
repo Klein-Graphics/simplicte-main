@@ -259,6 +259,7 @@
      * @copyright Original PHP code by Chirp Internet: www.chirp.com.au
      */
     function str_trunc($string, $limit, $break=" ", $pad="...") {
+        $limit -= strlen($pad);
         // return with no change if string is shorter than $limit
         if(strlen($string) <= $limit) return $string;
 

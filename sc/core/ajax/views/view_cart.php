@@ -28,7 +28,7 @@
     <?php if ($item['options']) : ?> 
         <ul>
       <?php foreach($item['options'] as $option) : ?>
-          <li>
+        <li>
             <?=$SC->Items->option_name($option['id'])?>
             <?=($option['quantity']>1) ? ' x '.$option['quantity'] : ''?>
             <?=($option['price']) ? ' - $'.number_format($option['quantity']*$option['price'],2) : ''?>
@@ -45,7 +45,7 @@
             value="<?=$item['quantity']?>" />
       </td>
       <td class="sc_cart_item_price">
-        <?=number_format($SC->Cart->line_total($key,$cart),2)?>
+        $<?=number_format($SC->Cart->line_total($key,$cart),2)?>
       </td>
       <td class="sc_cart_item_remove">
         <a href="<?=sc_ajax('remove_item',$key)?>" title="Remove Item">Remove</a>
