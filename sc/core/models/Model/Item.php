@@ -2,7 +2,7 @@
 
     namespace Model;
 
-    class Item extends \ActiveRecord\model {
+    class Item extends \SC_Model {
         function short_description($length=60) {
             return html_str_trunc(str_replace('<p>',' ',str_replace('</p>','<br />',strip_tags($this->description,'<br><p>'))),$length);
         }
@@ -39,12 +39,10 @@
                 $option = explode(':',$this->stock);                
                 $option = $option[1];               
                 return 'Dependant on Option: '.$option;
-            }
-            
-        }  
-
-        //Getters
+            }            
+        }        
         
+        //Getters        
         function get_price() {
             return number_format($this->read_attribute('price'),2);
         }

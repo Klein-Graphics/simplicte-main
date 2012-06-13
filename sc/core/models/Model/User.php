@@ -2,6 +2,6 @@
 
   namespace Model;
   
-  class User extends \ActiveRecord\model {
+  class User extends \SC_Model {
   
   }

@@ -38,6 +38,10 @@ class Transactions extends \SC_CP_Module {
         
     }
     
+    function view() {
+    
+    }
+    
     function _add() {
     
     }

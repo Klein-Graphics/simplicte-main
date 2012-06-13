@@ -2,7 +2,7 @@
 
   namespace Model;
 
-  class Transaction extends \ActiveRecord\model {
+  class Transaction extends \SC_Model {
   
     static $before_save = array('update_time');
     
@@ -61,5 +61,21 @@
         
         return $info;
     }    
+    
+    //Getters
+    
+    public function get_order_date() {
+        return substr($this->ordernumber,2,2).
+              '/'.substr($this->ordernumber,4,2).
+              '/'.substr($this->ordernumber,0,2);
+    } 
+    
+    public function get_subtotal() {        
+        return $this->SC()->Cart->subtotal($this->items);        
+    }     
+    
+    public function get_total() {
+        return $this->SC()->Cart->calculate_soft_total($this);
+    }
   
   }

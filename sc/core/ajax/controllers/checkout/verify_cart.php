@@ -66,8 +66,11 @@ $order_totals = $this->Cart->calculate_total($transaction,$shipping_method,$disc
 
 $messages += $order_totals['messages'];
 
+$shipping_method = explode('-',$shipping_method);
+
 $this->Transactions->update_transaction($transaction->id,array(
     'shipping' => $order_totals['shipping'],
+    'shipping_method' => $shipping_method,
     'taxrate' => $order_totals['taxrate'],
     'discount' => $order_totals['discount'],
     'items' => $this->Cart->implode_cart($order_totals['items'])

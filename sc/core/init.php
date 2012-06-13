@@ -102,6 +102,7 @@ require 'core/global.php';
 // Database
 //-----------
 require 'core/includes/activerecord/ActiveRecord.php';
+require 'sc_model.php';
 
 /**
  * Closure
@@ -131,7 +132,7 @@ $SC->load_library('Config');
 if (isset($EXTENTIONS)) {
     foreach ($EXTENTIONS as $ext) {
         require 'external_scripts/'.$ext;
-    }
+    }         
 }
 
 /*

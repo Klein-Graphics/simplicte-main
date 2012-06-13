@@ -1,0 +1,89 @@
+<div style="font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif" >
+<h2>Thank you for choosing <a href="[[site_url]]" title="[[store_name]]" style="text-decoration: none; color: #35f">[[store_name]]!</a></h2>
+<p style="font-size: 1.2em;">Please save this email for your records.</p>
+<div style="max-width: 600px;">
+    <table style="width: 80%; background-color: #ddd; margin-bottom: 20px;">
+        <tr>
+            <td style="font-weight: bold;">Order Number:</td>
+            <td>[[tdetail|ordernumber]]</td>
+        </tr>
+        <tr style="background-color: #eee;">
+            <td style="font-weight: bold;">Order Date:</td>
+            <td >[[tdetail|order_date]]</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Customer Number:</td>
+            <td>[[tdetail|custid]]</td>
+        </tr>
+    </table>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+        <tr>
+            <td style="border-left: 3px solid #ddd; background-color: #ddd;"><h3 style="margin-bottom: 0px">Shipping Information</h3></td>
+            <td style="border-left: 3px solid #ddd; background-color: #ddd;"><h3 style="margin-bottom: 0px">Billing Information</h3></td>
+        </tr>
+        <tr>
+            <td style="border-left: 3px solid #ddd">[[tdetail|ship_firstname]] [[tdetail|ship_initial]] [[tdetail|ship_lastname]]</td>
+            <td style="border-left: 3px solid #ddd">[[tdetail|bill_firstname]] [[tdetail|bill_initial]] [[tdetail|bill_lastname]]
+        </tr>
+        <tr>
+            <td style="border-left: 3px solid #ddd">[[tdetail|ship_streetaddress]] [[tdetail|ship_apt|#]]</td>
+            <td style="border-left: 3px solid #ddd">[[tdetail|bill_streetaddress]] [[tdetail|bill_apt|#]]</td>    
+        </tr>
+        <tr>
+            <td style="border-left: 3px solid #ddd">[[tdetail|ship_city]], [[tdetail|ship_state]] [[tdetail|ship_postalcode]]</td>
+            <td style="border-left: 3px solid #ddd">[[tdetail|bill_city]], [[tdetail|bill_state]] [[tdetail|bill_postalcode]]</td>
+        <tr>
+        <tr>
+             <td style="border-left: 3px solid #ddd">[[tdetail|ship_country]]</td>
+             <td style="border-left: 3px solid #ddd">[[tdetail|bill_country]]</td>
+        </tr>
+        <tr>
+            <td style="border-left: 3px solid #ddd">[[tdetail|ship_phone]]</td>
+            <td style="border-left: 3px solid #ddd">[[tdetail|bill_phone]]</td>     
+        </tr>                                                    
+    </table>
+    <h3 style="margin-bottom: 0px; background-color: #ddd;">Items</h3>    
+    <table style="width: 100%; border-left: 3px solid #ddd; border-collapse: collapse; ">
+        <tr style="text-decoration: underline; color: #444;">
+            <td style="padding: 4px;">Name</td>
+            <td>Options</td>
+            <td>Quantity</td>
+            <td>Price</td>
+        </tr>
+        [[item_table|padding: 4px]]      
+        <tr style="font-weight: bold; background-color: #bbb;">
+            <td style="padding: 4px;">Subtotal:</td>
+            <td></td>
+            <td></td>
+            <td>[[tdetail|subtotal]]</td>
+        </tr>
+    [[discount|
+        <tr style="background-color: #ddd;";>
+            <td style="padding: 4px;">Discount:</td>
+            <td></td>
+            <td></td>
+            <td style="padding: 4px;">-$|</td>
+        </tr>
+    ]]
+    [[shipping|
+        <tr style="background-color: #ddd; padding-top: 4px;">
+            <td style="padding: 4px;">Shipping:</td>
+            <td></td>
+            <td></td>
+            <td style="padding: 4px;">$|</td>
+        </tr>
+    ]]
+        <tr style="background-color: #ddd; padding-top: 4px;">
+            <td style="padding: 4px;">Tax:</td>
+            <td></td>
+            <td></td>
+            <td style="padding: 4px;">[[tdetail|taxrate]]</td>
+        </tr>
+        <tr style="font-weight: bold; background-color: #bbb; padding-top: 4px;">
+            <td style="padding: 4px;">Total:</td>
+            <td></td>
+            <td></td>
+            <td style="padding: 4px;">[[tdetail|total]]</td>
+        </tr>
+    <table>
+</div>

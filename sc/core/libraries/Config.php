@@ -37,10 +37,13 @@ class Config extends \SC_Library {
             }
 
             return $return;
-        }             
+        }
+        
+        $name = str_replace('_','',$name);  
+         
         $detail = \Model\Detail::find(array( 
-        'select' => 'detail_value',
-        'conditions' => array('detail = ?',$name)
+            'select' => 'detail_value',
+            'conditions' => array('upper(replace(`detail`,"_","")) = ?',$name)
         ));
 
         if (isset($detail->detail_value) && $detail->detail_value) {

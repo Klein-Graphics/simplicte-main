@@ -2,6 +2,6 @@
 
     namespace Model;
 
-    class Customer extends \ActiveRecord\model {
+    class Customer extends \SC_Model {
 
     }

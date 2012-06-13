@@ -35,8 +35,29 @@ class SC {
      */
     public $hooks = array(
         'page-in' => array(),
-        'page-out' => array()
+        'page-out' => array(),
+        'db' => array()     
     );
+    
+    /**
+     *  Get Magic Method
+     *
+     *  Automatically loads queried libraries
+     */
+     
+    function __get($name) {
+        if (isset($this->$name)) {
+            return $this->$name;
+        }
+        
+        //Try to load a library
+        if ($this->load_library($name)) {
+            return $this->$name;
+        } else {
+            return FALSE;
+        }
+        
+    }
 
     /**
      * Loads a Library into SC
@@ -57,24 +78,28 @@ class SC {
         if (!is_array($libraries)) {
             $libraries = array($libraries);
         }
+        
+        $success = TRUE;
 
         foreach ($libraries as $library) {
-
             if (array_search($library,$this->loaded_libraries) === FALSE) {
 
                 $library = str_replace('.php','',ucfirst($library));
 
-                require_once 'core/libraries/'.$library.'.php';
+                if ($success = min(file_exists('core/libraries/'.$library.'.php'),$success)) {
+                    require_once 'core/libraries/'.$library.'.php';
 
-                $namespaced_library = '\Library\\'.$library;                       
+                    $namespaced_library = '\Library\\'.$library;                       
 
-                $this->load_library(required_libraries($namespaced_library));                 
-                                   
-                $this->$library = new $namespaced_library;
-                $this->loaded_libraries[] = $library;
-              
+                    $this->load_library(required_libraries($namespaced_library));                 
+                                       
+                    $this->$library = new $namespaced_library;
+                    $this->loaded_libraries[] = $library;
+                }              
             }        
         }      
+        
+        return $success;
     }
 
     /**

@@ -452,10 +452,10 @@
       $subtotal = 0;
       
       foreach ($cart as $item) {
-        $item_total = $this->SC->Items->item_price($item['id']);
+        $item_total = $item['price'];
         
         foreach ($item['options'] as $option) {
-          $option_total = $this->SC->Items->option_price($option['id']);;
+          $option_total = $option['price'];
           $option_total *= $option['quantity'];
           
           $item_total += $option_total; 
@@ -624,9 +624,10 @@
             die ('<span style="color:red; background:white"> Items require shipping, however the store owner 
                   has not enabled it. The they will be notified</span>');
             
-            /*
-             * TODO: Add notification
-             */
+            $this->SC->Messaging->message_store('A customer has attempted to purchase an item requiring shipping, 
+            but you have no shipping methods available! <a href="'.sc_cp('Settings/shipping').'" title="Control 
+            Panel">Remedy this by navigating to your control panel settings</a> and enableding shipping.',
+            'URGENT MESSAGE FROM YOUR eSTORE!');
         }
         
         if ($shipping_method && $this->SC->Shipping->shipping_enabled && $shipping_required) {             
@@ -636,7 +637,7 @@
                 $transaction->ship_postalcode,
                 $ship_method,
                 $cart
-                );
+            );
             if ($ship_status) {
                 $shipping = $ship_foo;
             } else {
@@ -666,7 +667,7 @@
         
         return array(
             'subtotal' => $subtotal,
-            'shipping' => $shipping,
+            'shipping' => $shipping,            
             'taxrate' => $tax,
             'items' => $cart,
             'discount' => $total_discount,

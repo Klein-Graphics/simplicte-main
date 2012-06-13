@@ -12,12 +12,23 @@
  */
 class SC_Shipping_Driver {
     /**
+     * Enabled methods
+     */
+    
+    public $enabled_methods; 
+     
+    /**
      * Construct
      *
      * @return null
-     */
+     */    
     function __construct() {
         global $SC;
         $this->SC = $SC;
+    }
+    
+    function get_shipping_codes() {
+        return array_intersect_key($this->shipping_codes,array_fill_keys($this->enabled_methods,'foo'));
+        
     }
 }

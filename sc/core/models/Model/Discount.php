@@ -2,6 +2,6 @@
 
   namespace Model;
   
-  class Discount extends \ActiveRecord\model {
+  class Discount extends \SC_Model {
   
-  };
+  }

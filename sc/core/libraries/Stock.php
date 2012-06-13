@@ -291,12 +291,11 @@ class Stock extends \SC_Library {
      *
      * Verifies that no items or options are under a certain limit, and if they are reports it
      *
-     * @return int[]|array[] If $cart is set, returns an array of the lines that under the limit. 
-     * If not, it returns an array where index 0 is and item id's that are below the limit and 
+     * @return int[]|array[] It returns an array where index 0 is and item id's that are below the limit and 
      * index 1 is option id's that are below the limit.
      *
      * @param int $amount The amount to check for
-     * @param int|string|array $cart A valid cart or cart id
+     * @param int|string|array $cart A valid cart or cart id to check stock against
      */
     function verify_stock($amount,$cart=FALSE) {    
         $bad_items = array();
@@ -307,27 +306,21 @@ class Stock extends \SC_Library {
             $cart = $this->SC->Cart->explode_cart($cart);
             
             foreach ($cart as $key => $item) {
-                $good = TRUE;
                 $item_stock = $this->get_item_stock($item['id']);
                               
                 if (is_numeric($item_stock) && $item_stock < $amount) {
-                    $good = FALSE;
+                    $bad_items[] = $item['id'];
                 }                                     
                 
                 foreach ($item['options'] as $opt_key => $option) {
                     $option_stock = $this->get_option_stock($option['id']);
                     
                     if (is_numeric($option_stock) && $option_stock < $amount) {
-                        $good = FALSE;
+                        $bad_options = $option['id'];
                     }
                 }
-                
-                if (!$good) {
-                    $bad_items[] = $key;
-                }
+
             }   
-            
-        return $bad_items;
  
         } else {
             $this->SC->load_library('Items');
@@ -343,10 +336,15 @@ class Stock extends \SC_Library {
                         $bad_options[] = $option['id'];
                     }
                 }
-            }
-            
-            return array($bad_items,$bad_options);
+            }                        
         }
+        
+        if ($bad_items && $bad_options) {
+            return array($bad_items,$bad_options);
+        } else {
+            return false;
+        }
+        
         
     
     }  

@@ -1,7 +1,6 @@
 <?php
 
-  namespace Model;
+    namespace Model;
 
-  class Itemoption extends \ActiveRecord\model {
-  
-  }
+    class Itemoption extends \SC_Model {
+    }

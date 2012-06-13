@@ -32,7 +32,13 @@ class Shipping extends \SC_Library {
         $this->Drivers = new \stdClass;
         
         if ($shipping_drivers) {
-            $this->shipping_drivers = explode(',',$shipping_drivers);
+            $this->shipping_drivers = array();
+            $drivers = explode('|',$shipping_drivers);
+            
+            foreach ($drivers as $key => $driver) {
+                $driver = explode(':',$driver);                
+                $this->shipping_drivers[$driver[0]] = explode(',',$driver[1]);            
+            }
             $this->shipping_enabled = TRUE;
             
             $this->load_driver($this->shipping_drivers);
@@ -49,14 +55,16 @@ class Shipping extends \SC_Library {
      *
      * @return bool Returns whether or not the driver(s) loaded
      *
-     * @param string|string[] $driver Name of driver or an array of names
+     * @param string|string[] $driver Name of driver or an array where the 
+     * keys are driver names and the values are arrays of allowed methods
+     * @param string[] An array of avaiable methods.
      */
-    function load_driver($driver) {
+    function load_driver($driver,$methods=NULL) {
         
         if (is_array($driver)) {
             $good = TRUE;
-            foreach ($driver as $this_driver) {
-                $good = min($good,$this->load_driver($this_driver));                
+            foreach ($driver as $driver_name => $driver_methods) {
+                $good = min($good,$this->load_driver($driver_name,$driver_methods));                
             }
             
             return $good;
@@ -74,6 +82,8 @@ class Shipping extends \SC_Library {
         $namespaced_driver = "\Shipping_Driver\\$driver";
         
         $this->Drivers->$driver = new $namespaced_driver;
+        
+        $this->Drivers->$driver->enabled_methods = $methods;         
         
         return TRUE;
         
@@ -106,11 +116,7 @@ class Shipping extends \SC_Library {
      * return string
      */
     function generate_shipping_dropdown() {
-        $shipping_methods = $this->get_shipping_methods();
-        
-        /*
-         * TODO: Weed out disabled/invalid shipping methods.
-         */
+        $shipping_methods = $this->get_shipping_methods();                
         
         $output = '<select name="shipping_method" class="sc_shipping_method_select">
                    <option disabled="disabled" selected="selected" value=0>Select a shipping method...</option>

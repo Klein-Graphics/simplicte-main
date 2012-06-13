@@ -5,7 +5,6 @@
  *
  * @package Display
  *
- * @todo
  */
  
 require_once 'init.php';
@@ -17,13 +16,13 @@ $messages = $SC->URI->get_data();
 
 $t = $SC->Transactions->get_transaction($transaction,'*','ordernumber');
 
-$order_date = substr($t->ordernumber,2,2).
-              '/'.substr($t->ordernumber,4,2).
-              '/'.substr($t->ordernumber,0,2);
+$cart = $SC->Cart->explode_cart($t->items);
 
 if (!$t) {
     die('This order does not exist');
 }
+
+//TODO: Login to see order
 
 if ($t->custid != $SC->Session->get_customer()) {
     die('You do not have permission to view this order');
@@ -46,7 +45,7 @@ if ($t->custid != $SC->Session->get_customer()) {
             </div><!--#sc_receipt_head-->
             <div id="sc_receipt_body">
                 <div id="sc_tidbits">
-                    <div id="date">Order Date: <?=$order_date?></div>
+                    <div id="date">Order Date: <?=$t->order_date?></div>
                     <div id="invoicenumber">Invoice #<?=$t->ordernumber?></div>
                 </div><!--#sc_tidbits-->
                 <div id="sc_customer_info">
@@ -67,6 +66,54 @@ if ($t->custid != $SC->Session->get_customer()) {
                         <?=$t->bill_phone?>  
                     </div><!--#sc_billing_info-->
                 </div><!--#sc_customer_info-->
+                <table id="sc_receipt_items">
+                    <thead>
+                        <tr>
+                        <td>Name</td>
+                        <td>Options</td>
+                        <td>Qty</td>
+                        <td>Price</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+<?php foreach($cart as $key => $item) : ?>
+                        <tr>
+                            <td class="sc_receipt_item_name">
+                                <?=$SC->Items->item_name($item['id'])?>
+                            </td>
+                            <td class="sc_receipt_item_options">
+    <?php if ($item['options']) : ?> 
+                                <ul>
+        <?php foreach($item['options'] as $option) : ?>
+                                    <li>
+                                        <?=$SC->Items->option_name($option['id'])?>
+                                        <?=($option['quantity']>1) ? ' x '.$option['quantity'] : ''?>
+                                        <?=($option['price']) ? ' - $'.number_format($option['quantity']*$option['price'],2) : ''?>
+                                    </li>
+        <?php endforeach ?>
+                                </ul>
+    <?php endif ?>
+                            </td>
+                            <td class="sc_receipt_item_quantity">
+                                <?=$item['quantity']?>
+                            </td>
+                            <td class="sc_receipt_item_price">
+                                $<?=number_format($SC->Cart->line_total($key,$cart),2)?>
+                            </td>
+                        </tr>                    
+<?php endforeach ?>     
+                </table><!--#sc_receipt_items-->
+                <table id="sc_receipt_totals">
+                    <tr><td>Sub-Total:</td><td><?=$SC->Cart->subtotal($cart)?></td></tr>
+<?php if ($t->discount) : ?>
+                    <tr><td>Discount:</td><td><?=$t->discount?></td></tr>
+<?php endif ?>
+<?php if ($t->shipping) : ?>
+                    <tr><td>Shipping:</td><td><?=$t->shipping?></td></tr>
+<?php endif ?>
+                    <tr><td>Tax</td><td><?=$t->taxrate?></td><tr>
+                    <tr><td>Total</td><td><?=$SC->Cart->calculate_soft_total($t)?></td></tr>
+                </table><!--#sc_receipt_totals-->
             </div><!--#sc_receipt_body-->
         </div><!--#sc_receipt-->
     </body>

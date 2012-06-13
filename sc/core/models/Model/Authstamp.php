@@ -2,5 +2,5 @@
 
   namespace Model;
   
-  class Authstamp extends \ActiveRecord\model {
+  class Authstamp extends \SC_Model {
   }

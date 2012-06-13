@@ -2,7 +2,7 @@
 
   namespace Model;
   
-  class Detail extends \ActiveRecord\model {
+  class Detail extends \SC_Model {
   
   }
   

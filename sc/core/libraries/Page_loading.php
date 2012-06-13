@@ -132,23 +132,23 @@ class Page_loading extends \SC_Library {
     function replace_details($input) {          
 
         $tags = array(
-        'name' => function($args) {
+            'name' => function($args) {
 
-            $item = \Model\Item::find($args[1]);          
-            return $item->name;        
-        },
+                $item = \Model\Item::find($args[1]);          
+                return $item->name;        
+            },
 
-        'desc' => function($args) {
+            'desc' => function($args) {
 
-            $item = \Model\Item::find($args[1]);          
-            return $item->description;      
-        },
+                $item = \Model\Item::find($args[1]);          
+                return $item->description;      
+            },
 
-        'detail' => function($args) {
+            'detail' => function($args) {
 
-            $item = \Model\Item::find($args[2]);          
-            return $item->$args[1];         
-        }
+                $item = \Model\Item::find($args[2]);          
+                return $item->$args[1];         
+            }
         );
 
         //Replace "detail" tags.    
@@ -157,6 +157,37 @@ class Page_loading extends \SC_Library {
         return $input;
 
     }     
+    
+    /**
+     * Replace Transactions Details
+     *
+     * Replaces all TDetail tags with their respective data.
+     *
+     * @return string
+     *
+     * @param string $input The input to search for the tags
+     */
+    function replace_transaction_details($input,$transaction = false) {        
+    
+        if ($transaction && is_numeric($transaction)) {
+            $transaction = \Model\Transaction::find($transaction);
+        }        
+        
+        $input = $this->replace_tag($input,'tdetail',function($args) use ($transaction) {
+            if (! $transaction) {
+                $transaction = \Model\Transaction::find($args[2]);
+                $append = $args[3];
+            } else {
+                $append = isset($args[2]) ?
+                    $args[2] : '';
+            }
+            
+            $append = ($transaction->$args[1]) ? $append : '';
+            return $append.$transaction->$args[1];
+        });
+        
+        return $input;
+    }
 
     /**
      * Initialize Item Templates

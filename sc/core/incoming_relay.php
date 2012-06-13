@@ -21,7 +21,7 @@ require 'init.php';
 
 $CONFIG['DUMP_SESSION'] = FALSE;
 
-$SC->load_library(array('Transactions','Cart','Stock','Session'));
+$SC->load_library(array('Transactions','Cart','Stock','Session','Messaging'));
 
 $messages = array();
 
@@ -29,9 +29,9 @@ $messages = array();
 
 $transaction = $_POST['transaction'];
 
-$transaction = (object) $SC->Transactions->get_transaction($transaction,'*','ordernumber')->to_array();
+$transaction = $SC->Transactions->get_transaction($transaction,'*','ordernumber');
 
-$transaction->items = $SC->Cart->explode_cart($transaction->items);
+$items = $SC->Cart->explode_cart($transaction->items);
 
 $their_hash = $_POST['hash'];
 $my_hash = md5("{$transaction->ordernumber} {$CONFIG['SEED']}");
@@ -63,11 +63,37 @@ $SC->Transactions->update_transaction($transaction->id,array(
 //Verify stocking was correct
 if ($transaction->status != 'pending') {
     //The items were never taken out of stock so that needs to be done.
-    $SC->Stock->pull_cart($transaction->items);
+    $SC->Stock->pull_cart($items);
 }
 
-if ($understocked_items = $SC->Stock->verify_stock(0,$transaction->items)) {
-    //TODO: MESSAGE STORE OWNER   
+if ($understocked_items = $SC->Stock->verify_stock(0,$items)) {
+    $understocked_table = <<<HTML
+<table>
+    <tr>
+        <td>
+            <h4>Understocked Items</h4>
+        </td>
+        <td>
+            <h4>Understocked Options</h4>
+        </td>
+    </tr>
+HTML;
+    
+    foreach ($understocked_items[0] as $key => $item) {
+        $option = isset($understocked_items[1][$key]) 
+            ? $SC->Items->option_name($understocked_items[1][$key])
+            : '';
+        $item = $SC->Items->item_name($item);
+        $understocked_table .= "<tr><td>$item</td><td>$option</td></tr>";
+    }
+    
+    $understocked_table .= "</table>";
+    
+    $SC->Messaging->message_store(
+        "After completeing order #{$transaction->ordernumber}, the following items and options are understocked:"
+        .$understocked_table,
+        "Issue with order #{$transaction->ordernumber}."
+    );
 }
 
 //Reset session
@@ -75,7 +101,7 @@ $SC->Session->new_transaction();
 
 //Perform any external item script hooks
 require_once 'includes/Curl.php';
-foreach ($transaction->items as $item) {    
+foreach ($items as $item) {    
     if ($script = $SC->Items->item_flag($item['id'],'extscript')) {
         $script = $script[1];
         
@@ -93,10 +119,9 @@ foreach ($transaction->items as $item) {
 }
 
 //Send emails
-//TODO: MESSAGE CUSTOMER AND OWNER
+$SC->Messaging->send_receipt($transaction);
 
 $messages = implode('/',$messages);
-
 
 echo json_encode(array(
         'transaction' => $transaction->ordernumber,

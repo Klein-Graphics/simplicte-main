@@ -3,7 +3,6 @@
  * Control Panel Controller
  *
  * @package Control Panel
- * @todo
  */
  
 require_once 'init.php';
