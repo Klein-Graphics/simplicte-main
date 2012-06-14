@@ -91,7 +91,7 @@ class Gateways extends \SC_Library {
      * @return int
      */
     function number_of_gateways() {
-        return count($this->Drivers);
+        return count((array) $this->Drivers);
     }    
     
     /**

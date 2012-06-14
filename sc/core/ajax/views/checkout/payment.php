@@ -2,6 +2,7 @@
 
 <span class="sc_close_link">[x]</span>
 <?php if ($this->Gateways->number_of_gateways() > 1) : ?>
+    
     <?=$this->Gateways->generate_gateway_dropdown()?>
 
 <div class="sc_payment_gateway_area">
