@@ -95,9 +95,7 @@ HTML;
      * @return Bool whether or not the transaction was successful
      */
     static function relay() {
-        global $CONFIG;
-    
-        require_once 'core/includes/Curl.php';  
+        global $CONFIG;                    
         
         $curl = new \Curl();
         
@@ -149,7 +147,7 @@ HTML;
             'x_fp_hash' => $this->generate_fingerprint($timestamp),
             'x_fp_sequence' => $this->transaction->ordernumber,
             'x_fp_timestamp' => $timestamp,
-            'x_currency_code' => $this->SC->Config->get_setting('currency'),
+            'x_currency_code' => $this->SC->Config->get_setting('currency'), //TODO Translate the price into USD no matter what
             'x_login' => $this->SC->Config->get_setting('authorizedotnetid'),
             //Required Fields
             'x_type' => 'AUTH_CAPTURE',

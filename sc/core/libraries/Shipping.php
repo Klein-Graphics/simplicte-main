@@ -83,7 +83,7 @@ class Shipping extends \SC_Library {
         
         $this->Drivers->$driver = new $namespaced_driver;
         
-        $this->Drivers->$driver->enabled_methods = $methods;         
+        $this->Drivers->$driver->enabled_methods = $methods;        
         
         return TRUE;
         
@@ -120,15 +120,23 @@ class Shipping extends \SC_Library {
         
         $output = '<select name="shipping_method" class="sc_shipping_method_select">
                    <option disabled="disabled" selected="selected" value=0>Select a shipping method...</option>
-        ';              
+        ';                     
+        
+        $tran_ship_method = \Model\Transaction::find($this->SC->Session->get_open_transaction())->shipping_method;
+        
+        if (! ($method_to_test = $tran_ship_method)) {
+            if (isset($_POST['shipping_method'])) {
+                $method_to_test = $_POST['shipping_method'];
+            }   
+        }   
         
         foreach ($shipping_methods as $method_number => $shipping_method) {
-            foreach ($shipping_method as $shipping_code => $shipping_code_name) {
+            foreach ($shipping_method as $shipping_code => $shipping_code_name) {                
                 
                 $output .= "<option 
                               value=\"$method_number-$shipping_code\"
-                              ".((isset($_POST['shipping_method']) 
-                                  && $_POST['shipping_method'] == "$method_number-$shipping_code") 
+                              ".(($method_to_test
+                                  && $method_to_test == "$method_number-$shipping_code") 
                                 ? "selected=\"selected\""
                                 : ""
                               )."

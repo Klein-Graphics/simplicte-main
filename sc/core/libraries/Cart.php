@@ -384,7 +384,7 @@
         $update = ($update==NULL) ? FALSE : $update; 
       } 
       
-      if ($line == FALSE) {
+      if ($line === FALSE) {
         $cart = array();
       } elseif(is_numeric($line)) {
         unset($cart[$line]);

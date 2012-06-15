@@ -55,7 +55,7 @@ class Items extends \SC_Library {
      */
     function get_item($id,$return_cols='*') {
       
-        $item = \Model\Item::find($id,array('select'=>$return_cols));
+        $item = \Model\Item::find($id);
 
         return db_return($item,$return_cols);
 
@@ -151,7 +151,7 @@ class Items extends \SC_Library {
      */
     function get_option($id,$return_cols='*') {
 
-        $option = \Model\Itemoption::find($id,array('select'=>$return_cols));
+        $option = \Model\Itemoption::find($id);
 
         return db_return($option,$return_cols);
     }

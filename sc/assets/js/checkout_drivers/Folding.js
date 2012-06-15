@@ -73,7 +73,9 @@ page_display.checkout = {
   hide: function(callback) {
     callback = callback || function(){};
     
-    $('#sc_checkout').slideUp(callback());
+    $.get(sc_location('ajax/checkout/cancel/'), function() {    
+        $('#sc_checkout').slideUp(callback());
+    });
   },
   
   refresh: function() {

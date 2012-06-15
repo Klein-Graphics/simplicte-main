@@ -23,14 +23,14 @@ class SC_Model extends \ActiveRecord\model {
     }
     
     public function &__get($name) {
-        $value = parent::__get($name);                                                                                                              
+        $value = parent::__get($name);                                                                                                             
         //Check for hooks
         if (isset($this->hooks['get_'.$name])) {
             foreach ($this->hooks['get_'.$name] as $hook) {
-                $copy = $this->to_array();
-                $copy[$name] = $value;
+                $copy = $this;
+                $copy->$name = $value;
                 
-                $value = $hook($copy);
+                $value = $hook($this);
             }            
             
         }

@@ -27,6 +27,14 @@ $messages = array();
 
 //Get all post data and make sure that the posted key is right
 
+if (!$_POST['status_code']) {
+    die(json_encode(array(
+        'transaction' => $_POST['transaction'],
+        'status_code' => 0,
+        'status_text' => $_POST['status_text']
+    )));
+}
+
 $transaction = $_POST['transaction'];
 
 $transaction = $SC->Transactions->get_transaction($transaction,'*','ordernumber');
@@ -44,13 +52,9 @@ if ($their_hash != $my_hash) {
     )));
 }
 
-if (!$_POST['status_code']) {
-    die(json_encode(array(
-        'transaction' => $_POST['transaction'],
-        'status_code' => 0,
-        'status_text' => $_POST['status_text']
-    )));
-}
+
+
+
 
 $messages[] = 'Transaction Successful!';
 

@@ -25,6 +25,7 @@ $data = $query;
 
 require_once "core/global.php";
 require_once 'config.php';
+require_once 'core/includes/Curl.php';
 if (! $CONFIG['SC_LOCATION']) {
   $CONFIG['SC_LOCATION'] = substr($sc_dir,strrpos($sc_dir,'/')+1);        
 }

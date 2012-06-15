@@ -328,3 +328,34 @@
         return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
             ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'));
     }
+    
+    /**
+     *
+     */
+    function encrypt($str){
+        global $CONFIG;
+        $key = $CONFIG['SEED'];
+        $result='';
+        for($i=0; $i<strlen($str); $i++) {
+            $char = substr($str, $i, 1);
+            $keychar = substr($key, ($i % strlen($key))-1, 1);
+            $char = chr(ord($char)+ord($keychar));
+            $result.=$char;
+        }
+        return base64_encode($result);
+    }
+
+
+    function decrypt($str){
+        global $CONFIG;
+        $str = base64_decode($str);
+        $result = '';
+        $key = $CONFIG['SEED'];
+        for($i=0; $i<strlen($str); $i++) {
+            $char = substr($str, $i, 1);
+            $keychar = substr($key, ($i % strlen($key))-1, 1);
+            $char = chr(ord($char)-ord($keychar));
+            $result.=$char;
+        }
+        return $result;
+    }

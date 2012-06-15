@@ -28,10 +28,10 @@ class SC_Gateway_Driver {
         
         if (!session_id()) {
             session_start();
-            $this->outgoing_relay_url = sc_location('relay/'.$class_name.'/'.session_id());      
+            $this->outgoing_relay_url = sc_location('relay/'.$class_name.'/'.session_id().'/');      
             session_write_close();
         } else {
-            $this->outgoing_relay_url = sc_location('relay/'.$class_name.'/'.session_id());    
+            $this->outgoing_relay_url = sc_location('relay/'.$class_name.'/'.session_id().'/');    
         }        
     }            
 }

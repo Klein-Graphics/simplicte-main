@@ -66,7 +66,7 @@ if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROO
     
     $cur_dir = dirname($cur_dir).'/';    
     
-    return False;  
+    return FALSE;  
     
   }
   

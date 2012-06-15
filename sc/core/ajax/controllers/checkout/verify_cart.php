@@ -58,15 +58,13 @@ if ($transaction->status == "opened") {
     ));
 }
 
-$shipping_method = isset($_POST['shipping_method']) ? $_POST['shipping_method'] : FALSE;
-$discount_code = isset($_POST['discount']) ? $_POST['discount'] : FALSE;
+$shipping_method = isset($_POST['shipping_method']) ? $_POST['shipping_method'] : $transaction->shipping_method;
+$discount_code = isset($_POST['discount']) ? $_POST['discount'] : $transaction->discount;
 $shipping_required = $this->Cart->shipping_required($cart);
 
 $order_totals = $this->Cart->calculate_total($transaction,$shipping_method,$discount_code);
 
 $messages += $order_totals['messages'];
-
-$shipping_method = explode('-',$shipping_method);
 
 $this->Transactions->update_transaction($transaction->id,array(
     'shipping' => $order_totals['shipping'],

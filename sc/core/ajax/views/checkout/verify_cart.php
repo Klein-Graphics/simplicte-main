@@ -17,7 +17,7 @@
             
         <?php if ($this->Shipping->shipping_enabled && $shipping_required) : ?>
         <tr>
-                <?php if ($order_totals['shipping']) : ?>
+                <?php if ($order_totals['shipping'] !== false) : ?>
             <td>Shipping:</td><td><?=$order_totals['shipping']?></td>
         </tr>
         <tr>
@@ -34,7 +34,7 @@
          <tr><td>Total:</td><td><?=$order_totals['total']?></td></tr>                  
 
     </table>
-    <?php if ($this->Shipping->shipping_enabled && $shipping_required && $order_totals['shipping']) : ?> 
+    <?php if ($this->Shipping->shipping_enabled && $shipping_required && $order_totals['shipping'] !== false) : ?> 
     <input type="button" class="sc_verify_cart_submit" value="Continue To Payment" />
     <?php endif ?>
 

@@ -5,6 +5,8 @@
  * @package Control Panel
  */
  
+define('SIMPLECART_IS_IN_CP',1); 
+ 
 require_once 'init.php';
 
 $SC->load_library(array('CP','CP_Session','URI'));

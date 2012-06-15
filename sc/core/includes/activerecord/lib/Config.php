@@ -197,6 +197,16 @@ class Config extends Singleton
 	 */
 	public function set_model_directory($dir)
 	{
+		if( is_array($dir) )
+		{
+			foreach( $dir as $k => $path ) 
+				if( !file_exists($path ) )
+					throw new ConfigException('Invalid or non-existent model directory: '.$path);
+
+		}elseif( $dir  && !file_exists( $dir)){
+			throw new ConfigException('Invalid or non-existent model directory: '. $dir);
+		}
+
 		$this->model_directory = $dir;
 	}
 
@@ -208,9 +218,6 @@ class Config extends Singleton
 	 */
 	public function get_model_directory()
 	{
-		if ($this->model_directory && !file_exists($this->model_directory))
-			throw new ConfigException('Invalid or non-existent directory: '.$this->model_directory);
-
 		return $this->model_directory;
 	}
 

@@ -77,5 +77,27 @@
     public function get_total() {
         return $this->SC()->Cart->calculate_soft_total($this);
     }
+    
+    function get_ship_fullname() {
+        return  $this->ship_firstname.' '.
+                (($this->ship_initial) 
+                    ? $this->ship_initial.' ' 
+                    : ''
+                ).
+                $this->ship_lastname;
+    }
+        
+    function get_bill_fullname() {
+        return  $this->bill_firstname.' '.
+                (($this->bill_initial) 
+                    ? $this->bill_initial.' ' 
+                    : ''
+                ).
+                $this->bill_lastname;
+    }
+    
+    function get_ship_full_apt() {
+        return ($this->ship_apt) ? 'Apt #'.$this->ship_apt : '';
+    }
   
   }

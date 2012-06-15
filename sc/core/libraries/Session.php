@@ -148,11 +148,13 @@ class Session extends \SC_Library {
             return $_SESSION['transaction_id'];
         }
 
-        //No? Any pending transactions? Get the first one.
+        //No? Any pending or unassociated opened transactions? Get the first one.
         if ($transaction = \Model\Transaction::first(array(
-            'custid' => $this->get_customer(),
-            'status' => 'pending'
-           ))) {            
+                'conditions' => array(
+                        'custid = ? AND status in(?) AND items != FALSE',
+                        $this->get_customer(),array('pending', 'opened')
+                )        
+           )))  {            
             $_SESSION['transaction_id'] = $transaction->id;
             return $transaction->id;
         }

@@ -5,6 +5,7 @@
     RewriteRule ^ajax(.*)$ core/ajax.php?$1 [L]
     RewriteRule ^relay(.*)$ core/outgoing_relay.php?$1 [L]
     RewriteRule ^receipt(.*)$ core/receipt.php?$1 [L]
+    RewriteRule ^cancel(.*)$ core/cancel.php?$1 [L]
     RewriteRule ^cp(.*)$ core/cp.php?$1 [L]
 
 </IfModule>

@@ -28,6 +28,21 @@ if (!defined('PHP_ACTIVERECORD_AUTOLOAD_DISABLE'))
 function activerecord_autoload($class_name)
 {
 	$path = ActiveRecord\Config::instance()->get_model_directory();
+	
+	if(is_array($path))
+	{
+		foreach($path as $k => $dir)
+		{
+			if( activerecord_load( $dir, $class_name ) )
+				return;
+		}
+	}else{
+		activerecord_load( $path, $class_name );
+	}
+}
+
+function activerecord_load( $path, $class_name )
+{
 	$root = realpath(isset($path) ? $path : '.');
 
 	if (($namespaces = ActiveRecord\get_namespaces($class_name)))
@@ -44,6 +59,10 @@ function activerecord_autoload($class_name)
 	$file = "$root/$class_name.php";
 
 	if (file_exists($file))
+	{
 		require $file;
+		return true;
+	}
+
 }
 ?>

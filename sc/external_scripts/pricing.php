@@ -1,6 +1,9 @@
 <?php
 
-$SC->load_library('Session');
+if (defined('SIMPLECART_IS_IN_CP')) {
+    return;
+}
+
 $cust_id = $SC->Session->get_user();
 
 $pricing_db = new PDO('mysql:host=localhost;dbname=carefast','root','',array(
@@ -16,9 +19,8 @@ if ($customer_level) {
 }
 
 
-$SC->hooks['db']['Item']['get_price'][] = function($item) {
-    global $customer_level, $pricing_db;
-    $discount_level = $pricing_db->query("SELECT `amount` FROM `cust_price_adjust` WHERE `level` = '$customer_level' AND `itemid` = {$item['id']}");
+$SC->hooks['db']['Item']['get_price'][] = function($item) use ($customer_level, $pricing_db) {    
+    $discount_level = $pricing_db->query("SELECT `amount` FROM `cust_price_adjust` WHERE `level` = '$customer_level' AND `itemid` = {$item->id}");
     
     if ($discount_level) {
         $discount_level = $discount_level->fetch();
@@ -27,7 +29,9 @@ $SC->hooks['db']['Item']['get_price'][] = function($item) {
         $discount_level = 0;
     }
     
-    $item['price'] += $discount_level;
+    $price = $item->read_attribute('price');
     
-    return number_format($item['price'],2);
+    $price += $discount_level;
+    
+    return number_format($price,2);
 };
