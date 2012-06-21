@@ -71,11 +71,23 @@
     } 
     
     public function get_subtotal() {        
-        return $this->SC()->Cart->subtotal($this->items);        
+        return number_format($this->SC()->Cart->subtotal($this->items),2);        
     }     
     
     public function get_total() {
-        return $this->SC()->Cart->calculate_soft_total($this);
+        return number_format($this->SC()->Cart->calculate_soft_total($this),2);
+    }
+    
+    public function get_taxrate() {
+        return number_format($this->read_attribute('taxrate'),2);    
+    }   
+    
+    public function get_shipping() {
+        return number_format($this->read_attribute('shipping'),2);    
+    }
+    
+    public function get_ship_name() {
+        return $this->SC()->Shipping->get_nice_name($this->shipping_method);
     }
     
     function get_ship_fullname() {

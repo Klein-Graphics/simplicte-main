@@ -49,7 +49,7 @@ class CP extends \SC_Library {
             $ns_module = "CP_Module\\{$this_module['name']}";
             
             $this_module['readable_name'] = $ns_module::$readable_name;
-            $this_module['display_image'] = $ns_module::$display_image;
+            $this_module['icon'] = $ns_module::$icon;
             $module = $this_module;
         }
         

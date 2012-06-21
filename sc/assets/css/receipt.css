@@ -1,0 +1,83 @@
+a {
+    text-decoration: none;
+    color: #35F;    
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#sc_receipt {
+    width: 600px;
+    margin: 0 auto;
+    font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+}
+
+#sc_customer_information {
+    border-collapse: collapse;  
+    width: 600px;  
+    margin-bottom: 10px;
+}
+
+#sc_customer_information thead {
+    background-color: #ddd;
+}
+
+
+#sc_customer_information thead td {
+    padding: 2px 5px 0px;
+    border-bottom: 5px solid white;
+}
+
+#sc_customer_information thead td h3 {
+    margin: 0;
+}
+
+#sc_customer_information tbody td {
+    padding: 0 5px;        
+}
+
+#sc_receipt_items {
+    border-collapse: collapse;
+    width: 600px;
+}
+
+#sc_receipt_items thead {
+    background-color: #ddd;
+}
+
+
+#sc_receipt_items thead td {
+    background-color: #ddd;
+    font-weight: bold;
+    padding: 3px;    
+}
+
+#sc_receipt_items tbody tr {
+    background-color: #eee;
+    border-bottom: 2px solid white;
+}
+
+#sc_receipt_items tbody td {
+    padding: 4px 0px 0px 4px;
+}
+
+
+#sc_receipt_items tfoot tr {
+    background-color: #ddd;   
+    border-bottom: 2px solid white;
+}
+
+#sc_receipt_items tfoot td {
+    padding: 4px 0px 0px 4px;    
+}
+
+#sc_receipt_items tfoot td:first-child {
+    font-weight: bold;
+}
+
+#sc_receipt_items ul {
+    list-style: none;
+    padding: 0;
+}
+

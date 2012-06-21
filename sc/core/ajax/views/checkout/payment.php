@@ -1,6 +1,6 @@
 <?php $this->load_library('Gateways'); ?>
 
-<span class="sc_close_link">[x]</span>
+<div class="sc_close_link">[x]</div>
 <?php if ($this->Gateways->number_of_gateways() > 1) : ?>
     
     <?=$this->Gateways->generate_gateway_dropdown()?>

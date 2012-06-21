@@ -1,13 +1,18 @@
-<div class="row-fluid">
+<div id="home">
+    <h1>Simplecart Store Control Panel</h1>
+    <h2><?=$store_name?></h2>
 <?php foreach ($modules as $module) : ?>
-    <div class="span2">
-    <a href="<?=sc_cp($module['name'])?>" title="<?=$module['readable_name']?>" class="module_selection">
-        <img src="<?=$module['display_image']?>" alt="<?=$module['readable_name']?>">
-        <h2><?=$module['readable_name']?></h2>
-    </a>
+    <div class="row">
+        <div class="span cp_module">
+            <a href="<?=sc_cp($module['name'])?>" title="<?=$module['readable_name']?>" class="module_selection">
+                <h3><i class="icon-<?=$module['icon']?>"></i> <?=$module['readable_name']?></h3>
+            </a>
+        </div>
     </div>
 <?php endforeach ?>
-</div>
-<p>
-    <a href="<?=sc_cp('do_logout')?>" title="Logout">Logout</a>  
-</p>
+    <div class="row">
+        <div class="span cp_module">
+            <i class="icon-share"></i> <a href="<?=sc_cp('do_logout')?>" title="Logout">Logout</a>  
+        </div>
+    </div>
+</div><!--#home-->

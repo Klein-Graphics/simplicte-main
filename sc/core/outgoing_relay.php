@@ -58,7 +58,7 @@ if ($json_result === NULL) {
 
 if ($transaction_result['status_code']) {
     //Redirect to the receipt 
-    $receipt_location = sc_location('receipt/'.$transaction_result['transaction'].'/'.urlencode($transaction_result['status_text']));
+    $receipt_location = sc_location('receipt/'.$transaction_result['transaction'].'/'.rawurlencode($transaction_result['status_text']));
     echo "<script type='text/javascript'>
             window.location='$receipt_location'
           </script>

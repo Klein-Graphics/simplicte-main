@@ -16,5 +16,11 @@ namespace CP_Module;
  */
 class Customers extends \SC_CP_Module {
     public static $readable_name = "Customers";
-    public static $display_image = "assets/img/customers.jpg";
+    public static $icon = "user";
+    
+    function view_customers() {
+        $customers = \Model\Customer::all(array(
+            'conditions' => 'email != FALSE'
+        ));        
+    }   
 }

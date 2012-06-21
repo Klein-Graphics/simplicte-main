@@ -29,6 +29,8 @@ class Shipping extends \SC_Library {
         require_once('core/libraries/shipping_drivers/Shipping_Driver.php');
         $shipping_drivers = $this->SC->Config->get_setting('shipping_drivers');
         
+        require_once('core/includes/Curl.php');
+        
         $this->Drivers = new \stdClass;
         
         if ($shipping_drivers) {
@@ -95,7 +97,7 @@ class Shipping extends \SC_Library {
      * Returns a list of shipping methods
      *
      * @return array An array of methods where the key is the name of the service
-     * and the value is an array of the actuall shipping options
+     * and the value is an array of the actual shipping options
      */
     function get_shipping_methods() {
         
@@ -107,6 +109,36 @@ class Shipping extends \SC_Library {
         
         return $shipping_methods;
     }
+    
+    /**
+     *  Get providers
+     *
+     *  Returns shipping providers with code and nice name
+     *
+     *  @return array
+     */
+    function get_providers() {
+        $providers = array();
+        
+        foreach ($this->get_shipping_methods() as $code => $method) {
+            $providers[] = array(
+                'code' => $code,
+                'name' => $this->Drivers->$code->name
+            );
+        }
+        
+        return $providers;
+    }
+    
+    function get_nice_name($method) {
+        if ($method) {
+            $method = explode('-',$method);
+            
+            return $this->Drivers->$method[0]->shipping_codes[$method[1]];
+        } else {
+            return 'None';
+        }
+    }   
     
     /**
      * Generate Shipping Dropdown

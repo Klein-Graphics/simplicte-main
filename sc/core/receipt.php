@@ -32,6 +32,7 @@ if ($t->custid != $SC->Session->get_customer()) {
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Order Number <?=$t->ordernumber?>. Thank you for your purchase!</title>
+        <link rel="stylesheet" href="<?=sc_asset('css','receipt')?>" />
     </head>
     <body>
         <div id="sc_receipt">

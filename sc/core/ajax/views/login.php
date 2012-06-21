@@ -1,5 +1,5 @@
 <div class="sc_login_area">
-    <span class="sc_close_link">[x]</span>
+    <div class="sc_close_link">[x]</div>
     <form action="<?=sc_ajax('do_login')?>" class="sc_account_form" method="POST">
         <label class="sc_label_right">Email:</label><br />
         <input type="text" name="sc_login_email"/><br />

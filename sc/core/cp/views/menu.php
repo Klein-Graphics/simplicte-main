@@ -4,11 +4,17 @@
             <a class="brand" href="<?=sc_cp('home')?>" title="Control Panel Home">Simplecart2</a>    
             <ul id="cp_menu" class="nav">
                 <li>
-                    <a href="<?=site_url()?>" title="View Store">View Store</a>    
+                    <a href="<?=site_url()?>" title="View Store"><i class="icon-eye-open icon-white"></i>
+                        View Store
+                    </a>    
                 </li>
             <?php foreach ($modules as $module) : ?>                                
                 <li <?=($this_module == $module['name'])?'class="active"':''?>>    
-                    <a href="<?=sc_cp($module['name'].'/')?>" title="<?=$module['readable_name']?>"><?=$module['readable_name']?></a>
+                    <a 
+                        href="<?=sc_cp($module['name'].'/')?>" 
+                        title="<?=$module['readable_name']?>"><i class="icon-<?=$module['icon']?> icon-white"></i>
+                        <?=$module['readable_name']?>
+                    </a>
                 </li>
             <?php endforeach ?>
                 <li>

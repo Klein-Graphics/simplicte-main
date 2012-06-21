@@ -67,6 +67,7 @@ register_shutdown_function(function() {
 
   global $CONFIG;
   global $ERRORS;
+  global $SC;
   global $start_time;
   
   if ($CONFIG['DUMP_SESSION'] || ($CONFIG['SHOW_ERRORS'] && count($ERRORS))) : ?>  
@@ -86,6 +87,9 @@ register_shutdown_function(function() {
     </div>
             <?php endforeach; ?>
         <?php endif; ?>
+    <?php if (!property_exists($SC,'Page_loading') && !SIMPLECART_IS_IN_CP) : ?>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <?php endif ?>
     <script type="text/javascript">
         $(document).ready(function(){           
             $('#sc_debug_footer').hide();                 

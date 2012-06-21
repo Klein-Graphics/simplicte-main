@@ -82,10 +82,7 @@ class Paypal_EC extends \SC_Gateway_Driver {
             }  
         } else {
             $result_errors = 'Transaction success';
-        }     
-        
-        print_r($result);
-        
+        }             
         
         
         $transaction_result = array(
@@ -154,7 +151,6 @@ class Paypal_EC extends \SC_Gateway_Driver {
             'PAYMENTREQUEST_0_ITEMAMT' => number_format($this->t->subtotal,2),
             'PAYMENTREQUEST_0_SHIPPINGAMT' => number_format($this->t->shipping,2),
             'PAYMENTREQUEST_0_TAXAMT' => number_format($this->t->taxrate,2),
-            'PAYMENTREQUEST_0_CURRENCYCODE' => $this->SC->Config->get_setting('currency'),
             'PAYMENTREQUEST_0_PAYMENTACTION' => 'Sale',  
             'PAYMENTREQUEST_0_INVNUM' => $this->t->ordernumber,            
             'RETURNURL' => sc_location('core/includes/paypal_confirm.php'),
@@ -174,6 +170,10 @@ class Paypal_EC extends \SC_Gateway_Driver {
             'PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE' => $this->t->ship_country,
             'PAYMENTREQUEST_0_SHIPTOPHONENUM' => $this->t->ship_phone,            
         );                    
+        
+        if ($currency = $this->SC->Config->get_setting('currency')) {
+            $data['PAYMENTREQUEST_0_CURRENCYCODE'] = $currency;
+        }
         
         //Generate item table
         $items = $this->SC->Cart->explode_cart($this->t->items);

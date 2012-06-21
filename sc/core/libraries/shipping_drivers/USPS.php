@@ -1,68 +1,94 @@
 <?php
 /**
- * UPS Shipping Rate
+ * USPS Shipping Rate
  *
  * @package Checkout\Shipping Drivers
  */
 namespace Shipping_Driver;
 
 /**
- * UPS Shipping Rate Driver
+ * USPS Shipping Rate Driver
  *
  * @package Checkout\Shipping Drivers
  */ 
-class UPS extends \SC_Shipping_Driver {
+class USPS extends \SC_Shipping_Driver {
     
     /**
      * The Human Readable Name
      */
-    public $name = 'UPS';
+    public $name = 'USPS';
     
     /**
      * Shipping codes
      */
     public $shipping_codes = array(
-            '01' => 'UPS Next Day Air',
-            '02' => 'UPS Second Day Air',
-            '03' => 'UPS Ground',
-            '07' => 'UPS Worldwide Express',
-            '08' => 'UPS Worldwide Expedited',
-            '11' => 'UPS Standard',
-            '12' => 'UPS Three-Day Select',
-            '13' => 'UPS Next Day Air Saver',
-            '14' => 'UPS Next Day Air Early AM',
-            '54' => 'UPS Worldwide Express Plus',
-            '59' => 'UPS Second Day Air AM',
-            '65' => 'UPS Saver'
-        ); 
-
-    /**
-     * Construct
-     *
-     * Includes the upsRate API and loads the UPS login details
-     *
-     * @return null
-     */
-    function __construct() {
-        parent::__construct();
+            'FIRST CLASS' => 'First Class',
+            'FIRST CLASS COMMERCIAL' => 'First Class Commerical',
+            'FIRST CLASS COMMERCIAL HFP COMMERCIAL' => 'First Class Hold For Pickup Commerical',
+            'PRIORITY' => 'Priority',
+            'PRIORITY COMMERICAL' => 'Priority Commercial',
+            'PRIORITY HFP COMMERICAL' => 'Priority Hold For Pickup Commerical',
+            'EXPRESS' => 'Express',
+            'EXPRESS COMMERCIAL' => 'Express Commerical',
+            'EXPRESS SH' => 'Express SH',
+            'EXPRESS SH COMMERCIAL' => 'Express SH Commerical',
+            'EXPRESS COMMERCIAL HFP COMMERCIAL' => 'First Class Hold For Pickup Commerical',
+            'EXPRESS HFP' => 'Express Hold For Pickup',
+            'EXPRESS HFP COMMERICAL' => 'Express Hold For Pickup Commerical',
+            'PARCEL' => 'Parcel',
+            'MEDIA' => 'Media',
+            'LIBRARY' => 'Library',
+            'ALL' => 'All',
+            'ONLINE' => 'Online'            
+    ); 
         
-        require_once('core/includes/upsRate.php');
-
-        list(
-            $access_number,
-            $username,
-            $password,
-            $account
-        ) = $this->SC->Config->get_setting(array(
-            'upsAccessKey',
-            'upsUsername',
-            'upsPassword',
-            'upsAccountNum'
-        ));
+    function api_call($data) {
+        $this->xmlreq = new \DOMDocument();
+        $curl = new \Curl();
         
-        $this->upsRate = new \upsRate($access_number,$username,$password,$account);
-    }    
+        $root = $this->xmlreq->appendChild(
+                    $this->xmlreq->createElement("RateV4Request"));
+        
+        $root->appendChild(
+            $this->xmlreq->createAttribute('USERID'))->appendChild(
+                $this->xmlreq->createTextNode($this->SC->Config->get_setting('uspsuserid')));                              
+        
+        $root = $this->proccess_data($data,$root);
+        
+        echo $curl->get(
+            'http://testing.shippingapis.com/ShippingAPITest.dll',
+            array(
+                'API' => 'RateV4',
+                'XML' => $this->xmlreq->saveXML()
+            ),
+            $info
+        );
+        
+        
+               
+    }
     
+    private function proccess_data($nodes,$root) {                            
+        foreach($nodes as $node_name => $node) {
+            $attach_node = $this->xmlreq->createElement($node_name,$node['data']); 
+            if ($node['attributes']) {
+                foreach ($node['attributes'] as $attr_name => $attr) {
+                    $attach_node->appendChild(
+                        $this->xmlreq->createAttribute($attr_name))->appendChild(
+                            $this->xmlreq->createTextNode($attr));    
+                }
+            }
+            
+            if ($node['children']) {
+                $attach_node = $this->proccess_data($node['children'],$attach_node);          
+            }
+            
+            $root->appendChild($attach_node);                                                                                     
+        }
+        
+        return $root;
+    }  
+
     /**
      * Get Rate
      *

@@ -43,7 +43,8 @@ if (!$module || $module == 'Home') {
     $SC->CP->load_view('header');
     
     $SC->CP->load_view('home',array(
-        'modules' => $SC->CP->get_modules()
+        'modules' => $SC->CP->get_modules(),
+        'store_name' => $SC->Config->get_setting('storename')
     ));
     
     $SC->CP->load_view('footer');
@@ -75,8 +76,11 @@ if ($SC->CP->module_exists($module)) {
         $CONFIG['DUMP_SESSION'] = FALSE;
         call_user_func_array(array($MOD,'_'.$method),$data);
         exit;      
+    } else  if (method_exists($MOD,'__catch')) {
+        call_user_func_Array(array($MOD,'__catch'),array($method)+$data);
+        exit;
     }
     
-}
+} else
 $SC->CP->load_view('footer');
 

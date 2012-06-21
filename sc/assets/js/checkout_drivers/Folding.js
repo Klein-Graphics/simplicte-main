@@ -5,7 +5,7 @@ page_display.checkout = {
     page_display.cart.show();
     
     page_display.checkout.load(sc_location('ajax/checkout'));
-  },
+  },    
   
   load: function(link_url,data) {
     $('#sc_checkout').load(link_url,data,function(r,ts,xhr){
@@ -13,7 +13,7 @@ page_display.checkout = {
             return false;
         }    
         
-        $(this).slideDown();        
+        $(this).slideDown();                        
                 
         $("#sc_checkout form.sc_account_form").submit(function(e) {        
             e.preventDefault();
@@ -31,17 +31,17 @@ page_display.checkout = {
             $.post($(this).attr('action'),$(this).serialize(),function(data){
                 switch (data.do_this) {
                     case 'refresh':
-                        location.href +='#checkout';
-                        window.location.reload();
-                    break;                    
+                        page_display.account.refresh();
+                        page_display.checkout.load(sc_location('/ajax/checkout/verify_cart')); 
+                    break;                  
                     
                     case 'display_good':
                         $('.sc_display')
                             .removeClass('sc_bad')
                             .addClass('sc_good')
                             .html(data.message); 
-                            window.location.href += '#checkout'; 
-                            window.location.reload();  
+                        page_display.account.refresh();
+                        page_display.checkout.load(sc_location('/ajax/checkout/verify_cart'));  
                     break;
                     
                     case 'display_error':
@@ -61,7 +61,7 @@ page_display.checkout = {
             $(this).children('[type=password]').val(function(i,v) { 
                 return previous_password[i];                
             });
-        });            
+        });
         
         $('#sc_checkout .sc_close_link').click(function(e){ 
             e.preventDefault();

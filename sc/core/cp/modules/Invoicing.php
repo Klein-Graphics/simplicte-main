@@ -16,5 +16,5 @@ namespace CP_Module;
  */
 class Invoicing extends \SC_CP_Module {
     public static $readable_name = "Invoicing";
-    public static $display_image = "assets/img/invoicing.jpg";
+    public static $icon = "file";
 }

@@ -6,6 +6,31 @@ body {
     overflow: hidden;
 }
 
+.shrink {
+    font-size: 0.8em;
+}
+.right {
+    float: right;
+}
+.left {
+    float: left;
+}
+
+/*Home*/
+
+#home h2{
+    color: #444;
+}
+
+#home .cp_module {
+    padding-left: 20px;
+}
+
+#home a:hover i {
+    border-bottom: 1px solid #005580;
+    height: 1em;
+}
+
 /*Add/Edit Items*/
  
 .input-prepend .btn-group .btn, 
@@ -110,6 +135,74 @@ label.inline {
 
 #search {
     margin-bottom: 0;
+}
+
+/*View Transaction*/
+#search_filters {
+    font-size: 0.8em;
+}
+
+#search_filters label{
+    line-height: 1em;
+    margin-bottom: 0;
+}
+
+#search_filters textarea{
+    line-height: 1em;
+    font-size: 1em;    
+}
+
+#search_filters select {
+    font-size: 1em;
+    height: 2.2em;
+}
+
+#search_filters input,
+#search_filters label
+{
+    font-size: 1em;
+    height: 1.1em;
+}
+
+#search_filters #date_filters label {
+    width:28px;    
+}
+
+
+/*Single Transactions*/
+#single_transaction {
+    padding: 15px;
+}
+#single_transaction h4 {
+    margin-top: 10px;
+}
+
+/*debug*/
+#sc_debug_footer {
+    font-size: 12px;
+    background: #000;
+    color: #040;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+#sc_debug_footer a {
+    color: #060;    
+}
+
+#sc_debug_controls {
+    float: right;
+    background: #000;
+    color: #060;
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 2; 
+    
 }
 
 

@@ -24,7 +24,7 @@ class SC_Shipping_Driver {
      */    
     function __construct() {
         global $SC;
-        $this->SC = $SC;
+        $this->SC = $SC;                
     }
     
     function get_shipping_codes() {

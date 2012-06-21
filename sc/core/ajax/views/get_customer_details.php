@@ -24,6 +24,7 @@ $fields = array(
 );            
 
 ?>
+<div class="sc_close_link">[x]</div>
 Please fill out the following details: 
 <form class="sc_account_form" action="<?=sc_ajax('do_get_customer_details')?>" method="POST">
 <?php if (isset($_POST['new_customer'])) : ?>

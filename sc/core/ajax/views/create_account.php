@@ -1,5 +1,5 @@
 <div class="sc_create_account_area">
-    <span class="sc_close_link">[x]</span>
+    <div class="sc_close_link">[x]</div>
     <form action="<?=sc_ajax('do_create_account')?>" class="sc_account_form" method="POST">
         <label class="sc_label_right">Email:</label><br />
         <input type="text" name="sc_register_email"/><br />

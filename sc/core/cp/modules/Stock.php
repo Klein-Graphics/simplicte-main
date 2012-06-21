@@ -16,7 +16,7 @@ namespace CP_Module;
  */
 class Stock extends \SC_CP_Module {
     public static $readable_name = "Items and Stock";
-    public static $display_image = "assets/img/stock.jpg";
+    public static $icon = "briefcase";
     
     function view_items() {
         $items = \Model\Item::all();

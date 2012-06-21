@@ -1,4 +1,4 @@
-<span class="sc_close_link">[x]</span>
+<div class="sc_close_link">[x]</div>
 
 <style type="text/css">
     #sc_checkout .sc_checkout_login .sc_close_link,
@@ -16,5 +16,13 @@
     <?php $this->load_ajax('create_account');?>
 </div>
 <div class="sc_checkout_no_register">
-    <a href="<?=sc_ajax('enter_customer_details')?>">Continue without registering</a>
+    <a href="<?=sc_ajax('get_email')?>">Continue without registering</a>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.sc_checkout_no_register a').click(function(e){
+            e.preventDefault();
+            page_display.checkout.load($(this).attr('href'));
+        });
+    });
+</script>

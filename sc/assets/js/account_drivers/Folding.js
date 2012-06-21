@@ -25,7 +25,8 @@ page_display.account = {
                 $.post($(this).attr('action'),$(this).serialize(),function(data){
                     switch (data.do_this) {
                         case 'refresh':
-                            location.reload();
+                            page_display.account.refresh();
+                            page_display.account.close();
                         break;
                         
                         case 'display_good':
@@ -61,6 +62,10 @@ page_display.account = {
             });
         });
     }, 
+    
+    refresh: function() {
+        $("#sc_account_options").load(sc_location('ajax/account_options'));
+    },
     
     bind: function() {
       $(".sc_account_link").click(function(e) {

@@ -1,11 +1,11 @@
-<span class="sc_close_link">[x]</span>
+<div class="sc_close_link">[x]</div>
 <div class="sc_verify_cart_message_area">
 <?php foreach ($messages as $message) : ?>
     <div class="sc_verify_cart_message"><?=$message?></div>
 <?php endforeach ?>
 </div>
 <?php if (!$this->Cart->is_empty($cart)) : ?>
-<form action="<?=sc_ajax('checkout')?>" method="POST" class="sc_verify_form">
+<form action="<?=sc_ajax('checkout/verify_cart')?>" method="POST" class="sc_verify_form">
     <div class="sc_discount_code_area">        
             <p>If you have a discount code, please enter it here:</p>
             <input type="text" name="discount" value="<?=(isset($_POST['discount'])?$_POST['discount']:'')?>" />
@@ -54,8 +54,6 @@
         
         $(".sc_verify_cart_submit").click(function(e) {
             e.preventDefault();
-            
-            console.log(sc_location('/ajax/checkout/payment'));
             
             page_display.checkout.load(sc_location('/ajax/checkout/payment'),$(".sc_verify_form").serializeArray());
         });

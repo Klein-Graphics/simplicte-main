@@ -66,8 +66,12 @@ function load_option(data) {
         var name;
         var value;
         for (var i=0; i<raw_inputs.length; i++) {                    
-            name = raw_inputs[i]['name'].match(/options\[\d*\]\[(.*)\]/);
-            name = name[1];
+            name = raw_inputs[i]['name'].match(/options\[(\d*)\]\[(.*)\]/);
+            if (! inputs['row_id']) {
+                inputs['row_id'] = name[1];
+            }
+            
+            name = name[2];
             inputs[name] = raw_inputs[i]['value'];
         }
         
@@ -85,9 +89,23 @@ function load_option(data) {
             }
         }
         
-        $('#add_option [name="weight"]').val(inputs.weight);
+        $('#add_option [name="weight"]').val(inputs.weight);                
         
         $('#add_option .image-thumbnail').empty().append(new_row.find('img'));
+        
+        if (inputs.stock) {
+            if (inputs.stock == 'inf') {                
+                $('.inf-option-stock').click().addClass('active');
+                $('.inf-option-stock').prev()
+                        .addClass('disabled')
+                        .css('color','white');
+            } else {
+                $('.inf-option-stock').removeClass('active');
+                $('.inf-option-stock').prev()
+                    .removeClass('disabled')
+                    .css('color','');
+            }                    
+        }
         
         if (inputs.flags) {                    
             var flags = inputs.flags.split(',');
@@ -104,7 +122,7 @@ function load_option(data) {
         } 
         
         delete inputs.flags;
-        delete inputs.weight;  
+        delete inputs.weight; 
         
         for (name in inputs) {
             $('#add_option input[name="'+name+'"]').val(inputs[name]); 
@@ -179,7 +197,7 @@ function register_item_handlers(scope) {
             
             if (data.item.stock == 'inf') {
                 $('#item .stock-type option[value="inf"]').attr('selected','selected');
-            } else if (typeof data.item.stock=="number") {
+            } else if (isNaN(data.item.stock) == false) {
                 $('#item .stock-type option[value=""]').attr('selected','selected');
                 $('.item-stock-selection .display_stock').val(data.item.stock);
             } else {

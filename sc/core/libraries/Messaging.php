@@ -57,10 +57,11 @@ class Messaging extends \SC_Library {
         $item_table = function($args) use ($cart,$SC) {
          
             ob_start();        
-            foreach($cart as $key => $item) : ?>
+            foreach($cart as $key => $item) : 
+                $i = \Model\Item::find($item['id']); ?>
 <tr>
     <td class="sc_receipt_item_name" style="<?=$args[1]?>">
-        <?=$SC->Items->item_name($item['id'])?>
+        <?=$i->name?>
     </td>
     <td class="sc_receipt_item_options" style="<?=$args[1]?>">
                 <?php if ($item['options']) : ?> 
@@ -107,7 +108,17 @@ class Messaging extends \SC_Library {
             'item_table' => $item_table,
             'site_url' => site_url(),
             'discount' => $wrap_function,
-            'shipping' => $wrap_function            
+            'shipping' => function($args) use ($transaction,$SC) {
+                if ($transaction->shipping || $transaction->shipping_method) {
+                    return $args[1]
+                          .$SC->Shipping->get_nice_name($transaction->shipping_method)
+                          .$args[2]
+                          .number_format($transaction->shipping,2)
+                          .$args[3];    
+                } else {
+                    return '';
+                }
+            }           
         );
         
         $receipt = $this->SC->Page_loading->replace_tag($receipt,$tags);

@@ -16,5 +16,5 @@ namespace CP_Module;
  */
 class Settings extends \SC_CP_Module {
     public static $readable_name = "Store Settings";
-    public static $display_image = "assets/img/settings.jpg";
+    public static $icon = "wrench";
 }
