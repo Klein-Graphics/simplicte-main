@@ -67,3 +67,6 @@
         </div>
     </form>
 </div></div><!--#customer_search-->
+<script type="text/javascript">
+    
+</script>

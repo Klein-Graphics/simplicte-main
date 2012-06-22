@@ -53,7 +53,7 @@ if ($SC->Session->has_account()) {
 
 //Add Ajax loader
 $output = $SC->Page_loading->replace_tag($output,'ajax_loader','<span class="ajax_loader"><img src="'.
-    $SC->Page_loading->get_ajax_loader().'" title="Loading..." /></span>');
+    $SC->Page_loading->get_ajax_loader().'" alt="Loading..." /></span>');
 
 //Add and insert javascript, including global function wrappers
 $SC->Page_loading->add_javascript('',' 
