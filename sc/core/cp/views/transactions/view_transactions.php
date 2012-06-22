@@ -1,3 +1,5 @@
+<form action="#filter" method="post">
+<input type="submit" style="visibility: hidden; height: 0; margin: 0; padding: 0;" />
 <table class="table table-bordered table-striped">
     <thead>
         <tr><td colspan="999">   
@@ -31,7 +33,8 @@
                 <option value="100">Show 100 a page</option>
                 <option value="<?=$total_transactions?>">Show all</option>
             </select> 
-            <a href="#" class="right show-filters"><i class="icon-filter"></i><span>Show filters</span></a>
+            <a href="#" class="show-filters"><i class="icon-filter"></i><span>Show filters</span></a>
+            <a href="#" class="apply-filters"><i class="icon-refresh"></i> Apply all filters</a>
         </td></tr>        
         <td>Date</td><td>Number</td><td>Customer ID</td><td>Shipping</td><td>Billing</td><td>Status</td><td>Items</td><td>Subtotal</td><td>Tax</td><td>Shipping</td><td>Discount</td><td>Total</td>            
         <tr id="search_filters">
@@ -42,7 +45,7 @@
                            class="search_filter span1" 
                            id="from_date" 
                            name="from_date" 
-                           value="<?=date('n/d/y',time()-60*60*24*30)?>" />
+                           value="<?=get_post('from_date',date('n/d/y',time()-60*60*24*30))?>" />
                 </div>
                 <div class="input-prepend">
                     <label for="to_date" class="add-on">To:</label><input 
@@ -50,50 +53,66 @@
                            class="search_filter span1" 
                            id="to_date" 
                            name="to_date" 
-                           value="<?=date('n/d/y')?>" />
+                           value="<?=get_post('to_date',date('n/d/y'))?>" />
                 </div>
-                <a href="#" class="apply-filters"><i class="icon-refresh"></i> Apply all filters</a>
+                
             </td>
             <td>
-                <input type="text" class="search_filter span2" name="ordernumber" placeholder="&quot;*&quot; is wildcard" />
+                <input 
+                    type="text" 
+                    class="search_filter span2" 
+                    name="ordernumber" 
+                    value="<?=get_post('ordernumber')?>" 
+                    placeholder="&quot;*&quot; is wildcard" />
             </td>
             <td>
-                <input type="text" class="search_filter span2" name="custid" placeholder="&quot;*&quot; is wildcard"/>
+                <input 
+                    type="text" 
+                    class="search_filter span2" 
+                    name="custid" 
+                    value="<?=get_post('custid')?>" 
+                    placeholder="&quot;*&quot; is wildcard"/>
             </td>
             <td>
-                <textarea class="search_filter span2" name="ship_info" rows="6"></textarea>
-               
+                <textarea class="search_filter span2" name="ship_info" rows="6"><?=get_post('ship_info')?></textarea>
             </td>
             <td>
-                <textarea class="search_filter span2" name="bill_info" rows="6"></textarea>
+                <textarea class="search_filter span2" name="bill_info" rows="6"><?=get_post('bill_info')?></textarea>
             </td>
             <td>
-                <label for="status_opened" class="checkbox">
-                    <input type="checkbox" class="search_filter" id="status_opened" name="status_opened" />Opened
+<?php $statuses = array('opened','pending','settled','fulfilled','returned');
+foreach ($statuses as $status) : ?>
+                <label for="<?=$status?>" class="checkbox">
+                    <input 
+                        type="checkbox" 
+                        class="search_filter" 
+                        id="<?=$status?>" 
+                        name="<?=$status?>"
+                        <?=get_post($status,'') ? 'checked="checked"' : '' ?> /><?=ucfirst($status)?>
                 </label>
-                <label for="status_pending" class="checkbox">
-                    <input type="checkbox" class="search_filter" id="status_pending" name="status_pending" />Pending
-                </label>
-                <label for="status_settled" class="checkbox">
-                    <input type="checkbox" class="search_filter" id="status_settled" name="status_settled" />Settled
-                </label>
-                <label for="status_fulfilled" class="checkbox">
-                    <input type="checkbox" class="search_filter" id="status_fulfilled" name="status_fulfilled" />Fulfilled
-                </label>
-                <label for="status_fulfilled" class="checkbox">
-                    <input type="checkbox" class="search_filter" id="status_fulfilled" name="status_fulfilled" />Returned
-                </label>
+<?php endforeach ?>                
             </td>
             <td>
-                <input type="text" class="search_filter span3" name="items" placeholder="Enter item/option number(s)" />
+                <input 
+                    type="text" 
+                    class="search_filter span3" 
+                    name="items" 
+                    placeholder="Enter item/option number(s)/name(s)" 
+                    value="<?=get_post('items')?>"
+                    />
             </td>
             <td></td>
             <td></td>
             <td>
-                <select name="shipping_provider" class="span2">
-                    <option>All</option>
+                <select name="shipping_provider" class="search_filter span2">
+                    <option value=''>All</option>
 <?php foreach($shipping_providers as $provider) : ?>
-                    <option value="<?=$provider['code']?>"><?=$provider['name']?></option>
+                    <option 
+                        value="<?=$provider['code']?>"
+                        <?=get_post('shipping_provider') == $provider['code'] ? 'selected="selected"' : ''?>
+                    >
+                        <?=$provider['name']?>
+                    </option>
 <?php endforeach ?>
                 </select>
             </td><td>
@@ -154,24 +173,37 @@
 <?php endforeach ?>
     </tbody>
 </table>
+<form>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#count_selection').change(function(){
-            window.location='<?=sc_cp('Transactions/view_transactions/'.$page)?>'+$(this).val();
-        }).children('[value="<?=$count?>"]').first().attr('selected','selected');
+        $('#count_selection')
+            .change(function(){
+                window.location='<?=sc_cp('Transactions/view_transactions/'.$page)?>'+$(this).val();
+            })
+            .children('[value="<?=$count?>"]').first().attr('selected','selected');
         
-        $('#search_filters').hide();
+        if (window.location.hash != '#filter') {
+            $('#search_filters, .apply-filters').hide();
+        } else {
+            $('.show-filters').children('span').html('Hide filters');    
+        }
         
         $('.show-filters').click(function(e) {
             e.preventDefault();
             
             if ($('#search_filters').is(':visible')) {
-                $('#search_filters').hide();
+                $('#search_filters, .apply-filters').hide();
                 $(this).children('span').html('Show filters');
             } else {
-                $('#search_filters').show();
+                $('#search_filters, .apply-filters').show();
                 $(this).children('span').html('Hide filters');
             }
+        });
+        
+        $('.apply-filters').click(function(e) {
+            e.preventDefault();
+            
+            $('form').submit();
         });
     });
 </script>

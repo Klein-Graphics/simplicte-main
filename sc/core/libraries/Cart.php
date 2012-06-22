@@ -43,7 +43,8 @@
      * an array, the function will simply return that same array.
      *
      */
-    function explode_cart($cart) {            
+    function explode_cart($cart) { 
+                 
       if (is_array($cart)) {
         return $cart;
       }            

@@ -359,3 +359,22 @@
         }
         return $result;
     }
+    
+    /**
+     * Get post
+     */
+    function get_post($key,$default=FALSE) {
+        return isset($_POST[$key]) ?
+                $_POST[$key] : $default;
+    }
+    
+    /**
+     * Flatten array
+     *
+     * Does what it says on the tin
+     */
+    function array_flatten(array $array) {
+        $return = array();
+        array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+        return $return;
+    }

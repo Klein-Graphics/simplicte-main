@@ -322,6 +322,7 @@ class SQLBuilder
 			$this->where = $args[0];
 			$this->where_values = &$values;
 		}
+		
 	}
 
 	private function build_delete()

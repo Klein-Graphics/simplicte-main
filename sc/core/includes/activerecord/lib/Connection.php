@@ -303,7 +303,7 @@ abstract class Connection
 			throw new DatabaseException($this);
 		}
 
-		$sth->setFetchMode(PDO::FETCH_ASSOC);
+		$sth->setFetchMode(PDO::FETCH_ASSOC);		
 
 		try {
 			if (!$sth->execute($values))
