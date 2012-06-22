@@ -80,8 +80,7 @@ if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROO
   $config_file = file_get_contents('config.php');
   $config_file = preg_replace('/\$CONFIG\[(\'|")URL(\'|")\][^\n\r]*(\n\r|\n)/',"\$CONFIG['URL'] = '$site_url';\n",$config_file);
   $r_config_file = fopen('config.php','w');
-  fwrite($r_config_file,$config_file);
-   
+  fwrite($r_config_file,$config_file); 
 }
 
 
@@ -129,10 +128,13 @@ $SC = new SC;
 $SC->load_library('Config');
 
 //Load any extentions
-if (isset($EXTENTIONS)) {
-    foreach ($EXTENTIONS as $ext) {
-        require 'external_scripts/'.$ext;
-    }         
+foreach (scandir('extentions') as $extention) {
+    if ($extention != '.' 
+     && $extention != '..' 
+     && is_dir("extentions/$extention")) 
+    {
+        require 'extentions/'.$extention.'/index.php';    
+    }
 }
 
 /*

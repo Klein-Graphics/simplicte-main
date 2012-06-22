@@ -17,8 +17,8 @@ class UploadHandler
     function __construct($options=null) {
         $this->options = array(
             'script_url' => $this->getFullUrl().'/file_upload.php',
-            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/assets/upload/',
-            'upload_url' => $this->getFullUrl().'/assets/upload/',
+            'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/user/upload/',
+            'upload_url' => $this->getFullUrl().'/user/upload/',
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
@@ -53,8 +53,8 @@ class UploadHandler
                 ),
                 */
                 'thumbnail' => array(
-                    'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/assets/upload/thumbnails/',
-                    'upload_url' => $this->getFullUrl().'/assets/upload/thumbnails/',
+                    'upload_dir' => dirname($_SERVER['SCRIPT_FILENAME']).'/user/upload/thumbnails/',
+                    'upload_url' => $this->getFullUrl().'/user/upload/thumbnails/',
                     'max_width' => 80,
                     'max_height' => 80
                 )

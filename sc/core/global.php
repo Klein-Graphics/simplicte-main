@@ -160,7 +160,7 @@
       $name = $SC->Config->get_setting('buttons_folder')."/$name.gif";
     }
     
-    return sc_location("assets/$type/$name");
+    return sc_location("core/assets/$type/$name");
   }
   
     /**

@@ -45,7 +45,7 @@ class Messaging extends \SC_Library {
         if (!$receipt_template) $receipt_template = 'receipt';
         
         //Load the template
-        $receipt = file_get_contents("email_templates/$receipt_template.html");
+        $receipt = file_get_contents("user/email_templates/$receipt_template.html");
         
         $receipt = $this->SC->Page_loading->replace_transaction_details($receipt,$transaction);
         $cart = $this->SC->Cart->explode_cart($transaction->items);

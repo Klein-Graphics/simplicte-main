@@ -204,9 +204,9 @@ class Page_loading extends \SC_Library {
         $item_template = $this->SC->Config->get_setting('item_template');
         if (!$item_template) $item_template = 'default';
 
-        $template_file = "item_templates/$item_template.html";
+        $template_file = "user/item_templates/$item_template.html";
 
-        $raw_template = file_get_contents("item_templates/$item_template.html");
+        $raw_template = file_get_contents("user/item_templates/$item_template.html");
 
         if (!$raw_template) {
             trigger_error("Item template <strong>$template_file</strong> doesn't exist",E_USER_ERROR);
