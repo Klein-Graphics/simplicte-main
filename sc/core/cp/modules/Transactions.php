@@ -31,13 +31,17 @@ class Transactions extends \SC_CP_Module {
         
         if ($total_pages < $page) {
             $page = $total_pages;
-        }        
+        }
         
-        $transactions = \Model\Transaction::all(array(
-                    'offset'=>$page*$count,
-                    'limit'=>$count,
-                    'conditions'=> $filters
-                ));
+        $t_data['conditions'] = $filters;
+        if ($count != 'a') {
+                $t_data['offset'] = $page*$count;
+                $t_data['limit'] = $count;
+        }      
+        
+        $count = $total_transactions;
+        
+        $transactions = \Model\Transaction::all($t_data);
         
         $items = array();
         foreach ($transactions as $key => $transaction) {

@@ -18,9 +18,15 @@ class Customers extends \SC_CP_Module {
     public static $readable_name = "Customers";
     public static $icon = "user";
     
-    function view_customers() {
-        $customers = \Model\Customer::all(array(
-            'conditions' => 'email != FALSE'
-        ));        
+    function search_customers() {
+        $this->SC->CP->load_view('customers/search');            
     }   
+    
+    function _do_search() {
+    
+    }    
+    
+    function __catch($customer) {
+    
+    }
 }

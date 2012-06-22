@@ -5,25 +5,27 @@
         <tr><td colspan="999">   
             <div id="trans_navigation" class="left">         
                 <strong>Showing transactions <?=(($page-1)*$count + 1)?>-<?=min((($page-1)*$count + $count),$total_transactions)?> of <?=$total_transactions?>. </strong><br />
+<?php if ($total_pages > 1) : ?>                                
                 <a href="<?=sc_cp('Transactions/view_transactions/1/'.$count)?>" title="First">&lt;&lt;</a>
-<?php if ($page > 2 && $page < $total_pages-1) : ?>
+    <?php if ($page > 2 && $page < $total_pages-1) : ?>
                     ...
-<?php elseif ($total_pages >= 3 & $page == $total_pages ) : ?>
+    <?php elseif ($total_pages >= 3 & $page == $total_pages ) : ?>
                 <a href="<?=sc_cp('Transactions/view_transactions/'.($page+2).'/'.$count)?>" title="<?=$page-2?>"><?=$page-2?></a> 
-<?php endif?>
-<?php if ($page > 1) : ?>
+    <?php endif?>
+    <?php if ($page > 1) : ?>
                 <a href="<?=sc_cp('Transactions/view_transactions/'.($page-1).'/'.$count)?>" title="<?=$page-1?>"><?=$page-1?></a>
-<?php endif ?>
+    <?php endif ?>
                 <?=$page?>
-<?php if ($page < $total_pages) : ?>
+    <?php if ($page < $total_pages) : ?>
                 <a href="<?=sc_cp('Transactions/view_transactions/'.($page+1).'/'.$count)?>" title="<?=$page+1?>"><?=$page+1?></a>       
-<?php endif ?>
-<?php if ($page < $total_pages-1 && $page > 1) : ?>
+    <?php endif ?>
+    <?php if ($page < $total_pages-1 && $page > 1) : ?>
                 ...
-<?php elseif ($total_pages >= 3 & $page == 1 ) : ?>
+    <?php elseif ($total_pages >= 3 & $page == 1 ) : ?>
                 <a href="<?=sc_cp('Transactions/view_transactions/'.($page+2).'/'.$count)?>" title="<?=$page+2?>"><?=$page+2?></a>    
-<?php endif ?>
+    <?php endif ?>
                 <a href="<?=sc_cp('Transactions/view_transactions/'.$total_pages.'/'.$count)?>" title="Last">&gt;&gt;</a>            
+<?php endif ?>                
             </div>  
             <select id="count_selection" class="span3">
                 <option value="10">Show 10 a page</option>
@@ -31,7 +33,7 @@
                 <option value="30">Show 30 a page</option>
                 <option value="50">Show 50 a page</option>
                 <option value="100">Show 100 a page</option>
-                <option value="<?=$total_transactions?>">Show all</option>
+                <option value="a">Show all</option>
             </select> 
             <a href="#" class="show-filters"><i class="icon-filter"></i><span>Show filters</span></a>
             <a href="#" class="apply-filters"><i class="icon-refresh"></i> Apply all filters</a>

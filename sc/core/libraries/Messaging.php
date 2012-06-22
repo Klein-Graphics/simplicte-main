@@ -135,7 +135,7 @@ class Messaging extends \SC_Library {
         ob_start(); ?>
 <p>
     Order number #<?=$transaction->ordernumber?> has been settled and may need to be fulfilled. 
-    <a href="<?=sc_cp('Transactions/view/'.$transaction->ordernumber)?>" title="Transaction <?=$transaction->ordernumber?>">
+    <a href="<?=sc_cp('Transactions/'.$transaction->ordernumber)?>" title="Transaction <?=$transaction->ordernumber?>">
         Click here to view.
     </a>
 </p>    

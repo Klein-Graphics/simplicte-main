@@ -52,10 +52,6 @@ if ($their_hash != $my_hash) {
     )));
 }
 
-
-
-
-
 $messages[] = 'Transaction Successful!';
 
 //Change transaction status to settled and update the payment type
@@ -91,7 +87,7 @@ HTML;
         $understocked_table .= "<tr><td>$item</td><td>$option</td></tr>";
     }
     
-    $understocked_table .= "</table>";
+$understocked_table .= "</table>";
     
     $SC->Messaging->message_store(
         "After completeing order #{$transaction->ordernumber}, the following items and options are understocked:"
