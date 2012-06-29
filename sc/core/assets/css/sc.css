@@ -1,0 +1,52 @@
+/**
+ * This file will eventually be merged into Simplecart 2
+ */
+.sc_button,
+.sc_button:hover
+{
+    text-decoration: none;
+}
+
+.sc_close_link {
+    width: 100%;
+    text-align: right;
+    cursor: pointer;
+    color: #5A2;
+    font-size: 9pt;
+    font-weight: bold;
+}
+.sc_close_link:hover {
+    text-decoration: underline;
+}
+.sc_country_selector {
+    width: 157px;
+}
+
+#sc_debug_footer {
+    font-size: 12px;
+    background: #000;
+    color: #040;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+#sc_debug_footer a {
+    color: #060;    
+}
+
+#sc_debug_controls {
+    float: right;
+    background: #000;
+    color: #060;
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 2; 
+    
+}
+
+
