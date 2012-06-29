@@ -12,6 +12,7 @@
  */
 
 chdir($sc_cwd);
+
 //Get, End, and Output output buffer
 $output = ob_get_contents();
 ob_end_clean();
@@ -77,7 +78,7 @@ $SC->Page_loading->add_javascript('','
   
   function sc_button(button) {
    
-   return "'.sc_location().'core/assets/button/'.$SC->Config->get_setting('buttons_folder').'/"+button+".gif";
+   return "'.sc_location().'/core/assets/button/'.$SC->Config->get_setting('buttons_folder').'/"+button+".gif";
     
   }
 ');
@@ -85,6 +86,7 @@ $SC->Page_loading->add_javascript('','
 $SC->Page_loading->add_top_javascript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
 $SC->Page_loading->add_top_javascript(sc_asset('js','jquery.crypt'));
 $SC->Page_loading->add_javascript(sc_asset('js','page_display'));
+$SC->Page_loading->add_css_file(sc_asset('css','sc'));
 
 //Load display drivers
 
@@ -93,6 +95,7 @@ foreach ($SC->Page_loading->loaded_drivers as $type => $driver) {
 }
 
 $output = $SC->Page_loading->insert_javascript($output);
+$output = $SC->Page_loading->insert_css($output);
 
 //Dump to page
 echo $output;

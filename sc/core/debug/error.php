@@ -69,11 +69,11 @@ register_shutdown_function(function() {
 
   global $CONFIG;
   global $ERRORS;
-  global $SC;
+  global $SC;  
   global $start_time;
   
   if ($CONFIG['DUMP_SESSION'] || ($CONFIG['SHOW_ERRORS'] && count($ERRORS))) : ?>  
-<div id="sc_debug_controls">&Dagger;</div>
+<div id="sc_debug_controls" style="<?=count($ERRORS) ? 'color: red' : ''?>">&Dagger;</div>
 <div id="sc_debug_footer">    
     <?php
     if (isset($_SESSION) && $CONFIG['DUMP_SESSION']) {    
@@ -115,5 +115,4 @@ register_shutdown_function(function() {
     </script>
 </div>
     <?php endif; ?>
-<?
-});
+<?php });

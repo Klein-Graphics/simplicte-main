@@ -19,5 +19,5 @@ $SC->load_library('Page_loading'); //Pageloading library
 
 //Begin output buffering
 ob_start();
-chdir($page_cwd);
 
+chdir($page_cwd);

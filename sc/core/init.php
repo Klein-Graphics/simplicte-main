@@ -108,11 +108,9 @@ require 'sc_model.php';
  *
  * @ignore
  */
-ActiveRecord\Config::initialize(function($cfg) {
-  
-  global $CONFIG;
+ActiveRecord\Config::initialize(function($cfg) use ($CONFIG,$sc_dir) {  
 
-  $cfg->set_model_directory('core/models');
+  $cfg->set_model_directory($sc_dir.'/core/models'); //Declare the full path so that the models are available to the page
   $cfg->set_connections($CONFIG['DATABASE']);
   
 });

@@ -29,6 +29,7 @@ class Page_loading extends \SC_Library {
     function __construct() {
         parent::__construct();
         $this->js = array();
+        $this->css = array();
         $this->top_js = array();
 
         $this->loaded_drivers = array();
@@ -532,6 +533,64 @@ class Page_loading extends \SC_Library {
         return TRUE;                
 
     }
+    
+    /**
+     * Add CSS file
+     * 
+     * Adds a CSS file
+     *
+     * @param string The name of the file
+     */
+    
+    function add_css_file($src) {
+        $this->css['files'][] = $src;   
+    }
+    
+    /**
+     * Add CSS script
+     *
+     * Adds custom CSS
+     *
+     * @param string The custom CSS to add
+     */
+     
+    function add_css_style($selector,$style=false) {
+        if ($style) {
+            $this->css['styles'][] = "$selector \{ $style\ }";
+        } else {
+            $this->css['styles'][] = $selector;
+        }
+    }
+    
+    /**
+     * Insert CSS
+     *
+     * Inserts custom CSS styles and scripts into the page
+     */
+     
+    function insert_css($input) {
+        $output = '';
+        
+        if ( ! count($this->css,COUNT_RECURSIVE)) {
+            return $input;
+        }
+        
+        foreach ($this->css['files'] as $file) {
+            $output .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$file\" />\n";
+        }
+        
+        if (isset($this->css['style'])) {
+            $output .= "<style type=\"text/css\">\n";
+            
+            foreach ($this->css['styles'] as $style) {
+                $output .= $style."\n";    
+            }
+            
+            $output .= '</style>';
+        }
+        
+        return str_replace('</head>',$output.'</head>',$input);
+    }
 
     /**
      * Add Javascript
@@ -544,8 +603,8 @@ class Page_loading extends \SC_Library {
      */
     function add_javascript($src,$script='') {
         if (is_array($src)) {
-        $this->js[] = $src;
-        return TRUE;
+            $this->js[] = $src;
+            return TRUE;
         }
 
         $this->js[] = array($src,$script);
@@ -617,8 +676,8 @@ class Page_loading extends \SC_Library {
         //Is there a defined loader?
         $this->SC->load_library('Config');
         if ($loader = $this->SC->Config->get_setting('ajax_loader')) {
-            if (file_exists("assets/img/$loader")) {
-                return sc_asset('img',$loader);
+            if (file_exists("user/$loader")) {
+                return sc_location("user/$loader");
             }
             
             if (file_exists("{$_CONFIG['URL']}/$loader")) {
@@ -628,11 +687,11 @@ class Page_loading extends \SC_Library {
             return $loader;
         }
         
-        if (file_exists("assets/img/ajax-loader_1.gif")) {
-            return sc_asset('img','ajax-loader_1.gif');
+        if (file_exists("user/ajax-loader.gif")) {
+            return sc_location('user/ajax-loader.gif');
         }
         
-        return sc_asset('img','ajax-loader_1.gif');
+        return sc_asset('img','ajax-loader.gif');
     }
 
 }
