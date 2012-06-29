@@ -214,7 +214,7 @@ function register_item_handlers(scope) {
     });
 }
 
-$(document).ready(function(){      
+$(document).ready(function(){     
     $('#add_items_modal').modal({
         show: false    
     }).on('hidden',function(){

@@ -134,6 +134,12 @@ class SC {
         //normalize view name
         $call = strtolower($call);                      
         
+        
+        
+        //Call any possible pre-ajax-controller hooks
+        call_hook(array('ajax_controller',$call,'before'),$data);
+        
+        //Search for the controller
         $controller = true;
         if (file_exists("core/ajax/controllers/$call.php")) {
             require_once("core/ajax/controllers/$call.php");
@@ -141,8 +147,10 @@ class SC {
             require_once "core/ajax/controllers/$call/index.php";
         } else {
             $controller = false;  
-        }   
+        } 
         
+                       
+        //Execute the possible ajax function
         if (function_exists("\Ajax\\$call")) {
             $return_vars = call_user_func_array("\Ajax\\$call",$data);
 
@@ -153,8 +161,15 @@ class SC {
                     }
                 }
             }
-        }       
+        }
         
+        //Call any possible post-ajax-controller hooks     
+        call_hook(array('ajax_controller',$call,'after'),$data); 
+        
+        //Call any possible pre-ajax-view hooks   
+        call_hook(array('ajax_view',$call,'before'),$data);
+        
+        //Search for the view
         $view = true;
         if (file_exists("core/ajax/views/$call.php")) {
             require_once "core/ajax/views/$call.php";
@@ -163,7 +178,11 @@ class SC {
         } else {
             $view = false;
         }
+                
+        //Call any possible post-ajax-view hooks
+        call_hook(array('ajax_view',$call,'after'),$data);
         
+        //If there was no controller and no view, load a 404;
         if (!$controller && !$view) {        
             header('HTTP/1.0 404 Not Found');
             echo('<h1>404</h1>Page not found');

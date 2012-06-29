@@ -53,7 +53,6 @@ if (!$module || $module == 'Home') {
 }
 
 //...or load the requested module
-
 include_once('core/cp/SC_CP_Module.php');
 if ($SC->CP->module_exists($module)) {
     $ns_module = "CP_Module\\$module";
@@ -81,6 +80,6 @@ if ($SC->CP->module_exists($module)) {
         exit;
     }
     
-} else
+}
 $SC->CP->load_view('footer');
 

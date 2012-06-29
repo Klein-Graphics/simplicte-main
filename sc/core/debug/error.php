@@ -25,6 +25,8 @@
  *
  */
 function throw_error($levels,$message,$file,$line,$context) {
+
+    if (! error_reporting() ) return;
     
     global $ERRORS;
     global $CONFIG;

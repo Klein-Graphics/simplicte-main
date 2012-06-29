@@ -14,10 +14,12 @@ $this->Validation->add_rule('sc_confirm_password','Confirm','required');
 //Validate the data
 $validation = $this->Validation->do_validation();    
 
-if ($this->Customer->get_customer($_POST['sc_register_email'],'*','email')) {
-    $validation = FALSE;
-    
-    $this->Validation->messages[] = 'Another account with this email address exists';
+if ($other_customer = $this->Customer->get_customer($_POST['sc_register_email'],'*','email')) {
+    if (strpos($other_customer->custid,'temp') !== 0) {
+        $validation = FALSE;
+        
+        $this->Validation->messages[] = 'Another account with this email address exists';
+    }
 }
 
 if (!$validation) {

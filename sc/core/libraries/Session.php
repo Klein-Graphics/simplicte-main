@@ -34,7 +34,7 @@ class Session extends \SC_Library {
 
         
         $cookie_params = session_get_cookie_params();
-        session_set_cookie_params($cookie_params['lifetime'],$CONFIG['URL']);
+        session_set_cookie_params($cookie_params['lifetime'],'/'.ltrim($CONFIG['URL'],'/'));
         if (isset($_GET[session_name()])) {
             session_id($_GET[session_name()]);
         }
@@ -235,7 +235,7 @@ class Session extends \SC_Library {
         $_SESSION['user_id'] = $customer->id;
         
         if (!isset($post_data['sc_remember_me'])) {
-            session_set_cookie_params(ONE_HUNDRED_YEARS,$CONFIG['URL']);
+            session_set_cookie_params(ONE_HUNDRED_YEARS,'/'.ltrim($CONFIG['URL'],'/'));
             session_regenerate_id();
         }
         

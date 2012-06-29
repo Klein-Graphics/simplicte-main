@@ -17,11 +17,7 @@ $sc_cwd = getcwd();
 $SC->load_library('Session'); //Get sessions ready
 $SC->load_library('Page_loading'); //Pageloading library
 
-//Execute any pre-page loading hooks
-
-
 //Begin output buffering
-@ob_flush();
 ob_start();
 chdir($page_cwd);
 

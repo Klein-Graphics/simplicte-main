@@ -77,7 +77,7 @@ $SC->Page_loading->add_javascript('','
   
   function sc_button(button) {
    
-   return "'.sc_location().'assets/button/'.$SC->Config->get_setting('buttons_folder').'/"+button+".gif";
+   return "'.sc_location().'core/assets/button/'.$SC->Config->get_setting('buttons_folder').'/"+button+".gif";
     
   }
 ');

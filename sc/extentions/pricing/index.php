@@ -4,34 +4,55 @@ if (defined('SIMPLECART_IS_IN_CP')) {
     return;
 }
 
-$cust_id = $SC->Session->get_user();
+
 
 $pricing_db = new PDO('mysql:host=localhost;dbname=carefast','root','',array(
     PDO::ATTR_PERSISTENT => true
 ));
 
-$customer_level = $pricing_db->query("SELECT `level` FROM `customer_level` WHERE `cust_id` = $cust_id");
-if ($customer_level) {
+function get_customer_level() {    
+    global $pricing_db;
+    global $SC;
+    
+    $cust_id = $SC->Session->get_user();
+    
+    $customer_level = $pricing_db->query("SELECT `level` FROM `customer_level` WHERE `cust_id` = $cust_id");
+
     $customer_level = $customer_level->fetch();
-    $customer_level = $customer_level['level'];
-} else {
-    $customer_level = 'customer';
+    return $customer_level['level'];
 }
 
 
-$SC->hooks['db']['Item']['get_price'][] = function($item) use ($customer_level, $pricing_db) {    
-    $discount_level = $pricing_db->query("SELECT `amount` FROM `cust_price_adjust` WHERE `level` = '$customer_level' AND `itemid` = {$item->id}");
-    
-    if ($discount_level) {
-        $discount_level = $discount_level->fetch();
-        $discount_level = $discount_level['amount'];                
-    } else {
-        $discount_level = 0;
-    }
-    
-    $price = $item->read_attribute('price');
-    
-    $price += $discount_level;
+
+
+$SC->hooks['db']['Item']['get_price'][] = function($item) use ($pricing_db) {    
+    $customer_level = get_customer_level();
+
+    $discount_level = $pricing_db->query("SELECT `amount` FROM `cust_price_adjust` WHERE `level` = '$customer_level' AND `itemid` = {$item->id}");    
+    $discount_level = $discount_level->fetch();         
+    $discount_level = $discount_level['amount'];    
+    if ($discount_level) {             
+        $price = $discount_level;
+                        
+    } else {        
+        $price = $item->read_attribute('price');
+    }        
     
     return number_format($price,2);
+};
+
+$SC->hooks['ajax_controller']['do_login']['before'] = function() {
+    ob_start();
+};
+
+$SC->hooks['ajax_controller']['do_login']['after'] = function() {    
+    if (get_customer_level()) {
+        ob_end_clean();
+        echo json_encode(array(
+            'do_this'=>'display_good',
+            'message'=>'<script type="text/javascript">window.location.reload()</script>'
+        ));
+    } else {
+        ob_end_flush();
+    }
 };

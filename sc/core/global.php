@@ -378,3 +378,27 @@
         array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
         return $return;
     }
+    
+    /** 
+     * Call extention hook
+     * 
+     * Calls extention hooks if any exists    
+     *
+     * @param string[] $hook
+     *
+     * 
+     */
+    function call_hook($hook,$data=array()) {
+        global $SC;                
+        
+        //Call any possible pre-ajax controller hooks
+        $qual_hook = '$SC->hooks';                
+        
+        foreach ($hook as $level) {
+            $qual_hook .= "['$level']";
+        }                
+        
+        if (eval("return isset($qual_hook);")) {                
+            eval("call_user_func_array($qual_hook,\$data);");
+        }   
+    }    

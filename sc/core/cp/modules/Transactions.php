@@ -133,11 +133,11 @@ class Transactions extends \SC_CP_Module {
         }
         
         $statuses = array('opened','pending','settled','fulfilled','returned');
-        
-        $statuses = array_intersect($statuses,$_POST);
+
+        $statuses = array_intersect($statuses,array_keys($filters));
         
         if (!empty($statuses)) {
-            $where[] = array("status IN(?)",$statues);
+            $where[] = array("status IN(?)",$statuses);
         }    
         
         if (isset($shipping_provider) && $shipping_provider) {
