@@ -75,19 +75,26 @@ class Stock extends \SC_CP_Module {
             }            
         }
         
-        
-        $flags = array();
-        
-        if (isset($data['flags']) && $data['flags']) {
-            //Adjust flags
-            foreach ($data['flags'] as $flag) {
-                if ($flag['flag']) {
-                    $flags[] = $flag['flag'].':'.$flag['args'];
+        if (isset($data['flags']) && $data['flags']) {                        
+            if (is_array($data['flags'])) {
+                $flags = array();
+                //Adjust flags
+                foreach ($data['flags'] as $flag) {
+                    if ($flag['flag']) {
+                        $flags[] = $flag['flag'].':'.$flag['args'];
+                    }
                 }
-            }	
-        }      
+                $flags = implode(',',$flags);	
+            } else {
+                $flags = $data['flags'];
+            }
+            
+            
+        } else {
+            $flags = '';
+        }
 
-        $flags = implode(',',$flags);
+        
         $show_flags = str_trunc($flags, 6, '');
         $flags = "<td rel=\"tooltip\" title=\"$flags\">$show_flags<input type=\"hidden\" name=\"options[$n][flags]\" value=\"$flags\" />$extra_data</td>";
         

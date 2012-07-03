@@ -75,7 +75,7 @@ if ($SC->CP->module_exists($module)) {
         $CONFIG['DUMP_SESSION'] = FALSE;
         call_user_func_array(array($MOD,'_'.$method),$data);
         exit;      
-    } else  if (method_exists($MOD,'__catch')) {
+    } else if (method_exists($MOD,'__catch')) {
         call_user_func_Array(array($MOD,'__catch'),array($method)+$data);
         exit;
     }

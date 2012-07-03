@@ -37,10 +37,8 @@ function add_item($item_num) {
     $invalid_option_flag = FALSE;
 
     $options_to_cart = array();
-
     foreach($options as $key => $option) {
-        
-        if (($no_flag = $SC->Items->option_flag($option,'no')) !== FALSE) {
+        if (($no_flag = $SC->Items->option_flag($option,'no')) !== FALSE) {           
             $no_flag[1] = explode('-',$no_flag[1]);            
             foreach ($no_flag[1] as $no_item) {            
                 if (array_search($no_item,$options) !== FALSE) {

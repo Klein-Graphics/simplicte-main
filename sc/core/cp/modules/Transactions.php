@@ -207,7 +207,7 @@ class Transactions extends \SC_CP_Module {
             'modules' => $this->SC->CP->get_modules()
         ));
         $this->SC->CP->load_view('module_menu',array(
-            'methods' => $this->methods
+            'methods' => $this->visible_methods
         ));
         $transaction = \Model\Transaction::find_by_ordernumber($transaction);
         $cart = $this->SC->Cart->explode_cart($transaction->items);

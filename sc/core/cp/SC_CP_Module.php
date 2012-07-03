@@ -37,20 +37,28 @@ class SC_CP_Module {
                 $this_method['readable'] = ucwords(str_replace('_',' ',$method)); 
             }                                                                                 
            
-            $this->methods[] = $this_method;                         
+            $this->methods[] = $this_method;      
+                               
+            if (!isset($this->hidden_pages) || array_search($method,$this->hidden_pages) === FALSE) {
+                $this->visible_methods[] = $this_method;
+            }
         }               
         
-        if (count($this->methods)>1) {   
+        if (count($this->visible_methods)>1) {   
             array_unshift($this->methods,array(
                 'name' => '',
                 'readable' => $mod_class::$readable_name.' Home'
-            ));                              
+            ));    
+            array_unshift($this->visible_methods,array(
+                'name' => '',
+                'readable' => $mod_class::$readable_name.' Home'
+            ));                           
         }
     }
     
     function index() {
-        $methods = $this->methods;
-        if (count($this->methods)>1) {
+        $methods = $this->visible_methods;
+        if (count($this->visible_methods)>1) {
             array_shift($methods);   
             $this->SC->CP->load_view('module_home',array('methods'=>$methods));
         } else {    
@@ -59,9 +67,9 @@ class SC_CP_Module {
     }
     
     function _load_module_menu() {
-        if (count($this->methods)>1) { 
+        if (count($this->visible_methods)>1) { 
             $this->SC->load_library('URI');
-            $this->SC->CP->load_view('module_menu',array('methods'=>$this->methods));
+            $this->SC->CP->load_view('module_menu',array('methods'=>$this->visible_methods));
         }
     }
 

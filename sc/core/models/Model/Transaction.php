@@ -111,5 +111,9 @@
     function get_ship_full_apt() {
         return ($this->ship_apt) ? 'Apt #'.$this->ship_apt : '';
     }
+    
+    function get_bill_full_apt() {
+        return ($this->bill_apt) ? 'Apt #'.$this->bill_apt : '';
+    }
   
   }

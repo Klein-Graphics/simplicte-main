@@ -5,14 +5,20 @@ $thispage = new page();
 
 $thispage->addStyleSheet('style.css');
 
-//Slideshow
-
-
 $footer='Copyright &copy;'.date('Y').' Aeroview. Design by <a href="http://kleingraphics.net" title="Klein Graphics">Klein Graphics</a>';
 
 $thispage->title='Aeroview';
 
 $flashinclude=include "itemflash.php";
+
+
+$items = \Model\Item::all();
+
+$items_code = '';
+
+foreach ($items as $item) {
+    $items_code .= "[[item|$item->id]]";
+}
 
 $thispage->body.='
                   <div id="container">
@@ -66,71 +72,7 @@ $thispage->body.='
                             [[checkout_area]]
                             <div id="storebody">
                                  <div id="customerControl">[[account_info]]</div>
-                                 <div class="storeitemwrapper">
-                                      <div class="storeitem image">
-                                      <a href="images/aerocowlingsBIG.jpg" rel="prettyPhoto" title="Cowlings"><img src="images/aerocowlingsthumb.jpg"></a>
-                                      </div>
-                                      <div class="storeitem desc">
-                                      <h2>[[name|1]]</h2>
-                                      <p>[[desc|1]]</p>
-                                      </div>
-                                      <div class="storeitem cartoptions">
-                                      [[addtocart|1]]
-                                      </div>            
-                                      <div class="push"></div>
-                                 </div>
-                                 
-                                 <div class="storeitemwrapper">
-                                      <div class="storeitem image">
-                                      <a href="images/itemmirrorreloLARGE.jpg" rel="prettyPhoto" title="Relo kit"><img src="images/itemmirrorrelo.jpg"></a>
-                                      </div>
-                                      <div class="storeitem desc">
-                                      <h2>[[name|2]]</h2>
-                                      <p>[[desc|2]]</p>
-                                      </div>
-                                      <div class="altimages">
-                                      <a href="images\itemmirrorreloLARGE2.jpg" rel="prettyPhoto" title="Relo kit">Detail View</a>
-                                      </div>
-                                      <div class="storeitem cartoptions">
-                                      [[addtocart|2]]
-                                      </div>
-                                      <div class="push"></div>
-                                 </div>
-                                 
-                                 <div class="storeitemwrapper">
-                                      <div class="storeitem image">
-                                      <a href="images/itembabsLARGE.jpg" rel="prettyPhoto" title="AeroView Bags"><img src="images/itembags.jpg"></a>
-                                      </div>
-                                      <div class="storeitem desc">
-                                      <h2>[[name|i--AEROBAG]]</h2>
-                                      <p>[[detail|description|i--AEROBAG]]
-                                      </p>
-                                      </div>
-                                      <div class="altimages">
-                                      <a href="images\bagliner1.jpg" rel="prettyPhoto" title="Bagger Liner">Detail View</a>
-                                      <a href="images\bagliner2.jpg" rel="prettyPhoto" title="Bagger Lid Liner">Lid View</a>
-                                      </div>
-                                      <div class="storeitem cartoptions">
-                                      [[add_to_cart|i--AEROBAG]]
-                                      </div>
-                                      <div class="push"></div>
-                                 </div>
-                                 <div class="storeitemwrapper">
-                                      <div class="storeitem image">
-                                      <a href="images/itemspeakersLARGE.jpg" rel="prettyPhoto" title="AeroView Speaker Lid Cover"><img src="images/itemspeakers.jpg"></a>
-                                      </div>
-                                      <div class="storeitem desc">
-                                      <h2>[[name|6]]</h2>
-                                      <p>[[desc|6]]
-                                      </p>
-                                      </div>
-                                      <div class="storeitem cartoptions">
-                                      [[addtocart|6]]
-                                      </div>
-                                      <div class="push"></div>
-                                 </div>
-
-
+                                 '.$items_code.'
                             </div>
 
 

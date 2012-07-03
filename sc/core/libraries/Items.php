@@ -194,9 +194,9 @@ class Items extends \SC_Library {
      * @param string $check_flag The flag to search for
      */
     function option_flag($id,$check_flag) {
-        $item = \Model\Itemoption::find($id,array('select'=>'flags'));
-        
-        $flags = explode(',',$item->flags);
+        $option = \Model\Itemoption::find($id);
+
+        $flags = explode(',',$option->flags);
         
         foreach ($flags as $flag) {
             if (strpos($flag,$check_flag)===0) {
