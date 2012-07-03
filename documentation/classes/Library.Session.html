@@ -23,8 +23,10 @@
 <li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
 <li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
+<li><a href="../packages/Control%20Panel.html"><i class="icon-folder-open"></i> Control Panel</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
 <li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 <li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
@@ -40,10 +42,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">0</span></a></li>
+                <span class="label label-info">112</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">7</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -75,6 +77,7 @@
 <li class="method public "><a href="#initialize" title="initialize :: Initialize"><span class="description">Initialize</span><pre>initialize()</pre></a></li>
 <li class="method public "><a href="#login_customer" title="login_customer :: Login Customer"><span class="description">Login Customer</span><pre>login_customer()</pre></a></li>
 <li class="method public "><a href="#logout_customer" title="logout_customer :: Logout Customer"><span class="description">Logout Customer</span><pre>logout_customer()</pre></a></li>
+<li class="method public "><a href="#new_transaction" title="new_transaction :: New Transaction"><span class="description">New Transaction</span><pre>new_transaction()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="property public "><a href="#%24required_libraries" title="$required_libraries :: This class requires the Customer and Transactions libraries"><span class="description">This class requires the Customer and Transactions libraries</span><pre>$required_libraries</pre></a></li>
@@ -202,6 +205,17 @@ doesn't exist</p></p>
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
+<a name="new_transaction" id="new_transaction"></a><div class="element clickable method public new_transaction" data-toggle="collapse" data-target=".new_transaction .collapse">
+<h2>New Transaction</h2>
+<pre>new_transaction() : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Creates and associates a new blank transaction for the customer, keeping
+the old one in the database</p></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
+</div></div>
+</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24required_libraries" id="$required_libraries"> </a><div class="element clickable property public $required_libraries" data-toggle="collapse" data-target=".$required_libraries .collapse">
@@ -217,7 +231,7 @@ doesn't exist</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-03T15:53:29-07:00.<br></footer></div>
+            generated on 2012-07-03T14:31:31-07:00.<br></footer></div>
 </div>
 </body>
 </html>

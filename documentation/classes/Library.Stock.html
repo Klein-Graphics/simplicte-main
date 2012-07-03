@@ -23,8 +23,10 @@
 <li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
 <li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
+<li><a href="../packages/Control%20Panel.html"><i class="icon-folder-open"></i> Control Panel</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
 <li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 <li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
@@ -40,10 +42,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">0</span></a></li>
+                <span class="label label-info">112</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">7</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -80,7 +82,8 @@
 <li class="method public "><a href="#pull_cart" title="pull_cart :: Pull Cart"><span class="description">Pull Cart</span><pre>pull_cart()</pre></a></li>
 <li class="method public "><a href="#remove_item_stock" title="remove_item_stock :: Remove Item Stock"><span class="description">Remove Item Stock</span><pre>remove_item_stock()</pre></a></li>
 <li class="method public "><a href="#remove_option_stock" title="remove_option_stock :: Remove Option Stock"><span class="description">Remove Option Stock</span><pre>remove_option_stock()</pre></a></li>
-<li class="method public "><a href="#return_cart" title="return_cart :: Pull Cart"><span class="description">Pull Cart</span><pre>return_cart()</pre></a></li>
+<li class="method public "><a href="#return_cart" title="return_cart :: Return Cart"><span class="description">Return Cart</span><pre>return_cart()</pre></a></li>
+<li class="method public "><a href="#verify_stock" title="verify_stock :: Verify Stock"><span class="description">Verify Stock</span><pre>verify_stock()</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -158,7 +161,7 @@ allows access to the global $SC object</p></p>
 </div>
 <a name="get_item_stock" id="get_item_stock"></a><div class="element clickable method public get_item_stock" data-toggle="collapse" data-target=".get_item_stock .collapse">
 <h2>Get Item Stock</h2>
-<pre>get_item_stock(int $item) : int</pre>
+<pre>get_item_stock(int $item) : int | string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"><p>Returns the number of items in stock</p></p>
@@ -168,12 +171,14 @@ allows access to the global $SC object</p></p>
 <code>int</code><p>The item's id</p>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>int</code></div>
+<div class="subelement response">
+<code>int</code><code>string</code>
+</div>
 </div></div>
 </div>
 <a name="get_option_stock" id="get_option_stock"></a><div class="element clickable method public get_option_stock" data-toggle="collapse" data-target=".get_option_stock .collapse">
 <h2>Get Option Stock</h2>
-<pre>get_option_stock(int $option) : int</pre>
+<pre>get_option_stock(int $option) : int | string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"><p>Returns the number of an item's option in stock</p></p>
@@ -183,7 +188,9 @@ allows access to the global $SC object</p></p>
 <code>int</code><p>The option's id</p>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>int</code></div>
+<div class="subelement response">
+<code>int</code><code>string</code>
+</div>
 </div></div>
 </div>
 <a name="item_in_stock" id="item_in_stock"></a><div class="element clickable method public item_in_stock" data-toggle="collapse" data-target=".item_in_stock .collapse">
@@ -218,7 +225,7 @@ allows access to the global $SC object</p></p>
 </div>
 <a name="modify_item_stock" id="modify_item_stock"></a><div class="element clickable method public modify_item_stock" data-toggle="collapse" data-target=".modify_item_stock .collapse">
 <h2>Modify Item Stock</h2>
-<pre>modify_item_stock(int $item, int $amount) : int</pre>
+<pre>modify_item_stock(int $item, int | string $amount) : int</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"><p>Changes an item's stock amount to a fixed number</p></p>
@@ -229,7 +236,7 @@ allows access to the global $SC object</p></p>
 </div>
 <div class="subelement argument">
 <h4>$amount</h4>
-<code>int</code><p>The new amount</p></div>
+<code>intstring</code><p>The new amount</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>int</code>The item's new stock</div>
@@ -237,7 +244,7 @@ allows access to the global $SC object</p></p>
 </div>
 <a name="modify_option_stock" id="modify_option_stock"></a><div class="element clickable method public modify_option_stock" data-toggle="collapse" data-target=".modify_option_stock .collapse">
 <h2>Modify Option Stock</h2>
-<pre>modify_option_stock(int $option, int $amount) : int</pre>
+<pre>modify_option_stock(int $option, int | string $amount) : int</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"><p>Changes an item's option's stock amount to a fixed number</p></p>
@@ -248,7 +255,7 @@ allows access to the global $SC object</p></p>
 </div>
 <div class="subelement argument">
 <h4>$amount</h4>
-<code>int</code><p>The new amount</p></div>
+<code>intstring</code><p>The new amount</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>int</code>The option's new stock</div>
@@ -337,7 +344,7 @@ allows access to the global $SC object</p></p>
 </div></div>
 </div>
 <a name="return_cart" id="return_cart"></a><div class="element clickable method public return_cart" data-toggle="collapse" data-target=".return_cart .collapse">
-<h2>Pull Cart</h2>
+<h2>Return Cart</h2>
 <pre>return_cart(int | string | array $cart) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
@@ -350,6 +357,24 @@ allows access to the global $SC object</p></p>
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
+<a name="verify_stock" id="verify_stock"></a><div class="element clickable method public verify_stock" data-toggle="collapse" data-target=".verify_stock .collapse">
+<h2>Verify Stock</h2>
+<pre>verify_stock(int $amount, int | string | array $cart) : \int[] | \array[]</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Verifies that no items or options are under a certain limit, and if they are reports it</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$amount</h4>
+<code>int</code><p>The amount to check for</p></div>
+<div class="subelement argument">
+<h4>$cart</h4>
+<code>intstringarray</code><p>A valid cart or cart id to check stock against</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\int[]</code><code>\array[]</code>It returns an array where index 0 is and item id's that are below the limit and index 1 is option id's that are below the limit.</div>
+</div></div>
+</div>
 </div>
 </div>
 </div>
@@ -357,7 +382,7 @@ allows access to the global $SC object</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-03T15:53:29-07:00.<br></footer></div>
+            generated on 2012-07-03T14:31:30-07:00.<br></footer></div>
 </div>
 </body>
 </html>

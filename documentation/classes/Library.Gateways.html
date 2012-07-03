@@ -23,8 +23,10 @@
 <li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
 <li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
+<li><a href="../packages/Control%20Panel.html"><i class="icon-folder-open"></i> Control Panel</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
 <li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 <li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
@@ -40,10 +42,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">0</span></a></li>
+                <span class="label label-info">112</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">7</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -70,6 +72,7 @@
 <li class="method public "><a href="#generate_gateway_dropdown" title="generate_gateway_dropdown :: Generate Gateway Dropdown"><span class="description">Generate Gateway Dropdown</span><pre>generate_gateway_dropdown()</pre></a></li>
 <li class="method public "><a href="#initialize_drivers" title="initialize_drivers :: Initialize Drivers"><span class="description">Initialize Drivers</span><pre>initialize_drivers()</pre></a></li>
 <li class="method public "><a href="#load_driver" title="load_driver :: Load Driver"><span class="description">Load Driver</span><pre>load_driver()</pre></a></li>
+<li class="method public "><a href="#number_of_gateways" title="number_of_gateways :: Number of Gateways"><span class="description">Number of Gateways</span><pre>number_of_gateways()</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -105,12 +108,14 @@ allows access to the global $SC object</p></p>
 </div>
 <a name="generate_gateway_dropdown" id="generate_gateway_dropdown"></a><div class="element clickable method public generate_gateway_dropdown" data-toggle="collapse" data-target=".generate_gateway_dropdown .collapse">
 <h2>Generate Gateway Dropdown</h2>
-<pre>generate_gateway_dropdown() </pre>
+<pre>generate_gateway_dropdown() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"><p>Generates the html code for the selection box that the user will be
-presented at checkout.</p>
-
-<p>return string</p></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Generates the html code for the selection box that the user will be
+presented at checkout.</p></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
 </div>
 <a name="initialize_drivers" id="initialize_drivers"></a><div class="element clickable method public initialize_drivers" data-toggle="collapse" data-target=".initialize_drivers .collapse">
 <h2>Initialize Drivers</h2>
@@ -142,6 +147,16 @@ returns whether or not the initialization was completely successful</p></p>
 <code>bool</code>Returns whether or not the driver it exists</div>
 </div></div>
 </div>
+<a name="number_of_gateways" id="number_of_gateways"></a><div class="element clickable method public number_of_gateways" data-toggle="collapse" data-target=".number_of_gateways .collapse">
+<h2>Number of Gateways</h2>
+<pre>number_of_gateways() : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Returns the number of gateways available</p></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
+</div></div>
+</div>
 </div>
 </div>
 </div>
@@ -149,7 +164,7 @@ returns whether or not the initialization was completely successful</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-03T15:53:29-07:00.<br></footer></div>
+            generated on 2012-07-03T14:31:31-07:00.<br></footer></div>
 </div>
 </body>
 </html>

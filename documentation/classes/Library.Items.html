@@ -23,8 +23,10 @@
 <li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
 <li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
+<li><a href="../packages/Control%20Panel.html"><i class="icon-folder-open"></i> Control Panel</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
 <li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 <li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
@@ -40,10 +42,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">0</span></a></li>
+                <span class="label label-info">112</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">7</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -67,8 +69,10 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public inherited"><a href="#__construct" title="__construct :: Adds the $SC property"><span class="description">Adds the $SC property</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#get_all_items" title="get_all_items :: Get All Items"><span class="description">Get All Items</span><pre>get_all_items()</pre></a></li>
 <li class="method public "><a href="#get_item" title="get_item :: Get Item"><span class="description">Get Item</span><pre>get_item()</pre></a></li>
-<li class="method public "><a href="#get_option" title="get_option :: Get Item"><span class="description">Get Item</span><pre>get_option()</pre></a></li>
+<li class="method public "><a href="#get_option" title="get_option :: Get Item Option"><span class="description">Get Item Option</span><pre>get_option()</pre></a></li>
+<li class="method public "><a href="#get_option_categories" title="get_option_categories :: Get Option Categories"><span class="description">Get Option Categories</span><pre>get_option_categories()</pre></a></li>
 <li class="method public "><a href="#item_flag" title="item_flag :: Check Item Flag"><span class="description">Check Item Flag</span><pre>item_flag()</pre></a></li>
 <li class="method public "><a href="#item_name" title="item_name :: Get Item Name"><span class="description">Get Item Name</span><pre>item_name()</pre></a></li>
 <li class="method public "><a href="#item_price" title="item_price :: Get Item Price"><span class="description">Get Item Price</span><pre>item_price()</pre></a></li>
@@ -112,6 +116,17 @@ allows access to the global $SC object</p></p>
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
+<a name="get_all_items" id="get_all_items"></a><div class="element clickable method public get_all_items" data-toggle="collapse" data-target=".get_all_items .collapse">
+<h2>Get All Items</h2>
+<pre>get_all_items() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Queries the database and returns all items, including their various options</p></p>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array of items</div>
+</div></div>
+</div>
 <a name="get_item" id="get_item"></a><div class="element clickable method public get_item" data-toggle="collapse" data-target=".get_item .collapse">
 <h2>Get Item</h2>
 <pre>get_item(int $id, string $return_cols) : mixed</pre>
@@ -132,7 +147,7 @@ allows access to the global $SC object</p></p>
 </div></div>
 </div>
 <a name="get_option" id="get_option"></a><div class="element clickable method public get_option" data-toggle="collapse" data-target=".get_option .collapse">
-<h2>Get Item</h2>
+<h2>Get Item Option</h2>
 <pre>get_option(int $id, string $return_cols) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
@@ -148,6 +163,21 @@ allows access to the global $SC object</p></p>
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="get_option_categories" id="get_option_categories"></a><div class="element clickable method public get_option_categories" data-toggle="collapse" data-target=".get_option_categories .collapse">
+<h2>Get Option Categories</h2>
+<pre>get_option_categories(int $item) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Returns a sorted array of option catergories for a specific item</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$item</h4>
+<code>int</code><p>The item's ID</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
 <a name="item_flag" id="item_flag"></a><div class="element clickable method public item_flag" data-toggle="collapse" data-target=".item_flag .collapse">
@@ -255,7 +285,7 @@ doesn't or the flag and its arguments if it does</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-03T15:53:29-07:00.<br></footer></div>
+            generated on 2012-07-03T14:31:30-07:00.<br></footer></div>
 </div>
 </body>
 </html>

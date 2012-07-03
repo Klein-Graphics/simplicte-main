@@ -23,8 +23,10 @@
 <li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
 <li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
+<li><a href="../packages/Control%20Panel.html"><i class="icon-folder-open"></i> Control Panel</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
 <li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 <li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
@@ -40,10 +42,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">0</span></a></li>
+                <span class="label label-info">112</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">7</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -67,15 +69,21 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public "><a href="#__construct" title="__construct :: Construct"><span class="description">Construct</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#add_css_file" title="add_css_file :: Add CSS file"><span class="description">Add CSS file</span><pre>add_css_file()</pre></a></li>
+<li class="method public "><a href="#add_css_style" title="add_css_style :: Add CSS script"><span class="description">Add CSS script</span><pre>add_css_style()</pre></a></li>
 <li class="method public "><a href="#add_javascript" title="add_javascript :: Add Javascript"><span class="description">Add Javascript</span><pre>add_javascript()</pre></a></li>
+<li class="method public "><a href="#add_top_javascript" title="add_top_javascript :: Add Top Javascript"><span class="description">Add Top Javascript</span><pre>add_top_javascript()</pre></a></li>
 <li class="method public "><a href="#generate_options_code" title="generate_options_code :: Generate Options Code"><span class="description">Generate Options Code</span><pre>generate_options_code()</pre></a></li>
+<li class="method public "><a href="#get_ajax_loader" title="get_ajax_loader :: Get Ajax Loader"><span class="description">Get Ajax Loader</span><pre>get_ajax_loader()</pre></a></li>
 <li class="method public "><a href="#initialize_item_templates" title="initialize_item_templates :: Initialize Item Templates"><span class="description">Initialize Item Templates</span><pre>initialize_item_templates()</pre></a></li>
+<li class="method public "><a href="#insert_css" title="insert_css :: Insert CSS"><span class="description">Insert CSS</span><pre>insert_css()</pre></a></li>
 <li class="method public "><a href="#insert_javascript" title="insert_javascript :: Insert Javascript"><span class="description">Insert Javascript</span><pre>insert_javascript()</pre></a></li>
 <li class="method public "><a href="#load_driver" title="load_driver :: Load Driver"><span class="description">Load Driver</span><pre>load_driver()</pre></a></li>
 <li class="method public "><a href="#load_drivers" title="load_drivers :: Load Drivers"><span class="description">Load Drivers</span><pre>load_drivers()</pre></a></li>
 <li class="method public "><a href="#replace_button" title="replace_button :: Replace Button"><span class="description">Replace Button</span><pre>replace_button()</pre></a></li>
 <li class="method public "><a href="#replace_details" title="replace_details :: Replace Details"><span class="description">Replace Details</span><pre>replace_details()</pre></a></li>
 <li class="method public "><a href="#replace_tag" title="replace_tag :: Replace Tag"><span class="description">Replace Tag</span><pre>replace_tag()</pre></a></li>
+<li class="method public "><a href="#replace_transaction_details" title="replace_transaction_details :: Replace Transactions Details"><span class="description">Replace Transactions Details</span><pre>replace_transaction_details()</pre></a></li>
 <li class="method public "><a href="#run_item_templates" title="run_item_templates :: Run Item Templates"><span class="description">Run Item Templates</span><pre>run_item_templates()</pre></a></li>
 </ul>
 </div>
@@ -111,12 +119,55 @@ display drivers and initalizes the item templates</p></p>
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
+<a name="add_css_file" id="add_css_file"></a><div class="element clickable method public add_css_file" data-toggle="collapse" data-target=".add_css_file .collapse">
+<h2>Add CSS file</h2>
+<pre>add_css_file(string $src) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Adds a CSS file</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$src</h4>
+<code>string</code><p>The name of the file</p></div>
+</div></div>
+</div>
+<a name="add_css_style" id="add_css_style"></a><div class="element clickable method public add_css_style" data-toggle="collapse" data-target=".add_css_style .collapse">
+<h2>Add CSS script</h2>
+<pre>add_css_style(string $selector, $style) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Adds custom CSS</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$selector</h4>
+<code>string</code><p>The custom CSS to add</p></div>
+<div class="subelement argument">
+<h4>$style</h4>
+<code></code>
+</div>
+</div></div>
+</div>
 <a name="add_javascript" id="add_javascript"></a><div class="element clickable method public add_javascript" data-toggle="collapse" data-target=".add_javascript .collapse">
 <h2>Add Javascript</h2>
 <pre>add_javascript(string | array $src, string $script) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"><p>Adds a Javascript file or code</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$src</h4>
+<code>stringarray</code><p>A Javascript file, or an array containing the source at index 0 and raw code at index 1</p></div>
+<div class="subelement argument">
+<h4>$script</h4>
+<code>string</code><p>Raw code to be added</p></div>
+</div></div>
+</div>
+<a name="add_top_javascript" id="add_top_javascript"></a><div class="element clickable method public add_top_javascript" data-toggle="collapse" data-target=".add_top_javascript .collapse">
+<h2>Add Top Javascript</h2>
+<pre>add_top_javascript(string | array $src, string $script) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Adds a Javascript file or code at the top of the page</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$src</h4>
@@ -141,6 +192,16 @@ display drivers and initalizes the item templates</p></p>
 <div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
+<a name="get_ajax_loader" id="get_ajax_loader"></a><div class="element clickable method public get_ajax_loader" data-toggle="collapse" data-target=".get_ajax_loader .collapse">
+<h2>Get Ajax Loader</h2>
+<pre>get_ajax_loader() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Returns the ajax loader location</p></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
 <a name="initialize_item_templates" id="initialize_item_templates"></a><div class="element clickable method public initialize_item_templates" data-toggle="collapse" data-target=".initialize_item_templates .collapse">
 <h2>Initialize Item Templates</h2>
 <pre>initialize_item_templates() : bool</pre>
@@ -151,6 +212,19 @@ properties</p></p>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>bool</code>Returns false if the template file is missing, otherwise true</div>
+</div></div>
+</div>
+<a name="insert_css" id="insert_css"></a><div class="element clickable method public insert_css" data-toggle="collapse" data-target=".insert_css .collapse">
+<h2>Insert CSS</h2>
+<pre>insert_css($input) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Inserts custom CSS styles and scripts into the page</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code></code>
+</div>
 </div></div>
 </div>
 <a name="insert_javascript" id="insert_javascript"></a><div class="element clickable method public insert_javascript" data-toggle="collapse" data-target=".insert_javascript .collapse">
@@ -252,6 +326,24 @@ aliases for the depreciated 'name' and 'desc' tags</p></p>
 <div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
+<a name="replace_transaction_details" id="replace_transaction_details"></a><div class="element clickable method public replace_transaction_details" data-toggle="collapse" data-target=".replace_transaction_details .collapse">
+<h2>Replace Transactions Details</h2>
+<pre>replace_transaction_details(string $input, $transaction) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>Replaces all TDetail tags with their respective data.</p></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>string</code><p>The input to search for the tags</p></div>
+<div class="subelement argument">
+<h4>$transaction</h4>
+<code></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
 <a name="run_item_templates" id="run_item_templates"></a><div class="element clickable method public run_item_templates" data-toggle="collapse" data-target=".run_item_templates .collapse">
 <h2>Run Item Templates</h2>
 <pre>run_item_templates(string $input) : string</pre>
@@ -273,7 +365,7 @@ aliases for the depreciated 'name' and 'desc' tags</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-03T15:53:29-07:00.<br></footer></div>
+            generated on 2012-07-03T14:31:30-07:00.<br></footer></div>
 </div>
 </body>
 </html>

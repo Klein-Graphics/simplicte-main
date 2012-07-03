@@ -23,8 +23,10 @@
 <li><a href="../packages/Account.html"><i class="icon-folder-open"></i> Account</a></li>
 <li><a href="../packages/Checkout.html"><i class="icon-folder-open"></i> Checkout</a></li>
 <li><a href="../packages/Config.html"><i class="icon-folder-open"></i> Config</a></li>
+<li><a href="../packages/Control%20Panel.html"><i class="icon-folder-open"></i> Control Panel</a></li>
 <li><a href="../packages/Core.html"><i class="icon-folder-open"></i> Core</a></li>
 <li><a href="../packages/Debug.html"><i class="icon-folder-open"></i> Debug</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/Display.html"><i class="icon-folder-open"></i> Display</a></li>
 <li><a href="../packages/Items.html"><i class="icon-folder-open"></i> Items</a></li>
 <li><a href="../packages/Session.html"><i class="icon-folder-open"></i> Session</a></li>
@@ -40,10 +42,10 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">0</span></a></li>
+                <span class="label label-info">112</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">7</span>
+                <span class="label label-info">5</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -67,8 +69,8 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public "><a href="#__construct" title="__construct :: Construct"><span class="description">Construct</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#get_data" title="get_data :: Get Data"><span class="description">Get Data</span><pre>get_data()</pre></a></li>
 <li class="method public "><a href="#get_request" title="get_request :: Get Request"><span class="description">Get Request</span><pre>get_request()</pre></a></li>
-<li class="method public "><a href="#get_view" title="get_view :: Get View"><span class="description">Get View</span><pre>get_view()</pre></a></li>
 <li class="method public "><a href="#initialize_query_string" title="initialize_query_string :: Initialize Query String"><span class="description">Initialize Query String</span><pre>initialize_query_string()</pre></a></li>
 </ul>
 </div>
@@ -103,12 +105,12 @@ allows access to the global $SC object</p></p>
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
-<a name="get_request" id="get_request"></a><div class="element clickable method public get_request" data-toggle="collapse" data-target=".get_request .collapse">
-<h2>Get Request</h2>
-<pre>get_request(int $part) : string | array</pre>
+<a name="get_data" id="get_data"></a><div class="element clickable method public get_data" data-toggle="collapse" data-target=".get_data .collapse">
+<h2>Get Data</h2>
+<pre>get_data(int $part) : string | array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"><p>Gets the request</p></p>
+<p class="long_description"><p>Gets the request data</p></p>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$part</h4>
@@ -119,12 +121,12 @@ allows access to the global $SC object</p></p>
 </div>
 </div></div>
 </div>
-<a name="get_view" id="get_view"></a><div class="element clickable method public get_view" data-toggle="collapse" data-target=".get_view .collapse">
-<h2>Get View</h2>
-<pre>get_view() : string</pre>
+<a name="get_request" id="get_request"></a><div class="element clickable method public get_request" data-toggle="collapse" data-target=".get_request .collapse">
+<h2>Get Request</h2>
+<pre>get_request() : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
-<p class="long_description"><p>Gets the name of the view</p></p>
+<p class="long_description"><p>Gets the name of the request method</p></p>
 <h3>Returns</h3>
 <div class="subelement response"><code>string</code></div>
 </div></div>
@@ -146,7 +148,7 @@ allows access to the global $SC object</p></p>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-03T15:53:29-07:00.<br></footer></div>
+            generated on 2012-07-03T14:31:31-07:00.<br></footer></div>
 </div>
 </body>
 </html>
