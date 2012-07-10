@@ -56,7 +56,7 @@ function add_item($item_num) {
         
     }                    
 
-    $SC->Cart->add_item($SC->Session->get_open_transaction(),$item_num,$options_to_cart,$_POST['item_qty']);
+    $SC->Cart->add_item($SC->Session->force_get_open_transaction(),$item_num,$options_to_cart,$_POST['item_qty']);
 
     echo ($invalid_option_flag) ? 'Item Added - Check your cart' : 'Item Added!';
 }

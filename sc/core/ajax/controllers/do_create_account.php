@@ -30,10 +30,10 @@ if (!$validation) {
 }
 
 //Remove the temp stamp from the customer ID
-$_SESSION['customer_id'] = str_replace('temp','',$this->Session->get_customer());
+$_SESSION['customer_id'] = str_replace('temp','',$this->Session->force_get_customer());
 
-$this->Customer->update_customer($this->Session->get_user(),array(
-    'custid' => $this->Session->get_customer(),
+$this->Customer->update_customer($this->Session->force_get_user(),array(
+    'custid' => $this->Session->force_get_customer(),
     'email' => $_POST['sc_register_email'],
     'passwordmd5' => $_POST['sc_register_password']
 ));    

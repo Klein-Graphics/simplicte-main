@@ -16,10 +16,16 @@ function get_customer_level() {
     
     $cust_id = $SC->Session->get_user();
     
-    $customer_level = $pricing_db->query("SELECT `level` FROM `customer_level` WHERE `cust_id` = $cust_id");
+    if ($cust_id) {
+    
+        $customer_level = $pricing_db->query("SELECT `level` FROM `customer_level` WHERE `cust_id` = $cust_id");
 
-    $customer_level = $customer_level->fetch();
-    return $customer_level['level'];
+        $customer_level = $customer_level->fetch();
+        return $customer_level['level'];
+    
+    } else {
+        return false;    
+    }
 }
 
 
@@ -28,16 +34,19 @@ function get_customer_level() {
 $SC->hooks['db']['Item']['get_price'][] = function($item) use ($pricing_db) {    
     $customer_level = get_customer_level();
 
-    $discount_level = $pricing_db->query("SELECT `amount` FROM `cust_price_adjust` WHERE `level` = '$customer_level' AND `itemid` = {$item->id}");    
-    $discount_level = $discount_level->fetch();         
-    $discount_level = $discount_level['amount'];    
-    if ($discount_level) {             
-        $price = $discount_level;
-                        
-    } else {        
-        $price = $item->read_attribute('price');
-    }        
-    
+    if ($customer_level) {
+        $discount_level = $pricing_db->query("SELECT `amount` FROM `cust_price_adjust` WHERE `level` = '$customer_level' AND `itemid` = {$item->id}");    
+        $discount_level = $discount_level->fetch();         
+        $discount_level = $discount_level['amount'];    
+        if ($discount_level) {             
+            $price = $discount_level;
+                            
+        } else {        
+            $price = $item->read_attribute('price');
+        }        
+    } else {
+        $price = $item->read_attribute('price');   
+    }
     return number_format($price,2);
 };
 

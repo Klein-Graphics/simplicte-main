@@ -39,7 +39,7 @@ class SC_CP_Module {
            
             $this->methods[] = $this_method;      
                                
-            if (!isset($this->hidden_pages) || array_search($method,$this->hidden_pages) === FALSE) {
+            if (!isset($this->hidden_pages) || array_search($method,$this->hidden_pages) === FALSE) {               
                 $this->visible_methods[] = $this_method;
             }
         }               

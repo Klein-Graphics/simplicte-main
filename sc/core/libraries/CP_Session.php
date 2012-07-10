@@ -65,6 +65,19 @@ class CP_Session extends \SC_Library {
     }
     
     /**
+     * Is Master
+     *
+     * Checks to see if the current user is a master account
+     *
+     * @return bool
+     */
+    function is_master() {
+        $user = \Model\User::find($this->logged_in());
+        
+        return ($user && $user->master);
+    }
+    
+    /**
      * Log In
      *
      * Attempts to login a user
@@ -85,6 +98,8 @@ class CP_Session extends \SC_Library {
             return FALSE;
         }
         
+        $user->lastlogin = time();
+        $user->save();
         $_SESSION['user_id'] = $user->id;
         
         return $user->id;

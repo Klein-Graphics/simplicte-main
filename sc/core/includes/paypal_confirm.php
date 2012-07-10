@@ -42,6 +42,7 @@ $encrypt_json = encrypt(json_encode($result));
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Confirm Order Number <?=$t->ordernumber?></title>
+        <link rel="stylesheet" type="text/css" href="<?=sc_asset('css','receipt')?>"
     </head>
     <body>
         <div id="sc_receipt">

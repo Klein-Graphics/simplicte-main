@@ -106,7 +106,11 @@ class Transactions extends \SC_Library {
      */
     function update_transaction($id,$attributes) {
       
-        $transaction = \Model\Transaction::find($id);                                             
+        $transaction = \Model\Transaction::find($id);    
+        
+        if (! $transaction) {
+            return FALSE;
+        }                                         
         
         foreach ($attributes as $attribute => $value) {      
             $transaction->$attribute = $value;   
@@ -147,7 +151,11 @@ class Transactions extends \SC_Library {
      * @param int $transaction The trasaction id
      * @param int $cust_id The customer's id
      */
-    function associate_customer($transaction,$cust_id) {         
+    function associate_customer($transaction,$cust_id) {     
+    
+        if (! $transaction) {
+            return;
+        }    
         
         $fields_to_copy = array(
             'custid',

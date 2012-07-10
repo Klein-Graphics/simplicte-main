@@ -16,6 +16,12 @@ body {
     float: left;
 }
 
+/*Custom icons*/
+.icon-refresh-spin {
+    background-image: url('../img/refresh_loading.gif');
+    background-position: 0 0;
+}
+
 /*Home*/
 
 #home h2{

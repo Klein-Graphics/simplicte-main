@@ -17,4 +17,25 @@ namespace CP_Module;
 class Invoicing extends \SC_CP_Module {
     public static $readable_name = "Invoicing";
     public static $icon = "file";
+    public $hidden_pages = array('invoice');
+    
+    function view_invoices() {
+    
+    }
+    
+    function invoice() {
+    
+    }
+    
+    function _create_invoice() {
+    
+    }
+    
+    function _update_invoice() {
+    
+    }
+    
+    function _load_invoice() {
+    
+    }
 }
