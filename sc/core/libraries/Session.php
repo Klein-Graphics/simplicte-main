@@ -291,7 +291,7 @@ class Session extends \SC_Library {
         }
         
         if ($this->get_open_transaction()) {
-            $cart = $this->SC->Transactions->get_open_transaction($this->transaction,'items');
+            $cart = $this->SC->Transactions->get_transaction($this->transaction,'items');
             if (!$cart) {
                 $this->SC->Transactions->delete_transaction($this->transaction);
                 unset($_SESSION['transaction_id']);
