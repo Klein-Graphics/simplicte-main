@@ -154,7 +154,7 @@ class Transactions extends \SC_Library {
     function associate_customer($transaction,$cust_id) {     
     
         if (! $transaction) {
-            return;
+            
         }    
         
         $fields_to_copy = array(

@@ -6,7 +6,7 @@
  */
 
 $this->load_library('Session');
-$customer = \Model\Customer::find($this->Session->get_user());
+$customer = \Model\Customer::find($this->Session->force_get_user());
 
 $req = '<span class="required_field">*</span>';
 
