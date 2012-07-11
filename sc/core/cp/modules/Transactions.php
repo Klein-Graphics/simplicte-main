@@ -29,7 +29,7 @@ class Transactions extends \SC_CP_Module {
         $total_transactions = \Model\Transaction::count(array('conditions'=>$filters));
         $total_pages = ceil($total_transactions/$count);
         
-        if ($total_pages < $page) {
+        if ($total_pages < $page+1) {
             $page = $total_pages;
         }
         
