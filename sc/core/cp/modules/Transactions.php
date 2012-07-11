@@ -37,9 +37,7 @@ class Transactions extends \SC_CP_Module {
         if ($count != 'a') {
                 $t_data['offset'] = $page*$count;
                 $t_data['limit'] = $count;
-        }      
-        
-        $count = $total_transactions;
+        }              
         
         $transactions = \Model\Transaction::all($t_data);
         

@@ -19,6 +19,7 @@
     <thead>
         <tr><td colspan="999">   
             <div id="trans_navigation" class="left">         
+                <?=$count?>
                 <strong>Showing transactions <?=(($page-1)*$count + 1)?>-<?=min((($page-1)*$count + $count),$total_transactions)?> of <?=$total_transactions?>. </strong><br />
 <?php if ($total_pages > 1) : ?>                                
                 <a href="<?=sc_cp('Transactions/view_transactions/1/'.$count)?>" title="First">&lt;&lt;</a>
