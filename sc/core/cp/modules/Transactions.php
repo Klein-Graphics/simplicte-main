@@ -198,7 +198,43 @@ class Transactions extends \SC_CP_Module {
         }
 
         return $conditions;   
-    }     
+    }  
+    
+    function _delete_transaction($t_id) {
+        $transaction = \Model\Transaction::find($t_id);
+        $transaction->delete();
+        
+        echo 'ok';
+    }
+    
+    function _modify_status($t_id) {
+        $transaction = \Model\Transaction::find($t_id);
+        
+        if ( $transaction->status == 'opened' 
+           && 
+           (   $_POST['new_status'] == 'pending'
+            || $_POST['new_status'] == 'fulfilled'
+            || $_POST['new_status'] == 'settled'
+           )) {
+           
+            $this->SC->Stock->pull_cart($transaction->items);
+        }   
+        
+        if ((   $transaction->status == 'pending' 
+             || $transaction->status == 'settled'
+             || $transaction->status == 'fulfilled' 
+            ) 
+            && $_POST['new_status'] == 'opened') {
+            
+            $this->SC->Stock->return_cart($transaction->items);
+        }
+        
+        $transaction->status = $_POST['new_status'];        
+        
+        $transaction->save();
+        
+        echo 'ok';
+    }
     
     function __catch($transaction) {
         $this->SC->CP->load_view('header');

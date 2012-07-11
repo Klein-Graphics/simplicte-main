@@ -137,6 +137,10 @@
       if (is_string($item)) {
         return $item;
       }
+      
+      if ($item['quantity'] <= 0) {
+        return '';
+      }
     
       $item['options'] = $this->implode_options($item['options']);
         

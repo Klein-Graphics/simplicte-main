@@ -21,6 +21,10 @@ body {
     background-image: url('../img/refresh_loading.gif');
     background-position: 0 0;
 }
+.icon-refund {
+    background-image: url('../img/refund.png');
+    background-position: 0 0;
+}
 
 /*Home*/
 

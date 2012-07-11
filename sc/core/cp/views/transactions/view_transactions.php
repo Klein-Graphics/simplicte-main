@@ -1,3 +1,18 @@
+<?php $tran_statuses = array('opened','pending','settled','fulfilled') ?>
+<div class="modal hide" id="confirm_modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        Are you sure?
+    </div>
+    <div class="modal-body">
+        This will destroy this transaction and any information associated with it!
+    </div>
+    <div class="modal-footer">
+        <?=ajax_loader()?>
+        <a href="#" class="btn btn-danger confirm-delete">Delete it</a>
+        <a href="#" class="btn" data-dismiss="modal">Never mind</a>
+    </div>
+</div>
 <form action="#filter" method="post">
 <input type="submit" style="visibility: hidden; height: 0; margin: 0; padding: 0;" />
 <table class="table table-bordered table-striped">
@@ -38,7 +53,7 @@
             <a href="#" class="show-filters"><i class="icon-filter"></i><span>Show filters</span></a>
             <a href="#" class="apply-filters"><i class="icon-refresh"></i> Apply all filters</a>
         </td></tr>        
-        <td>Date</td><td>Number</td><td>Customer ID</td><td>Shipping</td><td>Billing</td><td>Status</td><td>Items</td><td>Subtotal</td><td>Tax</td><td>Shipping</td><td>Discount</td><td>Total</td>            
+        <td>Date</td><td>Number</td><td>Customer ID</td><td>Shipping</td><td>Billing</td><td>Status</td><td>Items</td><td>Subtotal</td><td>Tax</td><td>Shipping</td><td>Discount</td><td>Total</td><td></td>            
         <tr id="search_filters">
             <td id="date_filters">
                 <div class="input-prepend">
@@ -82,7 +97,7 @@
                 <textarea class="search_filter span2" name="bill_info" rows="6"><?=get_post('bill_info')?></textarea>
             </td>
             <td>
-<?php $statuses = array('opened','pending','settled','fulfilled','returned');
+<?php $statuses = array('opened','pending','settled','fulfilled','refunded');
 foreach ($statuses as $status) : ?>
                 <label for="<?=$status?>" class="checkbox">
                     <input 
@@ -117,9 +132,7 @@ foreach ($statuses as $status) : ?>
                     </option>
 <?php endforeach ?>
                 </select>
-            </td><td>
-            </td>
-            <td></td>
+            </td><td></td><td></td><td></td>
         </tr>
     </thead>
     <tbody>
@@ -138,8 +151,20 @@ foreach ($statuses as $status) : ?>
             <td>
                 <?=$t->billing_info()?>
             </td>
-            <td>
+            <td class="modify-status">
+    <?php if (array_search($t->status,$tran_statuses) !== FALSE) : ?>
+                <a href="<?=sc_cp('Transactions/modify_status/'.$t->id)?>" title="Modify status" ><?=ucfirst($t->status)?></a>
+                <select class="span2">
+        <?php foreach($tran_statuses as $tran_status) : ?>
+                    <option value="<?=$tran_status?>" <?=($tran_status == $t->status) ? 'selected="selected"' : ''?>>
+                        <?=ucfirst($tran_status)?>
+                    </option>
+        <?php endforeach ?>    
+                </select>
+                <?=ajax_loader()?>
+    <?php else : ?>
                 <?=ucfirst($t->status)?>
+    <?php endif ?>
             </td>
             <td>
                 <ul>
@@ -170,7 +195,12 @@ foreach ($statuses as $status) : ?>
             </td>
             <td>
                 $<?=$this->SC->Cart->calculate_soft_total($t)?>
-            </td>      
+            </td>
+            <td>
+                <a href="<?=sc_cp('Transactions/delete_transaction/'.$t->id)?>" title="Delete Transaction" class="delete-transaction">
+                    <i class="icon-trash"></i>
+                </a>
+            </td>     
         </tr>  
 <?php endforeach ?>
     </tbody>
@@ -178,6 +208,62 @@ foreach ($statuses as $status) : ?>
 <form>
 <script type="text/javascript">
     $(document).ready(function(){
+        //Modify status
+        $('.modify-status').each(function() {
+            var form, loader, link, dropdown;           
+            link = $(this).find('a');
+            dropdown = $(this).find('select');
+            loader = $(this).find('.cp-ajax-loader').hide();
+            
+            link.click(function(e) {
+                e.preventDefault();
+                
+                $(this).hide();
+                dropdown.show();
+            });
+            
+            dropdown
+                .hide()
+                .change(function(e) {                    
+                    var the_new_status = $(this).val();
+                    loader.show();                    
+                    $.post(link.attr('href'),{new_status: the_new_status},function(data){                        
+                        loader.hide();
+                        if (data == 'ok') {
+                            link.show().html(the_new_status.slice(0,1).toUpperCase()+the_new_status.slice(1));
+                            dropdown.hide();        
+                        } else {
+                            alert(data);
+                        }   
+                    },'html');
+                });
+
+        });
+        //Remove transaction   
+        $('.delete-transaction').click(function(e) {
+            var delete_url = $(this).attr('href');
+            var row = $(this).closest('tr');
+            var loader = $('#confirm_modal .cp-ajax-loader').hide();
+            e.preventDefault();
+            
+            $('#confirm_modal').modal('show');
+            $('#confirm_modal .confirm-delete').unbind('click').click(function(e) {
+                e.preventDefault();
+                loader.show();
+                    
+                $.get(delete_url,function(data) {
+                    loader.hide();
+                    $('#confirm_modal').modal('hide');
+                    if (data == 'ok') {    
+                        row.fadeOut();    
+                    } else {
+                        alert(data);
+                    }
+                },'html');
+            });
+        });    
+        
+        //Filters and such
         $('#count_selection')
             .change(function(){
                 window.location='<?=sc_cp('Transactions/view_transactions/'.$page)?>'+$(this).val();

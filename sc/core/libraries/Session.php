@@ -199,12 +199,17 @@ class Session extends \SC_Library {
     function get_open_transaction() {
         //Do they have an open transaction?
         if (isset($_SESSION['transaction_id'])) {
-            return $_SESSION['transaction_id'];
-        }
-
-        $customer = $this->get_customer();
+            //Does this transaction actually exist?
+            if (\Model\Transaction::count($_SESSION['transaction_id'])) {
+                return $_SESSION['transaction_id'];
+            } else {
+                //Kill it
+                unset($_SESSION['transaction_id']);
+            }
+        } 
 
         //No? Any pending or unassociated opened transactions? Get the first one.
+        $customer = $this->get_customer();
         if ($customer && $transaction = \Model\Transaction::first(array(
                 'conditions' => array(
                         'custid = ? AND status in(?) AND items != FALSE',

@@ -8,6 +8,7 @@
 define('SIMPLECART_IS_IN_CP',1); 
  
 require_once 'init.php';
+require_once 'cp_global.php';
 
 $SC->load_library(array('CP','CP_Session','URI'));
 

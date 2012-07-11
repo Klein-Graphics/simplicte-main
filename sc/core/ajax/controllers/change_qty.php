@@ -23,6 +23,10 @@ function change_qty($line,$quantity) {
 
     global $SC;
     
+    if (!is_numeric($quantity)) {
+        exit('1');
+    }
+    
     $SC->load_library('Cart');
     
     $cart = $SC->Cart->explode_cart($SC->Session->get_open_transaction());
