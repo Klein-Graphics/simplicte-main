@@ -181,4 +181,26 @@ class Shipping extends \SC_Library {
         return $output;
     }
     
+    /**
+     * 
+     */     
+    static function get_all_drivers() {
+        $drivers = scandir('core/libraries/shipping_drivers');
+        
+        $drivers = array_diff($drivers,array('.','..','Shipping_Driver.php'));
+        
+        $return = array();
+        
+        foreach ($drivers as &$driver) {
+            require_once('core/libraries/shipping_drivers/'.$driver);
+            
+            $driver = basename($driver,'.php');
+            $namespaced = '\\Shipping_Driver\\'.$driver;
+            
+            $return[$driver] = $namespaced::$shipping_codes;
+        }
+        
+        return $return;
+    }
+    
 }

@@ -15,6 +15,10 @@ body {
 .left {
     float: left;
 }
+table.clean_table td {
+    vertical-align: top;
+    padding: 10px;
+}
 
 /*Custom icons*/
 .icon-refresh-spin {
@@ -24,6 +28,17 @@ body {
 .icon-refund {
     background-image: url('../img/refund.png');
     background-position: 0 0;
+}
+
+/*Bootstrap modifications*/
+.modal-small {
+    width: 280px;
+    margin-left: -125px;
+}
+
+/*Login*/
+#login {
+    padding: 10px;
 }
 
 /*Home*/
@@ -188,6 +203,11 @@ label.inline {
 }
 
 /*Customers*/
+
+/*Settings*/
+.section-header {
+    margin-left: 15px;
+}
 
 /*debug*/
 #sc_debug_footer {

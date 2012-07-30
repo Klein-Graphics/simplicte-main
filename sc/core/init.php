@@ -97,6 +97,12 @@ require 'core/debug/error.php';
 
 require 'core/global.php';
 
+//Initialize main SC classes
+
+require 'core/sc.php';
+
+$SC = new SC;
+
 //-----------
 // Database
 //-----------
@@ -108,30 +114,27 @@ require 'sc_model.php';
  *
  * @ignore
  */
-ActiveRecord\Config::initialize(function($cfg) use ($CONFIG,$sc_dir) {  
-
-  $cfg->set_model_directory($sc_dir.'/core/models'); //Declare the full path so that the models are available to the page
-  $cfg->set_connections($CONFIG['DATABASE']);
-  
+ActiveRecord\Config::initialize(function($cfg) use ($CONFIG,$sc_dir) {
+     
+    $cfg->set_model_directory(array(
+        $sc_dir.'/core/models',
+        $sc_dir.'/extensions/models'
+    )); //Declare the full path so that the models are available to the user's page
+    $cfg->set_connections($CONFIG['DATABASE']);  
 });
-
-//Initialize main SC classes
-
-require 'core/sc.php';
-
-$SC = new SC;
 
 //Load config class
 
 $SC->load_library('Config');
 
-//Load any extentions
-foreach (scandir('extentions') as $extention) {
-    if ($extention != '.' 
-     && $extention != '..' 
-     && is_dir("extentions/$extention")) 
+//Load any extensions
+foreach (scandir('extensions') as $extension) {
+    if ($extension != '.' 
+     && $extension != '..' 
+     && $extension != 'models'
+     && is_dir("extensions/$extension")) 
     {
-        require 'extentions/'.$extention.'/index.php';    
+        require 'extensions/'.$extension.'/index.php';    
     }
 }
 

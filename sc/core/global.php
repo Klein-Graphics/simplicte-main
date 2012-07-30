@@ -197,7 +197,7 @@
      * @param string $name The name of the request
      * @param string|string $args An array or string of arguments to pass to the script     
      */
-    function sc_cp($name,$args=FALSE) {
+    function sc_cp($name='',$args=FALSE) {
 
         global $CONFIG;        
 
@@ -401,4 +401,39 @@
         if (eval("return isset($qual_hook);")) {                
             eval("call_user_func_array($qual_hook,\$data);");
         }   
-    }    
+    }   
+    
+    /**
+     *  Generate random string
+     *
+     *  Generates a random string
+     *
+     *  @return string
+     *
+     *  @param int $length The length of the string
+     *  @param string $chars A string or range of charcters to use
+     */ 
+     
+     function rand_string($length,$chars='0-9A-Za-z') {
+        //Parse the $chars string
+        preg_match_all('/[^-]-[^-]|./',$chars,$chars);
+        $rand_chars = array();
+        foreach ($chars[0] as $match) {
+            if (! strpos($match,'-')) {
+                $rand_chars[] = $match;
+                continue;
+            }
+            $lead_char = $match[0];
+            $end_char = $match[2];
+            
+            $rand_chars = array_merge($rand_chars,range($lead_char,$end_char));
+        }        
+        
+        $string = '';
+        $count_chars = count($rand_chars)-1;
+        for ($i = 0;$i < $length;$i++) {
+            $string .= $rand_chars[mt_rand(0,$count_chars)];
+        }
+        
+        return $string;
+     }

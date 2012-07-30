@@ -18,7 +18,7 @@ class Paypal_EC extends \SC_Gateway_Driver {
     
     function __construct($name=NULL) {
         parent::__construct($name);
-        
+                
         $this->t = \Model\Transaction::find($this->SC->Session->get_open_transaction());
         $this->c = \Model\Customer::find_by_custid($this->t->custid);
         

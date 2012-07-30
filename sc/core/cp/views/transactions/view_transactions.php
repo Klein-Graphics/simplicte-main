@@ -2,7 +2,7 @@
 <div class="modal hide" id="confirm_modal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        Are you sure?
+        <h2>Are you sure?</h2>
     </div>
     <div class="modal-body">
         This will destroy this transaction and any information associated with it!
@@ -19,7 +19,12 @@
     <thead>
         <tr><td colspan="999">   
             <div id="trans_navigation" class="left">         
-                <strong>Showing transactions <?=(($page-1)*$count + 1)?>-<?=min((($page-1)*$count + $count),$total_transactions)?> of <?=$total_transactions?>. </strong><br />
+                <strong>
+                    Showing transactions 
+                    <?=(($page-1)*$count + 1)?>-<?=($count == 'a') ? $total_transactions : min((($page-1)*$count + $count),$total_transactions)?>
+                    of
+                    <?=$total_transactions?>.
+                </strong><br />
 <?php if ($total_pages > 1) : ?>                                
                 <a href="<?=sc_cp('Transactions/view_transactions/1/'.$count)?>" title="First">&lt;&lt;</a>
     <?php if ($page > 2 && $page < $total_pages-1) : ?>

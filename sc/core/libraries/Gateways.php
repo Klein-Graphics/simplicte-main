@@ -75,9 +75,17 @@ class Gateways extends \SC_Library {
             return FALSE;
         }
         
-        $namespaced_driver = "\\Gateway_Driver\\$method";                
+        $namespaced_driver = "\\Gateway_Driver\\$method";                                    
         
         include_once $file;
+        
+        if (defined('SIMPLECART_IS_IN_CP')) {
+        
+            $this->Drivers->$method = $namespaced_driver::$default_name;
+            return TRUE;
+        }
+        
+        
         $this->Drivers->$method = new $namespaced_driver($name);
         
         return TRUE;                                                
@@ -116,5 +124,27 @@ class Gateways extends \SC_Library {
         
         return $output;
     }
+    
+    /**
+     * 
+     */     
+    static function get_all_drivers() {
+        $drivers = scandir('core/libraries/gateway_drivers');
+        
+        $drivers = array_diff($drivers,array('.','..','Gateway_Driver.php'));
+        
+        $return = array();
+        
+        foreach ($drivers as &$driver) {
+            require_once('core/libraries/gateway_drivers/'.$driver);
+            
+            $driver = basename($driver,'.php');            
+            $namespaced = '\\Gateway_Driver\\'.$driver;
+            
+            $return[$driver] = $namespaced::$default_name;
+        }
+        
+        return $return;
+    }        
     
 }

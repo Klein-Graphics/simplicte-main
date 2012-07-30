@@ -16,12 +16,12 @@ class UPS extends \SC_Shipping_Driver {
     /**
      * The Human Readable Name
      */
-    public $name = 'UPS';
+    public static $name = 'UPS';
     
     /**
      * Shipping codes
      */
-    public $shipping_codes = array(
+    public static $shipping_codes = array(
             '01' => 'UPS Next Day Air',
             '02' => 'UPS Second Day Air',
             '03' => 'UPS Ground',

@@ -19,12 +19,12 @@ class Pickup extends \SC_Shipping_Driver {
     /**
      * Human Readable Name
      */         
-    public $name = 'Local Pickup';    
+    public static $name = 'Local Pickup';    
     
     /**
      * Shipping codes
      */
-    public $shipping_codes = array(
+    public static $shipping_codes = array(
             'lp' => 'Local Pickup'
         ); 
     

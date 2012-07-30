@@ -1,4 +1,4 @@
-Please login.
+<h3>Login</h3>
 <form action="<?=sc_location('cp/do_login')?>" method="POST">
     <table>
         <tr>

@@ -16,12 +16,12 @@ class USPS extends \SC_Shipping_Driver {
     /**
      * The Human Readable Name
      */
-    public $name = 'USPS';
+    public static $name = 'USPS';
     
     /**
      * Shipping codes
      */
-    public $shipping_codes = array(
+    public static $shipping_codes = array(
             'FIRST CLASS' => 'First Class',
             'FIRST CLASS COMMERCIAL' => 'First Class Commerical',
             'FIRST CLASS COMMERCIAL HFP COMMERCIAL' => 'First Class Hold For Pickup Commerical',

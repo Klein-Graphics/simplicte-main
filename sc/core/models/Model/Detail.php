@@ -12,5 +12,9 @@ class Detail extends \SC_Model {
         return $this->read_attribute('detail_value');
 
     }
+    
+    function get_category() {
+        return explode('-',$this->read_attribute('category'));
+    }   
 }
   

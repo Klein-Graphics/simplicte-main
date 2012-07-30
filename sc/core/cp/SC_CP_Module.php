@@ -37,10 +37,10 @@ class SC_CP_Module {
                 $this_method['readable'] = ucwords(str_replace('_',' ',$method)); 
             }                                                                                 
            
-            $this->methods[] = $this_method;      
+            $this->methods[$this_method['name']] = $this_method;      
                                
             if (!isset($this->hidden_pages) || array_search($method,$this->hidden_pages) === FALSE) {               
-                $this->visible_methods[] = $this_method;
+                $this->visible_methods[$this_method['name']] = $this_method;
             }
         }               
         

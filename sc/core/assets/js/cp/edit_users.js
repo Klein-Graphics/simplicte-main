@@ -88,3 +88,59 @@ $('.modify-user').click(function(e) {
     }
         
 });
+
+$('.reset-password').click(function(e) {
+    e.preventDefault();
+    var link = $(this);
+    $.get($(this).attr('href'),function(data) {        
+        link
+            .attr('title',data)
+            .tooltip({                
+                trigger: 'manual'
+            })
+            .tooltip('show');
+        
+        
+        setTimeout(function(){link.tooltip('hide')},3000);
+    },'html');   
+});
+
+$('.delete-user').click(function(e) {
+    e.preventDefault();
+    var row = $(this).closest('tr');
+    var button = $(this);
+    
+    $.get($(this).attr('href'),function(data) {
+        button
+            .removeClass('icon-trash')
+            .addClass('icon-refresh-spin');
+        if (data == 'ok') {
+            row.fadeOut();   
+        } else {
+            button
+            .removeClass('icon-refresh-spin')
+            .addClass('icon-trash');    
+            alert(data);
+        }
+    },'html');
+});
+
+$('.cp-ajax-loader').hide();
+$('#add_user_modal .message-area').hide();
+
+$('#add_user_modal form').submit(function(e) {
+    e.preventDefault();
+    var form = $(this);
+    
+    $('.cp-ajax-loader').show();    
+    $.post($(this).attr('action'),$(this).serialize(),function(data) {
+        $('#add_user_modal .message-area').fadeOut();
+        
+        $('.cp-ajax-loader').hide();
+        if (data == 'ok') {
+            window.location.reload();
+        } else {
+            $('#add_user_modal .message-area').queue(function(next){$(this).html(data);next()}).fadeIn();
+        }
+    },'html');
+});

@@ -24,13 +24,13 @@ class Transactions extends \SC_CP_Module {
         
         $page--;
         
-        $filters = $this->transaction_filters($_POST);
+        $filters = $this->transaction_filters($_POST);        
                 
         $total_transactions = \Model\Transaction::count(array('conditions'=>$filters));
-        $total_pages = ceil($total_transactions/$count);
-        
+        $total_pages = ($count != 'a') ? ceil($total_transactions/$count) : 1;
+                
         if ($total_pages < $page+1) {
-            $page = $total_pages;
+            $page = $total_pages - 1;
         }
         
         $t_data['conditions'] = $filters;
