@@ -31,13 +31,15 @@ class SC {
     public $loaded_libraries = array();
     
     /**
-     * Extention hooks
+     * Extentions & hooks
      */
+    public $extensions = array();
     public $hooks = array(
         'page-in' => array(),
         'page-out' => array(),
         'db' => array()     
     );
+    
     
     /**
      *  Get Magic Method

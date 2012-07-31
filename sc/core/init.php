@@ -124,7 +124,6 @@ ActiveRecord\Config::initialize(function($cfg) use ($CONFIG,$sc_dir) {
 });
 
 //Load config class
-
 $SC->load_library('Config');
 
 //Load any extensions
@@ -134,6 +133,8 @@ foreach (scandir('extensions') as $extension) {
      && $extension != 'models'
      && is_dir("extensions/$extension")) 
     {
+        $SC->extensions[] = $extension;
+            
         require 'extensions/'.$extension.'/index.php';    
     }
 }

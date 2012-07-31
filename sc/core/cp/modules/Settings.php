@@ -17,6 +17,7 @@ namespace CP_Module;
 class Settings extends \SC_CP_Module {
     public static $readable_name = "Store Settings";
     public static $icon = "wrench";
+    public $hidden_pages = array('extension_config');    
     
     /**
      * Construct
@@ -494,7 +495,18 @@ class Settings extends \SC_CP_Module {
     /**
      * Extentions Configuration Page
      */
-    function extentions() {
+    function extensions() {
+        $this->SC->CP->load_view('settings/extensions',array(
+            'extensions' => $this->SC->extensions
+            ));   
+    }
     
-    }         
+    /**
+     * Load a specific extention page
+     */            
+    function extension_config($extension) {
+        if (file_exists("extensions/$extension/cp.php")) {
+            include_once("extensions/$extension/cp.php");
+        }
+    }
 }
