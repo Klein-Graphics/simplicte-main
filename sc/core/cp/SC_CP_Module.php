@@ -22,7 +22,7 @@ class SC_CP_Module {
         $module_name = explode('\\',$mod_class);
         $module_name = $module_name[1];
         
-        $this->methods = array();
+        $this->methods = array();        
         
         foreach ($methods as $key => &$method) {
             if (substr($method,0,1) == '_') {
@@ -54,6 +54,7 @@ class SC_CP_Module {
                 'readable' => $mod_class::$readable_name.' Home'
             ));                           
         }
+        
     }
     
     function index() {
@@ -61,8 +62,9 @@ class SC_CP_Module {
         if (count($this->visible_methods)>1) {
             array_shift($methods);   
             $this->SC->CP->load_view('module_home',array('methods'=>$methods));
-        } else {    
-            $this->$methods[0]['name']();
+        } else {
+            reset($methods);
+            $this->$methods[key($methods)]['name']();
         }
     }
     
