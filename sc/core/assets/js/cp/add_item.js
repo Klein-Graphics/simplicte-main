@@ -404,7 +404,9 @@ $(document).ready(function(){
         }  
     });
     
-    $('#save_item').not('.disabled').click(function(){
+    $('#save_item').not('.disabled').click(function(e){
+        e.preventDefault();
+        
         var btn = $(this);
         if ($('#item input[name="name"]').val()) {            
             $(this).html('Saving...').addClass('disabled');

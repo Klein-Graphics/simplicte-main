@@ -25,11 +25,15 @@ $fields = array(
 
 ?>
 <div class="sc_close_link">[x]</div>
+<?php if (! isset($_POST['new_customer'])) : ?>
+<a href="<?=sc_ajax('change_password')?>" title="Change password" class='change_password'>Change password</a><br />
+<?php endif ?>
 Please fill out the following details: 
 <form class="sc_account_form" action="<?=sc_ajax('do_get_customer_details')?>" method="POST">
 <?php if (isset($_POST['new_customer'])) : ?>
-    <input type="hidden" name="new_customer" value="1" />
+    <input type="hidden" name="new_customer" value="1" />    
 <?php endif ?>
+
     <table>
         <thead>
             <td>Shipping Info:</td><td></td>
@@ -76,6 +80,12 @@ Please fill out the following details:
     $(document).ready(function(){
         $('.sc_right_shipping_info .sc_country_selector option[value="<?=$customer->ship_country?>"]').attr('selected','selected');
         $('.sc_right_billing_info .sc_country_selector option[value="<?=$customer->bill_country?>"]').attr('selected','selected');
+        
+        $('.change_password').click(function(e) {
+            e.preventDefault();
+            
+            page_display.account.load($(this).attr('href'));
+        });
         
         $('.sc_copy_information').change(function() {
             if ($(this).attr('checked')) {

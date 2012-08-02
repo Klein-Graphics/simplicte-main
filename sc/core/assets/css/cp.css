@@ -143,6 +143,7 @@ label.inline {
     background: #FAFAFF;
     min-width: 934px;
     width: 85%;
+    padding: 0 15px;
 }
 
 #module_menu {

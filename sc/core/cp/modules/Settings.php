@@ -33,6 +33,11 @@ class Settings extends \SC_CP_Module {
     
     function my_account() {
     
+    }
+    
+    function update($method) {
+        $method = 'do_'.$method;
+        $this->$method();
     }             
     
     /**
@@ -319,7 +324,7 @@ class Settings extends \SC_CP_Module {
         $buttons = scandir('core/assets/button');
         $elements['buttons_folder']['HTML'] =  
                '<div class="control-group">
-                    <label class="control-label" for=\"timezone\">Button style</label>
+                    <label class="control-label" for="buttons_folder">Button style</label>
                     <div class="controls">
                         <select name="buttons_folder" id="buttons_folder">';
         
@@ -351,7 +356,37 @@ class Settings extends \SC_CP_Module {
             </script>
             ';
         
-        //**Drivers**
+        //Item templates
+        $templates = scandir('user/item_templates/');
+        
+        $elements['item_template']['HTML'] = 
+           '<div class="control-group">
+                <label class="control-label" for="item_template">Item template</label>
+                <div class="controls">
+                    <select name="item_template" id="item_template">';        
+                        
+        foreach ($templates as $key => $template) {
+            if (is_dir('user/item_templates/'.$template) || strpos($template,'.') === 0) {
+                unset($templates[$key]);
+                continue;
+            }
+            
+            $template_cont = file_get_contents('user/item_templates/'.$template);
+            
+            preg_match('/<!--NAME\s*(.*)\s*-->/',$template_cont,$template_name);
+            
+            $template = basename($template,'.html');
+            
+            $elements['item_template']['HTML'] .= "<option value=\"$template\">{$template_name[1]}</option>";
+        }
+        
+        $elements['item_template']['HTML'] .=
+                   '</select>
+                </div>
+            </div>';
+                     
+        
+        //Drivers
         function get_drivers($type) {
             $drivers = scandir("core/libraries/{$type}_drivers/");
             $bad_files = array(ucfirst($type).'_Driver.php','.','..');
@@ -382,15 +417,7 @@ class Settings extends \SC_CP_Module {
                     </div>
                 </div>';  
                         
-        }
-        
-        //Cart
-        $cart_driver = get_drivers('cart');
-        
-        
-            
-        
-        
+        }                                                  
     
         $this->SC->CP->load_view('settings/config_page',array(
             'page_name' => 'Store Display',
