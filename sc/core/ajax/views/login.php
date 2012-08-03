@@ -9,6 +9,16 @@
         <label class="sc_label_left">Remember me</label><br />
         <input type="submit" id="sc_login_submit" value="login" />
     </form>
+    <a href="<?=sc_ajax('reset_password')?>" title="Reset password" class="reset_password">Forgot password?</a>    
     <div class="sc_display"></div>
 </div><!-- #sc_login_area -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.reset_password').click(function(e){
+        e.preventDefault();
+        
+        page_display.account.load($(this).attr('href'));
+    });    
+});
+</script>
 

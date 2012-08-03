@@ -21,7 +21,7 @@ class Messaging extends \SC_Library {
         $orders_email = $this->SC->Config->get_setting('orderEmail');
         $store_email = $this->SC->Config->get_Setting('sendEmail');
         
-        $this->send_mail($orders_email,$store_email,$subject,$message);
+        return $this->send_mail($orders_email,$store_email,$subject,$message);
     }
     
     function message_customer($customer_id,$message,$subject="") {
@@ -29,7 +29,7 @@ class Messaging extends \SC_Library {
         $customer_email = $this->SC->Customer->get_customer($customer_id,'email','custid');
         $store_email = $this->SC->Config->get_Setting('sendEmail');
         
-        $this->send_mail($customer_email,$store_email,$subject,$message);                        
+        return $this->send_mail($customer_email,$store_email,$subject,$message);                        
     }
     
     function send_receipt($transaction) {

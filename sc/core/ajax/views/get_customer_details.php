@@ -26,7 +26,7 @@ $fields = array(
 ?>
 <div class="sc_close_link">[x]</div>
 <?php if (! isset($_POST['new_customer'])) : ?>
-<a href="<?=sc_ajax('change_password')?>" title="Change password" class='change_password'>Change password</a><br />
+<a href="<?=sc_ajax('change_password')?>" title="Change password" class='change_password'>Change password</a><br /><br />
 <?php endif ?>
 Please fill out the following details: 
 <form class="sc_account_form" action="<?=sc_ajax('do_get_customer_details')?>" method="POST">
