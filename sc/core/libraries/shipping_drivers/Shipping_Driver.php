@@ -28,7 +28,7 @@ class SC_Shipping_Driver {
     }
     
     function get_shipping_codes() {
-        return array_intersect_key(self::$shipping_codes,array_fill_keys($this->enabled_methods,'foo'));
+        return array_intersect_key(static::$shipping_codes,array_fill_keys($this->enabled_methods,'foo'));
         
     }
 }
