@@ -121,9 +121,10 @@ class Shipping extends \SC_Library {
         $providers = array();
         
         foreach ($this->get_shipping_methods() as $code => $method) {
+            $class_name = get_class($this->Drivers->$code);
             $providers[] = array(
                 'code' => $code,
-                'name' => $this->Drivers->$code->name
+                'name' => $class_name::$name
             );
         }
         
@@ -134,7 +135,9 @@ class Shipping extends \SC_Library {
         if ($method) {
             $method = explode('-',$method);
             
-            return $this->Drivers->$method[0]->shipping_codes[$method[1]];
+            $class_name = get_class($this->Drivers->$method[0]);
+            
+            return $class_name::$shipping_codes[$method[1]];
         } else {
             return 'None';
         }
