@@ -35,7 +35,7 @@ class Transactions extends \SC_CP_Module {
         
         $t_data['conditions'] = $filters;
         $t_data['order'] = 'ordernumber desc';
-        if ($count != 'a') {
+        if ($count != 'a' && $page >= 0) {
                 $t_data['offset'] = $page*$count;
                 $t_data['limit'] = $count;
         }              
