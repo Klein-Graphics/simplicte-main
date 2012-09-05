@@ -116,7 +116,7 @@
     
     $addl = ltrim($addl,'/');
     
-    return "http".(isset($_SERVER['https']) && $_SERVER['https'] != 'off')."://{$_SERVER['SERVER_NAME']}{$CONFIG['URL']}/$addl";
+    return "http".((isset($_SERVER['https']) && $_SERVER['https'] != 'off') ? 's' : '')."://{$_SERVER['SERVER_NAME']}{$CONFIG['URL']}/$addl";
   
   }
   
@@ -133,8 +133,12 @@
     
     global $CONFIG;
     
-    $addl = ltrim($addl,'/');    
-    return site_url("{$CONFIG['SC_LOCATION']}/$addl");
+    $addl = ltrim($addl,'/');
+    if ($CONFIG['SC_LOCATION'] !== '') {
+        return site_url("{$CONFIG['SC_LOCATION']}/$addl");
+    } else {
+        return site_url("$addl");
+    }
   }
   
   /**

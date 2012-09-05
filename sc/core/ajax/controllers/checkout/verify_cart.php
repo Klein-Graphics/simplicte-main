@@ -66,8 +66,6 @@ $order_totals = $this->Cart->calculate_total($transaction,$shipping_method,$disc
 
 $messages += $order_totals['messages'];
 
-echo $order_totals['shipping'];
-
 $this->Transactions->update_transaction($transaction->id,array(
     'shipping' => $order_totals['shipping'],
     'shipping_method' => $shipping_method,

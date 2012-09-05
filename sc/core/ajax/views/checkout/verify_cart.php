@@ -12,13 +12,13 @@
             <input type="submit" value="Submit" />        
     </div>
     <table class="sc_verify_cart_total_area">
-        <tr><td>Subtotal:</td><td><?=$order_totals['subtotal']?></td></tr>
-        <tr><td>Tax:</td><td><?=$order_totals['taxrate']?></td></tr>
+        <tr><td>Subtotal:</td><td><?=number_format($order_totals['subtotal'],2)?></td></tr>
+        <tr><td>Tax:</td><td><?=number_format($order_totals['taxrate'],2)?></td></tr>
             
         <?php if ($this->Shipping->shipping_enabled && $shipping_required) : ?>
         <tr>
                 <?php if ($order_totals['shipping'] !== false) : ?>
-            <td>Shipping:</td><td><?=$order_totals['shipping']?></td>
+            <td>Shipping:</td><td><?=number_format($order_totals['shipping'],2)?></td>
         </tr>
         <tr>
             <td></td><td><?=$this->Shipping->generate_shipping_dropdown()?></td>        
@@ -31,7 +31,7 @@
          </tr>                
         <?php endif ?>
 
-         <tr><td>Total:</td><td><?=$order_totals['total']?></td></tr>                  
+         <tr><td>Total:</td><td><?=number_format($order_totals['total'],2)?></td></tr>                  
 
     </table>
     <?php if ($this->Shipping->shipping_enabled && $shipping_required && $order_totals['shipping'] != false) : ?> 

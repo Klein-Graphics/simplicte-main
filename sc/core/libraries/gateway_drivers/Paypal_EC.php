@@ -189,9 +189,9 @@ class Paypal_EC extends \SC_Gateway_Driver {
             $data["L_PAYMENTREQUEST_0_AMT$key"] = number_format($this->SC->Cart->line_total($item),2);
             $data["L_PAYMENTREQUEST_0_NUMBER$key"] = $item['data']->number;
             $data["L_PAYMENTREQUEST_0_QTY$key"] = $item['quantity'];
-            $data["L_PAYMENTREQUEST_0_TAXAMT$key"] = number_format($item['price']
+            $data["L_PAYMENTREQUEST_0_TAXAMT$key"] = number_format(round($item['price']
                                                      *$this->SC->Config->get_setting('salestax')
-                                                     *(! $this->SC->Items->item_flag($item['id'],'notax')),2);
+                                                     *(! $this->SC->Items->item_flag($item['id'],'notax')),2),2);
             $data["L_PAYMENTREQUEST_0_ITEMWEIGHTVALUE$key"] = $item['data']->weight;                      
             $data["L_PAYMENTREQUEST_0_ITEMWEIGHTUNIT$key"] = 'lbs';                               
             $data["L_PAYMENTREQUEST_0_ITEMCATEGORY$key"] = ($this->SC->Items->item_flag($item['id'],'digital')) 

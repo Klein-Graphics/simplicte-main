@@ -568,15 +568,15 @@
     function calculate_tax($cart) {
         $cart = $this->explode_cart($cart);
         
-        $taxable = 0;
+        $tax = 0;
         
         foreach ($cart as $item) {
-            $taxable += ($this->SC->Items->item_flag($item['id'],'notax'))
+            $tax += ($this->SC->Items->item_flag($item['id'],'notax'))
                 ? 0
-                : $this->line_total($item);                                                
+                : round($this->line_total($item) * $this->SC->Config->get_setting('salestax'),2);                                                
         }
             
-        return round($taxable * $this->SC->Config->get_setting('salestax'),2);
+        return $tax;
     }
     
     /**
