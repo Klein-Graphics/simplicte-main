@@ -178,6 +178,13 @@ class Paypal_EC extends \SC_Gateway_Driver {
         //Generate item table
         $items = $this->SC->Cart->explode_cart($this->t->items);
         
+        $billable_states = $this->SC->Config->get_setting('taxstates');
+        $billable_states = explode(',',$billable_states);
+        $tax = 0;
+        if (array_search(strtolower($this->t->ship_state),array_to_lower($billable_states))!==FALSE) {
+            $tax = 1;    
+        }
+        
         foreach ($items as $key => $item) {
             $item['data'] = \Model\Item::find($item['id']);
             $data["L_PAYMENTREQUEST_0_NAME$key"] = str_trunc($item['data']->name,127);
@@ -191,13 +198,15 @@ class Paypal_EC extends \SC_Gateway_Driver {
             $data["L_PAYMENTREQUEST_0_QTY$key"] = $item['quantity'];
             $data["L_PAYMENTREQUEST_0_TAXAMT$key"] = number_format(round($item['price']
                                                      *$this->SC->Config->get_setting('salestax')
-                                                     *(! $this->SC->Items->item_flag($item['id'],'notax')),2),2);
+                                                     *(! $this->SC->Items->item_flag($item['id'],'notax')),2)*$tax,2);
             $data["L_PAYMENTREQUEST_0_ITEMWEIGHTVALUE$key"] = $item['data']->weight;                      
             $data["L_PAYMENTREQUEST_0_ITEMWEIGHTUNIT$key"] = 'lbs';                               
             $data["L_PAYMENTREQUEST_0_ITEMCATEGORY$key"] = ($this->SC->Items->item_flag($item['id'],'digital')) 
                                                             ? 'Digital'
                                                             : 'Physical';             
         }
+        
+        better_print_r($data);
         
         $result = $this->paypal_api_call($data);
         
