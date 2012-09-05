@@ -255,11 +255,11 @@
     function item_in_cart($cart,$check_item) {
         $cart = $this->explode_cart($cart);
         $check_item = $this->explode_item($check_item);
-        $check_item['quantity'] = 0;
+        $check_item['quantity'] = 1;
         $check_item = $this->implode_item($check_item);        
         
         foreach ($cart as $key => $item) {
-            $item['quantity'] = 0;
+            $item['quantity'] = 1;
             if ($check_item == $this->implode_item($item)) {
                 return $key;
             }
