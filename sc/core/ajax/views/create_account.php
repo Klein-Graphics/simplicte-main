@@ -7,7 +7,7 @@
         <input type="password" name="sc_register_password"/><br />
         <label class="sc_label_right">Confirm:</label><br />
         <input type="password" name="sc_confirm_password"/><br />
-        <input type="submit" id="sc_register_submit" value="signup" />
+        <input type="submit" id="sc_register_submit" value="Sign Up!" />
     </form>
     <div class="sc_display"></div>
 </div><!-- #sc_create_account_area -->

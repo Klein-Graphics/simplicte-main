@@ -41,7 +41,8 @@
         <input 
             type="text" 
             class="sc_cart_item_quantity_adjust" 
-            onblur="adjust_quantity(<?=$key?>,$(this).val())" 
+            onfocus="$(this).data('old_quantity',$(this).val())"
+            onblur="if ($(this).data('old_quantity') != $(this).val()) adjust_quantity(<?=$key?>,$(this).val())" 
             value="<?=$item['quantity']?>" />
       </td>
       <td class="sc_cart_item_price">

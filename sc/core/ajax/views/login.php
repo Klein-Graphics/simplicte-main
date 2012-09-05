@@ -7,7 +7,7 @@
         <input type="password" name="sc_login_password"/><br />
         <input type="checkbox" name="sc_remember_me"/>
         <label class="sc_label_left">Remember me</label><br />
-        <input type="submit" id="sc_login_submit" value="login" />
+        <input type="submit" id="sc_login_submit" value="Login" />
     </form>
     <a href="<?=sc_ajax('reset_password')?>" title="Reset password" class="reset_password">Forgot password?</a>    
     <div class="sc_display"></div>
