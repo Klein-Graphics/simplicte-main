@@ -13,7 +13,9 @@ page_display.checkout = {
             return false;
         }    
         
-        $(this).slideDown();                        
+        checkout = $(this);
+        
+        checkout.slideDown();                        
                 
         $("#sc_checkout form.sc_account_form").submit(function(e) {        
             e.preventDefault();
@@ -28,15 +30,18 @@ page_display.checkout = {
                 });
             });
             
+            form = $(this);           
+            
             $.post($(this).attr('action'),$(this).serialize(),function(data){
                 switch (data.do_this) {
+                    
                     case 'refresh':
                         page_display.account.refresh();
                         page_display.checkout.load(sc_location('/ajax/checkout/verify_cart')); 
                     break;                  
                     
                     case 'display_good':
-                        $('.sc_display')
+                        form.siblings('.sc_display')
                             .removeClass('sc_bad')
                             .addClass('sc_good')
                             .html(data.message); 
@@ -45,10 +50,13 @@ page_display.checkout = {
                     break;
                     
                     case 'display_error':
-                        $('.sc_display')
+                        form.siblings('.sc_display')
                             .removeClass('sc_good')
                             .addClass('sc_bad')
                             .html(data.message);
+                        checkout.css('height','').animate({
+                            height: checkout.prop('scrollHeight')
+                        });
                     break;               
                     
                     case 'load':

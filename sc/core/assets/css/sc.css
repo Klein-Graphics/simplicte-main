@@ -1,6 +1,6 @@
-/**
- * This file will eventually be merged into Simplecart 2
- */
+body.loading, body.loading a {
+    cursor: progress !important;
+}
 .sc_button,
 .sc_button:hover
 {

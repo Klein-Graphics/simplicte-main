@@ -52,21 +52,21 @@ page_display.cart = {
   
   refresh: function(middle_callback,end_callback) {
     middle_callback = middle_callback || function(finished){finished()};
-    end_callback = end_callback || function(){};
-    
-    $('.sc_cartinfo').load(sc_location('ajax/cart_info')); 
+    end_callback = end_callback || function(){};        
     
     if (this.displayed) {
       page_display.cart.hide(function() {
         middle_callback(function(){
           page_display.cart.show(function(){
             end_callback();
+            $('.sc_cartinfo').load(sc_location('ajax/cart_info')); 
           })
        })
       });    
     } else {
         middle_callback(function() {
             end_callback();
+            $('.sc_cartinfo').load(sc_location('ajax/cart_info'));
         });
     }
   },

@@ -18,10 +18,10 @@ require 'const.php';
 require 'config.php';
 
 if (! $CONFIG['SC_LOCATION']) {
-  $CONFIG['SC_LOCATION'] = substr($sc_dir,strrpos($sc_dir,'/')+1);        
+  $CONFIG['SC_LOCATION'] = substr($sc_dir,strrpos($sc_dir,'/'));        
 }
 
-if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROOT']}/{$CONFIG['URL']}/{$CONFIG['SC_LOCATION']}/config.php"))) {  
+if (!file_exists("{$_SERVER['DOCUMENT_ROOT']}{$CONFIG['URL']}{$CONFIG['SC_LOCATION']}/config.php")) {  
   
   //Do something complicated to get the url:
   
@@ -70,7 +70,7 @@ if (! $CONFIG['URL'] || ($CONFIG['URL'] && !file_exists("{$_SERVER['DOCUMENT_ROO
     
   }
   
-  $site_url = recursive_search($_SERVER['DOCUMENT_ROOT']) or die('Couldn\'t find it. We\'ve failed, Jim');;
+  $site_url = recursive_search($_SERVER['DOCUMENT_ROOT']) or die('Can\'t locate tracer file. Please check your configuration.');;
   $site_url = dirname($site_url);
   
   $site_url = str_replace($_SERVER['DOCUMENT_ROOT'],'',$site_url);

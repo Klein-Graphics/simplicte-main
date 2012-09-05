@@ -34,7 +34,7 @@
          <tr><td>Total:</td><td><?=$order_totals['total']?></td></tr>                  
 
     </table>
-    <?php if ($this->Shipping->shipping_enabled && $shipping_required && $order_totals['shipping'] !== false) : ?> 
+    <?php if ($this->Shipping->shipping_enabled && $shipping_required && $order_totals['shipping'] != false) : ?> 
     <input type="button" class="sc_verify_cart_submit" value="Continue To Payment" />
     <?php endif ?>
 

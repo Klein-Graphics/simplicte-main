@@ -15,8 +15,10 @@ $(document).ready(function() {
 
     $('.ajax_loader').ajaxStart(function() {
         $(this).show();
+        $('body').addClass('loading');
     }).ajaxStop(function() {
         $(this).hide();
+        $('body').removeClass('loading');
         bind_labels();
     }).hide();    
     
