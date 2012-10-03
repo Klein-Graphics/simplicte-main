@@ -14,8 +14,8 @@ page_display.checkout = {
         }    
         
         checkout = $(this);
-        
-        checkout.slideDown();                        
+                        
+        checkout.css('height','').slideDown();                      
                 
         $("#sc_checkout form.sc_account_form").submit(function(e) {        
             e.preventDefault();
@@ -37,7 +37,7 @@ page_display.checkout = {
                     
                     case 'refresh':
                         page_display.account.refresh();
-                        page_display.checkout.load(sc_location('/ajax/checkout/verify_cart')); 
+                        page_display.checkout.load(sc_location('/ajax/checkout')); 
                     break;                  
                     
                     case 'display_good':
@@ -46,7 +46,7 @@ page_display.checkout = {
                             .addClass('sc_good')
                             .html(data.message); 
                         page_display.account.refresh();
-                        page_display.checkout.load(sc_location('/ajax/checkout/verify_cart'));  
+                        page_display.checkout.load(sc_location('/ajax/checkout'));  
                     break;
                     
                     case 'display_error':
