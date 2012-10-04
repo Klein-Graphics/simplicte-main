@@ -71,10 +71,10 @@ Please fill out the following details:
         </tr>
 <?php $i++; endforeach ?>
         <tr><td><input type="submit" value="Submit" /></td><td><span class="required_field">*required field</span></td></tr>
-        <tr><td colspan="4" class="sc_display"></td></tr>
     </table>
     
 </form>
+<div class="sc_display"></td>
 
 <script type="text/javascript">
     $(document).ready(function(){

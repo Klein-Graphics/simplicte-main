@@ -16,7 +16,7 @@
 $(document).ready(function() {
     $('.reset_password').click(function(e){
         e.preventDefault();
-        
+                
         page_display.account.load($(this).attr('href'));
     });    
 });

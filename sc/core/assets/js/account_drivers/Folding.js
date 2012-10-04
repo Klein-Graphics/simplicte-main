@@ -15,7 +15,6 @@ page_display.account = {
                     var previous_password = [];
                     
                     $(this).find('input[type="password"]').val(function(i,v) { 
-                        console.log(v);
                         if (!v) return '';
                         previous_password[i] = v;                    
                         return $().crypt({
@@ -23,8 +22,6 @@ page_display.account = {
                             source: v
                         });
                     });                    
-                    
-                    console.log($(this).serialize());
                     
                     $.post($(this).attr('action'),$(this).serialize(),function(data){
                         switch (data.do_this) {

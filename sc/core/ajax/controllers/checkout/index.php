@@ -20,32 +20,7 @@
     exit;
  }
  
- if ($this->Session->has_account()) {
-    //Verify that account information is complete first
-    $customer = $this->Customer->get_customer($this->Session->get_user());
-
-    $required_fields = array(
-        'firstname',
-        'lastname',
-        'streetaddress',
-        'city',
-        'state',
-        'postalcode',
-        'country',
-        'phone'
-    );
-
-    foreach ($required_fields as $required_field) {
-        $ship_field = 'ship_'.$required_field;
-        $bill_field = 'bill_'.$required_field;
-        if (!$customer->$ship_field or !$customer->$bill_field) {
-            $_POST['new_customer'] = TRUE;
-            $this->load_ajax('get_customer_details');
-            exit();
-        }
-    } 
-    
-    
+ if ($this->Session->has_account()) {            
     $this->load_ajax('checkout/verify_cart');
     exit;
  }

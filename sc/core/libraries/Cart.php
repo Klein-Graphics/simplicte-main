@@ -624,7 +624,7 @@
         
         //Calculate shipping
 
-        $shipping = 0;
+        $shipping = ($shipping_method) ? 0 : FALSE;
 
         $shipping_required = $this->shipping_required($cart);
 

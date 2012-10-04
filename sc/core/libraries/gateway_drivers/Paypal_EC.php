@@ -206,8 +206,6 @@ class Paypal_EC extends \SC_Gateway_Driver {
                                                             : 'Physical';             
         }
         
-        better_print_r($data);
-        
         $result = $this->paypal_api_call($data);
         
         return $result;

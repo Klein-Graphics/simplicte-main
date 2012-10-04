@@ -89,7 +89,7 @@ register_shutdown_function(function() {
     </div>
             <?php endforeach; ?>
         <?php endif; ?>
-    <?php if (!property_exists($SC,'Page_loading') && !defined('SIMPLECART_IS_IN_CP')) : ?>
+    <?php if (!property_exists($SC,'Page_loading') && !defined('SIMPLECART_IS_IN_CP') && !is_ajax()) : ?>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <?php endif ?>
     <script type="text/javascript">

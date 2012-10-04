@@ -7,6 +7,30 @@
  */
 
 $this->load_library(array('Cart','Stock','Session','Discounts','Shipping','Page_loading'));
+//Verify that account information is complete first
+$customer = $this->Customer->get_customer($this->Session->get_user());
+
+$required_fields = array(
+    'firstname',
+    'lastname',
+    'streetaddress',
+    'city',
+    'state',
+    'postalcode',
+    'country',
+    'phone'
+);
+
+foreach ($required_fields as $required_field) {
+    $ship_field = 'ship_'.$required_field;
+    $bill_field = 'bill_'.$required_field;
+    if (!$customer->$ship_field or !$customer->$bill_field) {
+        $_POST['new_customer'] = TRUE;
+        $this->load_ajax('get_customer_details');
+        exit();
+    }
+} 
+
 $transaction = $this->Transactions->get_transaction($this->Session->get_open_transaction());
 
 $messages = array();
@@ -46,7 +70,6 @@ $transaction->items = $this->Cart->implode_cart($cart,$transaction->id);
 if ($out_of_stock_flag) {
     $messages[] = 'Unfortunately some of the items in your cart were out of stock. These items have been removed.';
     //Check if there's even still items in the cart
-    
     
 }
 

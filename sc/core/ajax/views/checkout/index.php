@@ -24,5 +24,11 @@
             e.preventDefault();
             page_display.checkout.load($(this).attr('href'));
         });
+        $('.sc_checkout_login .reset_password').off('click').click(function(e) {
+            e.preventDefault();
+                
+            page_display.checkout.load($(this).attr('href'));
+        });
+        
     });
 </script>

@@ -2,8 +2,8 @@
   global $SC;
 
   $SC->load_library(array('Cart','Session'));
-
-  $cart = $SC->Cart->explode_cart($SC->Session->transaction);    
+  
+  $cart = $SC->Cart->explode_cart($SC->Session->get_open_transaction());    
    
 ?>
 

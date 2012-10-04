@@ -34,5 +34,8 @@ $this->Customer->update_customer($this->Session->get_user(),array(
 
 echo json_encode(array(
     'do_this' => 'load',
-    'location' => sc_ajax('get_customer_details')
+    'location' => sc_ajax('get_customer_details'),
+    'data' => array(
+        'new_customer' => 1 
+    )
 )); 

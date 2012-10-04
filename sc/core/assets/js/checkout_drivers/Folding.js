@@ -11,7 +11,7 @@ page_display.checkout = {
     $('#sc_checkout').load(link_url,data,function(r,ts,xhr){
         if (xhr.status == 204) {
             return false;
-        }    
+        } 
         
         checkout = $(this);
                         
@@ -37,7 +37,7 @@ page_display.checkout = {
                     
                     case 'refresh':
                         page_display.account.refresh();
-                        page_display.checkout.load(sc_location('/ajax/checkout')); 
+                        page_display.checkout.load(sc_location('/ajax/checkout/verify_cart')); 
                     break;                  
                     
                     case 'display_good':
@@ -46,7 +46,7 @@ page_display.checkout = {
                             .addClass('sc_good')
                             .html(data.message); 
                         page_display.account.refresh();
-                        page_display.checkout.load(sc_location('/ajax/checkout'));  
+                        page_display.checkout.load(sc_location('/ajax/checkout/verify_cart'));  
                     break;
                     
                     case 'display_error':
