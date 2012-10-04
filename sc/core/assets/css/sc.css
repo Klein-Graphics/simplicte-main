@@ -8,7 +8,8 @@ body.loading, body.loading a {
 }
 
 .sc_close_link {
-    width: 100%;
+    margin-left: 97%;
+    width: 3%;
     text-align: right;
     cursor: pointer;
     color: #5A2;

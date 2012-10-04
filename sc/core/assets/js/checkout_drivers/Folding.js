@@ -13,6 +13,12 @@ page_display.checkout = {
             return false;
         } 
         
+        $('.sc-message-return-link').click(function(e) {
+            e.preventDefault();
+        
+            page_display.checkout.load(sc_location('ajax/checkout'));
+        }); 
+        
         checkout = $(this);
                         
         checkout.css('height','').slideDown();                      
@@ -37,7 +43,7 @@ page_display.checkout = {
                     
                     case 'refresh':
                         page_display.account.refresh();
-                        page_display.checkout.load(sc_location('/ajax/checkout/verify_cart')); 
+                        page_display.checkout.load(sc_location('ajax/checkout/verify_cart')); 
                     break;                  
                     
                     case 'display_good':
@@ -46,7 +52,7 @@ page_display.checkout = {
                             .addClass('sc_good')
                             .html(data.message); 
                         page_display.account.refresh();
-                        page_display.checkout.load(sc_location('/ajax/checkout/verify_cart'));  
+                        page_display.checkout.load(sc_location('ajax/checkout/verify_cart'));  
                     break;
                     
                     case 'display_error':

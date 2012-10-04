@@ -31,7 +31,7 @@ if (strlen($_POST['sc_login_password']) != 32) {
 if (!$SC->Session->login_customer($_POST)) {
     exit(json_encode(array(
         'do_this' => 'display_error',
-        'message' => 'Invalid username or password'
+        'message' => 'Invalid username or password. <strong>Passwords are case senstive</strong>.'
     )));
     
 }

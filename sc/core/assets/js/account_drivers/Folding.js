@@ -7,7 +7,14 @@ page_display.account = {
     load: function(link_url,data){
         $('#sc_account_action').slideUp(function() {
             $('#sc_account_action').load(link_url,data,function(){                 
-                $('#sc_account_action').slideDown();                                
+                $('#sc_account_action').slideDown();     
+                
+                console.log(
+                $('.sc-message-return-link').click(function(e) {
+                    e.preventDefault();
+                
+                    page_display.account.load(sc_location('ajax/login'));
+                }));                    
                 
                 $("form.sc_account_form").submit(function(e) {
                     e.preventDefault();                    
