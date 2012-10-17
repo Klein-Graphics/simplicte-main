@@ -18,15 +18,14 @@ class Stock extends \SC_CP_Module {
     public static $readable_name = "Items and Stock";
     public static $icon = "briefcase";
     
+    /*
+     * View / Edit items
+     */    
     function view_items() {
         $items = \Model\Item::all();
         
         $this->SC->CP->load_view('stock/view_items',array('items'=>$items));
-    }
-    
-    function build_shipment() {
-    
-    }
+    }                
     
     private function _prepare_option_output($data) {
         $cells = array();
@@ -231,6 +230,65 @@ class Stock extends \SC_CP_Module {
         foreach ($options as $option) {
             $option->delete();
         }
+    
+    }
+    
+    /*
+     * View/Edit Discounts
+     */  
+    function discounts() {
+        $discounts = \Model\Discount::all();                                
+        
+        foreach ($discounts as &$discount) {        
+            $this_discount = $discount;
+                        
+        }
+        
+        $this->SC->CP->load_view('stock/view_discounts',array('discounts'=>$discounts));
+    }
+    
+    function _update_discount() {
+        //Validation       
+        $this->SC->Validation->Add_Rule(
+            array('code'            ,'desc'         ,'action'),
+            array('Discount Code'   ,'Description'  ,'Discount Type'),
+            'required');
+        
+        if (isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case 'percentoff':
+                case 'fixedoff':
+                    $this->SC->Validation->Add_Rule('discount_value','Discount','required');
+                break;
+                
+                case 'itempercentoff':
+                case 'itemfixedoff':
+                    $this->SC->Validation->Add_Rule('discount_value','Discount','required');
+                    $this->SC->Validation->Add_Rule('discount_item_num','Item','required');
+                break;
+                
+                case 'bxgx':
+                    $this->SC->Validation->Add_Rule('discount_item_num','Item','required');
+                    $this->SC->Validation->Add_rule('buy_amount','X Amount','required');
+                    $this->SC->Validation->Add_rule('get_amount','Y Amount','required');
+                break;
+            }
+        }
+        
+        if (!$this->SC->Validation->do_validation()) {
+            die(json_encode(array('ACK'=>0,'message'=>$this->SC->Validation->get_messages())));
+        }        
+           
+    }
+    
+    function _delete_discount() {
+    
+    }
+    
+    /*
+     * Build shipment
+     */  
+    function build_shipment() {
     
     }
 }

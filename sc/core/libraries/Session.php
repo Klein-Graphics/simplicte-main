@@ -290,7 +290,7 @@ class Session extends \SC_Library {
         $_SESSION['customer_id'] = $customer->custid;
         $_SESSION['user_id'] = $customer->id;
         
-        if (!isset($post_data['sc_remember_me'])) {
+        if (isset($post_data['sc_remember_me'])) {
             session_set_cookie_params(ONE_HUNDRED_YEARS,'/'.ltrim($CONFIG['URL'],'/'));
             session_regenerate_id();
         }

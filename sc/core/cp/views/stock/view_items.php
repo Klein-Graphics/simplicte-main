@@ -76,7 +76,7 @@
                         <option value="inf">Unlimited Stock</option>
                         <option value="opt">Option Dependant Stock</option>                        
                     </select>
-                </div>
+                </div><h3></h3>
                 <div class="span3">
                     <input type="hidden" name="stock" />
                     <input type="text" class="display_stock" placeholder="Initial Stock"/>                 

@@ -54,7 +54,11 @@
         }        
         $info .= '<br />';
         
-        $info .= $this->bill_city.', '.$this->bill_state.' '.$this->bill_postalcode.'<br />';
+        if ($this->bill_city && $this->bill_state) {
+            $info .= $this->bill_city.', '.$this->bill_state.' ';
+        }
+        $info .= $this->bill_postalcode.'<br />';
+        
         $info .= $this->bill_country.'<br /><br />';
         
         $info .= $this->bill_phone;

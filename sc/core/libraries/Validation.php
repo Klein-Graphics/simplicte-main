@@ -76,8 +76,7 @@ class Validation extends \SC_Library {
      *
      * @return bool Whether or not the validation was successful
      */ 
-    function do_validation() {                    
-            
+    function do_validation() {            
         foreach ($this->rules as $rule) {
             if (!isset($_POST[$rule['element']])) {
                 if ($this->is_required($rule['element'])) {
