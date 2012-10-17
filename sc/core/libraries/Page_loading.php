@@ -229,8 +229,10 @@ class Page_loading extends \SC_Library {
 
         preg_match_all('/<!--SPECIALTAG (.*?)\s*-->(.*?)<!--ENDSPECIALTAG-->/s',$raw_template,$special_tags);
         $this->special_tags = array();
-        foreach ($special_tags[1] as $key => $tag) {
-            $tag = explode(' ',$tag);    
+        $this->option_special_tags = array();               
+        
+        foreach ($special_tags[1] as $key => $tag) {            
+            $tag = explode(' ',$tag);                        
             
             foreach ($tag as &$this_tag) {
                 if (strpos($this_tag,'i--') !== FALSE) {
@@ -247,12 +249,23 @@ class Page_loading extends \SC_Library {
                 }
             }                        
             
-            $the_tags = implode('\|',$tag);
+            if ($tag[0] == 'OPTION') {
+                unset($tag[0]);                
+                $type = $tag[1];
+                unset($tag[1]);
+                $cat = implode(' ',$tag);
+                                           
+                $this->option_special_tags[$type][$cat] = $special_tags[2][$key];                                 
+            } else {
             
-            $this->special_tags[] = array(
-                'regex' => "/\[\[$the_tags\]\]/",
-                'template' => $special_tags[2][$key]
-            );
+            
+                $the_tags = implode('\|',$tag);
+                            
+                $this->special_tags[] = array(
+                    'regex' => "/\[\[$the_tags\]\]/",
+                    'template' => $special_tags[2][$key]
+                );
+            }
         }                
 
 
@@ -388,17 +401,22 @@ class Page_loading extends \SC_Library {
 
         $sorted_options = array();                     
 
-        foreach ($item_options as $item_option) {
-            
+        foreach ($item_options as $item_option) {            
             $sorted_options[$item_option->cat][] = $item_option;
         }         
+        
         unset($item_options);
 
         $i = 0;
         foreach ($sorted_options as $cat => $item_options) {
              
              if (count($sorted_options[$cat]) > 1) {
-                $sorted_options[$cat]['code'] = $this->replace_tag($this->option_templates['multiple'],'cat',$cat);
+                if (!isset($this->option_special_tags['multiple'][$cat])) {
+                    $sorted_options[$cat]['code'] = $this->replace_tag($this->option_templates['multiple'],'cat',$cat);                
+                } else {
+                    $sorted_options[$cat]['code'] = $this->replace_tag($this->option_special_tags['multiple'][$cat],'cat',$cat);   
+                }
+                
                 $this_option_code = '';                
                 foreach ($item_options as $item_option) {
                     $price = ($item_option->price) ? "(+\${$item_option->price})"  : "";
@@ -418,13 +436,19 @@ class Page_loading extends \SC_Library {
              } else {
                 $item_option = $item_options[0];
                 
+                if (!isset($this->option_special_tags['single'][$cat])) {
+                    $sorted_options[$cat]['code'] = $this->option_templates['single'];
+                } else {
+                    $sorted_options[$cat]['code'] = $this->option_special_tags['single'][$cat];
+                }    
+                
                 $sorted_options[$cat]['code'] = $this->replace_tag(
-                    $this->option_templates['single'],
+                    $sorted_options[$cat]['code'],
                     'detail',
                     function($args) use ($item_option) {
                         return $item_option->$args[1]; 
                     }
-                );           
+                );                           
                 
                 $out_of_stock = !$this->SC->Stock->option_in_stock($item_option->id);    
                 

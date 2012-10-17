@@ -93,6 +93,7 @@ class Stock extends \SC_CP_Module {
             $flags = '';
         }
 
+        $flags = htmlspecialchars($flags);
         
         $show_flags = str_trunc($flags, 6, '');
         $flags = "<td rel=\"tooltip\" title=\"$flags\">$show_flags<input type=\"hidden\" name=\"options[$n][flags]\" value=\"$flags\" />$extra_data</td>";
