@@ -17,7 +17,7 @@ namespace CP_Module;
 class Settings extends \SC_CP_Module {
     public static $readable_name = "Store Settings";
     public static $icon = "wrench";
-    public $hidden_pages = array('extension_config');    
+    public $hidden_pages = array('extension_config','update');    
     
     /**
      * Construct
@@ -35,9 +35,15 @@ class Settings extends \SC_CP_Module {
     
     }
     
-    function update($method) {
-        $method = 'do_'.$method;
-        $this->$method();
+    function _update($method) {
+        $method = '_update_'.$method;
+        if (method_exists($this,$method)) { 
+            $this->$method();
+        } else {
+            header("HTTP/1.0 404 Not Found");
+            echo '<h1>404</h1>Page not found. Unknown update method.';
+        }
+        
     }             
     
     /**
@@ -216,11 +222,16 @@ class Settings extends \SC_CP_Module {
         switch($obj->type) { //Input itself
             case 'number':            
             case 'email':
-            case 'percent':
             case 'currency':
             case 'text':
                 $size = 'span'.ceil(strlen($obj->detail_value)/7);
                 $element .= "<input class=\"$size\" type=\"text\" value=\"{$obj->detail_value}\" name=\"{$obj->detail}\" id=\"{$obj->detail}\">";
+            break;
+            
+            case 'percent':
+                $size = 'span'.ceil(strlen($obj->detail_value)/7);
+                $percent = $obj->detail_value*100;
+                $element .= "<input class=\"$size\" type=\"text\" value=\"{$percent}\" name=\"{$obj->detail}\" id=\"{$obj->detail}\">";
             break;
             
             case 'password':
@@ -277,6 +288,75 @@ class Settings extends \SC_CP_Module {
     }
     
     /**
+     * Private - Get update errors
+     */
+    private function get_update_errors() {
+        $errors = array();
+        foreach ($this->SC->Validation->bad_inputs as $key => $input) {
+            $errors[$key]['name'] = $input;
+            $errors[$key]['message'] = $this->SC->Validation->messages[$key];
+        }
+        
+        return $errors;
+    }
+    
+    /**
+     * Private - Update fields
+     */
+    private function update_fields($setting) {
+        //Grab all checkboxes from this setting
+        $checkboxes = \Model\Detail::all(array('conditions'=>array('category LIKE ? AND type = "checkbox"',$setting.'%')));
+        
+        $fields = array();
+        foreach ($checkboxes as $checkbox) {
+            $fields[$checkbox->detail] = 0;
+        }
+        
+        $fields = array_merge($fields,$_POST);
+                
+        foreach ($fields as $field_name => $new_value) {
+            $field = \Model\Detail::find_by_detail($field_name);            
+            
+            switch($field->type) {
+                case 'number':            
+                case 'email':
+                case 'currency':
+                case 'text': 
+                case 'password':   
+                    $field->detail_value = $new_value;
+                break;
+                
+                case 'percent':
+                    $field->detail_value = $new_value * 100;
+                break;                                         
+            
+                case 'checkbox':
+                    $field->detail_value = ($new_value === 'on') ? 1 : 0;
+                break;
+                
+                case 'special':
+                    continue 2;
+                break;
+            }
+            
+            $field->save();
+        }                
+        
+        return TRUE;
+        
+    }
+    
+    /**
+     * Private - Echo ACK
+     */
+    private function echo_ACK($ACK=1,$bad_elements=FALSE) {
+        $output['ACK'] = $ACK;
+        $output['bad_elements'] = $bad_elements;
+        
+        echo json_encode($output);
+    }
+    
+    /**
      * Basic Store Information
      */
     function basic_store_information() {        
@@ -310,7 +390,24 @@ class Settings extends \SC_CP_Module {
     /**
      * Ajax - Update store information
      */
-    function _update_store_information() {
+    function _update_basic_store_information() {
+        $this->SC->Validation->add_rule('storename','Store name','required');
+        $this->SC->Validation->add_rule('cleanupRate','Order cleanup rate','required|number');
+        $this->SC->Validation->add_rule('sendEmail','Outgoing email','required|email');
+        
+        if (! $this->SC->Validation->do_validation()) {
+            $this->echo_ACK(0,$this->get_update_errors());
+        }
+        
+        $this->update_fields('basic');
+        
+        //Special cases
+        $timezone = \Model\Detail::find('timezone');
+        $timezone->detail_value = $_POST['timezone'];
+        $timezone->save();
+        
+        $this->echo_ACK();
+        
         
     }     
     
@@ -399,9 +496,9 @@ class Settings extends \SC_CP_Module {
         foreach ($driver_types as $type) {
             $elements["{$type}_driver"]['HTML'] =  
                '<div class="control-group">
-                    <label class="control-label" for=\"timezone\">'.ucfirst($type).' style</label>
+                    <label class="control-label" for="'.$type.'_driver">'.ucfirst($type).' style</label>
                     <div class="controls">
-                        <select name="buttons_folder" id="buttons_folder">';  
+                        <select name="'.$type.'_driver" id="'.$type.'_driver">';  
             
             $avail_drivers = get_drivers($type);
             
@@ -427,6 +524,20 @@ class Settings extends \SC_CP_Module {
     }
     
     /**
+     * Update store display     
+     */
+     
+    function _update_store_display() {
+        foreach($_POST as $field_name => $new_value) {
+            $field = \Model\Detail::find($field_name);
+            $field->detail_value = $new_value;
+            $field->save();
+        }
+        
+        $this->echo_ACK();  
+    }
+    
+    /**
      * Payment Configuration Page
      */
     function payment_configuration() {        
@@ -434,7 +545,7 @@ class Settings extends \SC_CP_Module {
         
         $elements['paymentmethods']['HTML'] = 
             '<div class="control-group">
-                <label class="control-label" for="timezone">Enabled Payment Methods</label>
+                <label class="control-label">Enabled Payment Methods</label>
                 <div class="controls">';
         
         $enabled_gateways = explode('|',$this->SC->Config->get_setting('paymentmethods'));
@@ -469,6 +580,14 @@ class Settings extends \SC_CP_Module {
             'elements' => $elements,
             'sections' => $sections
             ));  
+    }
+    
+    /**
+     * Update Payment Configuration
+     */
+    
+    function _update_payment_configuration() {
+        print_r($_POST);
     }
     
     /**

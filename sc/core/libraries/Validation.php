@@ -37,7 +37,9 @@ class Validation extends \SC_Library {
         'required' => 'Field "[display_name]" is required',
         'email' => '"[value]" is not a valid email',
         'match' => '"[display_name]" must match',
-        'min' => '"Field "[display_name]" must be at least [1]'
+        'min' => 'Field "[display_name]" must be at least [1] characters',
+        'max' => 'Field "[display_name]" must be less than [1] characters',
+        'number' => 'Field "[display_name]" must be a number'
     );
 
     /** 
@@ -217,6 +219,27 @@ class Validation extends \SC_Library {
         }
         
         return TRUE;
-    }        
+    }   
+    
+    /**
+     * Max?
+     */    
+    function max($element_value,$max) {
+   
+    }
+   
+    /**
+     * Number?
+     *
+     * Checks to see if an element is numerical
+     *
+     * @return bool
+     *
+     * @param string $element_value The value of the element to validate
+     */ 
+    function number($element_value) {
+        return is_numeric($element_value);
+    } 
+    
 
 }

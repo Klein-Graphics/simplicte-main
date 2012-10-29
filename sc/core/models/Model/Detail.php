@@ -3,6 +3,8 @@
 namespace Model;
 
 class Detail extends \SC_Model {
+
+    static $primary_key = "detail";
     
     function get_detail_value() {
         if ($this->encoded) {

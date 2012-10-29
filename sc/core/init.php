@@ -114,14 +114,17 @@ require 'sc_model.php';
  *
  * @ignore
  */
+
 ActiveRecord\Config::initialize(function($cfg) use ($CONFIG,$sc_dir) {
-     
-    $cfg->set_model_directory(array(
-        $sc_dir.'/core/models',
-        $sc_dir.'/extensions/models'
-    )); //Declare the full path so that the models are available to the user's page
-    $cfg->set_connections($CONFIG['DATABASE']);  
+        $cfg->set_model_directory(array(
+                $sc_dir.'/core/models',
+                $sc_dir.'/extensions/models'
+        )); //Declare the full path so that the models are available to the user's page
+            
+        $cfg->set_connections($CONFIG['DATABASE']);  
 });
+die();
+
 
 //Load config class
 $SC->load_library('Config');
