@@ -238,12 +238,7 @@ class Stock extends \SC_CP_Module {
      * View/Edit Discounts
      */  
     function discounts() {
-        $discounts = \Model\Discount::all();                                
-        
-        foreach ($discounts as &$discount) {        
-            $this_discount = $discount;
-                        
-        }
+        $discounts = \Model\Discount::all();        
         
         $this->SC->CP->load_view('stock/view_discounts',array('discounts'=>$discounts));
     }
@@ -278,7 +273,36 @@ class Stock extends \SC_CP_Module {
         
         if (!$this->SC->Validation->do_validation()) {
             die(json_encode(array('ACK'=>0,'message'=>$this->SC->Validation->get_messages())));
-        }        
+        }
+        
+        //Prepare the data for the update function
+        $_POST['value'] = $_POST['discount_value'];
+        $_POST['item'] = $_POST['discount_item_id'];
+        
+        
+        $d = $this->SC->Discounts->update_discount($_POST);
+        
+        $delete_link = sc_cp('Stock/delete_discount/'.$d->id);
+        $edit_link = sc_cp('Stock/edit_discount/'.$d->id);
+        
+        $html_row = <<<HTML
+
+<tr class="item-{$d->id}">
+    <td>{$d->code}</td>
+    <td>{$d->desc}</td>
+    <td>{$d->what_it_does}</td>
+    <td>{$d->readable_expire}</td>
+    <td>
+        <button class="btn btn-mini btn-danger delete-discount" value="$delete_link"><i class="icon-remove"></i></button>
+        <button class="btn btn-mini btn-primary edit-discount" value="$edit_link"><i class="icon-pencil"></i></button>
+    </td>
+</tr>        
+HTML;
+        
+        echo json_encode(array(
+            'ACK'=>1,
+            'new_row'=>$html_row            
+        ));
            
     }
     

@@ -21,7 +21,7 @@ class Discount extends \SC_Model {
             
             case 'itemfixedoff':
                 $value = explode('-',$this->value);
-                return '$'.$discount['value'][1].' off of '.\Model\Item::find($value[0])->name;
+                return '$'.$value[1].' off of '.\Model\Item::find($value[0])->name;
             break;
             
             case 'bxgx':

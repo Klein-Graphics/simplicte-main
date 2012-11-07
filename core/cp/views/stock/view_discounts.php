@@ -54,10 +54,10 @@
                     <input type="text" id="get_amount" name="get_amount"/>
                 </div>
             </div>
-            <div class="control-group option-input">
+            <div class="control-group">
                 <label class="control-label" for="expires">Expiry date</label>
                 <div class="controls">
-                    <input type="Text" id="expires" name="expires"/>
+                    <input type="Text" id="expires" name="expires" placeholder="mm/dd/yyyy hh:mm"/>
                 </div>
             </div>
         </form>
@@ -141,6 +141,15 @@
                     $('#add_discount_message').fadeOut(function(){
                         $(this).html(result.message).fadeIn();
                     });
+                } else {
+                    $('#add_discount_message').fadeOut(function(){
+                        $(this).html('Discount added').fadeIn();
+                    });
+                    
+                    setTimeout(function() {
+                        $('#add_discount_modal').modal('hide');
+                        $('#discounts_table tbody').append(result.new_row);
+                    },1000);
                 }
             },'json'); 
         });
