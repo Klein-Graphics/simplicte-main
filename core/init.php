@@ -123,8 +123,6 @@ ActiveRecord\Config::initialize(function($cfg) use ($CONFIG,$sc_dir) {
             
         $cfg->set_connections($CONFIG['DATABASE']);  
 });
-die();
-
 
 //Load config class
 $SC->load_library('Config');
