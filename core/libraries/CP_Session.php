@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Control Panel Session Library
  * 
@@ -22,10 +21,11 @@ class CP_Session extends \SC_Library {
     function __construct() {
         global $CONFIG;
         parent::__construct();
-
+            
         session_name("PHPSESSID_CP");        
+
         $cookie_params = session_get_cookie_params();
-        session_set_cookie_params($cookie_params['lifetime'],$CONFIG['URL'].'/sc/cp');
+        session_set_cookie_params($cookie_params['lifetime'],$CONFIG['URL'].'/sc');
                
         session_start();        
     } 
