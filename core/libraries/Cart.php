@@ -698,11 +698,11 @@
             $transaction = $this->SC->Transactions->get_transcation($transcation);
         }        
         
-        return 
+        return round( 
             $this->subtotal($transaction->items) 
             - $transaction->discount 
             + $transaction->shipping 
-            + $transaction->taxrate;
+            + $transaction->taxrate,2);
     }
 
 }
