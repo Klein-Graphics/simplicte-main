@@ -141,16 +141,17 @@ class Paypal_EC extends \SC_Gateway_Driver {
     }
     
     private function set_express_checkout() {
+    
         $data = array(
             'METHOD' => 'SetExpressCheckout',
             'VERSION' => '88.0',
             'USER' => $this->SC->Config->get_setting('paypaluser'),
             'PWD' => $this->SC->Config->get_setting('paypalpwd'),
             'SIGNATURE' => $this->SC->Config->get_setting('paypalsignature'),
-            'PAYMENTREQUEST_0_AMT' => number_format($this->t->total,2),
-            'PAYMENTREQUEST_0_ITEMAMT' => number_format($this->t->subtotal,2),
-            'PAYMENTREQUEST_0_SHIPPINGAMT' => number_format($this->t->shipping,2),
-            'PAYMENTREQUEST_0_TAXAMT' => number_format($this->t->taxrate,2),
+            'PAYMENTREQUEST_0_AMT' => number_format($this->t->total,2,'.',''),
+            'PAYMENTREQUEST_0_ITEMAMT' => number_format($this->t->subtotal - $this->t->discount,2,'.',''),
+            'PAYMENTREQUEST_0_SHIPPINGAMT' => number_format($this->t->shipping,2,'.',''),
+            'PAYMENTREQUEST_0_TAXAMT' => number_format($this->t->taxrate,2,'.',''),
             'PAYMENTREQUEST_0_PAYMENTACTION' => 'Sale',  
             'PAYMENTREQUEST_0_INVNUM' => $this->t->ordernumber,            
             'RETURNURL' => sc_location('core/includes/paypal_confirm.php'),
@@ -193,18 +194,25 @@ class Paypal_EC extends \SC_Gateway_Driver {
                 $options_string .= \Model\Itemoption::find($option['id'])->name.'.';
             }   
             $data["L_PAYMENTREQUEST_0_DESC$key"] = str_trunc($options_string,127);
-            $data["L_PAYMENTREQUEST_0_AMT$key"] = number_format($this->SC->Cart->line_total($item),2);
+            $data["L_PAYMENTREQUEST_0_AMT$key"] = number_format($item['price'],2,'.','');
             $data["L_PAYMENTREQUEST_0_NUMBER$key"] = $item['data']->number;
             $data["L_PAYMENTREQUEST_0_QTY$key"] = $item['quantity'];
             $data["L_PAYMENTREQUEST_0_TAXAMT$key"] = number_format(round($item['price']
                                                      *$this->SC->Config->get_setting('salestax')
-                                                     *(! $this->SC->Items->item_flag($item['id'],'notax')),2)*$tax,2);
+                                                     *(! $this->SC->Items->item_flag($item['id'],'notax')),2)*$tax,2,'.','');
             $data["L_PAYMENTREQUEST_0_ITEMWEIGHTVALUE$key"] = $item['data']->weight;                      
             $data["L_PAYMENTREQUEST_0_ITEMWEIGHTUNIT$key"] = 'lbs';                               
             $data["L_PAYMENTREQUEST_0_ITEMCATEGORY$key"] = ($this->SC->Items->item_flag($item['id'],'digital')) 
                                                             ? 'Digital'
                                                             : 'Physical';             
         }
+        
+        if ($this->t->discount) {
+            $key++;
+            $data["L_PAYMENTREQUEST_0_NAME$key"] = 'Discount';
+            $data["L_PAYMENTREQUEST_0_AMT$key"] = -$this->t->discount;
+            
+        }      
         
         $result = $this->paypal_api_call($data);
         

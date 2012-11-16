@@ -47,7 +47,8 @@ class Shipping extends \SC_Library {
         } else {
             $this->shipping_drivers = FALSE;
             $this->shipping_enabled = FALSE;
-        }        
+        }                
+        
     }
     
     /**

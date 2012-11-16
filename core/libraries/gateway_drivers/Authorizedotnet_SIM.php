@@ -217,7 +217,7 @@ HTML;
             $num++;
             $inputs['x_line_item'][] = 
                 "item$num<|>".str_trunc($this->SC->Items->item_name($item['id']),31).
-                "<|><|>{$item['quantity']}<|>".$this->SC->Cart->line_total($item)."<|>"
+                "<|><|>{$item['quantity']}<|>".$item['price']."<|>"
                 .(($this->SC->Items->item_flag($item['id'],'notax')) ? 'FALSE' : 'TRUE');
         }
         
