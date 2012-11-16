@@ -35,7 +35,7 @@
          <tr><td>Total:</td><td><?=number_format($order_totals['total'],2)?></td></tr>                  
 
     </table>
-    <?php if ($this->Shipping->shipping_enabled && $shipping_required && is_numeric($order_totals['shipping'])) : ?> 
+    <?php if (!($this->Shipping->shipping_enabled && $shipping_required && !is_numeric($order_totals['shipping']))) : ?> 
     <input type="button" class="sc_verify_cart_submit" value="Continue To Payment" />
     <?php endif ?>
 </form>
