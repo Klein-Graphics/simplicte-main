@@ -86,6 +86,8 @@ class Discounts extends \SC_Library {
      * * bamount (Optional) - The "buy" amount when doing a "buy-x get-y" type discount, if applicable.
      * * gamount (Optional) - The "get" amount when doing a "buy-x get-y" type discount, if applicable.
      * * discount - Unix time of when the discount should expire.
+     *
+     * @return obj Returns the discount DB object
      */
     function update_discount($in_discount) {
         if ( !($discount = \Model\Discount::find(array('code'=>$in_discount['code'])))) {

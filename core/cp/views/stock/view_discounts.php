@@ -91,9 +91,11 @@
 <?php endforeach ?>        
     </tbody>
 </table>
+<script type="text/javascript" src="<?=sc_asset('js','jquery.liveSearch.js')?>"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $(".option-input").hide();
+        $("#discount_item").liveSearch({url:"<?=sc_ajax('live_search/items/name/')?>"});
         $('#action').change(function() {
             
             $(".option-input").hide();
@@ -132,6 +134,8 @@
                 break;
             }
         });
+        
+        $('#discount_item').liveSearch
         
         $('#create_update_discount').submit(function(e) {
             e.preventDefault();

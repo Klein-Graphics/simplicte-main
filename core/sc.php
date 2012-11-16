@@ -132,7 +132,6 @@ class SC {
      */
     function load_ajax($call,$data=array()) {                        
       if ($call) {
-        
         //normalize view name
         $call = strtolower($call);                      
         
@@ -151,10 +150,9 @@ class SC {
             $controller = false;  
         } 
         
-                       
         //Execute the possible ajax function
-        if (function_exists("\Ajax\\$call")) {
-            $return_vars = call_user_func_array("\Ajax\\$call",$data);
+        if (function_exists('\Ajax\\'.str_replace('/','\\',$call))) {
+            $return_vars = call_user_func_array('\Ajax\\'.str_replace('/','\\',$call),$data);
 
             if (is_array($return_vars)) {
                 foreach ($return_vars as $name => $value) {
