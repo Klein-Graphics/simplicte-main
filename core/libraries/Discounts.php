@@ -137,7 +137,7 @@ class Discounts extends \SC_Library {
 			            );
 				        $cartArray[$discount_item]['quantity'] = 1;
 			        }
-			        $cartArray[$discount_item]['price'] *= (100 - $discount['percent'])*0.01;
+			        $cartArray[$discount_item]['price'] *= round((100 - $discount['percent'])*0.01);
 		        break;
 		
 		        case 'itemfixedoff':
@@ -228,7 +228,7 @@ class Discounts extends \SC_Library {
         
             switch ($discount['type']) {
 	            case 'percentoff':
-		            $return = $total * $discount['percent']*0.01;
+		            $return = round($total * $discount['percent']*0.01,2);
 	            break;
 	
 	            case 'fixedoff':
