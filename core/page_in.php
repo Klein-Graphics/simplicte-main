@@ -11,15 +11,15 @@
  * @see Core/page_out.php
  */
 try {
-$page_cwd = getcwd();
+    $page_cwd = getcwd();
     require 'init.php'; //Initialize Simplecart
     $sc_cwd = getcwd();
 
     $SC->load_library('Session'); //Get sessions ready
     $SC->load_library('Page_loading'); //Pageloading library
-    } catch (ActiveRecord\DatabaseException $e) {
+} catch (ActiveRecord\DatabaseException $e) {
     //DB is broken, tell simplecart to abandon ship.
-    define(SC_STOP,true);
+    define('SC_STOP',true);
      
 }
 
