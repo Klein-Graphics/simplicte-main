@@ -186,20 +186,20 @@ foreach ($statuses as $status) : ?>
                 </ul>
             </td>
             <td>
-                $<?=$t->subtotal?>
+                $<?=number_format($t->subtotal,2)?>
             </td>
             <td>
-                $<?=$t->taxrate?>
+                $<?=number_format($t->taxrate,2)?>
             </td>
             <td>
-                $<?=$t->shipping?><br>
+                $<?=number_format($t->shipping,2)?><br>
                 <em><?=$t->ship_name?></em>
             </td>
             <td>
-                -$<?=$t->discount?>
+                -$<?=number_format($t->discount,2)?>
             </td>
             <td>
-                $<?=$this->SC->Cart->calculate_soft_total($t)?>
+                $<?=number_format($this->SC->Cart->calculate_soft_total($t),2)?>
             </td>
             <td>
                 <a href="<?=sc_cp('Transactions/delete_transaction/'.$t->id)?>" title="Delete Transaction" class="delete-transaction">
