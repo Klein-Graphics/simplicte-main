@@ -44,7 +44,7 @@ class Item extends \SC_Model {
     
     //Getters        
     function get_price() {
-        return number_format($this->read_attribute('price'),2);
+        return round($this->read_attribute('price'),2);
     }
 
 }
