@@ -71,15 +71,15 @@
 <?php endforeach ?> 
         </tbody>
         <tfoot>    
-            <tr><td colspan="3">Sub-Total:</td><td>$<?=$SC->Cart->subtotal($cart)?></td></tr>
+            <tr><td colspan="3">Sub-Total:</td><td>$<?=number_format($SC->Cart->subtotal($cart),2)?></td></tr>
 <?php if ($t->discount) : ?>
-            <tr><td colspan="3">Discount:</td><td>$<?=$t->discount?></td></tr>
+            <tr><td colspan="3">Discount:</td><td>$<?=number_format($t->discount,2)?></td></tr>
 <?php endif ?>
 <?php if ($t->shipping) : ?>
-            <tr><td colspan="3">Shipping:</td><td>$<?=$t->shipping?></td></tr>
+            <tr><td colspan="3">Shipping:</td><td>$<?=number_format($t->shipping,2)?></td></tr>
 <?php endif ?>
-            <tr><td colspan="3">Tax</td><td>$<?=$t->taxrate?></td><tr>
-            <tr><td colspan="3">Total</td><td>$<?=$SC->Cart->calculate_soft_total($t)?></td></tr>
+            <tr><td colspan="3">Tax</td><td>$<?=number_format($t->taxrate,2)?></td><tr>
+            <tr><td colspan="3">Total</td><td>$<?=number_format($SC->Cart->calculate_soft_total($t),2)?></td></tr>
         </tfoot>
     </table><!--#sc_receipt_totals-->
 </div><!--#sc_receipt_body-->
