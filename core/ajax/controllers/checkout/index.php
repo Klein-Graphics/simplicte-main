@@ -15,7 +15,7 @@
     exit;
  }
  
- if ($this->Cart->is_empty($this->Session->transaction)) {
+ if ($this->Cart->is_empty($this->Session->get_open_transaction())) {
     header("HTTP/1.1 204 No Content");
     exit;
  }
