@@ -254,36 +254,39 @@ class Stock extends \SC_CP_Module {
             switch ($_POST['action']) {
                 case 'percentoff':
                 case 'fixedoff':
-                    $this->SC->Validation->Add_Rule('discount_value','Discount','required');
+                    $this->SC->Validation->Add_Rule('value','Discount','required');
                 break;
                 
                 case 'itempercentoff':
                 case 'itemfixedoff':
-                    $this->SC->Validation->Add_Rule('discount_value','Discount','required');
-                    $this->SC->Validation->Add_Rule('discount_item_num','Item','required');
+                    $this->SC->Validation->Add_Rule('value','Discount','required');
+                    $this->SC->Validation->Add_Rule('item','Item','required');
                 break;
                 
                 case 'bxgx':
-                    $this->SC->Validation->Add_Rule('discount_item_num','Item','required');
-                    $this->SC->Validation->Add_rule('buy_amount','X Amount','required');
-                    $this->SC->Validation->Add_rule('get_amount','Y Amount','required');
+                    $this->SC->Validation->Add_Rule('item','Item','required');
+                    $this->SC->Validation->Add_rule('bamount','X Amount','required');
+                    $this->SC->Validation->Add_rule('gamount','Y Amount','required');
                 break;
             }
         }
         
-        if (!$this->SC->Validation->do_validation()) {
-            die(json_encode(array('ACK'=>0,'message'=>$this->SC->Validation->get_messages())));
+        if ( !isset($_POST['id']) || !$_POST['id']
+             && \Model\Discount::find( array('conditions' => array('code = ? AND (expires AND expires < ? )=FALSE',$_POST['code'],time())) ))
+        {
+            $this->SC->Validation->messages[] = 'There is already an unexpired discount with this code.';
         }
         
-        //Prepare the data for the update function
-        $_POST['value'] = $_POST['discount_value'];
-        $_POST['item'] = $_POST['discount_item_id'];
+        if (!$this->SC->Validation->do_validation()) {
+            die(json_encode(array('ACK'=>0,'message'=>$this->SC->Validation->get_messages())));
+        }          
         
+        $_POST['expires'] = strtotime($_POST['expires']);        
         
         $d = $this->SC->Discounts->update_discount($_POST);
         
         $delete_link = sc_cp('Stock/delete_discount/'.$d->id);
-        $edit_link = sc_cp('Stock/edit_discount/'.$d->id);
+        $edit_link = sc_cp('Stock/get_discount/'.$d->id);
         
         $html_row = <<<HTML
 
@@ -293,8 +296,8 @@ class Stock extends \SC_CP_Module {
     <td>{$d->what_it_does}</td>
     <td>{$d->readable_expire}</td>
     <td>
-        <button class="btn btn-mini btn-danger delete-discount" value="$delete_link"><i class="icon-remove"></i></button>
         <button class="btn btn-mini btn-primary edit-discount" value="$edit_link"><i class="icon-pencil"></i></button>
+        <button class="btn btn-mini btn-danger delete-discount" value="$delete_link"><i class="icon-remove"></i></button>        
     </td>
 </tr>        
 HTML;
@@ -306,8 +309,39 @@ HTML;
            
     }
     
-    function _delete_discount() {
+    function _get_discount($id) {
+        $discount = \Model\Discount::find($id);
+        $discount = $this->SC->Discounts->parse_discount($discount);        
+        
+        //Data that needs to be translated for the input fields        
+        $discount['item_name'] = \Model\Item::find($discount['item'])->name;        
+        if (isset($discount['percent'])) {
+            $discount['value'] = $discount['percent'];
+            unset($discount['percent']);
+        } else if (isset($discount['amount'])) {
+            $discount['value'] = $discount['amount'];
+            unset($discount['amount']);
+        }
+        
+        if ($discount['expires']) {
+            $discount['expires'] = date('m/d/Y H:i',$discount['expires']);
+        } else {
+            unset($discount['expires']);
+        }        
+        
+        //Stupid non-standard DB names
+        $discount['desc'] = $discount['description'];
+        unset($discount['description']);
+        
+        echo json_encode($discount);
+    }
     
+    function _delete_discount($id) {
+        $this->SC->Discounts->delete_discount($id);
+        
+        echo json_encode(array(
+            'ACK'=>1
+        ));
     }
     
     /*

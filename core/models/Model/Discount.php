@@ -16,7 +16,7 @@ class Discount extends \SC_Model {
             
             case 'itempercentoff':
                 $value = explode('-',$this->value);
-                return '%'.$value[1].' off of '.\Model\Item::find($value[0])->name;
+                return $value[1].'% off of '.\Model\Item::find($value[0])->name;
             break;
             
             case 'itemfixedoff':
@@ -26,7 +26,7 @@ class Discount extends \SC_Model {
             
             case 'bxgx':
                 $value = explode(',',$this->value);
-                return 'Buy '.$value[1].' of '.\Model\Item::find($value[0]->name).' and get '.$value.' free';
+                return 'Buy '.$value[1].' of '.\Model\Item::find($value[0])->name.' and get '.$value[2].' free';
             break;        
         }
     }

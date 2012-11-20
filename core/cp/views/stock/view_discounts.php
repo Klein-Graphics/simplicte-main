@@ -5,6 +5,7 @@
     </div>
     <div class="modal-body">
         <form id="create_update_discount" class="form-horizontal" action="<?=sc_cp('Stock/update_discount')?>">
+            <input type="hidden" id="id" name="id" />
             <div class="control-group">
                 <label class="control-label" for="code">Discount Code</label>
                 <div class="controls">
@@ -31,27 +32,27 @@
                 </div>
             </div>
             <div class="control-group option-input">
-                <label class="control-label" for="discount_item">Item</label>
+                <label class="control-label" for="item_name">Item</label>
                 <div class="controls">
-                    <input type="text" id="discount_item" name="discount_item" placeholder="Start typing item name"/><input type="hidden" id="discount_item_num"/>
+                    <input type="text" id="item_name" name="item_name" placeholder="Start typing item name"/><input type="hidden" id="item" name="item"/>
                 </div>
             </div>
             <div class="control-group option-input">
-                <label class="control-label" for="discount_value">Discount</label>
+                <label class="control-label" for="value">Discount</label>
                 <div class="controls">
-                    <div class="input-prepend"><span class="add-on">%</span><input type="text" class="span2" id="discount_value" name="discount_value"/></div>          
+                    <div class="input-prepend"><span class="add-on">%</span><input type="text" class="span2" id="value" name="value"/></div>          
                 </div>
             </div>
             <div class="control-group option-input">
-                <label class="control-label" for="buy_amount">X Amount</label>
+                <label class="control-label" for="bamount">X Amount</label>
                 <div class="controls">
-                    <input type="text" id="buy_amount" name="buy_amount" />
+                    <input type="text" id="bamount" name="bamount" />
                 </div>
             </div>
             <div class="control-group option-input">
-                <label class="control-label" for="get_amount">Y Amount</label>
+                <label class="control-label" for="gamount">Y Amount</label>
                 <div class="controls">
-                    <input type="text" id="get_amount" name="get_amount"/>
+                    <input type="text" id="gamount" name="gamount"/>
                 </div>
             </div>
             <div class="control-group">
@@ -84,8 +85,8 @@
             <td><?=$d->what_it_does?></td>
             <td><?=$d->readable_expire?></td>
             <td>
-                <button class="btn btn-mini btn-danger delete-discount" value="<?=sc_cp('Stock/delete_discount/'.$d->id)?>"><i class="icon-remove"></i></button>
-                <button class="btn btn-mini btn-primary edit-discount" value="<?=sc_cp('Stock/edit_discount/'.$d->id)?>"><i class="icon-pencil"></i></button>
+                <button class="btn btn-mini btn-primary edit-discount" value="<?=sc_cp('Stock/get_discount/'.$d->id)?>"><i class="icon-pencil"></i></button>
+                <button class="btn btn-mini btn-danger delete-discount" value="<?=sc_cp('Stock/delete_discount/'.$d->id)?>"><i class="icon-remove"></i></button>                
             </td>
         </tr>
 <?php endforeach ?>        
@@ -95,47 +96,62 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $(".option-input").hide();
-        $("#discount_item").liveSearch({url:"<?=sc_ajax('live_search/items/name/')?>"});
+        $("#add_discount_modal").on('hidden', function() {
+            $('#create_update_discount input').val('');
+            $('#action').val('').change();
+            $('#add_discount_message').hide();
+        });
+        $("#item_name").liveSearch({
+            url:"<?=sc_ajax('live_search/items/name/')?>",
+            onLoad:function() {
+                $('.sc_live_search_result').click(function(e) {
+                    e.preventDefault();
+                    
+                    $('#item').val($(this).data('id'));
+                    $('#item_name').val($(this).html());
+                    $('#jquery-live-search').slideUp();
+                });
+            }
+        });
+        
         $('#action').change(function() {
             
             $(".option-input").hide();
             
             switch ($(this).val()) {
                 case "percentoff":
-                    $("#discount_value")
+                    $("#value")
                         .closest('.control-group').show()
                         .find('.add-on').html('%');     
                 break;
                 
                 case "fixedoff":
-                    $("#discount_value")
+                    $("#value")
                         .closest('.control-group').show()
                         .find('.add-on').html('$');     
                 break;
 
                 case "itempercentoff":
-                    $("#discount_value")
+                    $("#value")
                         .closest('.control-group').show()
                         .find('.add-on').html('%'); 
-                    $("#discount_item_num").closest('.control-group').show(); 
+                    $("#item_name").closest('.control-group').show(); 
                 break;
                 
                 case "itemfixedoff":   
-                    $("#discount_value")
+                    $("#value")
                         .closest('.control-group').show()
                         .find('.add-on').html('$');     
-                    $("#discount_item_num").closest('.control-group').show();    
+                    $("#item_name").closest('.control-group').show();    
                 break;
 
                 case "bxgx":
-                    $("#discount_item_num").closest('.control-group').show();      
-                    $("#buy_amount").closest('.control-group').show();        
-                    $("#get_amount").closest('.control-group').show();     
+                    $("#item_name").closest('.control-group').show();      
+                    $("#bamount").closest('.control-group').show();        
+                    $("#gamount").closest('.control-group').show();     
                 break;
             }
         });
-        
-        $('#discount_item').liveSearch
         
         $('#create_update_discount').submit(function(e) {
             e.preventDefault();
@@ -152,10 +168,68 @@
                     
                     setTimeout(function() {
                         $('#add_discount_modal').modal('hide');
-                        $('#discounts_table tbody').append(result.new_row);
+                        
+                        var new_class = $(result.new_row).filter('tr').attr('class');
+                        var old_row = $('.'+new_class);                                                                        
+                        
+                        if (old_row.length) {
+                            old_row.replaceWith(result.new_row);
+                        } else 
+                            $('#discounts_table tbody').append(result.new_row);
+                         
+                            
+                        $('.'+new_class+' .delete-discount').click(function(e) {
+                            e.preventDefault();
+                            link = $(this);
+                             console.log(link);
+                            
+                            $.post($(this).val(),function(data) {
+                                if (data.ACK == 1) {
+                                    console.log(
+                                    link.closest('tr').fadeOut()
+                                    );
+                                }
+                            },'JSON');
+                        });
+                        
+                        $('.'+new_class+' .delete-discount').click(function(e) {
+                            e.preventDefault();
+            
+                            $.post($(this).val(),function(item) {
+                                for (var name in item) {
+                                    $('#'+name).val(item[name]);                                                            
+                                }
+                                $('#action').change();
+                                $('#add_discount_modal').modal('show');
+                            },'JSON');                        
+                        });
                     },1000);
                 }
             },'json'); 
+        });
+        
+        $('.delete-discount').click(function(e) {
+            e.preventDefault();
+            link = $(this);
+            
+            $.post($(this).val(),function(data) {
+                if (data.ACK == 1) {
+                    link.closest('tr').fadeOut();
+                }
+            },'JSON');
+        });
+        
+        
+        $('.edit-discount').click(function(e) {
+            e.preventDefault();
+            
+            $.post($(this).val(),function(item) {
+                for (var name in item) {
+                    $('#'+name).val(item[name]);                                                            
+                }
+                $('#action').change();
+                $('#add_discount_modal').modal('show');
+            },'JSON');                        
         });
         
         $('#save_discount').click(function(e) {

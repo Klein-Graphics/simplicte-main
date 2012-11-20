@@ -25,7 +25,7 @@ class Discounts extends \SC_Library {
      *
      * @param string $code The discount code
      */
-    function get_discount($code) {            
+    function get_discount($code) {                            
         $discount = \Model\Discount::first(array(
             'conditions' => array('code = ? AND (expires AND expires<'.time().')=FALSE',$code)
         ));	                        
@@ -33,9 +33,24 @@ class Discounts extends \SC_Library {
         //('percentoff','fixedoff','bxgx','itempercentoff','itemfixedoff')
         if (!$discount) {
 	        return FALSE;        
-        }
+        }        
         
-        $return['action'] = $discount->action;
+        return $this->parse_discount($discount);
+    }
+    
+    /**
+     * Parse discount
+     *
+     * Takes a discount DB object and parses it and returns a pretty array.
+     *
+     * @return array[] An array containing all the discount's values
+     */
+    
+    function parse_discount($discount) {
+        $return = array_intersect_key(
+            $discount->to_array(),
+            array_flip(array('action','code','expires','id'))
+            );                    
         $return['description'] = $discount->desc;
 
         switch ($discount->action) {
@@ -70,6 +85,8 @@ class Discounts extends \SC_Library {
 
         return $return;
     }
+     
+    
     
     /**
      * Update discount
@@ -86,11 +103,14 @@ class Discounts extends \SC_Library {
      * * bamount (Optional) - The "buy" amount when doing a "buy-x get-y" type discount, if applicable.
      * * gamount (Optional) - The "get" amount when doing a "buy-x get-y" type discount, if applicable.
      * * discount - Unix time of when the discount should expire.
+     * * id (Optional) - If updating and not creating, you may supply the array to be replaced 
      *
      * @return obj Returns the discount DB object
      */
     function update_discount($in_discount) {
-        if ( !($discount = \Model\Discount::find(array('code'=>$in_discount['code'])))) {
+        if ($in_discount['id']) {
+            $discount = \Model\Discount::find($in_discount['id']);
+        } else {
             $discount = new \Model\Discount();
         }
         
@@ -128,10 +148,12 @@ class Discounts extends \SC_Library {
     
     /**
      * Delete discount
-     * @todo
+     * 
      */
-    function delete_discount() {
-    
+    function delete_discount($id) {
+       \Model\Discount::find($id)->delete();
+       
+       return true;
     }   
     
     /**
