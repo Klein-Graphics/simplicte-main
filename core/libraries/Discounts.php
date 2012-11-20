@@ -20,12 +20,12 @@ class Discounts extends \SC_Library {
      * Looks up the provided discount code and returns information about it
      *
      * @return array Returns an assoc array with the following possible keys: 
-     * 'type', 'description', 'single', 'item', 'percent', 'amount', 'bamount',
+     * 'action', 'description', 'single', 'item', 'percent', 'amount', 'bamount',
      * 'gamount'
      *
      * @param string $code The discount code
      */
-    function get_discount($code) {            
+    function get_discount($code) {                            
         $discount = \Model\Discount::first(array(
             'conditions' => array('code = ? AND (expires AND expires<'.time().')=FALSE',$code)
         ));	                        
@@ -33,9 +33,24 @@ class Discounts extends \SC_Library {
         //('percentoff','fixedoff','bxgx','itempercentoff','itemfixedoff')
         if (!$discount) {
 	        return FALSE;        
-        }
+        }        
         
-        $return['type'] = $discount->action;
+        return $this->parse_discount($discount);
+    }
+    
+    /**
+     * Parse discount
+     *
+     * Takes a discount DB object and parses it and returns a pretty array.
+     *
+     * @return array[] An array containing all the discount's values
+     */
+    
+    function parse_discount($discount) {
+        $return = array_intersect_key(
+            $discount->to_array(),
+            array_flip(array('action','code','expires','id'))
+            );                    
         $return['description'] = $discount->desc;
 
         switch ($discount->action) {
@@ -70,21 +85,75 @@ class Discounts extends \SC_Library {
 
         return $return;
     }
+     
+    
     
     /**
-     * Create discount
-     * @todo
+     * Update discount
+     * 
+     * Updates or creates a discount. Accepts an array containing the details of the discount. 
+     * The keys are as follows:
+     * * action - The type of discount. itempercentoff, itemfixedoff, bxgx, percentoff, fixedoff
+     * * code - The code the customer will enter at checkout
+     * * desc (Optional) - The description of the discount. Will be displayed to the
+     *   customer when they enter the discount.
+     * * value (Optional) - Either the dollar off amount or the percentage amount (as a percentage i.e. 
+     *   50 for 50%, not .5), if applicable.
+     * * item (Optional) - The DB ID of the item that discount applies to, if applicable.
+     * * bamount (Optional) - The "buy" amount when doing a "buy-x get-y" type discount, if applicable.
+     * * gamount (Optional) - The "get" amount when doing a "buy-x get-y" type discount, if applicable.
+     * * discount - Unix time of when the discount should expire.
+     * * id (Optional) - If updating and not creating, you may supply the array to be replaced 
+     *
+     * @return obj Returns the discount DB object
      */
-    function create_discount() {
+    function update_discount($in_discount) {
+        if ($in_discount['id']) {
+            $discount = \Model\Discount::find($in_discount['id']);
+        } else {
+            $discount = new \Model\Discount();
+        }
+        
+        $discount->action = $in_discount['action'];
+        $discount->code = $in_discount['code'];
+        $discount->expires = isset($in_discount['expires']) ? $in_discount['expires'] : 0 ;
+        $discount->desc = isset($in_discount['desc']) ? $in_discount['desc'] : '';
+        
+        switch ($discount->action) {
+            case 'itempercentoff':
+            case 'itemfixedoff':
+                $discount->value = $in_discount['item'].'-'.$in_discount['value'];                            
+            break;
+            
+            case 'percentoff':
+            case 'fixedoff':
+                $discount->value = $in_discount['value'];
+            break;
+            
+            case 'bxgx':
+                $discount->value = $in_discount['item'].','.$in_discount['bamount'].','.$in_discount['gamount'];
+            break;
+            
+            default:
+                trigger_error('Invalid discount action in function "create_discount"',E_USER_WARNING);
+                return FALSE;
+            break;
+        } 
+        
+        $discount->save();                       
+        
+        return $discount;
     
     }
     
     /**
      * Delete discount
-     * @todo
+     * 
      */
-    function delete_discount() {
-    
+    function delete_discount($id) {
+       \Model\Discount::find($id)->delete();
+       
+       return true;
     }   
     
     /**
@@ -126,7 +195,7 @@ class Discounts extends \SC_Library {
         }
 
         if ($discount_item !== FALSE) {
-	        switch($discount['type']) {
+	        switch($discount['action']) {
 		        case 'itempercentoff':
 			        if ($cartArray[$discount_item]['quantity'] > 1) {
 				        $cartArray[] = array(
@@ -226,7 +295,7 @@ class Discounts extends \SC_Library {
         
         if ($discount) {
         
-            switch ($discount['type']) {
+            switch ($discount['action']) {
 	            case 'percentoff':
 		            $return = round($total * $discount['percent']*0.01,2);
 	            break;

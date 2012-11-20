@@ -238,4 +238,16 @@ label.inline {
     
 }
 
+/*Live Search*/
+#jquery-live-search {
+    z-index: 1051;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+#jquery-live-search li {
+    list-style: none;
+    
+}
+
 

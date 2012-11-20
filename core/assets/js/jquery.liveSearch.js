@@ -51,7 +51,8 @@ jQuery.fn.liveSearch = function (conf) {
 		duration:		400, 
 		typeDelay:		200,
 		loadingClass:	'loading', 
-		onSlideUp:		function () {}, 
+		onSlideUp:		function () {},
+		onLoad:         function () {},
 		uptadePosition:	false
 	}, conf);
 
@@ -113,6 +114,7 @@ jQuery.fn.liveSearch = function (conf) {
 			$(window).bind('resize', repositionLiveSearch);
 
 			liveSearch.slideDown(config.duration);
+			config.onLoad();
 		};
 
 		// Hides live-search for this input
