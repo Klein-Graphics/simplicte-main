@@ -181,18 +181,15 @@
                         $('.'+new_class+' .delete-discount').click(function(e) {
                             e.preventDefault();
                             link = $(this);
-                             console.log(link);
                             
                             $.post($(this).val(),function(data) {
                                 if (data.ACK == 1) {
-                                    console.log(
                                     link.closest('tr').fadeOut()
-                                    );
                                 }
                             },'JSON');
                         });
                         
-                        $('.'+new_class+' .delete-discount').click(function(e) {
+                        $('.'+new_class+' .edit-discount').click(function(e) {
                             e.preventDefault();
             
                             $.post($(this).val(),function(item) {
