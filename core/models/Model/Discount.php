@@ -34,6 +34,10 @@ class Discount extends \SC_Model {
     function get_readable_expire() {
         return $this->expires ? date('m/d/Y H:i',$this->expires) : 'Never';
     }
+    
+    function get_modifiers() {
+        return(json_decode($this->read_attribute('modifiers')));
+    }       
 
 
 }

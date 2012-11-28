@@ -49,7 +49,7 @@ class Discounts extends \SC_Library {
     function parse_discount($discount) {
         $return = array_intersect_key(
             $discount->to_array(),
-            array_flip(array('action','code','expires','id'))
+            array_flip(array('action','code','expires','id','modifiers'))
             );                    
         $return['description'] = $discount->desc;
 
@@ -103,6 +103,8 @@ class Discounts extends \SC_Library {
      * * bamount (Optional) - The "buy" amount when doing a "buy-x get-y" type discount, if applicable.
      * * gamount (Optional) - The "get" amount when doing a "buy-x get-y" type discount, if applicable.
      * * discount - Unix time of when the discount should expire.
+     * * modifiers - Array of modifiers. This will just be turned into a JSON string, so you can basically
+     *   pass these in whatever way works best for that individual modifier
      * * id (Optional) - If updating and not creating, you may supply the array to be replaced 
      *
      * @return obj Returns the discount DB object
@@ -118,6 +120,7 @@ class Discounts extends \SC_Library {
         $discount->code = $in_discount['code'];
         $discount->expires = isset($in_discount['expires']) ? $in_discount['expires'] : 0 ;
         $discount->desc = isset($in_discount['desc']) ? $in_discount['desc'] : '';
+        $discount->modifers = $in_discount['modifiers'];
         
         switch ($discount->action) {
             case 'itempercentoff':
@@ -309,4 +312,9 @@ class Discounts extends \SC_Library {
 	    
 	    return $return;            
     }
+    
+    function modifier_isset($discount,$modifier) {
+        $discount = \Model
+    }
+    
 }
