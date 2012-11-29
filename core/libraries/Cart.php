@@ -634,7 +634,7 @@
             
             $this->SC->Messaging->message_store('A customer has attempted to purchase an item requiring shipping, 
             but you have no shipping methods available! <a href="'.sc_cp('Settings/shipping').'" title="Control 
-            Panel">Remedy this by navigating to your control panel settings</a> and enableding shipping.',
+            Panel">Remedy this by navigating to your control panel settings</a> and enabling shipping.',
             'URGENT MESSAGE FROM YOUR eSTORE!');
         }
         
@@ -651,6 +651,11 @@
             } else {
                 $messages[] = $ship_foo;
             }
+        }
+        
+        if ($discount_code && $this->SC->Discounts->modifier_isset($discount_code,'free_shipping')) {
+            //Check if they have free shipping
+            $shipping = 0;
         }
         
         //Calculate tax

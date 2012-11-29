@@ -36,7 +36,11 @@ class Discount extends \SC_Model {
     }
     
     function get_modifiers() {
-        return(json_decode($this->read_attribute('modifiers')));
+        return json_decode($this->read_attribute('modifiers'),true);
+    }
+    
+    function set_modifiers($modifiers) {
+        $this->assign_attribute('modifiers',json_encode($modifiers));
     }       
 
 

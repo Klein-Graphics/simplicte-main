@@ -81,10 +81,14 @@ if ($transaction->status == "opened") {
     ));
 }
 
+//Shipping
 $shipping_method = isset($_POST['shipping_method']) ? $_POST['shipping_method'] : $transaction->shipping_method;
-$discount_code = isset($_POST['discount']) ? $_POST['discount'] : $transaction->discount;
 $shipping_required = $this->Cart->shipping_required($cart);
 
+//Discounts
+$discount_code = isset($_POST['discount']) ? $_POST['discount'] : $transaction->discount;
+
+//Calculate totals
 $order_totals = $this->Cart->calculate_total($transaction,$shipping_method,$discount_code);
 
 $messages += $order_totals['messages'];

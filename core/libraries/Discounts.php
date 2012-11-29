@@ -49,8 +49,9 @@ class Discounts extends \SC_Library {
     function parse_discount($discount) {
         $return = array_intersect_key(
             $discount->to_array(),
-            array_flip(array('action','code','expires','id','modifiers'))
+            array_flip(array('action','code','expires','id'))
             );                    
+        $return['modifiers'] = $discount->modifiers;
         $return['description'] = $discount->desc;
 
         switch ($discount->action) {
@@ -103,8 +104,7 @@ class Discounts extends \SC_Library {
      * * bamount (Optional) - The "buy" amount when doing a "buy-x get-y" type discount, if applicable.
      * * gamount (Optional) - The "get" amount when doing a "buy-x get-y" type discount, if applicable.
      * * discount - Unix time of when the discount should expire.
-     * * modifiers - Array of modifiers. This will just be turned into a JSON string, so you can basically
-     *   pass these in whatever way works best for that individual modifier
+     * * modifiers - Array of modifiers. Key is the modifier name, and the value is whatever you need it to be
      * * id (Optional) - If updating and not creating, you may supply the array to be replaced 
      *
      * @return obj Returns the discount DB object
@@ -119,8 +119,8 @@ class Discounts extends \SC_Library {
         $discount->action = $in_discount['action'];
         $discount->code = $in_discount['code'];
         $discount->expires = isset($in_discount['expires']) ? $in_discount['expires'] : 0 ;
-        $discount->desc = isset($in_discount['desc']) ? $in_discount['desc'] : '';
-        $discount->modifers = $in_discount['modifiers'];
+        $discount->desc = isset($in_discount['desc']) ? $in_discount['desc'] : '';                
+        $discount->modifiers = isset($in_discount['modifiers']) ? $in_discount['modifiers'] : array();
         
         switch ($discount->action) {
             case 'itempercentoff':
@@ -313,8 +313,19 @@ class Discounts extends \SC_Library {
 	    return $return;            
     }
     
-    function modifier_isset($discount,$modifier) {
-        $discount = \Model
+    /**
+     * Modifier Isset
+     *
+     * Checks if the modifier is set for the specific discount
+     */   
+    function modifier_isset($discount,$modifier) {        
+        if (!is_array($discount)) {
+            $discount = $this->get_discount($discount);       
+        }
+        
+        echo $discount['modifiers'];
+        
+        return isset($discount['modifiers'][$modifier]);
     }
     
 }
