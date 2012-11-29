@@ -58,7 +58,13 @@
             <div class="control-group">
                 <label class="control-label" for="expires">Expiry date</label>
                 <div class="controls">
-                    <input type="Text" id="expires" name="expires" placeholder="mm/dd/yyyy hh:mm"/>
+                    <input type="text" id="expires" name="expires" placeholder="mm/dd/yyyy hh:mm"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Modifiers</label>
+                <div class="controls">
+                    <input type="checkbox" id="free_shipping" name="modifiers[free_shipping]" value=true /><label class="inline" for="free_shipping">Free Shipping</label>
                 </div>
             </div>
         </form>
@@ -99,7 +105,8 @@
         $("#add_discount_modal").on('hidden', function() {
             $('#create_update_discount input').val('');
             $('#action').val('').change();
-            $('#add_discount_message').hide();
+            $('[type="checkbox"]').attr('checked',false);
+            $('#add_discount_message').hide();            
         });
         $("#item_name").liveSearch({
             url:"<?=sc_ajax('live_search/items/name/')?>",
@@ -221,9 +228,19 @@
             e.preventDefault();
             
             $.post($(this).val(),function(item) {
+                //Modifiers
+                if (item.modifiers) {                    
+                    if (item.modifiers.free_shipping) {
+                        $('#free_shipping').attr('checked','checked');
+                    }
+                    
+                    delete item.modifiers;
+                }
+                
                 for (var name in item) {
                     $('#'+name).val(item[name]);                                                            
-                }
+                }                
+                
                 $('#action').change();
                 $('#add_discount_modal').modal('show');
             },'JSON');                        

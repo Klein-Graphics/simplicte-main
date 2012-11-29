@@ -313,8 +313,10 @@ HTML;
         $discount = \Model\Discount::find($id);
         $discount = $this->SC->Discounts->parse_discount($discount);        
         
-        //Data that needs to be translated for the input fields        
-        $discount['item_name'] = \Model\Item::find($discount['item'])->name;        
+        //Data that needs to be translated for the input fields
+        if (isset($discount['item'])) {     
+            $discount['item_name'] = \Model\Item::find($discount['item'])->name;        
+        }
         if (isset($discount['percent'])) {
             $discount['value'] = $discount['percent'];
             unset($discount['percent']);

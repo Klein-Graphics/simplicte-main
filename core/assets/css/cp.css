@@ -91,7 +91,9 @@ table.clean_table td {
 }
 
 label.inline {
-    display: inline;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: 3px;
 }
 
 .button-message {

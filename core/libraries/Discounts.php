@@ -323,8 +323,6 @@ class Discounts extends \SC_Library {
             $discount = $this->get_discount($discount);       
         }
         
-        echo $discount['modifiers'];
-        
         return isset($discount['modifiers'][$modifier]);
     }
     
