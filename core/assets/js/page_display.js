@@ -13,11 +13,11 @@ function bind_labels() {
 
 $(document).ready(function() {
 
-    $('.ajax_loader').ajaxStart(function() {
-        $(this).show();
+    $(document).ajaxStart(function() {
+        $('.ajax_loader').show();
         $('body').addClass('loading');
     }).ajaxStop(function() {
-        $(this).hide();
+        $('.ajax_loader').hide();
         $('body').removeClass('loading');
         bind_labels();
     }).hide();    
