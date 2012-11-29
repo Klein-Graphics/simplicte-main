@@ -236,15 +236,32 @@ class Page_loading extends \SC_Library {
             
             foreach ($tag as &$this_tag) {
                 if (strpos($this_tag,'i--') !== FALSE) {
-                  $this_tag = substr($this_tag,3);
+                	if(strpos($this_tag,'REGEX:')===0){
+						$this_tag = substr($this_tag,9);
+						
+						$items = \Model\Item::all(array('conditions' => array('number REGEXP ?',$this_tag))); 
+						
+						$this_tag = 'REGEX:(';
+						$glue = '';
+						foreach($items as $item){
+							$this_tag.=$glue.$item->id;
+							$glue='|';	
+						}
+						$this_tag.=')';
+					} else{
+				 		$this_tag = substr($this_tag,3);
                   
-                  $item = \Model\Item::find('first',array('conditions' => array('number = ?',$this_tag))); 
-                        
-                  $this_tag = $item->id;      
-                }
+				  
+						$item = \Model\Item::find('first',array('conditions' => array('number = ?',$this_tag))); 
+							
+						$this_tag = $item->id;      
+                	}
+				}
                 if ($this_tag == '*') {
                     $this_tag = '([0-9]*)';
-                } else {
+                } else if(strpos($this_tag,'REGEX:')===0){
+					$this_tag = str_replace('REGEX:','',$this_tag);					
+				} else {
                     $this_tag = preg_quote($this_tag);
                 }
             }                        
@@ -362,7 +379,7 @@ class Page_loading extends \SC_Library {
         });
 
         //Run through and replace any special tags
-        foreach ($this->special_tags as $special_tag) {     
+        foreach ($this->special_tags as $special_tag) {   
             $output = preg_replace($special_tag['regex'],$special_tag['template'],$output);
         }        
 
