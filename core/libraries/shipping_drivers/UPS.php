@@ -83,6 +83,7 @@ class UPS extends \SC_Shipping_Driver {
         if (!$weight) {
             return 0;
         }
+        
         return $this->upsRate->getRate($from,$to,$service,$length,$width,$height,$weight);
     }
     
@@ -117,7 +118,7 @@ class UPS extends \SC_Shipping_Driver {
      * @param int $transaction The transaction ID
      * @param string $service The service with which to base the rate on
      */
-    function get_rate_from_transcation($transaction,$service) {
+    function get_rate_from_transaction($transaction,$service) {
         $this->SC->load_library('Transaction');
         
         $transaction = $this->SC->Transaction->get_transaction($transaction);        

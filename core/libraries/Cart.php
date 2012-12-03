@@ -647,8 +647,9 @@
                 $cart
             );
             if ($ship_status) {
-                $shipping = $ship_foo;
+                $shipping = $ship_foo;                
             } else {
+                $shipping = FALSE;
                 $messages[] = $ship_foo;
             }
         }
