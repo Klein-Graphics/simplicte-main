@@ -133,9 +133,7 @@ class SC {
     function load_ajax($call,$data=array()) {                        
       if ($call) {
         //normalize view name
-        $call = strtolower($call);                      
-        
-        
+        $call = strtolower($call);                                      
         
         //Call any possible pre-ajax-controller hooks
         call_hook(array('ajax_controller',$call,'before'),$data);

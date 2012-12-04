@@ -25,7 +25,7 @@ if (!$t) {
 //TODO: Login to see order
 
 if ($t->custid != $SC->Session->get_customer()) {
-    die('You do not have permission to view this order');
+    die('You do not have permission to view this order. Please login before viewing.');
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

@@ -125,7 +125,7 @@ HTML;
         $fp['login_id'] = $this->SC->Config->get_setting('authorizedotnetid');
         $fp['sequence'] = $this->transaction->ordernumber;
         $fp['timestamp'] = $timestamp;
-        $fp['total'] = $this->SC->Cart->calculate_soft_total($this->transaction);
+        $fp['total'] = number_format($this->SC->Cart->calculate_soft_total($this->transaction),2,'.','');
         $fp['currency'] = $this->SC->Config->get_setting('currency');
         
         return hash_hmac("md5",implode('^',$fp),$this->SC->Config->get_setting('authorizedotnetkey'));
@@ -151,7 +151,7 @@ HTML;
             'x_login' => $this->SC->Config->get_setting('authorizedotnetid'),
             //Required Fields
             'x_type' => 'AUTH_CAPTURE',
-            'x_amount' => $this->SC->Cart->calculate_soft_total($this->transaction),
+            'x_amount' => number_format($this->SC->Cart->calculate_soft_total($this->transaction),2,'.',''),
             'x_show_form' => 'PAYMENT_FORM',
             'x_trans_id' => $this->transaction->ordernumber,
             'x_relay_response' => 'TRUE',

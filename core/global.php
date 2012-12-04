@@ -394,8 +394,7 @@
      */
     function call_hook($hook,$data=array()) {
         global $SC;                
-        
-        //Call any possible pre-ajax controller hooks
+                
         $qual_hook = '$SC->hooks';                
         
         foreach ($hook as $level) {
@@ -403,7 +402,11 @@
         }                
         
         if (eval("return isset($qual_hook);")) {                
-            eval("call_user_func_array($qual_hook,\$data);");
+            eval("
+                foreach ($qual_hook as \$hook) {
+                    call_user_func_array(\$hook,\$data);
+                }        
+            ");
         }   
     }   
     

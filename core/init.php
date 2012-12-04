@@ -140,6 +140,9 @@ foreach (scandir('extensions') as $extension) {
     }
 }
 
+//Call any init hooks
+call_hook('init');
+
 /*
  * Set time zone
  */
