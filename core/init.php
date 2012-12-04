@@ -44,7 +44,6 @@ if (!file_exists("{$_SERVER['DOCUMENT_ROOT']}{$CONFIG['URL']}{$CONFIG['SC_LOCATI
     global $cur_dir;   
       
     $cur_dir = $cur_dir.$directory.'/';
-    
     $inside = scandir($cur_dir);    
     foreach ($inside as $this_file) {
       if ($this_file == '.' || $this_file == '..') {
@@ -75,10 +74,11 @@ if (!file_exists("{$_SERVER['DOCUMENT_ROOT']}{$CONFIG['URL']}{$CONFIG['SC_LOCATI
   
   $site_url = str_replace($_SERVER['DOCUMENT_ROOT'],'',$site_url);
   
-  $CONFIG['URL'] = $site_url;
+  $CONFIG['URL'] = $site_url;  
   
   $config_file = file_get_contents('config.php');
-  $config_file = preg_replace('/\$CONFIG\[(\'|")URL(\'|")\][^\n\r]*(\n\r|\n)/',"\$CONFIG['URL'] = '$site_url';\n",$config_file);
+  $config_file = preg_replace('/\$CONFIG\[(\'|")URL(\'|")\].*$/m',"\$CONFIG['URL'] = '$site_url';\n",$config_file);
+
   $r_config_file = fopen('config.php','w');
   fwrite($r_config_file,$config_file); 
 }
