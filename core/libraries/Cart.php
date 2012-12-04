@@ -643,6 +643,7 @@
             list($ship_status,$ship_foo) = $this->SC->Shipping->Drivers->$ship_service->get_rate_from_cart(
                 $this->SC->Config->get_setting('storeZipcode'),
                 $transaction->ship_postalcode,
+                $transaction->ship_country,
                 $ship_method,
                 $cart
             );

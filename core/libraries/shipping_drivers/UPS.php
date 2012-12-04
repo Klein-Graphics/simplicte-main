@@ -27,7 +27,7 @@ class UPS extends \SC_Shipping_Driver {
             '03' => 'UPS Ground',
             '07' => 'UPS Worldwide Express',
             '08' => 'UPS Worldwide Expedited',
-            '11' => 'UPS Standard',
+            '11' => 'UPS Standard International',
             '12' => 'UPS Three-Day Select',
             '13' => 'UPS Next Day Air Saver',
             '14' => 'UPS Next Day Air Early AM',
@@ -79,12 +79,24 @@ class UPS extends \SC_Shipping_Driver {
      * @param float $height The height of the items which are bieng shipping in inches
      
      */
-    function get_rate($from,$to,$service,$weight,$length=0,$width=0,$height=0) {
-        if (!$weight) {
+    function get_rate($details) {
+        if (!$details['weight']) {
             return 0;
         }
         
-        return $this->upsRate->getRate($from,$to,$service,$length,$width,$height,$weight);
+        $details['length'] = isset($details['length']) ? $details['length'] : 0;
+        $details['width'] = isset($details['width']) ? $details['width'] : 0;
+        $details['height'] = isset($details['height']) ? $details['height'] : 0;
+        
+        return $this->upsRate->getRate(
+            $details['from_zip'],
+            $details['to_zip'],
+            $details['to_country'],
+            $details['service'],
+            $details['length'],
+            $details['width'],
+            $details['height'],
+            $details['weight']);
     }
     
     /**
@@ -99,11 +111,18 @@ class UPS extends \SC_Shipping_Driver {
      * @param string $service The service with which to base the rate on
      * @param int|string|array $cart A valid cart
      */
-    function get_rate_from_cart($from,$to,$service,$cart) {
+    function get_rate_from_cart($from_zip,$to_zip,$to_country,$service,$cart) {
         $this->SC->load_library('Cart');
         $weight = $this->SC->Cart->weigh_cart($cart);                                        
         
-        $shipping_rate = $this->get_rate($from,$to,$service,$weight);                
+        $details = array(
+            'from_zip' => $from_zip,
+            'to_zip' => $to_zip,
+            'to_country' => $to_country,
+            'service' => $service,
+            'weight' => $weight);
+        
+        $shipping_rate = $this->get_rate($details);                
         
         return $shipping_rate;
     }   
@@ -118,11 +137,16 @@ class UPS extends \SC_Shipping_Driver {
      * @param int $transaction The transaction ID
      * @param string $service The service with which to base the rate on
      */
-    function get_rate_from_transaction($transaction,$service) {
+    function get_rate_from_transcation($transaction,$service) {
         $this->SC->load_library('Transaction');
         
         $transaction = $this->SC->Transaction->get_transaction($transaction);        
-        $rate = $this->get_rate_from_cart($this->SC->Config->get_setting('storeZipcode'),$transaction->ship_postalcode,$service,$transaction->items);
+        $rate = $this->get_rate_from_cart(
+            $this->SC->Config->get_setting('storeZipcode'),
+            $transaction->ship_postalcode,
+            $transaction->ship_country,
+            $service,
+            $transaction->items);
         
         return $rate;
         

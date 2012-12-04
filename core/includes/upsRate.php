@@ -32,7 +32,7 @@ class upsRate {
     }
 
     // Define the function getRate()
-    function getRate($PostalCode,$dest_zip,$service,$length,$width,$height,$weight) {
+    function getRate($PostalCode,$dest_zip,$dest_country,$service,$length,$width,$height,$weight) {
 	$data ="<?xml version=\"1.0\"?>  
 		<AccessRequest xml:lang=\"en-US\">  
 		    <AccessLicenseNumber>$this->AccessLicenseNumber</AccessLicenseNumber>  
@@ -63,7 +63,7 @@ class upsRate {
 				<ShipTo>  
 					<Address>  
 						<PostalCode>$dest_zip</PostalCode>  
-						<CountryCode>US</CountryCode>  
+						<CountryCode>$dest_country</CountryCode>  
 					<ResidentialAddressIndicator/>  
 					</Address>  
 				</ShipTo>  

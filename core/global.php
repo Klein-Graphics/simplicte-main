@@ -395,7 +395,9 @@
     function call_hook($hook,$data=array()) {
         global $SC;                
                 
-        $qual_hook = '$SC->hooks';                
+        $qual_hook = '$SC->hooks';
+        
+        $hook = (array) $hook;
         
         foreach ($hook as $level) {
             $qual_hook .= "['$level']";
@@ -403,9 +405,11 @@
         
         if (eval("return isset($qual_hook);")) {                
             eval("
-                foreach ($qual_hook as \$hook) {
-                    call_user_func_array(\$hook,\$data);
-                }        
+                if (count($qual_hook)) {
+                    foreach ($qual_hook as \$hook) {
+                        call_user_func_array(\$hook,\$data);
+                    }        
+                }
             ");
         }   
     }   
