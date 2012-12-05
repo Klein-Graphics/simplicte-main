@@ -126,7 +126,7 @@ $messages = implode('/',$messages);
 echo json_encode(array(
         'transaction' => $transaction->ordernumber,
         'status_code' => 1,
-        'status_text' => $messages,
+        'status_text' => $messages
     ));
 
 
