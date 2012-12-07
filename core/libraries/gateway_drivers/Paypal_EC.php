@@ -145,6 +145,7 @@ class Paypal_EC extends \SC_Gateway_Driver {
         $data = array(
             'METHOD' => 'SetExpressCheckout',
             'VERSION' => '88.0',
+            'SOLUTIONTYPE' => 'Sole',
             'USER' => $this->SC->Config->get_setting('paypaluser'),
             'PWD' => $this->SC->Config->get_setting('paypalpwd'),
             'SIGNATURE' => $this->SC->Config->get_setting('paypalsignature'),

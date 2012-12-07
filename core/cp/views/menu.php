@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="<?=sc_cp('home')?>" title="Control Panel Home">Simplecart2</a>    
+            <a class="brand" href="<?=sc_cp('home')?>" title="Control Panel Home">SimplictE</a>    
             <ul id="cp_menu" class="nav">
                 <li>
                     <a href="<?=site_url()?>" title="View Store"><i class="icon-eye-open icon-white"></i>
