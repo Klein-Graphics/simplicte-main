@@ -174,14 +174,21 @@ foreach ($statuses as $status) : ?>
             <td>
                 <ul>
     <?php foreach($items[$k] as $item) : ?>
-                <li>
-                    <?=$this->SC->Items->item_name($item['id']).' - $'.$item['price'].' x '.$item['quantity']?>
-                    <ul>
-        <?php foreach($item['options'] as $option) : ?>
-                            <li><?=$this->SC->Items->option_name($option['id']).' - $'.$option['price'].' x '.$option['quantity']?></li>
-        <?php endforeach ?>
-                    </ul>
-                </li>
+        <?php if (\Model\Item::count($item['id'])) : ?>
+                    <li>
+                        <?=$this->SC->Items->item_name($item['id']).' - $'.$item['price'].' x '.$item['quantity']?>
+                        <ul>
+            <?php foreach($item['options'] as $option) : ?>
+                                <li><?=$this->SC->Items->option_name($option['id']).' - $'.$option['price'].' x '.$option['quantity']?></li>
+            <?php endforeach ?>
+                        </ul>
+                    </li>
+        <?php else : ?>
+                    <li>
+                        Item missing! #<?=$item['id']?> <?=' - $'.$item['price'].' x '.$item['quantity']?>
+                    </li>
+        <?php endif ?>
+        
     <?php endforeach ?>
                 </ul>
             </td>
