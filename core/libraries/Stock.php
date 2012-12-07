@@ -114,7 +114,7 @@ class Stock extends \SC_Library {
         
         if ($item->stock == 'inf') {
             return TRUE;
-        } else if (is_numeric($item->stock)) {
+        } else if (is_numeric($item->stock) || !$item->stock) {
             return ($item->stock >= 1);
         } else {
             $stock = explode(':',$item->stock);
