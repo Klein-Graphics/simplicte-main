@@ -31,7 +31,7 @@ $t = \Model\Transaction::find_by_ordernumber($result['PAYMENTREQUEST_0_INVNUM'])
 $cart = $SC->Cart->explode_cart($t->items);
 
 $relay_url = $SC->Gateways->Drivers->Paypal_EC->outgoing_relay_url
-            .(int) $SC->Config->get_setting('site_live')
+            .(int) $SC->Config->get_setting('storelive')
         .'/'.urlencode(urlencode(encrypt($data['USER'])))  
         .'/'.urlencode(urlencode(encrypt($data['PWD'])))        
         .'/'.urlencode(urlencode(encrypt($data['SIGNATURE'])));
@@ -50,7 +50,8 @@ $encrypt_json = encrypt(json_encode($result));
                 <h2>Please confirm your purchase</h2>
             </div><!--#sc_receipt_head-->
 
-<?php require_once('core/receipt_body.php'); ?>
+			<?php require_once('core/receipt_body.php'); ?>
+
             <form action="<?=$relay_url?>" method="post">
                 <input type="hidden" name="scd" value="<?=$encrypt_json?>" />
                 <input type="submit" class="sc_paypal_confirm" value="Confirm Order"/>

@@ -44,7 +44,7 @@ class Paypal_EC extends \SC_Gateway_Driver {
         echo $this->load('PAYPALTEST');
     }        
     
-    function relay($live,$user,$pwd,$sig) {  
+    static function relay($live,$user,$pwd,$sig) {  
         global $CONFIG;                        
                           
         $user = decrypt(urldecode($user));
