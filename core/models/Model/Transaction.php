@@ -5,6 +5,58 @@
   class Transaction extends \SC_Model {
   
     static $before_save = array('update_time');
+
+	/**
+     * This is a bit of a hack to avoid accidently returning invoices
+	 * as orders
+     */
+	public static function find(/* $type, $options */) {
+		$return  = 	forward_static_call_array('parent::find',func_get_args());
+
+		if (is_array($return)) {
+			foreach ($return as $key => $record) {
+				if ($record->transtype != 'order')
+					unset($return[$key]);
+			}
+		} else {
+			if ($return->transtype != 'order')
+				$return = null;
+		}	
+		return $return;
+	}
+
+	/**
+ 	 * Hack to make static::count() return a proper number. This
+	 * method makes me puke a little.
+	 */
+	public static function count(/* ... */)
+	{
+		$args = func_get_args();
+		$options = static::extract_and_validate_options($args);
+		$options['select'] = 'COUNT(*)';
+
+		if (!empty($args) && !is_null($args[0]) && !empty($args[0]))
+		{
+			if (is_hash($args[0]))
+				$options['conditions'] = $args[0];
+			else
+				$options['conditions'] = call_user_func_array('static::pk_conditions',$args);
+		}
+
+		$table = static::table();
+		$sql = $table->options_to_sql($options);
+		$values = $sql->get_where_values();
+		
+		$sql_string = $sql->to_s();
+
+		if (strpos($sql_string, 'WHERE') !== FALSE) {
+			$sql_string = str_replace('WHERE','WHERE transtype = "order" AND ',$sql_string);
+		} else {
+			$sql_string .= ' WHERE transtype = "order"';
+		}
+		
+		return static::connection()->query_and_fetch_one($sql_string,$values);
+	}
     
     public function update_time() {
         $this->lastupdate = time();

@@ -1,4 +1,4 @@
-<?php $tran_statuses = array('opened','pending','settled','fulfilled') ?>
+<?php $tran_statuses = array('opened','pending','settled','fulfilled','refunded') ?>
 <div class="modal hide" id="confirm_modal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>

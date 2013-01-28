@@ -253,12 +253,4 @@ class Transactions extends \SC_CP_Module {
         $this->SC->CP->load_view('footer');
     }    
     
-    function _add() {
-    
-    }
-    
-    function _del() {
-    
-    }
-    
 }

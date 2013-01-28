@@ -19,9 +19,13 @@ class Customers extends \SC_CP_Module {
     public static $icon = "user";
     public $hidden_pages = array('do_search');        
     
+    function new_customer() {
+        $this->SC->CP->load_view('customers/new');
+    }
+    
     function search_customers() {
         $this->SC->CP->load_view('customers/search');            
-    }   
+    }
     
     function do_search() {
         //Scrape out the non-address fields
