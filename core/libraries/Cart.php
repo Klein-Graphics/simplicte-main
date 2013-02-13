@@ -529,7 +529,7 @@
 
             $item_weight += $this->SC->Items->get_item($item['id'],'weight');                       
                         
-            $total_weight += $item_weight;
+            $total_weight += $item_weight*$item['quantity'];
         }
         
         return $total_weight;

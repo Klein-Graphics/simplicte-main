@@ -432,6 +432,8 @@ class USPS extends \SC_Shipping_Driver {
             
             $services = $response->getElementsByTagName('Service');
             
+            print_r($response->saveXML());
+            
             foreach($services as $service) {
                 if ($service->attributes->getNamedItem('ID')->nodeValue == $details['service']) {
                     foreach ($service->childNodes as $node) {
