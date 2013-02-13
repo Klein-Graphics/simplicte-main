@@ -23,18 +23,10 @@ class USPS extends \SC_Shipping_Driver {
      */
     public static $shipping_codes = array(
             'FIRST CLASS' => 'USPS First Class',
-            'FIRST CLASS COMMERCIAL' => 'USPS First Class Commerical',
-            'FIRST CLASS COMMERCIAL HFP COMMERCIAL' => 'USPS First Class Hold For Pickup Commerical',
             'PRIORITY' => 'USPS Priority',
-            'PRIORITY COMMERICAL' => 'USPS Priority Commercial',
-            'PRIORITY HFP COMMERICAL' => 'USPS Priority Hold For Pickup Commerical',
             'EXPRESS' => 'USPS Express',
-            'EXPRESS COMMERCIAL' => 'USPS Express Commerical',
             'EXPRESS SH' => 'USPS Express SH',
-            'EXPRESS SH COMMERCIAL' => 'USPS Express SH Commerical',
-            'EXPRESS COMMERCIAL HFP COMMERCIAL' => 'USPS First Class Hold For Pickup Commerical',
             'EXPRESS HFP' => 'USPS Express Hold For Pickup',
-            'EXPRESS HFP COMMERICAL' => 'USPS Express Hold For Pickup Commerical',
             'PARCEL' => 'USPS Parcel',
             'MEDIA' => 'USPS Media',
             'LIBRARY' => 'USPS Library',
@@ -421,7 +413,8 @@ class USPS extends \SC_Shipping_Driver {
                             'Width' => $details['width'],
                             'Length' => $details['length'],
                             'Height' => $details['height'],
-                            'Girth' => ''))                
+                            'Girth' => '',
+                            'CommercialFlag' => 'Y'))                
             ),TRUE);
             
             $errors = error_handler($response);
@@ -430,14 +423,12 @@ class USPS extends \SC_Shipping_Driver {
                 return array(FALSE,$errors);
             }
             
-            $services = $response->getElementsByTagName('Service');
-            
-            print_r($response->saveXML());
+            $services = $response->getElementsByTagName('Service');            
             
             foreach($services as $service) {
                 if ($service->attributes->getNamedItem('ID')->nodeValue == $details['service']) {
                     foreach ($service->childNodes as $node) {
-                        if ($node->nodeName == "Postage") {
+                        if ($node->nodeName == "CommercialPostage") {
                             return array(TRUE,$node->nodeValue);
                         }
                     }
@@ -450,7 +441,7 @@ class USPS extends \SC_Shipping_Driver {
                     'attributes'=>array('ID'=>time()),
                     'children' =>
                         array(
-                            'Service' => $details['service'],
+                            'Service' => $details['service'].' COMMERCIAL',
                             'ZipOrigination' => $details['from_zip'],
                             'ZipDestination' => $details['to_zip'],                            
                             'Pounds' => $details['weight'],
@@ -465,7 +456,7 @@ class USPS extends \SC_Shipping_Driver {
                 return array(FALSE,$errors);
             }
             
-            $price = $response->getElementsByTagName('Rate');
+            $price = $response->getElementsByTagName('CommercialRate');
             $price = $price->item(0)->nodeValue;
             
             return array(TRUE,$price);
