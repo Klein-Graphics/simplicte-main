@@ -164,7 +164,7 @@ function register_item_handlers(scope) {
             } 
             
             if (data.item.flags) {                    
-                var flags = inputs.flags.split(',');
+                var flags = data.item.flags.split(',');
                 
                 for (i=0;i<flags.length;i++) {
                     flags[i] = flags[i].split(':');                                                
