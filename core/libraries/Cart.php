@@ -623,10 +623,21 @@
         }
         
         //Calculate shipping
-
         $shipping = ($shipping_method) ? 0 : FALSE;
+        
+        $shipping_cart = $this->SC->Cart->explode_cart($cart);
 
         $shipping_required = $this->shipping_required($cart);
+        if ($discount_code) {
+            $pretty_discount = $this->SC->Discounts->get_discount($discount_code);
+            if ($pretty_discount['single'] && $this->SC->Discounts->modifier_isset($pretty_discount,'free_shipping')) {
+                foreach ($shipping_cart as $line => $item) {
+                    if ($item['id'] == $pretty_discount['item']) {
+                        unset($shipping_cart[$line]);
+                    }
+                }   
+            }
+        }        
 
         if (!$this->SC->Shipping->shipping_enabled && $shipping_required) {
             die ('<span style="color:red; background:white"> Items require shipping, however the store owner 
@@ -645,7 +656,7 @@
                 $transaction->ship_postalcode,
                 $transaction->ship_country,
                 $ship_method,
-                $cart
+                $shipping_cart
             );
             if ($ship_status) {
                 $shipping = $ship_foo;                
@@ -655,7 +666,7 @@
             }
         }
         
-        if ($discount_code && $this->SC->Discounts->modifier_isset($discount_code,'free_shipping')) {
+        if ($discount_code && !$this->SC->Discounts->is_single($discount_code) && $this->SC->Discounts->modifier_isset($discount_code,'free_shipping') || empty($shipping_cart)) {
             //Check if they have free shipping
             $shipping = 0;
         }

@@ -30,7 +30,6 @@ class Discounts extends \SC_Library {
             'conditions' => array('code = ? AND (expires AND expires<'.time().')=FALSE',$code)
         ));	                        
 
-        //('percentoff','fixedoff','bxgx','itempercentoff','itemfixedoff')
         if (!$discount) {
 	        return FALSE;        
         }        
@@ -216,8 +215,7 @@ class Discounts extends \SC_Library {
 			        $cartArray[$discount_item]['price'] -= $discount['amount'];
 		        break;
 		
-		        case 'bxgx':
-		            
+		        case 'bxgx':		            
 			        //create an array of all matching items, exploding the qtys
 			        $matchingItems = array();
 			        foreach($cartArray as $key => $item) {
@@ -324,6 +322,19 @@ class Discounts extends \SC_Library {
         }
         
         return isset($discount['modifiers'][$modifier]);
+    }
+    
+    /**
+     * Is single
+     *
+     * Checks if the discount is a single item discount
+     */
+    function is_single($discount) {
+        if (!is_array($discount)) {
+            $discount = $this->get_discount($discount);
+        }
+        
+        return $discount['single'];
     }
     
 }

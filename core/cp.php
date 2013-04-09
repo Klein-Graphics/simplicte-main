@@ -84,3 +84,4 @@ if ($SC->CP->module_exists($module)) {
 }
 $SC->CP->load_view('footer');
 
+

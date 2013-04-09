@@ -40,7 +40,7 @@ class Config extends \SC_Library {
         }
         
         $name = str_replace('_','',$name);  
-         
+
         $detail = \Model\Detail::find(array( 
             'conditions' => array('upper(replace(`detail`,"_","")) = ?',$name)
         ));
