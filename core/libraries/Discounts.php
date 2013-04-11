@@ -119,7 +119,7 @@ class Discounts extends \SC_Library {
         $discount->code = $in_discount['code'];
         $discount->expires = isset($in_discount['expires']) ? $in_discount['expires'] : 0 ;
         $discount->desc = isset($in_discount['desc']) ? $in_discount['desc'] : '';                
-        $discount->modifiers = isset($in_discount['modifiers']) ? $in_discount['modifiers'] : array();
+        $discount->modifiers = isset($in_discount['modifiers']) ? $in_discount['modifiers'] : array();        
         
         switch ($discount->action) {
             case 'itempercentoff':
@@ -137,7 +137,7 @@ class Discounts extends \SC_Library {
             break;
             
             default:
-                trigger_error('Invalid discount action in function "create_discount"',E_USER_WARNING);
+                trigger_error('Invalid discount action in function "update_discount"',E_USER_WARNING);
                 return FALSE;
             break;
         } 

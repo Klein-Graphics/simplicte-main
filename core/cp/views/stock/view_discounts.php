@@ -64,7 +64,7 @@
             <div class="control-group">
                 <label class="control-label">Modifiers</label>
                 <div class="controls">
-                    <input type="checkbox" id="free_shipping" name="modifiers[free_shipping]" value=true /><label class="inline" for="free_shipping">Free Shipping</label>
+                    <input type="checkbox" id="free_shipping" name="modifiers[free_shipping]" value="1" /><label class="inline" for="free_shipping">Free Shipping</label>
                 </div>
             </div>
         </form>

@@ -124,8 +124,8 @@ ActiveRecord\Config::initialize(function($cfg) use ($CONFIG,$sc_dir) {
         $cfg->set_connections($CONFIG['DATABASE']);  
 });
 
-//Load config class
-$SC->load_library('Config');
+//Load config and session class
+$SC->load_library(array('Config'));
 
 //Load any extensions
 foreach (scandir('extensions') as $extension) {
