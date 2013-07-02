@@ -180,6 +180,19 @@ class Stock extends \SC_CP_Module {
         
         $item->save();
         
+        // Check if we need to delete any options
+        $options = \Model\Itemoption::all(
+            array('conditions' => "itemid = {$item->id}"));
+        
+        foreach ($options as $option) {
+            foreach ($_POST['options'] as $new_option) {
+                if ($new_option['id'] == $option['id']) {
+                    continue 2;
+                }
+            }
+            $option->delete();
+        }
+        
         if (isset($_POST['options'])) {
             foreach ($_POST['options'] as $option_data) {
                 if ($option_data['id']) {

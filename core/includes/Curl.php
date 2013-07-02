@@ -154,7 +154,7 @@ class Curl
 			return $res;
 		}
 		else
-		{
+		{		    
 			return false; // Curl extension is not loaded
 		}
 	}

@@ -61,14 +61,14 @@ class USPS extends \SC_Shipping_Driver {
         
         $this->xmlresp = new \DOMDocument;                
         
-        $this->xmlresp->loadXML($curl->get(
-            'http://production.shippingapis.com/ShippingAPI.dll',
+        $this->xmlresp->loadXML($resp = $curl->get(
+            '56.0.34.43/ShippingAPI.dll',
             array(
                 'API' => "{$api}",
                 'XML' => $this->xmlreq->saveXML()
             ),
             $info
-        ));                                                
+        ));                                      
         
         return $this->xmlresp;       
                

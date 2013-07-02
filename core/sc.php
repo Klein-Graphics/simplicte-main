@@ -65,9 +65,7 @@ class SC {
      * Loads a Library into SC
      *
      * This function loads a library into the main SC Object. If the 
-     * library is already loaded, it is skipped. It will also load
-     * additional libraries specified by the "required_libraries" 
-     * property of the library;
+     * library is already loaded, it is skipped.
      *
      * @return null
      *

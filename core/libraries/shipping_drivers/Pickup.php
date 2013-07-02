@@ -29,14 +29,14 @@ class Pickup extends \SC_Shipping_Driver {
         ); 
     
     function get_rate() {
-        return 0;
+        return array(true,0);
     }
     
     function get_rate_from_cart() {
-        return 0;
+        return array(true,0);
     }
     
     function get_rate_from_transaction() {
-        return 0;
+        return array(true,0);
     }
 }
