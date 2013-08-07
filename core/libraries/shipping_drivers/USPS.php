@@ -63,6 +63,7 @@ class USPS extends \SC_Shipping_Driver {
         
         $this->xmlresp->loadXML($resp = $curl->get(
             '56.0.34.43/ShippingAPI.dll',
+//            'http://stg-secure.shippingapis.com/',
             array(
                 'API' => "{$api}",
                 'XML' => $this->xmlreq->saveXML()

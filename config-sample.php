@@ -26,7 +26,8 @@
    * determine this value is executed, a kitten is killed. Please think of the 
    * kittens.
    */ 
-  $CONFIG['URL'] = '';
+  $CONFIG['URL'] = '/dockets';
+
   
   //Error Handling and Debugging
   //---------------

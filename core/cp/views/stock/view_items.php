@@ -46,7 +46,7 @@
                 <div class="span3 weight-selection">
                     <input type="hidden" name="weight" />
                     <span class="input-append overflow-hidden">
-                        <input class="pull-left input-small show_weight" type="text" placeholder="Weight" /><div class="btn-group" data-toggle="buttons-radio">
+                        <input class="pull-left input-small show_weight" type="text" placeholder="Weight" /><div class="btn-group add-on" data-toggle="buttons-radio" style="padding:0;vertical-align:top;border:none;">
                             <button class="btn" value=1>Lbs</button>
                             <button class="btn" value=16>Oz</button>
                         </div>          
@@ -123,7 +123,7 @@
                     <div class="span3 weight-selection">
                         <input type="hidden" name="weight"/>
                         <span class="input-prepend input-append overflow-hidden">
-                            <span class="add-on pull-left">+</span><input class="pull-left input-small show_weight" type="text" placeholder="Weight" /><div class="btn-group" data-toggle="buttons-radio">
+                            <span class="add-on pull-left">+</span><input class="pull-left input-small show_weight" type="text" placeholder="Weight" /><div class="btn-group add-on" data-toggle="buttons-radio" style="padding:0;vertical-align:top;border:none;">
                                 <button class="btn" value=1>Lbs</button>
                                 <button class="btn" value=16>Oz</button>
                             </div>          

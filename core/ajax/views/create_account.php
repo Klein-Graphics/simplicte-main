@@ -1,3 +1,4 @@
+<?php $this->load_library('Session') ?>
 <div class="sc_create_account_area">
     <div class="sc_close_link">[x]</div>
     <form action="<?=sc_ajax('do_create_account')?>" class="sc_account_form" method="POST">
