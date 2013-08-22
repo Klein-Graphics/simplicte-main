@@ -22,7 +22,6 @@
                                             method: 'md5',
                                             source: post_data[1].value || 'password'
                                          });
-        console.log(post_data);
         $.post($(this).attr('action'),post_data,function(data){
             if (data.ACK) {
                 location.reload();

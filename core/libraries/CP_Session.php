@@ -25,7 +25,7 @@ class CP_Session extends \SC_Library {
         session_name("PHPSESSID_CP");        
 
         $cookie_params = session_get_cookie_params();
-        session_set_cookie_params($cookie_params['lifetime'],$CONFIG['URL'].'/sc');
+        session_set_cookie_params($cookie_params['lifetime'],$CONFIG['URL'].'/'.$CONFIG['SC_LOCATION']);
                
         session_start();        
     } 
