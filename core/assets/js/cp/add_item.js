@@ -5,6 +5,7 @@ function reset_option_form() {
     $('#add_option .fileinput-button span').html('Upload Image');
     $('#add_option .image-thumbnail').empty();      
     $('#add_option .bar').css('width',0);
+    $('#add_option .weight-selection .btn').removeClass('active');
     if ($('#add_option .inf-option-stock').is('.active')) {
         $('#add_option .inf-option-stock').click();
     }
@@ -228,6 +229,7 @@ $(document).ready(function(){
         $('#item .stock-type option').removeAttr('selected');
         $('#item .stock-type option').eq(0).attr('selected','selected').change();
         $('#item .btn-grp .btn.active').removeClass('active');
+        $('#item .weight-selection .btn').removeClass('active');
         $('#item .bar').css('width',0);
         $('#added_options tbody').empty();
         $(this).find('#save_item').html('Save').removeClass('disabled');
@@ -307,8 +309,11 @@ $(document).ready(function(){
             });
         
         ws.find('.show_weight').change(function(){
-            if (!ws.find('[name="weight"]').val()) {
+            if (!ws.find('.btn.active').length) {
                 ws.find('.btn').first().tooltip('show');
+            } else {
+                weight = ws.find('.show_weight').val()/ws.find('.btn.active').val(); 
+                ws.find('[name="weight"]').val(weight);
             }
         });
           

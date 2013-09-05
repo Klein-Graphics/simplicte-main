@@ -186,7 +186,7 @@ class Stock extends \SC_CP_Module {
         
         foreach ($options as $option) {
             foreach ($_POST['options'] as $new_option) {
-                if ($new_option['id'] == $option['id']) {
+                if ($new_option['id'] == $option->id) {
                     continue 2;
                 }
             }
