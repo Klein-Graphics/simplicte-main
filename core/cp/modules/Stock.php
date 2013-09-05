@@ -178,6 +178,10 @@ class Stock extends \SC_CP_Module {
             }
         }
         
+        // Make sure the stock is something
+        if (!$item->stock)
+            $item->stock = 0;
+                    
         $item->save();
         
         // Check if we need to delete any options
