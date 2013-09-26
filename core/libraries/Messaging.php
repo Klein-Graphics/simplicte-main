@@ -139,6 +139,10 @@ class Messaging extends \SC_Library {
         Click here to view.
     </a>
 </p>    
+<p>
+<strong>Order details</strong><br>
+Weight: <?=$this->SC->Cart->weigh_cart($transaction->items)?>lbs
+</p>
 <p>The following message was sent to the customer:</p>        
         <?php
         
@@ -150,7 +154,7 @@ class Messaging extends \SC_Library {
         
         $store_message .= $receipt;                        
         
-        $good = min($this->message_store($store_message,"Order #{$transaction->ordernumber} fullfilled"),$good);
+        $good = min($this->message_store($store_message,"Order #{$transaction->ordernumber} settled"),$good);
         
         return $good;        
     }
