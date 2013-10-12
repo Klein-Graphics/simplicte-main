@@ -676,6 +676,7 @@
         $billable_states = explode(',',$billable_states);
 
         $tax = 0;
+        // TODO CHANGE TO ZIP CODE BASED
         if (array_search(strtolower($transaction->ship_state),array_to_lower($billable_states))!==FALSE) {
             $tax = $this->calculate_tax($cart);    
         }

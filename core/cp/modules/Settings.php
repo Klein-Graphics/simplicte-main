@@ -103,8 +103,7 @@ class Settings extends \SC_CP_Module {
         
         $user->save();
         
-        echo 'ok';
-        
+        echo 'ok';        
     }   
     
     /**
@@ -322,12 +321,18 @@ class Settings extends \SC_CP_Module {
                 case 'email':
                 case 'currency':
                 case 'text': 
-                case 'password':   
                     $field->detail_value = $new_value;
                 break;
                 
+                case 'password':   
+                    if (!$new_value)
+                        continue 2;
+                    else
+                        $field->detail_value = $new_value;
+                break;
+                
                 case 'percent':
-                    $field->detail_value = $new_value * 100;
+                    $field->detail_value = $new_value / 100;
                 break;                                         
             
                 case 'checkbox':
@@ -586,8 +591,33 @@ class Settings extends \SC_CP_Module {
      * Update Payment Configuration
      */
     
-    function _update_payment_configuration() {
-        print_r($_POST);
+    function _update_payment_configuration() {      
+        $this->SC->Validation->add_rule('taxrate','Tax Rate','number');
+        // Add password validations
+        $passwords = \Model\Detail::all(array(
+            'conditions' => array('category LIKE ? and type = ?','payment%','password')));
+        // TODO PASSWORD SHIT DON'T STOP HERE
+        foreach($passwords as $password) {
+            $this->SC->validation->add_rule($password->detail,'Password',"match:"
+        }
+                  
+        $this->update_fields('payment');
+        
+        if (isset($_POST['driver'])) {
+            $driver_string = array();
+            foreach ($driver as $driver_name => $this_driver) {
+                if ($this_driver['enabled'] == 'on') {  
+                    $driver_string[] = "$driver_name,{$this_driver['display']}";
+                }
+            }
+            
+            $payment_drivers = \Model\detail::find('paymentmethods');
+            $payment_drivers->value = implode('|',$driver_string);
+            $payment_drivers->save();
+            
+        }
+        
+        $this->echo_ACK();
     }
     
     /**
@@ -636,7 +666,15 @@ class Settings extends \SC_CP_Module {
             'elements' => $elements,
             'sections' => $sections
             ));
-    }              
+    }   
+    
+    /**
+     * Update Shipping Configuration
+     */
+    
+    function _update_shipping_configuration() {
+        print_r($_POST);
+    }           
     
     /**
      * Extentions Configuration Page
