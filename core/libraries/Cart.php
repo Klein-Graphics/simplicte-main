@@ -52,7 +52,7 @@
       if (is_numeric($cart)) { //Is this an ID or the cart itself?
         $transaction = \Model\Transaction::find($cart);
       
-        $cart = $transaction->items;        
+        $cart = $transaction->items;
       }      
       
       if ( ! $cart) {
@@ -565,15 +565,17 @@
      *
      * @param array|int|string $cart A valid cart or transaction ID
      */
-    function calculate_tax($cart) {
+    function calculate_tax($cart,$man_tax = false) {
         $cart = $this->explode_cart($cart);
         
         $tax = 0;
         
+        $taxrate = ($man_tax) ? $man_tax : $this->SC->Config->get_setting('salestax');
+        
         foreach ($cart as $item) {
             $tax += ($this->SC->Items->item_flag($item['id'],'notax'))
                 ? 0
-                : round($this->line_total($item) * $this->SC->Config->get_setting('salestax'),2);                                                
+                : round($this->line_total($item) * $taxrate,2);                                                
         }
             
         return $tax;
@@ -673,12 +675,31 @@
         
         //Calculate tax
         $billable_states = $this->SC->Config->get_setting('taxstates');
-        $billable_states = explode(',',$billable_states);
-
+        
         $tax = 0;
+<<<<<<< HEAD
         // TODO CHANGE TO ZIP CODE BASED
         if (array_search(strtolower($transaction->ship_state),array_to_lower($billable_states))!==FALSE) {
             $tax = $this->calculate_tax($cart);    
+=======
+        
+        if (strpos($billable_states,'rgx:') === 0) {
+            $taxes = explode(',',substr($billable_states,4));
+            foreach ($taxes as $k => $tax) {
+                list($regex,$rate) = explode('|',$tax);                            
+            
+                if (preg_match($regex,$transaction->bill_postalcode)) {
+                       $tax = $this->calculate_tax($cart,$rate);        
+                }            
+            }
+        } else {
+            
+            $billable_states = explode(',',$billable_states);            
+            if (array_search(strtolower($transaction->bill_postalcode),array_to_lower($billable_states))!==FALSE) {
+                $tax = $this->calculate_tax($cart);    
+            }
+        
+>>>>>>> Started variable tax rate system
         }
         
         //Calculate total
