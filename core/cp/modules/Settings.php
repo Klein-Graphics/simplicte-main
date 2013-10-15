@@ -597,9 +597,9 @@ class Settings extends \SC_CP_Module {
         $passwords = \Model\Detail::all(array(
             'conditions' => array('category LIKE ? and type = ?','payment%','password')));
         // TODO PASSWORD SHIT DON'T STOP HERE
-        foreach($passwords as $password) {
-            $this->SC->validation->add_rule($password->detail,'Password',"match:"
-        }
+//        foreach($passwords as $password) {
+  //          $this->SC->validation->add_rule($password->detail,'Password',"match:"
+    //    }
                   
         $this->update_fields('payment');
         

@@ -18,7 +18,7 @@ require 'const.php';
 require 'config.php';
 
 if (! $CONFIG['SC_LOCATION']) {
-  $CONFIG['SC_LOCATION'] = substr($sc_dir,strrpos($sc_dir,'/'));        
+  $CONFIG['SC_LOCATION'] = substr($sc_dir,strrpos($sc_dir,'/')+1);        
 }
 
 if (!file_exists("{$_SERVER['DOCUMENT_ROOT']}{$CONFIG['URL']}{$CONFIG['SC_LOCATION']}/config.php")) {  
