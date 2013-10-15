@@ -570,7 +570,7 @@
         
         $tax = 0;
         
-        $taxrate = ($man_tax) ? $man_tax : $this->SC->Config->get_setting('salestax');
+        $taxrate = ($man_tax !== false) ? $man_tax : $this->SC->Config->get_setting('salestax');
         
         foreach ($cart as $item) {
             $tax += ($this->SC->Items->item_flag($item['id'],'notax'))
@@ -677,29 +677,22 @@
         $billable_states = $this->SC->Config->get_setting('taxstates');
         
         $tax = 0;
-<<<<<<< HEAD
-        // TODO CHANGE TO ZIP CODE BASED
-        if (array_search(strtolower($transaction->ship_state),array_to_lower($billable_states))!==FALSE) {
-            $tax = $this->calculate_tax($cart);    
-=======
         
         if (strpos($billable_states,'rgx:') === 0) {
             $taxes = explode(',',substr($billable_states,4));
             foreach ($taxes as $k => $tax) {
                 list($regex,$rate) = explode('|',$tax);                            
-            
+                echo $regex;
                 if (preg_match($regex,$transaction->bill_postalcode)) {
                        $tax = $this->calculate_tax($cart,$rate);        
+                       break;
                 }            
             }
         } else {
-            
             $billable_states = explode(',',$billable_states);            
-            if (array_search(strtolower($transaction->bill_postalcode),array_to_lower($billable_states))!==FALSE) {
+            if (array_search(strtolower($transaction->bill_state),array_to_lower($billable_states))!==FALSE) {
                 $tax = $this->calculate_tax($cart);    
-            }
-        
->>>>>>> Started variable tax rate system
+            }        
         }
         
         //Calculate total
