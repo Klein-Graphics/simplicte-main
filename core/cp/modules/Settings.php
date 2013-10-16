@@ -234,8 +234,8 @@ class Settings extends \SC_CP_Module {
             break;
             
             case 'password':
-                $element .= "<div><input type=\"password\" placeholder=\"Password\" name=\"{$obj->detail}[password]\" id=\"detail_{$obj->detail}\"></div>
-                             <div><input type=\"password\" placeholder=\"Confirm\" name=\"{$obj->detail}[confirm]\"></div>";
+                $element .= "<div><input type=\"password\" placeholder=\"Password\" name=\"{$obj->detail}\" id=\"detail_{$obj->detail}\"></div>
+                             <div><input type=\"password\" placeholder=\"Confirm\" name=\"{$obj->detail}_confirm\"></div>";
             break;                
             
             case 'checkbox':
@@ -313,8 +313,12 @@ class Settings extends \SC_CP_Module {
         
         $fields = array_merge($fields,$_POST);
                 
-        foreach ($fields as $field_name => $new_value) {
-            $field = \Model\Detail::find_by_detail($field_name);            
+        foreach ($fields as $field_name => $new_value) {        
+            $field = \Model\Detail::find_by_detail($field_name);
+            
+            if (!$field) {
+                $field = new \Model\Detail();
+            }
             
             switch($field->type) {
                 case 'number':            
@@ -592,30 +596,37 @@ class Settings extends \SC_CP_Module {
      */
     
     function _update_payment_configuration() {      
-        $this->SC->Validation->add_rule('taxrate','Tax Rate','number');
+        //TODO: $this->SC->Validation->add_rule('taxrate','Tax Rate','number');
         // Add password validations
         $passwords = \Model\Detail::all(array(
             'conditions' => array('category LIKE ? and type = ?','payment%','password')));
-        // TODO PASSWORD SHIT DON'T STOP HERE
-//        foreach($passwords as $password) {
-  //          $this->SC->validation->add_rule($password->detail,'Password',"match:"
-    //    }
-                  
-        $this->update_fields('payment');
+            
+        foreach($passwords as $password) {
+            $this->SC->Validation->add_rule($password->detail,'Password',"match:{$password->detail}_confirm");
+        }                
         
+        if (! $this->SC->Validation->do_validation()) {
+            $this->echo_ACK(0,$this->get_update_errors());
+            return false;
+        }
+
         if (isset($_POST['driver'])) {
             $driver_string = array();
+            $driver = $_POST['driver'];
             foreach ($driver as $driver_name => $this_driver) {
-                if ($this_driver['enabled'] == 'on') {  
+                if (isset($this_driver['enabled'])) {  
                     $driver_string[] = "$driver_name,{$this_driver['display']}";
                 }
             }
             
-            $payment_drivers = \Model\detail::find('paymentmethods');
-            $payment_drivers->value = implode('|',$driver_string);
+            $payment_drivers = \Model\detail::find('paymentmethods');            
+            $payment_drivers->detail_value = implode('|',$driver_string);
             $payment_drivers->save();
             
+            unset($_POST['driver']);            
         }
+        
+        $this->update_fields('payment');        
         
         $this->echo_ACK();
     }
