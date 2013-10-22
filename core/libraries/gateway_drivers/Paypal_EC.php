@@ -191,14 +191,18 @@ class Paypal_EC extends \SC_Gateway_Driver {
             $item['data'] = \Model\Item::find($item['id']);
             $data["L_PAYMENTREQUEST_0_NAME$key"] = str_trunc($item['data']->name,127);
             $options_string = '';            
-            foreach ($item['options'] as $option) {
+            
+            $line_price = $item['price'];
+            
+            foreach ($item['options'] as $option) {                
                 $options_string .= \Model\Itemoption::find($option['id'])->name.'.';
+                $line_price += $option['price'];
             }   
             $data["L_PAYMENTREQUEST_0_DESC$key"] = str_trunc($options_string,127);
-            $data["L_PAYMENTREQUEST_0_AMT$key"] = number_format($item['price'],2,'.','');
+            $data["L_PAYMENTREQUEST_0_AMT$key"] = number_format($line_price,2,'.','');
             $data["L_PAYMENTREQUEST_0_NUMBER$key"] = $item['data']->number;
             $data["L_PAYMENTREQUEST_0_QTY$key"] = $item['quantity'];
-            $data["L_PAYMENTREQUEST_0_TAXAMT$key"] = number_format(round($item['price']
+            $data["L_PAYMENTREQUEST_0_TAXAMT$key"] = number_format(round($line_price
                                                      *$this->SC->Config->get_setting('salestax')
                                                      *(! $this->SC->Items->item_flag($item['id'],'notax')),2)*$tax,2,'.','');
             $data["L_PAYMENTREQUEST_0_ITEMWEIGHTVALUE$key"] = $item['data']->weight;                      
