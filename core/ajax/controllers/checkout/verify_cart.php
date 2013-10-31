@@ -100,3 +100,10 @@ $this->Transactions->update_transaction($transaction->id,array(
     'discount' => $order_totals['discount'],
     'items' => $this->Cart->implode_cart($order_totals['items'])
 ));
+
+// If there's a default message, add it to the begining of the messages array.
+if ($def_message = $this->Config->get_detail('defaultcheckoutmessage')) {
+    array_unshift($messages,$def_message);
+}
+
+
