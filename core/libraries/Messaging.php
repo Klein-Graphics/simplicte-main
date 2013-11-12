@@ -141,6 +141,7 @@ class Messaging extends \SC_Library {
 </p>    
 <p>
 <strong>Order details</strong><br>
+Customer Email: <?=$this->SC->Customer->get_customer($transaction->custid,'email','custid')?><br>
 Weight: <?=$this->SC->Cart->weigh_cart($transaction->items)?>lbs
 </p>
 <p>The following message was sent to the customer:</p>        
