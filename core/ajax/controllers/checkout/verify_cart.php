@@ -102,7 +102,7 @@ $this->Transactions->update_transaction($transaction->id,array(
 ));
 
 // If there's a default message, add it to the begining of the messages array.
-if ($def_message = $this->Config->get_detail('defaultcheckoutmessage')) {
+if ($def_message = $this->Config->get_setting('defaultcheckoutmessage')) {
     array_unshift($messages,$def_message);
 }
 
