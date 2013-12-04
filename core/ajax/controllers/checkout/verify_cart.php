@@ -65,7 +65,7 @@ foreach ($cart as $key => $item) {
     }
 }
 
-$transaction->items = $this->Cart->implode_cart($cart,$transaction->id);
+$transaction->items = $this->Cart->implode_cart($cart,$transaction->id,true);
 
 if ($out_of_stock_flag) {
     $messages[] = 'Unfortunately some of the items in your cart were out of stock. These items have been removed.';

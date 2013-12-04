@@ -35,10 +35,12 @@
          <tr><td>Total:</td><td><?=number_format($order_totals['total'],2)?></td></tr>                  
 
     </table>
-    <?php if (!($this->Shipping->shipping_enabled && $shipping_required && !is_numeric($order_totals['shipping']))) : ?> 
-    <input type="button" class="sc_verify_cart_submit" value="Continue To Payment" />
-    <?php endif ?>
 </form>
+
+<?php if (!($this->Shipping->shipping_enabled && $shipping_required && !is_numeric($order_totals['shipping']))) : ?> 
+    <?php $this->load_ajax('/checkout/payment'); ?>
+<?php endif ?>
+
 <div class="sc_verify_cart_shipbill_details">
     <div>
         <h3>Shipping: <sub><a href="<?=sc_ajax('get_customer_details')?>" class="sc_edit_details" title="Edit">Edit</a></sub></h3>

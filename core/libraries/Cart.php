@@ -25,7 +25,7 @@
     public static $required_libraries = array(
       'Transactions',
       'Items'  
-    );
+    );        
   
     /**
      * Explode Cart
@@ -82,10 +82,10 @@
      * function will return that it was successfully updated, other wise it
      * will just return the cart string
      */
-    function implode_cart($cart,$update=NULL) {
+    function implode_cart($cart,$update=NULL,$verify=false) {
       
       foreach($cart as &$item) {                    
-        $item = $this->implode_item($item);
+        $item = $this->implode_item($item,$verify);
       }
       
       $cart = implode('||',$cart);
@@ -132,7 +132,7 @@
      * @param string $item The item string
      */
      
-    function implode_item($item) {
+    function implode_item($item,$verify=false) {
     
       if (is_string($item)) {
         return $item;
@@ -144,7 +144,7 @@
     
       $item['options'] = $this->implode_options($item['options']);
         
-      if (!isset($item['price'])) {
+      if (!isset($item['price']) || $verify) {
         $item['price'] = $this->SC->Items->item_price($item['id']);
       }
       
@@ -197,7 +197,7 @@
      *
      * @param array $option_array The option array
      */ 
-    function implode_options($option_array) {
+    function implode_options($option_array,$verify=false) {
     
       if (!$option_array) {
         return 0;
@@ -207,7 +207,7 @@
         return $option_array;
       }
     
-      $option_array = $this->verify_options($option_array);
+      $option_array = $this->verify_options($option_array,$verify);
       
       foreach ($option_array as &$option) {
           $option = implode('x',array($option['id'],$option['quantity'],$option['price']));
@@ -226,15 +226,16 @@
      * @return array
      * 
      * @param array $option_array The option array to verify
+     * @param bool $verify Whether or not to ignore hard coded prices
      */
-    function verify_options($option_array) {    
+    function verify_options($option_array,$verify=false) {    
     
       if (!$option_array) {
         return 0;
       }         
     
       foreach ($option_array as &$option) {
-        if (!isset($option['price'])) {
+        if (!isset($option['price'])||$verify) {
           $option['price'] = $this->SC->Items->option_price($option['id']);
         }
       }      
@@ -431,6 +432,16 @@
     }
     
     /**
+     * Reset Cart
+     *
+     * Resets the cart's item prices      
+     */
+    function reset_cart($cart) {
+        
+        return $this->implode_cart($this->explode_cart($cart), $int ? $cart : NULL, true);
+    }
+    
+    /**
      * Item count
      *
      * Counts how many items are in a cart.
@@ -614,9 +625,7 @@
             'Discounts',
         ));   
         
-        $cart = $this->explode_cart($transaction->items);
-    
-              
+        $cart = $this->explode_cart($transaction->items);                  
     
         $messages = array();
         
@@ -697,7 +706,7 @@
         
         //Calculate total
 
-        $subtotal = $this->subtotal($transaction->items);            
+        $subtotal = $this->subtotal($cart);            
 
         $total_discount = 0;
         if (isset($_POST['discount'])) {
