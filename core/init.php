@@ -22,7 +22,6 @@ if (! $CONFIG['SC_LOCATION']) {
 }
 
 if (!file_exists("{$_SERVER['DOCUMENT_ROOT']}{$CONFIG['URL']}{$CONFIG['SC_LOCATION']}/config.php")) {  
-  
   //Do something complicated to get the url:
   
   //Drop a marker file in into our main folder, and drop a unique value in it
@@ -72,12 +71,12 @@ if (!file_exists("{$_SERVER['DOCUMENT_ROOT']}{$CONFIG['URL']}{$CONFIG['SC_LOCATI
   $site_url = recursive_search($_SERVER['DOCUMENT_ROOT']) or die('Can\'t locate tracer file. Please check your configuration.');;
   $site_url = dirname($site_url);
   
-  $site_url = str_replace($_SERVER['DOCUMENT_ROOT'],'',$site_url);
+  $site_url = str_replace($_SERVER['DOCUMENT_ROOT'],'',$site_url).'/';
   
   $CONFIG['URL'] = $site_url;  
   
   $config_file = file_get_contents('config.php');
-  $config_file = preg_replace('/\$CONFIG\[(\'|")URL(\'|")\].*$/m',"\$CONFIG['URL'] = '$site_url';\n",$config_file);
+  $config_file = preg_replace('/\$CONFIG\[(\'|")URL(\'|")\].*$/m',"\$CONFIG['URL'] = '$site_url';",$config_file);
 
   $r_config_file = fopen('config.php','w');
   fwrite($r_config_file,$config_file); 

@@ -142,7 +142,7 @@
         return '';
       }
     
-      $item['options'] = $this->implode_options($item['options']);
+      $item['options'] = $this->implode_options($item['options'],$verify);
         
       if (!isset($item['price']) || $verify) {
         $item['price'] = $this->SC->Items->item_price($item['id']);

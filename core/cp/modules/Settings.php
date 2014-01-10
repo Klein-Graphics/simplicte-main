@@ -234,7 +234,7 @@ class Settings extends \SC_CP_Module {
             break;
             
             case 'password':
-                $element .= "<div><input type=\"password\" placeholder=\"Password\" name=\"{$obj->detail}\" id=\"detail_{$obj->detail}\"></div>
+                $element .= "<div><input type=\"password\" placeholder=\"Password\" name=\"{$obj->detail}\" id=\"{$obj->detail}\"></div>
                              <div><input type=\"password\" placeholder=\"Confirm\" name=\"{$obj->detail}_confirm\"></div>";
             break;                
             
@@ -311,13 +311,17 @@ class Settings extends \SC_CP_Module {
             $fields[$checkbox->detail] = 0;
         }
         
-        $fields = array_merge($fields,$_POST);
+        $fields = array_merge($fields,$_POST);        
                 
         foreach ($fields as $field_name => $new_value) {        
             $field = \Model\Detail::find_by_detail($field_name);
             
             if (!$field) {
+                if (preg_match('/_confirm$/',$field_name) !== false && isset($fields[preg_replace('/_confirm$/','',$field_name)])) {
+                    continue;
+                }
                 $field = new \Model\Detail();
+                $field->detail = $field_name;
             }
             
             switch($field->type) {

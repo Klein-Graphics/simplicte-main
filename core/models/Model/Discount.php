@@ -37,9 +37,17 @@ class Discount extends \SC_Model {
             $what_it_do .= ' ';
             foreach ($this->modifiers as $modifier => $value) {
                 switch ($modifier) {
+                    case 'item_percent_all':
+                        if ($this->action == 'itempercentoff') {
+                         $what_it_do .= 'Percent off applies to all items. ';
+                        }
+                    break;
+                    
                     case 'free_shipping':
                         $what_it_do .= 'With free shipping. ';    
                     break;
+                    
+
                 }
             }
         }        

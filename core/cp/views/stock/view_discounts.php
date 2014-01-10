@@ -64,7 +64,8 @@
             <div class="control-group">
                 <label class="control-label">Modifiers</label>
                 <div class="controls">
-                    <input type="checkbox" id="free_shipping" name="modifiers[free_shipping]" value="1" /><label class="inline" for="free_shipping">Free Shipping</label>
+                    <input type="checkbox" id="free_shipping" name="modifiers[free_shipping]" value="1" /><label class="inline" for="free_shipping">Free Shipping</label><br>
+                    <input type="checkbox" id="item_percent_all" name="modifiers[item_percent_all]" value="1" /><label class="inline" for="item_percent_all">Item-level percent discounts apply to any quantity</label>
                 </div>
             </div>
         </form>
@@ -229,9 +230,14 @@
             
             $.post($(this).val(),function(item) {
                 //Modifiers
-                if (item.modifiers) {                    
+                if (item.modifiers) {                                        
+                    //TODO make this dynamic                
                     if (item.modifiers.free_shipping) {
                         $('#free_shipping').attr('checked','checked');
+                    }                    
+                    
+                    if (item.modifiers.item_percent_all) {
+                        $('#item_percent_all').attr('checked','checked');
                     }
                     
                     delete item.modifiers;

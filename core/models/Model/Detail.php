@@ -15,6 +15,14 @@ class Detail extends \SC_Model {
 
     }
     
+    function set_detail_value() {
+        if ($this->encoded) {
+            return encrypt($this->read_attribute('detail_value'));
+        }
+        
+        return $this->read_attribute('detail_value');
+    }
+    
     function get_category() {
         return explode('-',$this->read_attribute('category'));
     }   

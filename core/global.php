@@ -113,10 +113,10 @@
   function site_url($addl='') {
     
     global $CONFIG;
-    
+
     $addl = ltrim($addl,'/');
     
-    return "http".((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 's' : '')."://{$_SERVER['SERVER_NAME']}{$CONFIG['URL']}/$addl";
+    return "http".((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 's' : '')."://{$_SERVER['SERVER_NAME']}{$CONFIG['URL']}$addl";
   
   }
   

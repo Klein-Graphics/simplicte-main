@@ -191,84 +191,87 @@ class Discounts extends \SC_Library {
 
         foreach ($cartArray as $key => $item) {
 	        if ($item['id'] == $discount['item']) {
-		        $discount_item = $key;
-		        break;
-	        }
-        }
-
-        if ($discount_item !== FALSE) {
-	        switch($discount['action']) {
-		        case 'itempercentoff':
-			        if ($cartArray[$discount_item]['quantity'] > 1) {
-				        $cartArray[] = array(
-				            'id'       => $cartArray[$discount_item]['id'],
-				            'options'  => $cartArray[$discount_item]['options'],
-				            'quantity' => $cartArray[$discount_item]['quantity'] -= 1,
-				            'price'    => $cartArray[$discount_item]['price']
-			            );
-				        $cartArray[$discount_item]['quantity'] = 1;
-			        }
-			        $cartArray[$discount_item]['price'] *= (100 - $discount['percent'])*0.01;
-			        $cartArray[$discount_item]['price'] = round($cartArray[$discount_item]['price'],2);
-		        break;
+	            $discount_item = $key;
+	            switch($discount['action']) {
+		            case 'itempercentoff':
+			            if ($cartArray[$discount_item]['quantity'] > 1 && !$this->modifier_isset($discount,'item_percent_all')) {
+				            $cartArray[] = array(
+				                'id'       => $cartArray[$discount_item]['id'],
+				                'options'  => $cartArray[$discount_item]['options'],
+				                'quantity' => $cartArray[$discount_item]['quantity'] -= 1,
+				                'price'    => $cartArray[$discount_item]['price']
+			                );
+				            $cartArray[$discount_item]['quantity'] = 1;
+			            }
+			            
+			            $cartArray[$discount_item]['price'] -= round($cartArray[$discount_item]['price'] * $discount['percent'] * 0.01,2);
+			            foreach ($cartArray[$discount_item]['options'] as &$option) {
+			                $option['price'] -= round($option['price'] * $discount['percent'] * 0.01,2);
+			            }
+			            
+			            $cartArray[$discount_item]['price'] = round($cartArray[$discount_item]['price'],2);
+		            break;
 		
-		        case 'itemfixedoff':
-			        $cartArray[$discount_item]['price'] -= $discount['amount'];
-		        break;
+		            case 'itemfixedoff':
+			            $cartArray[$discount_item]['price'] -= $discount['amount'];
+		            break;
 		
-		        case 'bxgx':		            
-			        //create an array of all matching items, exploding the qtys
-			        $matchingItems = array();
-			        foreach($cartArray as $key => $item) {
-				        if ($item['id'] == $discount['item']) {
-                            $min_amount = $discount['bamount']+$discount['gamount'];
-				            if ($item['quantity'] < $min_amount) {
-				                return array("This offer requires a quanitity of at least {$min_amount} 
-				                        to qualify.",$cartArray);
+		            case 'bxgx':		            
+			            //create an array of all matching items, exploding the qtys
+			            $matchingItems = array();
+			            foreach($cartArray as $key => $item) {
+				            if ($item['id'] == $discount['item']) {
+                                $min_amount = $discount['bamount']+$discount['gamount'];
+				                if ($item['quantity'] < $min_amount) {
+				                    return array("This offer requires a quanitity of at least {$min_amount} 
+				                            to qualify.",$cartArray);
+				                }
+					            for ($i=0;$i<$item['quantity'];$i++) {
+						            $matchItems[] = array(
+						                'id'       => $item['id'],
+						                'options'  => $item['options'],
+						                'quantity' => 1,
+						                'price'    => $item['price']
+					                );
+					            }
+					            unset($cartArray[$key]);
 				            }
-					        for ($i=0;$i<$item['quantity'];$i++) {
-						        $matchItems[] = array(
-						            'id'       => $item['id'],
-						            'options'  => $item['options'],
-						            'quantity' => 1,
-						            'price'    => $item['price']
-					            );
-					        }
-					        unset($cartArray[$key]);
-				        }
-			        }		
+			            }		
 			
-			        $pairs = floor( count($matchItems) / ($discount['bamount']+$discount['gamount']) );
+			            $pairs = floor( count($matchItems) / ($discount['bamount']+$discount['gamount']) );
 			
-			        $freeItems = $discount['gamount']*$pairs;
+			            $freeItems = $discount['gamount']*$pairs;
 			
-			        //Discount items
-			        for ($i=0;$i<$freeItems;$i++) {
-				        $matchItems[$i]['price'] = 0;
-			        }
+			            //Discount items
+			            for ($i=0;$i<$freeItems;$i++) {
+				            $matchItems[$i]['price'] = 0;
+			            }
 			
-			        //Stack and return items to $cartArray
+			            //Stack and return items to $cartArray
 			
-			        $returnToCartArray = array();
+			            $returnToCartArray = array();
 			
-			        $dontdoit = FALSE;
-			        foreach($matchItems as $matchedItem) {
-				        foreach($returnToCartArray as $key => $returningItem) {
-					        $dontdoit = FALSE;
-					        if ($matchedItem['options'] == $returningItem['options'] 
-					         && $matchedItem['price'] == $returningItem['price']) {
-						        $returnToCartArray[$key]['quantity']++;
-						        $dontdoit = TRUE;
-						        break;
-					        }
-				        }
-				        if (!$dontdoit) { $returnToCartArray[] = $matchedItem; }
-			        }
+			            $dontdoit = FALSE;
+			            foreach($matchItems as $matchedItem) {
+				            foreach($returnToCartArray as $key => $returningItem) {
+					            $dontdoit = FALSE;
+					            if ($matchedItem['options'] == $returningItem['options'] 
+					             && $matchedItem['price'] == $returningItem['price']) {
+						            $returnToCartArray[$key]['quantity']++;
+						            $dontdoit = TRUE;
+						            break;
+					            }
+				            }
+				            if (!$dontdoit) { $returnToCartArray[] = $matchedItem; }
+			            }
 			
-			        $cartArray = array_merge($cartArray,$returnToCartArray);				
-		        break;
+			            $cartArray = array_merge($cartArray,$returnToCartArray);				
+		            break;
 		
-	        }
+	            }
+            }
+        }
+        if ($discount_item) {
 	        return array($discount['description'],$cartArray);
         } else {            
 	        return array('This discount only applies to "'

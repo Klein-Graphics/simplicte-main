@@ -36,7 +36,6 @@ class Paypal_EC extends \SC_Gateway_Driver {
                 echo "{$error['L_SEVERITYCODE']}: {$error['L_ERRORCODE']} {$error['L_SHORTMESSAGE']}. {$error['L_LONGMESSAGE']} <br />";
             }  
         }
-        
         echo $extra;        
     }
     
@@ -218,7 +217,6 @@ class Paypal_EC extends \SC_Gateway_Driver {
             $data["L_PAYMENTREQUEST_0_AMT$key"] = -$this->t->discount;
             
         }      
-        
         $result = $this->paypal_api_call($data);
         
         return $result;
