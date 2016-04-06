@@ -11,19 +11,19 @@
  * @see Core/page_in.php
  */
 
-chdir($sc_cwd);
-
 //Get, End, and Output output buffer
 $output = ob_get_contents();
 ob_end_clean();
 
 //SC is broke, say so.
 if (SC_STOP) {
-    $output = preg_replace("/\[\[(checkout(\|[^(\]\])]+)*)\]\]/i",'<div class="sc_fatal_error">We are currently experiencing a database outage, as such, our eStore is unavailable at the moment</div>',$output);
+    $output = preg_replace("/\[\[(checkout(\|[^(\]\])]+)*)\]\]/i",'<div class="sc_fatal_error">We are currently experiencing a database outage, and as such, our eStore is unavailable at the moment</div>',$output);
     $output = preg_replace("/\[\[((.*)(\|[^(\]\])]+)*)\]\]/i",'',$output);
     echo $output;
     return;
 }
+
+chdir($sc_cwd);
 
 //Add Items and Add To Cart Buttons
 $output = $SC->Page_loading->run_item_templates($output);
